@@ -14,28 +14,22 @@ class TableController: UITableViewController{
     @IBOutlet var table: UITableView!
     var categories = [Category]()
     
-    
-    struct Category {
-        var name: String
-        var items: [String]
-        var collapsed: Bool
-        
-        init(name: String, items: [String], collapsed: Bool = false) {
-            self.name = name
-            self.items = items
-            self.collapsed = collapsed
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
-        
+    
+     
         categories.append(Category(name: "Produce", items: ["Bananas", "Eggs"]))
         categories.append(Category(name: "Meats", items: ["Beef", "Chicken"]))
+        // var store: Store = Store(name: "wegmans", categories: self.categories)
+        
+        // let encodedData = try! JSONEncoder().encode(store)
+        // let ston = String(data: encodedData, encoding: .utf8)!
+         
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
