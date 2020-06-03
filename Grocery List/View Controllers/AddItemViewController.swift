@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class AddItem: UIViewController{
+class AddItemViewController: UIViewController{
     
     override func viewDidLoad() {
         self.navigationController?.setToolbarHidden(true, animated: true)

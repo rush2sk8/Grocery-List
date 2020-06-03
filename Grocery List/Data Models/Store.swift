@@ -12,7 +12,7 @@ struct Store: Codable{
     var name: String
     var categories: [Category]
     
-    init(name: String, categories: [Category]) {
+    init(name: String, _ categories: [Category] = [Category]()) {
         self.name = name
         self.categories = categories
     }
