@@ -35,7 +35,7 @@ class TableController: UITableViewController{
         tableView.rowHeight = UITableView.automaticDimension
         
         categories.append(Category(name: "Produce", items: ["Bananas", "Eggs"]))
-        
+        categories.append(Category(name: "Meats", items: ["Beef", "Chicken"]))
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,6 +72,21 @@ class TableController: UITableViewController{
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+  
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //index path [category index, item number]
+ 
+        if(editingStyle == .delete){
+        categories[indexPath[0]].items.remove(at: indexPath[1])
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .middle)
+            tableView.endUpdates()
+        }
+    }
 }
 
 extension TableController: CollapsibleTableViewHeaderDelegate {
