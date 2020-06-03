@@ -83,5 +83,16 @@ class StoresTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
+        performSegue(withIdentifier: "toList", sender: indexPath[1])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is TableController {
+            let vc = segue.destination as? TableController
+            let store = stores[(sender as? Int)!]
+            
+            vc?.storeName = store.name
+            vc?.categories = store.categories
+        }
     }
 }

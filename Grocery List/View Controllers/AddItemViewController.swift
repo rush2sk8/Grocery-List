@@ -12,9 +12,12 @@ import UIKit
 
 class AddItemViewController: UIViewController{
     
+    var categories: [Category] = [Category]()
+    
     override func viewDidLoad() {
         self.navigationController?.setToolbarHidden(true, animated: true)
         super.viewDidLoad()
+        print(categories)
     }
     
 }

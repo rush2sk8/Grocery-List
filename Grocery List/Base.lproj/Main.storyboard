@@ -84,13 +84,14 @@
                     <toolbarItems>
                         <barButtonItem title="ADD" width="456.66666666666669" id="dq8-f4-uzn">
                             <connections>
-                                <segue destination="NBI-PU-Kym" kind="show" id="gtN-we-mIc"/>
+                                <action selector="addItem:" destination="fRW-bz-Bk0" id="SXF-CP-eYB"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="vo2-eT-rA9" id="93N-pz-UaP"/>
+                        <segue destination="NBI-PU-Kym" kind="show" identifier="toAdd" id="WMn-pa-KSf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzq-HN-0Rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,10 +144,13 @@
                         </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="fRW-bz-Bk0" kind="show" identifier="toList" id="Nsn-Fb-6dK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xOx-ne-k4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750.72463768115949" y="136.60714285714286"/>
+            <point key="canvasLocation" x="725" y="141"/>
         </scene>
     </scenes>
 </document>

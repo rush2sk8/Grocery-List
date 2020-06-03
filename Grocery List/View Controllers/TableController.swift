@@ -13,10 +13,12 @@ class TableController: UITableViewController{
     
     @IBOutlet var table: UITableView!
     var categories = [Category]()
+    var storeName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
+        self.navigationItem.title = self.storeName
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
@@ -32,6 +34,23 @@ class TableController: UITableViewController{
         
     }
     
+    @IBAction func addItem(_ sender: Any) {
+        performSegue(withIdentifier: "toAdd", sender: self.categories)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is AddItemViewController {
+            let vc = segue.destination as? AddItemViewController
+            let c = sender as? [Category]
+        
+            vc?.categories = c!
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setToolbarHidden(false, animated: true)
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return categories.count
     }
@@ -42,10 +61,6 @@ class TableController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setToolbarHidden(false, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
