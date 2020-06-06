@@ -17,16 +17,15 @@ class StoresTableViewController: UITableViewController{
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
         
-        
-        // let encodedData = try! JSONEncoder().encode(store)
-        // let ston = String(data: encodedData, encoding: .utf8)!
-       stores.append(Store(name: "wegmans"))
-        
-        
+        if let storeNames = DataStore.getStoreNames() {
+            for storeName in storeNames {
+                stores.append(Store(name: storeName))
+            }
+        }
     }
     
     @IBAction func addStore(_ sender: Any) {
-      showAddStoreDialog()
+        showAddStoreDialog()
     }
     
     func showAddStoreDialog(){
@@ -38,12 +37,36 @@ class StoresTableViewController: UITableViewController{
         })
         
         alert.addAction(UIAlertAction(title: "Add", style: .default , handler: { (action) in
-            if let storeName = alert.textFields?.first?.text {
+            if let storeName = alert.textFields?.first?.text?.lowercased() {
+                
+                if(storeName == ""){
+                    return
+                }
+                
+                //if the store exists then dont add it
+                if let existingStores = DataStore.getStoreNames(){
+                    print(existingStores)
+                    if(existingStores.contains(storeName)){
+                        self.showAddStoreAlertErrorDialog(storeName: storeName)
+                        return
+                    }
+                }
+                
+                //save store name
+                DataStore.saveNewStore(store: storeName)
                 self.stores.append(Store(name: storeName))
+                
                 self.tableView.reloadData()
             }
         }))
         
+        self.present(alert, animated: true)
+    }
+    
+    //error if they try to add the same store twice
+    func showAddStoreAlertErrorDialog(storeName: String) {
+        let alert = UIAlertController(title: "Store could not be added", message: "\(storeName.capitalized) already exists", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
     
@@ -61,8 +84,8 @@ class StoresTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "storeCell")
-       
-        cell.textLabel?.text = stores[indexPath[1]].name
+        
+        cell.textLabel?.text = stores[indexPath[1]].name.capitalized
         return cell
     }
     
@@ -74,10 +97,14 @@ class StoresTableViewController: UITableViewController{
         //index path [category index, item number]
         
         if(editingStyle == .delete){
+            
+            let toRemove = stores[indexPath[1]]
+            DataStore.deleteStore(store: toRemove)
             stores.remove(at: indexPath[1])
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .middle)
             tableView.endUpdates()
+            DataStore.saveStores(stores: stores)
         }
     }
     
@@ -90,9 +117,7 @@ class StoresTableViewController: UITableViewController{
         if segue.destination is TableController {
             let vc = segue.destination as? TableController
             let store = stores[(sender as? Int)!]
-            
-            vc?.storeName = store.name
-            vc?.categories = store.categories
+            vc?.store = store
         }
     }
 }

@@ -16,4 +16,9 @@ struct Store: Codable{
         self.name = name
         self.categories = categories
     }
+    
+    init() {
+        self.name = ""
+        self.categories = [Category]()
+    }
 }
