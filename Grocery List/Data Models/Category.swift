@@ -11,9 +11,11 @@ struct Category: Codable {
     var items: [String]
     var collapsed: Bool
     
-    init(name: String, items: [String], collapsed: Bool = false) {
+    init(name: String, items: [String] = [String](), collapsed: Bool = false) {
         self.name = name
         self.items = items
         self.collapsed = collapsed
     }
+    
+     
 }

@@ -17,6 +17,7 @@
 		2461A841248829B7009BE0AB /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A840248829B6009BE0AB /* TableController.swift */; };
 		2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A84224882D1D009BE0AB /* AddItemViewController.swift */; };
 		2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */; };
+		24677078248D81FD00781021 /* CollapsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */; };
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		2461A840248829B6009BE0AB /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		2461A84224882D1D009BE0AB /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
+		24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 		2494FFA7248C10CA00DC58E0 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 				2418684624884C4F003E7C69 /* Data Models */,
 				2418684924885827003E7C69 /* View Controllers */,
 				2461A82E24882541009BE0AB /* AppDelegate.swift */,
+				24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */,
 				2494FFA7248C10CA00DC58E0 /* DataStore.swift */,
 				2461A83224882541009BE0AB /* Main.storyboard */,
 				2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */,
@@ -171,6 +174,7 @@
 			files = (
 				2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */,
 				2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */,
+				24677078248D81FD00781021 /* CollapsibleTableViewCell.swift in Sources */,
 				2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */,
 				2418684324884B42003E7C69 /* Category.swift in Sources */,
 				2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */,

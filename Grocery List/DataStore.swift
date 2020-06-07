@@ -46,7 +46,7 @@ class DataStore {
             
             do {
                 let jsonData = try String(contentsOf: fileURL, encoding: .utf8).data(using: .utf8)!
-
+                
                 if let store = try? JSONDecoder().decode(Store.self, from: jsonData) {
                     return store
                 }
@@ -91,8 +91,12 @@ class DataStore {
         
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("\(store.lowercased()).json")
-        
+            
             FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
+ 
+            
+            let storeToSave = Store(name: store)
+            DataStore.saveStoreData(store: storeToSave)
         }
         
         if var stores = defaults.stringArray(forKey: "stores") {

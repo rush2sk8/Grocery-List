@@ -41,6 +41,7 @@ class TableController: UITableViewController{
             vc?.store = s!
         }
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(false, animated: true)
@@ -71,8 +72,9 @@ class TableController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = store.categories[indexPath.section].items[indexPath.row]
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CollapsibleTableViewCell
+        cell.detailLabel.text = store.categories[indexPath.section].items[indexPath.row]
         return cell
     }
     
