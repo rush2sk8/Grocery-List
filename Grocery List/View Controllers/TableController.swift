@@ -26,6 +26,7 @@ class TableController: UITableViewController{
         if let savedStore = DataStore.getStoreData(store: store) {
             self.store = savedStore
         }
+       
         print(self.store.categories)
     }
     
@@ -37,11 +38,10 @@ class TableController: UITableViewController{
         if segue.destination is AddItemViewController {
             let vc = segue.destination as? AddItemViewController
             let s = sender as? Store
-            
+            //vc?.modalPresentationStyle = .fullScreen
             vc?.store = s!
         }
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(false, animated: true)
@@ -72,9 +72,9 @@ class TableController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CollapsibleTableViewCell
-        cell.detailLabel.text = store.categories[indexPath.section].items[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
+        //        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CollapsibleTableViewCell
+        cell.textLabel?.text = store.categories[indexPath.section].items[indexPath.row]
         return cell
     }
     
@@ -91,6 +91,14 @@ class TableController: UITableViewController{
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .middle)
             tableView.endUpdates()
+            DataStore.saveStoreData(store: self.store)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if(self.isMovingFromParent){
             DataStore.saveStoreData(store: self.store)
         }
     }
