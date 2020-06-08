@@ -141,7 +141,11 @@
                         <viewLayoutGuide key="safeArea" id="3ey-3C-UVS"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="ADD" width="434" id="CZq-f4-McN"/>
+                        <barButtonItem title="ADD" width="434" id="CZq-f4-McN">
+                            <connections>
+                                <action selector="addItem:" destination="NBI-PU-Kym" id="01a-6s-qoY"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

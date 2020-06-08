@@ -12,7 +12,6 @@ import UIKit
 
 class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    
     var store: Store?
     var selectedCategory: Int?
     
@@ -30,10 +29,19 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.allowsSelection = true
         
         textField.delegate = self
-        
-
     }
     
+    
+    @IBAction func addItem(_ sender: Any) {
+        if(!textField.text!.isEmpty && selectedCategory != nil){
+            store?.categories[self.selectedCategory!].items.append(textField.text!.capitalized)
+            DataStore.saveStoreData(store: self.store!)
+            navigationController?.popViewController(animated: true)
+        }
+        
+    }
+
+    /*TABLE VIEW STUFF*/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.store?.categories.count ?? 0
     }
@@ -47,7 +55,9 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedCategory = indexPath.row
+        textField.resignFirstResponder()
     }
+    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let oldIndex = tableView.indexPathForSelectedRow {
             tableView.cellForRow(at: oldIndex)?.accessoryType = .none
@@ -62,4 +72,5 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         background.endEditing(true)
         return true
     }
+    
 }

@@ -25,12 +25,12 @@ class TableController: UITableViewController{
         
         if let savedStore = DataStore.getStoreData(store: store) {
             self.store = savedStore
+            tableView.reloadData()
         }
-       
-        print(self.store.categories)
     }
     
     @IBAction func addItem(_ sender: Any) {
+        print(self.store)
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
     
@@ -45,6 +45,10 @@ class TableController: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(false, animated: true)
+        if let savedStore = DataStore.getStoreData(store: store) {
+            self.store = savedStore
+        }
+        tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,7 +67,7 @@ class TableController: UITableViewController{
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         
         header.titleLabel.text = store.categories[section].name
-        header.arrowLabel.text = ">"
+        header.arrowLabel.text = "→"
         header.setCollapsed(store.categories[section].collapsed)
         
         header.section = section
@@ -73,7 +77,7 @@ class TableController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CollapsibleTableViewCell
+     
         cell.textLabel?.text = store.categories[indexPath.section].items[indexPath.row]
         return cell
     }

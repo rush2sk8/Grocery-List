@@ -11,6 +11,7 @@ import Foundation
 class DataStore {
     
     static func saveStoreData(store: Store) {
+        
         let encode = try! JSONEncoder().encode(store)
         let string = String(bytes: encode, encoding: .utf8)!
         
@@ -56,8 +57,7 @@ class DataStore {
         }
         return nil
     }
-    
-    
+
     static func getStoreNames() -> [String]? {
         let defaults = UserDefaults.standard
         if let stores = defaults.stringArray(forKey: "stores"){
