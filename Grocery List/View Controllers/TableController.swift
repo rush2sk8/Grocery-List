@@ -23,10 +23,22 @@ class TableController: UITableViewController{
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         
+        let shareBar = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(TableController.userDidTapShare))
+        self.navigationItem.rightBarButtonItem = shareBar
+        
         if let savedStore = DataStore.getStoreData(store: store) {
             self.store = savedStore
             tableView.reloadData()
         }
+    }
+    
+    @objc func userDidTapShare() {
+        
+        let url = self.store.exportToURL()
+        
+        let activity = UIActivityViewController(activityItems: ["Here is my grocery list", url!], applicationActivities: nil)
+        
+        present(activity, animated: true, completion: nil)
     }
     
     @IBAction func addItem(_ sender: Any) {

@@ -80,7 +80,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Add Store" width="456.66666666666669" id="dq8-f4-uzn">
+                        <barButtonItem title="Add Item" width="456.66666666666669" id="dq8-f4-uzn">
                             <connections>
                                 <action selector="addItem:" destination="fRW-bz-Bk0" id="SXF-CP-eYB"/>
                             </connections>

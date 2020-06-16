@@ -47,4 +47,20 @@ class Store: Codable {
         }
         return nil
     }
+    
+    func exportToURL() -> URL? {
+        guard let encoded = try? JSONEncoder().encode(self) else { return nil }
+        
+        let documents = FileManager.default.urls (for: .documentDirectory, in: .userDomainMask).first
+        
+        guard let path = documents?.appendingPathComponent("/\(self.name.lowercased()).groclst") else { return nil }
+        
+        do {
+            try encoded.write(to: path, options: .atomicWrite)
+            return path
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
 }
