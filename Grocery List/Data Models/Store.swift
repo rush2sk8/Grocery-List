@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Store: Codable{
+class Store: Codable {
     var name: String
     var categories: [Category]
     
@@ -37,5 +37,14 @@ struct Store: Codable{
             Category(name: "Frozen Foods"),
             Category(name: "Other")
         ]
+    }
+    
+    func getCategory(name: String) -> Category? {
+        for c in self.categories {
+            if c.name == name {
+                return c
+            }
+        }
+        return nil
     }
 }

@@ -52,6 +52,7 @@
 		2418684624884C4F003E7C69 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
+				2494FFA7248C10CA00DC58E0 /* DataStore.swift */,
 				2418684424884B6C003E7C69 /* Store.swift */,
 				2418684224884B42003E7C69 /* Category.swift */,
 			);
@@ -91,7 +92,6 @@
 				2418684924885827003E7C69 /* View Controllers */,
 				2461A82E24882541009BE0AB /* AppDelegate.swift */,
 				24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */,
-				2494FFA7248C10CA00DC58E0 /* DataStore.swift */,
 				2461A83224882541009BE0AB /* Main.storyboard */,
 				2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */,
 				2461A83524882543009BE0AB /* Assets.xcassets */,

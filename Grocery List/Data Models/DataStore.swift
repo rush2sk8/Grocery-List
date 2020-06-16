@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DataStore {
     
@@ -14,7 +15,7 @@ class DataStore {
         
         let encode = try! JSONEncoder().encode(store)
         let string = String(bytes: encode, encoding: .utf8)!
-        
+        print(string)
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             
             let fileURL = dir.appendingPathComponent("\(store.name.lowercased()).json")
@@ -26,6 +27,40 @@ class DataStore {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    static func mergeToExistingListAndSave(store: Store){
+        var existing = DataStore.getStoreData(store: store)
+        
+        for category in existing!.categories {
+            let items = store.getCategory(name: category.name)!.items
+            
+            for item in items {
+                if !category.items.contains(item) {
+                    category.items.append(item)
+                }
+            }
+            
+        }
+        DataStore.saveStoreData(store: existing!)
+    }
+    
+    
+    static func importList(from url: URL){
+        let data = try? Data(contentsOf: url)
+        let store = try? JSONDecoder().decode(Store.self, from: data!)
+        
+        if DataStore.getStoreNames()!.contains(store!.name){
+            DataStore.mergeToExistingListAndSave(store: store!)
+            
+        }
+        else {
+            DataStore.saveNewStore(store: store!.name)
+            DataStore.saveStoreData(store: store!)
+        }
+        
+        try? FileManager.default.removeItem(at: url)
+        
     }
     
     static func deleteStore(store: Store){
@@ -57,7 +92,7 @@ class DataStore {
         }
         return nil
     }
-
+    
     static func getStoreNames() -> [String]? {
         let defaults = UserDefaults.standard
         if let stores = defaults.stringArray(forKey: "stores"){
@@ -93,7 +128,7 @@ class DataStore {
             let fileURL = dir.appendingPathComponent("\(store.lowercased()).json")
             
             FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
- 
+            
             
             let storeToSave = Store(name: store)
             DataStore.saveStoreData(store: storeToSave)
@@ -108,4 +143,6 @@ class DataStore {
             defaults.set([store], forKey: "stores")
         }
     }
+    
+    
 }

@@ -70,6 +70,21 @@ class StoresTableViewController: UITableViewController{
         self.present(alert, animated: true)
     }
     
+    func showMergedAlert(storeName: String){
+        let alert = UIAlertController(title: "Successfully imported data", message: "New \(storeName.capitalized) data has been merged", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func reloadData() {
+        if let storeNames = DataStore.getStoreNames() {
+            for storeName in storeNames {
+                stores.append(Store(name: storeName))
+            }
+        }
+        tableView.reloadData()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(false, animated: true)
     }

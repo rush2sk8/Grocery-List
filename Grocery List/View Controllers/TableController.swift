@@ -38,7 +38,6 @@ class TableController: UITableViewController{
         if segue.destination is AddItemViewController {
             let vc = segue.destination as? AddItemViewController
             let s = sender as? Store
-            //vc?.modalPresentationStyle = .fullScreen
             vc?.store = s!
         }
     }
