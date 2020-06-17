@@ -11,13 +11,31 @@ import UIKit
 
 class StoresTableViewController: UITableViewController{
     
+ 
     var stores: [Store] = [Store]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
         
+        self.reloadStores()
+        
+        refreshControl = UIRefreshControl()
+        self.tableView.addSubview(refreshControl!)
+        refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
+    }
+    
+    @objc func refreshTableData() {
+        reloadStores()
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
+    
+    func reloadStores() {
         if let storeNames = DataStore.getStoreNames() {
+       
+            self.stores = [Store]()
+            
             for storeName in storeNames {
                 stores.append(Store(name: storeName))
             }
@@ -45,7 +63,6 @@ class StoresTableViewController: UITableViewController{
                 
                 //if the store exists then dont add it
                 if let existingStores = DataStore.getStoreNames(){
-                    print(existingStores)
                     if(existingStores.contains(storeName)){
                         self.showAddStoreAlertErrorDialog(storeName: storeName)
                         return
@@ -124,7 +141,6 @@ class StoresTableViewController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
         performSegue(withIdentifier: "toList", sender: indexPath[1])
     }
     

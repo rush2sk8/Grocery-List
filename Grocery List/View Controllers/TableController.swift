@@ -42,7 +42,6 @@ class TableController: UITableViewController{
     }
     
     @IBAction func addItem(_ sender: Any) {
-        print(self.store)
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
     

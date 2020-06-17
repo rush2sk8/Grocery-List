@@ -15,7 +15,7 @@ class DataStore {
         
         let encode = try! JSONEncoder().encode(store)
         let string = String(bytes: encode, encoding: .utf8)!
-        print(string)
+        
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             
             let fileURL = dir.appendingPathComponent("\(store.name.lowercased()).json")
@@ -47,11 +47,15 @@ class DataStore {
     static func importList(from url: URL){
         let data = try? Data(contentsOf: url)
         let store = try? JSONDecoder().decode(Store.self, from: data!)
-        
+
         if let names = DataStore.getStoreNames() {
-            
+
             if names.contains(store!.name){
+
                 DataStore.mergeToExistingListAndSave(store: store!)
+            } else {
+                DataStore.saveNewStore(store: store!.name)
+                DataStore.saveStoreData(store: store!)
             }
         }
         else {
