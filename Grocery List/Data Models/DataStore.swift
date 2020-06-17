@@ -30,7 +30,7 @@ class DataStore {
     }
     
     static func mergeToExistingListAndSave(store: Store){
-        var existing = DataStore.getStoreData(store: store)
+        let existing = DataStore.getStoreData(store: store)
         
         for category in existing!.categories {
             let items = store.getCategory(name: category.name)!.items
@@ -52,7 +52,6 @@ class DataStore {
         
         if DataStore.getStoreNames()!.contains(store!.name){
             DataStore.mergeToExistingListAndSave(store: store!)
-            
         }
         else {
             DataStore.saveNewStore(store: store!.name)
@@ -60,7 +59,6 @@ class DataStore {
         }
         
         try? FileManager.default.removeItem(at: url)
-        
     }
     
     static func deleteStore(store: Store){
@@ -128,8 +126,7 @@ class DataStore {
             let fileURL = dir.appendingPathComponent("\(store.lowercased()).json")
             
             FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
-            
-            
+                    
             let storeToSave = Store(name: store)
             DataStore.saveStoreData(store: storeToSave)
         }
@@ -143,6 +140,4 @@ class DataStore {
             defaults.set([store], forKey: "stores")
         }
     }
-    
-    
 }
