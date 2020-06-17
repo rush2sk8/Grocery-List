@@ -40,18 +40,19 @@ class DataStore {
                     category.items.append(item)
                 }
             }
-            
         }
         DataStore.saveStoreData(store: existing!)
     }
-    
     
     static func importList(from url: URL){
         let data = try? Data(contentsOf: url)
         let store = try? JSONDecoder().decode(Store.self, from: data!)
         
-        if DataStore.getStoreNames()!.contains(store!.name){
-            DataStore.mergeToExistingListAndSave(store: store!)
+        if let names = DataStore.getStoreNames() {
+            
+            if names.contains(store!.name){
+                DataStore.mergeToExistingListAndSave(store: store!)
+            }
         }
         else {
             DataStore.saveNewStore(store: store!.name)
@@ -126,7 +127,7 @@ class DataStore {
             let fileURL = dir.appendingPathComponent("\(store.lowercased()).json")
             
             FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
-                    
+            
             let storeToSave = Store(name: store)
             DataStore.saveStoreData(store: storeToSave)
         }
