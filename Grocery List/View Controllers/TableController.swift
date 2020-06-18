@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class TableController: UITableViewController {
-
+    
     var store = Store()
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class TableController: UITableViewController {
     
     
     @objc func didTapBar(){
-
+        
         print("tapped")
     }
     
@@ -85,9 +85,14 @@ class TableController: UITableViewController {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         
         header.titleLabel.text = store.categories[section].name
-        header.arrowLabel.text = "→"
-        header.setCollapsed(store.categories[section].collapsed)
-
+        
+        if store.categories[section].items.count == 0 {
+            header.arrowLabel.text = "✓"
+        } else{
+            header.arrowLabel.text = "→"
+            header.setCollapsed(store.categories[section].collapsed)
+        }
+        
         header.section = section
         header.delegate = self
         return header
@@ -95,18 +100,17 @@ class TableController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
-     
+        
         cell.textLabel?.text = store.categories[indexPath.section].items[indexPath.row]
         return cell
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        
         return true
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
+        
         if(editingStyle == .delete){
             store.categories[indexPath[0]].items.remove(at: indexPath[1])
             tableView.beginUpdates()
@@ -114,6 +118,7 @@ class TableController: UITableViewController {
             tableView.endUpdates()
             DataStore.saveStoreData(store: self.store)
         }
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -129,8 +134,10 @@ extension TableController: CollapsibleTableViewHeaderDelegate {
     func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
         let collapsed = !store.categories[section].collapsed
         
-        store.categories[section].collapsed = collapsed
-        header.setCollapsed(collapsed)
+        if store.categories[section].items.count != 0 {
+            store.categories[section].collapsed = collapsed
+            header.setCollapsed(collapsed)
+        }
         
         tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
     }

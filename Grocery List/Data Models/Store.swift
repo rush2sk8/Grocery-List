@@ -34,11 +34,13 @@ class Store: Codable {
             Category(name: "Cleaning Supplies"),
             Category(name: "Snacks"),
             Category(name: "Baking"),
+            Category(name: "Beauty"),
             Category(name: "Frozen Foods"),
             Category(name: "Other")
         ]
     }
     
+    // gets a category from name
     func getCategory(name: String) -> Category? {
         for c in self.categories {
             if c.name == name {
@@ -48,6 +50,7 @@ class Store: Codable {
         return nil
     }
     
+    //function that will export the current list to url to share
     func exportToURL() -> URL? {
         guard let encoded = try? JSONEncoder().encode(self) else { return nil }
         
