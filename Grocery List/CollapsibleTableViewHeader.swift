@@ -55,7 +55,13 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
     }
     
     func setCollapsed(_ collapsed: Bool){
-        arrowLabel.rotate(collapsed ? 0.0 : .pi / 2)
+        if collapsed == false {
+            arrowLabel.text = "↓"
+        }
+        else {
+            arrowLabel.text = "→"
+        }
+    
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -9,10 +9,8 @@
 import Foundation
 import UIKit
 
-class TableController: UITableViewController{
-    
-    @IBOutlet var table: UITableView!
-    
+class TableController: UITableViewController {
+
     var store = Store()
     
     override func viewDidLoad() {
@@ -22,14 +20,24 @@ class TableController: UITableViewController{
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.delegate = self
         
         let shareBar = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(TableController.userDidTapShare))
         self.navigationItem.rightBarButtonItem = shareBar
+        
+        let barTap = UITapGestureRecognizer(target: self, action: #selector(didTapBar))
+        self.navigationController?.navigationBar.addGestureRecognizer(barTap)
         
         if let savedStore = DataStore.getStoreData(store: store) {
             self.store = savedStore
             tableView.reloadData()
         }
+    }
+    
+    
+    @objc func didTapBar(){
+
+        print("tapped")
     }
     
     @objc func userDidTapShare() {
@@ -79,7 +87,7 @@ class TableController: UITableViewController{
         header.titleLabel.text = store.categories[section].name
         header.arrowLabel.text = "→"
         header.setCollapsed(store.categories[section].collapsed)
-        
+
         header.section = section
         header.delegate = self
         return header
@@ -98,8 +106,7 @@ class TableController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        //index path [category index, item number]
-        
+
         if(editingStyle == .delete){
             store.categories[indexPath[0]].items.remove(at: indexPath[1])
             tableView.beginUpdates()
