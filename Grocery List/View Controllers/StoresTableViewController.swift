@@ -150,6 +150,7 @@ class StoresTableViewController: UITableViewController{
             let vc = segue.destination as? TableController
             let store = stores[(sender as? Int)!]
             vc?.store = store
+            
         }
     }
 }

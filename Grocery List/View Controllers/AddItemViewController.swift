@@ -51,7 +51,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    
     @IBAction func addItem(_ sender: Any) {
         if(!textField.text!.isEmpty && selectedCategory != nil){
             if(editMode) {
@@ -82,7 +81,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.text = self.store?.categories[indexPath.row].name
         cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 14)
         
-        
+    
         if(editMode && indexPath[1] == selectedCategory){
             
             cell.accessoryType = .checkmark
@@ -90,6 +89,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(!editMode){
@@ -116,4 +116,8 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         return true
     }
     
+
+    
 }
+
+
