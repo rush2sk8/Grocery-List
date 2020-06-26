@@ -118,6 +118,7 @@ class StoresTableViewController: UITableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "storeCell")
         
         cell.textLabel?.text = stores[indexPath[1]].name.capitalized
+        cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 20)
         return cell
     }
     

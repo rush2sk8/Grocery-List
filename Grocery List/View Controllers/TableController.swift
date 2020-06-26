@@ -17,9 +17,10 @@ class TableController: UITableViewController {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
         self.navigationItem.title = self.store.name.capitalized
-        
+  
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
+ 
         tableView.delegate = self
         
         let shareBar = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(TableController.userDidTapShare))
@@ -36,15 +37,17 @@ class TableController: UITableViewController {
     
     
     @objc func didTapBar(){
-        
-        print("tapped")
+        for c in self.store.categories {
+            c.collapsed.toggle()
+        }
+        tableView.reloadData()
     }
     
     @objc func userDidTapShare() {
         
         let url = self.store.exportToURL()
         
-        let activity = UIActivityViewController(activityItems: ["Here is my grocery list", url!], applicationActivities: nil)
+        let activity = UIActivityViewController(activityItems: ["Here is my list for \(self.store.name)", url!], applicationActivities: nil)
         
         present(activity, animated: true, completion: nil)
     }
@@ -52,6 +55,8 @@ class TableController: UITableViewController {
     @IBAction func addItem(_ sender: Any) {
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
+    
+ 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is AddItemViewController {
@@ -84,13 +89,18 @@ class TableController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         
-        header.titleLabel.text = store.categories[section].name
         
-        if store.categories[section].items.count == 0 {
+        header.titleLabel.text = store.categories[section].name
+        header.titleLabel.font = UIFont.init(name: "Avenir-Medium", size: 14)
+        header.arrowLabel.font = UIFont.init(name: "Avenir-Medium", size: 14)
+        
+        let numItems = store.categories[section].items.count
+        
+        if numItems == 0 {
             header.arrowLabel.text = "✓"
         } else{
-            header.arrowLabel.text = "→"
-            header.setCollapsed(store.categories[section].collapsed)
+         
+            header.setCollapsed(store.categories[section].collapsed, numItems)
         }
         
         header.section = section
@@ -102,6 +112,7 @@ class TableController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         
         cell.textLabel?.text = store.categories[indexPath.section].items[indexPath.row]
+        cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 20)
         return cell
     }
     
@@ -136,7 +147,7 @@ extension TableController: CollapsibleTableViewHeaderDelegate {
         
         if store.categories[section].items.count != 0 {
             store.categories[section].collapsed = collapsed
-            header.setCollapsed(collapsed)
+            header.setCollapsed(collapsed, store.categories[section].items.count )
         }
         
         tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)

@@ -36,7 +36,6 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         arrowLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         arrowLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
        
-        
         contentView.addSubview(titleLabel)
         titleLabel.textColor = UIColor.white
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -54,14 +53,14 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         delegate?.toggleSection(self, section: cell.section)
     }
     
-    func setCollapsed(_ collapsed: Bool){
+    func setCollapsed(_ collapsed: Bool, _ numItems: Int){
         if collapsed == false {
-            arrowLabel.text = "↓"
+            arrowLabel.text = "\(numItems)  ↓"
         }
         else {
-            arrowLabel.text = "→"
+            arrowLabel.text = "\(numItems)  →"
         }
-    
+
     }
     
     required init?(coder aDecoder: NSCoder) {

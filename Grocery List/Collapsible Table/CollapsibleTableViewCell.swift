@@ -16,7 +16,7 @@ class CollapsibleTableViewCell: UITableViewCell {
     // MARK: Initalizers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+
         let marginGuide = contentView.layoutMarginsGuide
         
         // configure nameLabel
