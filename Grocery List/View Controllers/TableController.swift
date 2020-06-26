@@ -12,6 +12,7 @@ import UIKit
 class TableController: UITableViewController {
     
     var store = Store()
+    var isCollapsed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,9 @@ class TableController: UITableViewController {
         let shareBar = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(TableController.userDidTapShare))
         self.navigationItem.rightBarButtonItem = shareBar
         
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        self.view.addGestureRecognizer(longPressRecognizer)
+        
         let barTap = UITapGestureRecognizer(target: self, action: #selector(didTapBar))
         self.navigationController?.navigationBar.addGestureRecognizer(barTap)
         
@@ -35,11 +39,25 @@ class TableController: UITableViewController {
         }
     }
     
+   @objc func longPress(longpressGR: UILongPressGestureRecognizer){
+        if longpressGR.state == UIGestureRecognizer.State.began {
+            
+            let touchPoint = longpressGR.location(in: self.view)
+            
+            if let indexPath = tableView.indexPathForRow(at: touchPoint){
+               
+                let item = store.categories[indexPath[0]].items[indexPath[1]]
+                
+                performSegue(withIdentifier: "toEdit", sender: (item, self.store, store.categories[indexPath[0]].name))
+            }
+        }
+    }
     
     @objc func didTapBar(){
         for c in self.store.categories {
-            c.collapsed.toggle()
+                c.collapsed = self.isCollapsed
         }
+        self.isCollapsed.toggle()
         tableView.reloadData()
     }
     
@@ -59,10 +77,23 @@ class TableController: UITableViewController {
  
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.destination is AddItemViewController {
             let vc = segue.destination as? AddItemViewController
-            let s = sender as? Store
-            vc?.store = s!
+            
+            if segue.identifier == "toAdd" {
+                let s = sender as? Store
+                vc?.store = s!
+            }
+            
+            else if segue.identifier == "toEdit" {
+                let s =  sender as? (String, Store, String)
+                vc?.store = s!.1
+                vc?.itemToEdit = s!.0
+                vc?.itemCategory = s!.2
+                vc?.editMode = true
+            }
+         
         }
     }
     

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dnj-Mz-PTP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,6 +35,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPb-6h-Uem">
                                 <rect key="frame" x="121" y="393" width="173" height="111"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vPb-6h-Uem" secondAttribute="height" multiplier="173:111" id="qjp-36-Kc7"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="44"/>
                                 <state key="normal" title="Stores">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,6 +98,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="NBI-PU-Kym" kind="show" identifier="toAdd" id="WMn-pa-KSf"/>
+                        <segue destination="NBI-PU-Kym" kind="show" identifier="toEdit" id="cD1-wZ-kpa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzq-HN-0Rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -149,6 +154,7 @@
                     <navigationItem key="navigationItem" id="cNv-gL-8mw"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addButton" destination="CZq-f4-McN" id="30P-YC-Fgq"/>
                         <outlet property="background" destination="lIu-2v-Ni5" id="7oM-Wv-NkH"/>
                         <outlet property="tableView" destination="ieb-Nt-e5c" id="Abv-TM-xPR"/>
                         <outlet property="textField" destination="BIY-PZ-8iA" id="3hb-Ni-Sil"/>
@@ -156,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifK-di-yJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2855.1999999999998" y="-308.12807881773398"/>
+            <point key="canvasLocation" x="2728" y="-232"/>
         </scene>
         <!--Stores-->
         <scene sceneID="2tH-LI-JFo">
@@ -198,4 +204,7 @@
             <point key="canvasLocation" x="838" y="141"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cD1-wZ-kpa"/>
+    </inferredMetricsTieBreakers>
 </document>

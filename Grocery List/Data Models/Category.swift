@@ -16,4 +16,5 @@ class Category: Codable {
         self.collapsed = collapsed
     }
 
+     
 }

@@ -15,32 +15,62 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     var store: Store?
     var selectedCategory: Int?
     
+    var editMode = false
+    var itemToEdit: String = ""
+    var itemCategory: String = ""
+    
     @IBOutlet var background: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
-        navigationItem.title = "Add Item"
+        
         
         tableView.delegate = self 
         tableView.dataSource = self
         tableView.allowsSelection = true
         
         textField.delegate = self
+        
+        if(editMode) {
+            textField.text = itemToEdit
+            
+            if let categoryRow =  store!.categories.firstIndex(where: {$0.name == itemCategory}) {
+                selectedCategory = categoryRow
+            }
+            
+            navigationItem.title = "Edit Item"
+            addButton.title = "Edit Item"
+            
+        } else{
+            navigationItem.title = "Add Item"
+            addButton.title = "Add Item"
+        }
     }
     
     
     @IBAction func addItem(_ sender: Any) {
         if(!textField.text!.isEmpty && selectedCategory != nil){
-            store?.categories[self.selectedCategory!].items.append(textField.text!.capitalized)
+            if(editMode) {
+                
+                if let row = store!.categories[self.selectedCategory!].items.firstIndex( where: {$0 == itemToEdit}){
+                    store!.categories[self.selectedCategory!].items[row] = textField.text!.capitalized
+                }
+            }
+                
+            else {
+                store?.categories[self.selectedCategory!].items.append(textField.text!.capitalized)
+            }
+            
             DataStore.saveStoreData(store: self.store!)
             navigationController?.popViewController(animated: true)
         }
         
     }
-
+    
     /*TABLE VIEW STUFF*/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.store?.categories.count ?? 0
@@ -51,19 +81,31 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.textLabel?.text = self.store?.categories[indexPath.row].name
         cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 14)
+        
+        
+        if(editMode && indexPath[1] == selectedCategory){
+            
+            cell.accessoryType = .checkmark
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedCategory = indexPath.row
+        if(!editMode){
+            self.selectedCategory = indexPath.row
+        }
         textField.resignFirstResponder()
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if let oldIndex = tableView.indexPathForSelectedRow {
-            tableView.cellForRow(at: oldIndex)?.accessoryType = .none
+        
+        if(!editMode){
+            if let oldIndex = tableView.indexPathForSelectedRow {
+                tableView.cellForRow(at: oldIndex)?.accessoryType = .none
+            }
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         }
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         return indexPath
     }
     
