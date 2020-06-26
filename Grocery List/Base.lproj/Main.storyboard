@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dnj-Mz-PTP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dnj-Mz-PTP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,32 +33,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPb-6h-Uem">
-                                <rect key="frame" x="121" y="393" width="173" height="111"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="vPb-6h-Uem" secondAttribute="height" multiplier="173:111" id="qjp-36-Kc7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="44"/>
-                                <state key="normal" title="Stores">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="3Et-EM-gYM" kind="show" id="eob-If-JzK"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" spacing="87" translatesAutoresizingMaskIntoConstraints="NO" id="qeu-K1-sjL">
+                                <rect key="frame" x="126" y="332" width="163" height="232"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPb-6h-Uem">
+                                        <rect key="frame" x="0.0" y="0.0" width="163" height="73"/>
+                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="44"/>
+                                        <state key="normal" title="Stores">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="3Et-EM-gYM" kind="show" id="eob-If-JzK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrH-jd-mf8">
+                                        <rect key="frame" x="0.0" y="160" width="163" height="72"/>
+                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="37"/>
+                                        <state key="normal" title="Options">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="UGg-BD-zNm" kind="show" id="Hje-Jt-enJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="lHm-N3-UfW"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="lHm-N3-UfW" firstAttribute="trailing" secondItem="vPb-6h-Uem" secondAttribute="trailing" constant="120" id="LLI-AA-Kr1"/>
-                            <constraint firstItem="vPb-6h-Uem" firstAttribute="top" secondItem="lHm-N3-UfW" secondAttribute="top" constant="305" id="TKG-Sf-CRB"/>
-                            <constraint firstItem="lHm-N3-UfW" firstAttribute="bottom" secondItem="vPb-6h-Uem" secondAttribute="bottom" constant="358" id="cAr-wV-eld"/>
-                            <constraint firstItem="vPb-6h-Uem" firstAttribute="leading" secondItem="lHm-N3-UfW" secondAttribute="leading" constant="121" id="yAC-S3-8wu"/>
+                            <constraint firstItem="qeu-K1-sjL" firstAttribute="top" secondItem="lHm-N3-UfW" secondAttribute="top" constant="244" id="4VI-ey-QRt"/>
+                            <constraint firstItem="qeu-K1-sjL" firstAttribute="centerY" secondItem="bka-pR-yyW" secondAttribute="centerY" id="Zf6-wP-uYE"/>
+                            <constraint firstItem="qeu-K1-sjL" firstAttribute="leading" secondItem="lHm-N3-UfW" secondAttribute="leading" constant="126" id="Zot-kI-R9b"/>
+                            <constraint firstItem="lHm-N3-UfW" firstAttribute="trailing" secondItem="qeu-K1-sjL" secondAttribute="trailing" constant="125" id="tyG-oq-fM5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="lHm-N3-UfW"/>
                     </view>
                     <navigationItem key="navigationItem" id="tWg-1d-sem"/>
                     <connections>
+                        <outlet property="optionsBtn" destination="lrH-jd-mf8" id="p2Z-fC-E5U"/>
                         <outlet property="storesBtn" destination="vPb-6h-Uem" id="gFD-mb-4fD"/>
                     </connections>
                 </viewController>
@@ -95,6 +110,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" id="Tmr-SB-34z"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="NBI-PU-Kym" kind="show" identifier="toAdd" id="WMn-pa-KSf"/>
@@ -103,7 +119,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzq-HN-0Rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902.8985507246377" y="-308.03571428571428"/>
+            <point key="canvasLocation" x="1836" y="-270"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="c67-Gs-4tI">
@@ -129,6 +145,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="3ey-3C-UVS"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="trailing" secondItem="lIu-2v-Ni5" secondAttribute="trailingMargin" id="0CX-C5-xoF"/>
@@ -142,7 +159,6 @@
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="leading" secondItem="aUl-FK-UGA" secondAttribute="trailing" constant="-128" id="t1I-H1-Ub9"/>
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="top" secondItem="aUl-FK-UGA" secondAttribute="bottom" constant="8" id="yfG-ug-wtd"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="3ey-3C-UVS"/>
                     </view>
                     <toolbarItems>
                         <barButtonItem title="Add Item" width="434" id="CZq-f4-McN">
@@ -162,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifK-di-yJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2728" y="-232"/>
+            <point key="canvasLocation" x="2670" y="-272"/>
         </scene>
         <!--Stores-->
         <scene sceneID="2tH-LI-JFo">
@@ -194,6 +210,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" id="f5n-mF-est"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="fRW-bz-Bk0" kind="show" identifier="toList" id="Nsn-Fb-6dK"/>
@@ -201,10 +218,34 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xOx-ne-k4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="141"/>
+            <point key="canvasLocation" x="1033" y="-270"/>
+        </scene>
+        <!--Options View Controller-->
+        <scene sceneID="9cY-9H-FyZ">
+            <objects>
+                <viewController id="UGg-BD-zNm" customClass="OptionsViewController" customModule="Grocery_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2ze-Xx-qw3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="sIS-C1-t7x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TSA-zY-Wk4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LNI-wS-bqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1032" y="459"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cD1-wZ-kpa"/>
+        <segue reference="WMn-pa-KSf"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

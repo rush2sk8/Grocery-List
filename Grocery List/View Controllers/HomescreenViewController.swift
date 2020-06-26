@@ -12,11 +12,12 @@ import UIKit
 class HomescreenViewController: UIViewController {
     
     @IBOutlet weak var storesBtn: UIButton!
+    @IBOutlet weak var optionsBtn: UIButton!
     
     override func viewDidLoad(){
         super.viewDidLoad()
         storesBtn.layer.cornerRadius = 20
-        
+        optionsBtn.layer.cornerRadius = 20
     }
     
 }

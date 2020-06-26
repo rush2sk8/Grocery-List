@@ -17,6 +17,7 @@
 		2461A841248829B7009BE0AB /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A840248829B6009BE0AB /* TableController.swift */; };
 		2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A84224882D1D009BE0AB /* AddItemViewController.swift */; };
 		2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */; };
+		2464643324A691E2001A0767 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464643224A691E2001A0767 /* OptionsViewController.swift */; };
 		24677078248D81FD00781021 /* CollapsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */; };
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 		24C3A7B324A57B2D0084D49F /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C3A7B224A57B2D0084D49F /* HomescreenViewController.swift */; };
@@ -35,6 +36,7 @@
 		2461A840248829B6009BE0AB /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		2461A84224882D1D009BE0AB /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
+		2464643224A691E2001A0767 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 		2494FFA7248C10CA00DC58E0 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		24C3A7B224A57B2D0084D49F /* HomescreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				2418684724885824003E7C69 /* StoresTableViewController.swift */,
 				2461A840248829B6009BE0AB /* TableController.swift */,
 				2461A84224882D1D009BE0AB /* AddItemViewController.swift */,
+				2464643224A691E2001A0767 /* OptionsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */,
+				2464643324A691E2001A0767 /* OptionsViewController.swift in Sources */,
 				2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */,
 				24677078248D81FD00781021 /* CollapsibleTableViewCell.swift in Sources */,
 				2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */,
