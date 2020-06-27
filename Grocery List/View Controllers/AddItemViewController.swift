@@ -44,6 +44,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             navigationItem.title = "Edit Item"
             addButton.title = "Edit Item"
+            tableView.allowsSelection = false
             
         } else{
             navigationItem.title = "Add Item"
@@ -74,7 +75,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.store?.categories.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         
@@ -82,14 +83,18 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 14)
         
     
-        if(editMode && indexPath[1] == selectedCategory){
-            
-            cell.accessoryType = .checkmark
+        if(editMode){
+            cell.isUserInteractionEnabled = false
+            cell.textLabel?.isEnabled = false
+            cell.detailTextLabel?.isEnabled = false
+       
+            if indexPath[1] == selectedCategory {
+                cell.accessoryType = .checkmark
+            }
         }
         
         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(!editMode){
@@ -115,9 +120,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         background.endEditing(true)
         return true
     }
-    
-
-    
 }
 
 

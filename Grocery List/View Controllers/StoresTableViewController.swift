@@ -17,6 +17,7 @@ class StoresTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
+        self.navigationItem.title = "Stores"
         
         self.reloadStores()
         

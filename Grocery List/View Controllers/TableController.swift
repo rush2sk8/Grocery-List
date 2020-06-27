@@ -44,11 +44,11 @@ class TableController: UITableViewController {
             
             let touchPoint = longpressGR.location(in: self.view)
             
-            if let indexPath = tableView.indexPathForRow(at: touchPoint){
+            if let _ = tableView.indexPathForRow(at: touchPoint){
                
-                let item = store.categories[indexPath[0]].items[indexPath[1]]
+                //let item = store.categories[indexPath[0]].items[indexPath[1]]
                 
-                performSegue(withIdentifier: "toEdit", sender: (item, self.store, store.categories[indexPath[0]].name))
+                //performSegue(withIdentifier: "toEdit", sender: (item, self.store, store.categories[indexPath[0]].name))
             }
         }
     }
@@ -103,6 +103,21 @@ class TableController: UITableViewController {
             self.store = savedStore
         }
         tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(style: .normal, title: "Edit") { [self] (action, view, completion) in
+            let item = self.store.categories[indexPath[0]].items[indexPath[1]]
+            
+            performSegue(withIdentifier: "toEdit", sender: (item, store, store.categories[indexPath[0]].name))
+            completion(true)
+        }
+        action.title = "Edit"
+        
+        action.backgroundColor = .systemBlue
+        return UISwipeActionsConfiguration(actions: [action])
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
