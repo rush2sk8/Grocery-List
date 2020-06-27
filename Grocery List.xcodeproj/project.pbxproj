@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2409D27524A7D738001FAD06 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409D27424A7D738001FAD06 /* ImagePicker.swift */; };
 		2418684324884B42003E7C69 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684224884B42003E7C69 /* Category.swift */; };
 		2418684524884B6C003E7C69 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684424884B6C003E7C69 /* Store.swift */; };
 		2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684724885824003E7C69 /* StoresTableViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2409D27424A7D738001FAD06 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		2418684224884B42003E7C69 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2418684424884B6C003E7C69 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		2418684724885824003E7C69 /* StoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresTableViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				2461A83524882543009BE0AB /* Assets.xcassets */,
 				2461A83724882543009BE0AB /* LaunchScreen.storyboard */,
 				2461A83A24882543009BE0AB /* Info.plist */,
+				2409D27424A7D738001FAD06 /* ImagePicker.swift */,
 			);
 			path = "Grocery List";
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				24C3A7B324A57B2D0084D49F /* HomescreenViewController.swift in Sources */,
 				2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */,
 				2418684524884B6C003E7C69 /* Store.swift in Sources */,
+				2409D27524A7D738001FAD06 /* ImagePicker.swift in Sources */,
 				2461A841248829B7009BE0AB /* TableController.swift in Sources */,
 				2461A82F24882541009BE0AB /* AppDelegate.swift in Sources */,
 			);

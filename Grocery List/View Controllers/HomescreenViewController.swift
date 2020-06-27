@@ -18,6 +18,8 @@ class HomescreenViewController: UIViewController {
         super.viewDidLoad()
         storesBtn.layer.cornerRadius = 20
         optionsBtn.layer.cornerRadius = 20
+        storesBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        optionsBtn.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
 }

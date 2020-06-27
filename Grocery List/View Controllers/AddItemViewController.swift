@@ -19,21 +19,30 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     var itemToEdit: String = ""
     var itemCategory: String = ""
     
+    var imagePicker: ImagePicker!
+    
     @IBOutlet var background: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var addImageBtn: UIButton!
+    
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
         
+        addImageBtn.layer.cornerRadius = 10
         
         tableView.delegate = self 
         tableView.dataSource = self
         tableView.allowsSelection = true
         
         textField.delegate = self
+        
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
         if(editMode) {
             textField.text = itemToEdit
@@ -51,6 +60,11 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             addButton.title = "Add Item"
         }
     }
+    
+    @IBAction func addImage(_ sender: UIButton) {
+        imagePicker.present(from: sender)
+    }
+    
     
     @IBAction func addItem(_ sender: Any) {
         if(!textField.text!.isEmpty && selectedCategory != nil){
@@ -123,3 +137,9 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
 }
 
 
+extension AddItemViewController: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        self.imageView.image = image
+    }
+}
