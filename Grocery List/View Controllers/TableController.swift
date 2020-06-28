@@ -110,7 +110,7 @@ class TableController: UITableViewController {
         let action = UIContextualAction(style: .normal, title: "Edit") { [self] (action, view, completion) in
             let item = self.store.categories[indexPath[0]].items[indexPath[1]]
             
-            performSegue(withIdentifier: "toEdit", sender: (item, store, store.categories[indexPath[0]].name))
+            self.performSegue(withIdentifier: "toEdit", sender: (item, self.store, self.store.categories[indexPath[0]].name))
             completion(true)
         }
         action.title = "Edit"
