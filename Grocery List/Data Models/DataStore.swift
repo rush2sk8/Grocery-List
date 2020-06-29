@@ -15,7 +15,7 @@ class DataStore {
         
         let encode = try! JSONEncoder().encode(store)
         let string = String(bytes: encode, encoding: .utf8)!
-        
+        print(string)
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             
             let fileURL = dir.appendingPathComponent("\(store.name.lowercased()).json")
@@ -35,8 +35,13 @@ class DataStore {
             let items = store.getCategory(name: category.name)!.items
             
             for item in items {
-                if !category.items.contains(item) {
-                    category.items.append(item)
+                if !category.getItems().contains(item.name) {
+                    if(item.hasImage) {
+                        category.items.append(Item(name: item.name, imageString: item.imageString!))
+                    }else {
+                        category.items.append(Item(name: item.name))
+                    }
+                    
                 }
             }
         }

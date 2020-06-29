@@ -16,8 +16,9 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     var selectedCategory: Int?
     
     var editMode = false
-    var itemToEdit: String = ""
+    var itemToEdit: String  = ""
     var itemCategory: String = ""
+    var item: Item = Item()
     
     var imagePicker: ImagePicker!
     
@@ -55,6 +56,13 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             addButton.title = "Edit Item"
             tableView.allowsSelection = false
             
+            if(item.hasImage){
+                let newImageData = Data(base64Encoded: item.imageString!)
+                if let img = newImageData {
+                    imageView.image = UIImage(data: img)
+                }
+            }
+            
         } else{
             navigationItem.title = "Add Item"
             addButton.title = "Add Item"
@@ -71,13 +79,24 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(!textField.text!.isEmpty && selectedCategory != nil){
             if(editMode) {
                 
-                if let row = store!.categories[self.selectedCategory!].items.firstIndex( where: {$0 == itemToEdit}){
-                    store!.categories[self.selectedCategory!].items[row] = textField.text!.capitalized
+                if let row = store!.categories[self.selectedCategory!].getItems().firstIndex( where: {$0 == itemToEdit}){
+                    store!.categories[self.selectedCategory!].items[row].name = textField.text!.capitalized
                 }
             }
                 
             else {
-                store?.categories[self.selectedCategory!].items.append(textField.text!.capitalized)
+                let toAdd = Item(name: textField.text!.capitalized)
+                
+                if let image = imageView.image {
+                    let imageData = image.jpegData(compressionQuality: 1)
+                    let imageb64 = imageData?.base64EncodedString()
+                    if let i64 = imageb64 {
+                        toAdd.imageString = i64
+                    }
+                   
+                }
+               
+                store?.categories[self.selectedCategory!].items.append(toAdd)
             }
             
             DataStore.saveStoreData(store: self.store!)

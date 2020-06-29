@@ -100,10 +100,11 @@ class TableController: UITableViewController {
             }
             
             else if segue.identifier == "toEdit" {
-                let s =  sender as? (String, Store, String)
+                let s =  sender as? (String, Store, String, Item)
                 vc?.store = s!.1
                 vc?.itemToEdit = s!.0
                 vc?.itemCategory = s!.2
+                vc?.item = s!.3
                 vc?.editMode = true
             }
          
@@ -124,7 +125,7 @@ class TableController: UITableViewController {
         let action = UIContextualAction(style: .normal, title: "Edit") { [self] (action, view, completion) in
             let item = self.store.categories[indexPath[0]].items[indexPath[1]]
             
-            self.performSegue(withIdentifier: "toEdit", sender: (item, self.store, self.store.categories[indexPath[0]].name))
+            self.performSegue(withIdentifier: "toEdit", sender: (item.name, self.store, self.store.categories[indexPath[0]].name, item))
             completion(true)
         }
         action.title = "Edit"
@@ -171,7 +172,7 @@ class TableController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         
-        cell.textLabel?.text = store.categories[indexPath.section].items[indexPath.row]
+        cell.textLabel?.text = store.categories[indexPath.section].items[indexPath.row].name
         cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 20)
         return cell
     }

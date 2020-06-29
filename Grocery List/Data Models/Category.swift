@@ -7,13 +7,21 @@
 //
 class Category: Codable {
     var name: String
-    var items: [String]
+    var items: [Item]
     var collapsed: Bool  
     
-    init(name: String, items: [String] = [String](), collapsed: Bool = false) {
+    init(name: String, items: [Item] = [Item](), collapsed: Bool = false) {
         self.name = name
         self.items = items
         self.collapsed = collapsed
+    }
+    
+    func getItems() -> [String] {
+        var sItems: [String] = []
+        for item in items {
+            sItems.append(item.name)
+        }
+        return sItems
     }
 
      
