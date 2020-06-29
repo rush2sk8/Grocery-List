@@ -17,7 +17,6 @@ class TableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
-        self.navigationItem.title = self.store.name.capitalized
   
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
@@ -33,12 +32,23 @@ class TableController: UITableViewController {
         let barTap = UITapGestureRecognizer(target: self, action: #selector(didTapBar))
         self.navigationController?.navigationBar.addGestureRecognizer(barTap)
         
+        refreshControl = UIRefreshControl()
+        self.tableView.addSubview(refreshControl!)
+        refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
+        
         if let savedStore = DataStore.getStoreData(store: store) {
             self.store = savedStore
             tableView.reloadData()
         }
+        updateTitle()
     }
     
+    @objc func refreshTableData(){
+        self.tableView.reloadData()
+        self.updateTitle()
+    }
+    
+
    @objc func longPress(longpressGR: UILongPressGestureRecognizer){
         if longpressGR.state == UIGestureRecognizer.State.began {
             
@@ -59,6 +69,7 @@ class TableController: UITableViewController {
         }
         self.isCollapsed.toggle()
         tableView.reloadData()
+        
     }
     
     @objc func userDidTapShare() {
@@ -74,7 +85,9 @@ class TableController: UITableViewController {
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
     
- 
+    func updateTitle(){
+        self.navigationItem.title = self.store.getNumItems() == 0 ? "\(self.store.name.capitalized)" : "\(self.store.name.capitalized) (\(self.store.getNumItems()))"
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -103,6 +116,7 @@ class TableController: UITableViewController {
             self.store = savedStore
         }
         tableView.reloadData()
+        updateTitle()
     }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -176,6 +190,7 @@ class TableController: UITableViewController {
             DataStore.saveStoreData(store: self.store)
         }
         tableView.reloadData()
+        updateTitle()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -197,5 +212,6 @@ extension TableController: CollapsibleTableViewHeaderDelegate {
         }
         
         tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
+        
     }
 }

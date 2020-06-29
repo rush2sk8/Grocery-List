@@ -11,23 +11,36 @@ import Foundation
 class Store: Codable {
     var name: String
     var categories: [Category]
+    private var numItems: Int
     
     //this is support for default categories
     init(name: String, _ categories: [Category] = [Category]()) {
         self.name = name
         self.categories = categories
+        self.numItems = 0
     }
     
     init() {
         self.name = ""
         self.categories = [Category]()
+        self.numItems = 0
+    }
+    
+    public func getNumItems() -> Int {
+       var total = 0
+        
+        for c in self.categories {
+            total += c.items.count
+        }
+        return total
     }
     
     // initializes with default categories
     init(name: String){
         self.name = name
         self.categories = [
-            Category(name: "Produce"),
+            Category(name: "Veggies"),
+            Category(name: "Fruits"),
             Category(name: "Bread"),
             Category(name: "Meats"),
             Category(name: "Dairy"),
@@ -38,6 +51,7 @@ class Store: Codable {
             Category(name: "Frozen Foods"),
             Category(name: "Other")
         ]
+        self.numItems = 0
     }
     
     // gets a category from name

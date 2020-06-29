@@ -22,7 +22,6 @@ class DataStore {
             
             do{
                 try string.write(to: fileURL, atomically: false, encoding: .utf8)
-                print("wrote data")
             }catch {
                 print(error.localizedDescription)
             }

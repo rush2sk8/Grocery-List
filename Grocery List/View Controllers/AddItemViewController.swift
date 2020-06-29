@@ -59,6 +59,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             navigationItem.title = "Add Item"
             addButton.title = "Add Item"
         }
+        
     }
     
     @IBAction func addImage(_ sender: UIButton) {
