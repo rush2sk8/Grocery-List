@@ -17,10 +17,10 @@ class TableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
-  
+        
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
- 
+        
         tableView.delegate = self
         
         let shareBar = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(TableController.userDidTapShare))
@@ -48,24 +48,26 @@ class TableController: UITableViewController {
         self.updateTitle()
     }
     
-
-   @objc func longPress(longpressGR: UILongPressGestureRecognizer){
+    
+    @objc func longPress(longpressGR: UILongPressGestureRecognizer){
         if longpressGR.state == UIGestureRecognizer.State.began {
             
             let touchPoint = longpressGR.location(in: self.view)
             
-            if let _ = tableView.indexPathForRow(at: touchPoint){
-               
-                //let item = store.categories[indexPath[0]].items[indexPath[1]]
+            if let indexPath = tableView.indexPathForRow(at: touchPoint){
                 
-                //performSegue(withIdentifier: "toEdit", sender: (item, self.store, store.categories[indexPath[0]].name))
+                let item = store.categories[indexPath[0]].items[indexPath[1]]
+                
+                if item.hasImage {
+                    performSegue(withIdentifier: "toImage", sender: item)
+                }
             }
         }
     }
     
     @objc func didTapBar(){
         for c in self.store.categories {
-                c.collapsed = self.isCollapsed
+            c.collapsed = self.isCollapsed
         }
         self.isCollapsed.toggle()
         tableView.reloadData()
@@ -107,7 +109,12 @@ class TableController: UITableViewController {
                 vc?.item = s!.3
                 vc?.editMode = true
             }
-         
+        }
+        
+        else if segue.destination is ItemImageViewController  && segue.identifier == "toImage" {
+            let vc =  segue.destination as? ItemImageViewController
+            let s  = sender as? Item
+            vc?.item = s
         }
     }
     
@@ -160,7 +167,7 @@ class TableController: UITableViewController {
         if numItems == 0 {
             header.arrowLabel.text = "✓"
         } else{
-         
+            
             header.setCollapsed(store.categories[section].collapsed, numItems)
         }
         

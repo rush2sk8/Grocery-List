@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dnj-Mz-PTP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dnj-Mz-PTP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,9 +33,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrH-jd-mf8">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrH-jd-mf8">
                                 <rect key="frame" x="139" y="497" width="137" height="81"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="37"/>
                                 <state key="normal" title="Options">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -43,9 +44,9 @@
                                     <segue destination="UGg-BD-zNm" kind="show" id="Hje-Jt-enJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPb-6h-Uem">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPb-6h-Uem">
                                 <rect key="frame" x="139" y="368" width="137" height="73"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="44"/>
                                 <state key="normal" title="Stores">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,6 +56,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="lHm-N3-UfW"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vPb-6h-Uem" firstAttribute="leading" secondItem="lHm-N3-UfW" secondAttribute="leading" constant="139" id="AQ5-vh-asq"/>
@@ -64,7 +66,6 @@
                             <constraint firstItem="vPb-6h-Uem" firstAttribute="top" secondItem="lHm-N3-UfW" secondAttribute="top" constant="280" id="aod-yG-vz6"/>
                             <constraint firstItem="lrH-jd-mf8" firstAttribute="top" secondItem="vPb-6h-Uem" secondAttribute="bottom" constant="56" id="n38-DH-MD9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="lHm-N3-UfW"/>
                     </view>
                     <navigationItem key="navigationItem" id="tWg-1d-sem"/>
                     <connections>
@@ -111,6 +112,7 @@
                     <connections>
                         <segue destination="NBI-PU-Kym" kind="show" identifier="toAdd" id="WMn-pa-KSf"/>
                         <segue destination="NBI-PU-Kym" kind="show" identifier="toEdit" id="cD1-wZ-kpa"/>
+                        <segue destination="snJ-nX-tc0" kind="presentation" identifier="toImage" id="dOY-lA-ILL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzq-HN-0Rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,9 +145,9 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-hB-tI6">
                                 <rect key="frame" x="125" y="645" width="268.5" height="143"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgn-ph-bAK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgn-ph-bAK">
                                 <rect key="frame" x="24" y="673" width="65" height="86"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Add Image">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -155,6 +157,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="3ey-3C-UVS"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="trailing" secondItem="lIu-2v-Ni5" secondAttribute="trailingMargin" id="0CX-C5-xoF"/>
@@ -176,7 +179,6 @@
                             <constraint firstItem="3ey-3C-UVS" firstAttribute="bottom" secondItem="hgn-ph-bAK" secondAttribute="bottom" constant="54" id="urZ-fe-Fk5"/>
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="top" secondItem="aUl-FK-UGA" secondAttribute="bottom" constant="8" id="yfG-ug-wtd"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="3ey-3C-UVS"/>
                     </view>
                     <toolbarItems>
                         <barButtonItem title="Add Item" width="434" id="CZq-f4-McN">
@@ -199,6 +201,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifK-di-yJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2669.5652173913045" y="-273.09782608695656"/>
+        </scene>
+        <!--Item Image View Controller-->
+        <scene sceneID="mYE-gD-K5A">
+            <objects>
+                <viewController id="snJ-nX-tc0" customClass="ItemImageViewController" customModule="Grocery_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vw4-Xz-HhJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e4i-th-bKk">
+                                <rect key="frame" x="0.0" y="255" width="414" height="333"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bkN-aa-sYw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="e4i-th-bKk" firstAttribute="trailing" secondItem="bkN-aa-sYw" secondAttribute="trailing" id="Gyt-tZ-rrV"/>
+                            <constraint firstItem="e4i-th-bKk" firstAttribute="top" secondItem="bkN-aa-sYw" secondAttribute="top" constant="255" id="Mwp-NY-DJ8"/>
+                            <constraint firstItem="bkN-aa-sYw" firstAttribute="bottom" secondItem="e4i-th-bKk" secondAttribute="bottom" constant="220" id="XxC-t0-ffM"/>
+                            <constraint firstItem="e4i-th-bKk" firstAttribute="leading" secondItem="bkN-aa-sYw" secondAttribute="leading" id="vSE-rU-ViQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="e4i-th-bKk" id="ACY-M0-4TS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgc-Z9-r20" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2651" y="459"/>
         </scene>
         <!--Stores-->
         <scene sceneID="2tH-LI-JFo">
@@ -247,8 +278,8 @@
                     <view key="view" contentMode="scaleToFill" id="2ze-Xx-qw3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="sIS-C1-t7x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="TSA-zY-Wk4"/>
                 </viewController>
@@ -260,4 +291,12 @@
     <inferredMetricsTieBreakers>
         <segue reference="WMn-pa-KSf"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

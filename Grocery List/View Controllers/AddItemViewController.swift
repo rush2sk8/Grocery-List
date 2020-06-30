@@ -56,10 +56,16 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             addButton.title = "Edit Item"
             tableView.allowsSelection = false
             
+            addImageBtn.layer.backgroundColor = UIColor.gray.cgColor
+            addImageBtn.isEnabled = false
+        
             if(item.hasImage){
                 let newImageData = Data(base64Encoded: item.imageString!)
                 if let img = newImageData {
-                    imageView.image = UIImage(data: img)
+                    let image = UIImage(data: img)
+                    let ciImage = CIImage(image: image!)
+                    let bw = ciImage!.applyingFilter("CIColorControls", parameters: ["inputSaturation": 0, "inputContrast": 1])
+                    imageView.image = UIImage(ciImage: bw)
                 }
             }
             
@@ -88,12 +94,12 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let toAdd = Item(name: textField.text!.capitalized)
                 
                 if let image = imageView.image {
-                    let imageData = image.jpegData(compressionQuality: 1)
+                    let imageData = image.jpegData(compressionQuality: 0.3)
                     let imageb64 = imageData?.base64EncodedString()
+                   
                     if let i64 = imageb64 {
                         toAdd.imageString = i64
                     }
-                   
                 }
                
                 store?.categories[self.selectedCategory!].items.append(toAdd)
@@ -102,7 +108,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             DataStore.saveStoreData(store: self.store!)
             navigationController?.popViewController(animated: true)
         }
-        
     }
     
     /*TABLE VIEW STUFF*/
@@ -111,7 +116,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CollapsibleTableViewCell ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         
         cell.textLabel?.text = self.store?.categories[indexPath.row].name
         cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 14)
