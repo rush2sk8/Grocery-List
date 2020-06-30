@@ -119,7 +119,6 @@
                     <connections>
                         <segue destination="NBI-PU-Kym" kind="show" identifier="toAdd" id="WMn-pa-KSf"/>
                         <segue destination="NBI-PU-Kym" kind="show" identifier="toEdit" id="cD1-wZ-kpa"/>
-                        <segue destination="snJ-nX-tc0" kind="presentation" identifier="toImage" id="dOY-lA-ILL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzq-HN-0Rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,35 +207,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifK-di-yJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2669.5652173913045" y="-273.09782608695656"/>
-        </scene>
-        <!--Item Image View Controller-->
-        <scene sceneID="mYE-gD-K5A">
-            <objects>
-                <viewController id="snJ-nX-tc0" customClass="ItemImageViewController" customModule="Grocery_List" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vw4-Xz-HhJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e4i-th-bKk">
-                                <rect key="frame" x="0.0" y="255" width="414" height="333"/>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="bkN-aa-sYw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="e4i-th-bKk" firstAttribute="trailing" secondItem="bkN-aa-sYw" secondAttribute="trailing" id="Gyt-tZ-rrV"/>
-                            <constraint firstItem="e4i-th-bKk" firstAttribute="top" secondItem="bkN-aa-sYw" secondAttribute="top" constant="255" id="Mwp-NY-DJ8"/>
-                            <constraint firstItem="bkN-aa-sYw" firstAttribute="bottom" secondItem="e4i-th-bKk" secondAttribute="bottom" constant="220" id="XxC-t0-ffM"/>
-                            <constraint firstItem="e4i-th-bKk" firstAttribute="leading" secondItem="bkN-aa-sYw" secondAttribute="leading" id="vSE-rU-ViQ"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="e4i-th-bKk" id="ACY-M0-4TS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wgc-Z9-r20" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2651" y="459"/>
         </scene>
         <!--Stores-->
         <scene sceneID="2tH-LI-JFo">

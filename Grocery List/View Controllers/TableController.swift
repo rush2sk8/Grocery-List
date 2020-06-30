@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Lightbox
 
 class TableController: UITableViewController {
     
@@ -59,8 +60,9 @@ class TableController: UITableViewController {
                 let item = store.categories[indexPath[0]].items[indexPath[1]]
                 
                 if item.hasImage {
-                    performSegue(withIdentifier: "toImage", sender: item)
+                    showImagePopup(item: item)
                 }
+                
             }
         }
     }
@@ -87,6 +89,23 @@ class TableController: UITableViewController {
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
     
+    func showImagePopup(item: Item) {
+        let newImageData = Data(base64Encoded: item.imageString!)
+      
+        if let img = newImageData {
+           
+            let i = UIImage(data: img)
+            let images = [LightboxImage(image: i!)]
+           
+            let controller = LightboxController(images: images)
+      
+            controller.dynamicBackground = true
+            controller.modalPresentationStyle = .fullScreen
+          
+            present(controller, animated: true, completion: nil)
+        }
+    }
+    
     func updateTitle(){
         self.navigationItem.title = self.store.getNumItems() == 0 ? "\(self.store.name.capitalized)" : "\(self.store.name.capitalized) (\(self.store.getNumItems()))"
     }
@@ -109,12 +128,6 @@ class TableController: UITableViewController {
                 vc?.item = s!.3
                 vc?.editMode = true
             }
-        }
-        
-        else if segue.destination is ItemImageViewController  && segue.identifier == "toImage" {
-            let vc =  segue.destination as? ItemImageViewController
-            let s  = sender as? Item
-            vc?.item = s
         }
     }
     
