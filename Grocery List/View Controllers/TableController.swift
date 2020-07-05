@@ -47,8 +47,8 @@ class TableController: UITableViewController {
     @objc func refreshTableData(){
         self.tableView.reloadData()
         self.updateTitle()
+        refreshControl?.endRefreshing()
     }
-    
     
     @objc func longPress(longpressGR: UILongPressGestureRecognizer){
         if longpressGR.state == UIGestureRecognizer.State.began {
@@ -179,7 +179,6 @@ class TableController: UITableViewController {
         if numItems == 0 {
             header.arrowLabel.text = "✓"
         } else{
-            
             header.setCollapsed(store.categories[section].collapsed, numItems)
         }
         
@@ -191,7 +190,6 @@ class TableController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         
-        
         let item = store.categories[indexPath.section].items[indexPath.row]
         
         if item.hasImage {
@@ -199,6 +197,8 @@ class TableController: UITableViewController {
             if let img = newImageData {
                 let image = UIImage(data: img)
                 cell.imageView?.image = image
+                cell.imageView?.layer.cornerRadius = 8.0
+                cell.imageView?.clipsToBounds = true
             }else {
                 cell.imageView?.image = nil
             }
@@ -218,7 +218,7 @@ class TableController: UITableViewController {
         if(editingStyle == .delete){
             store.categories[indexPath[0]].items.remove(at: indexPath[1])
             tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .middle)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
             DataStore.saveStoreData(store: self.store)
         }

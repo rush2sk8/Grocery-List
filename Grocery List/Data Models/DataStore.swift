@@ -35,16 +35,18 @@ class DataStore {
             let items = store.getCategory(name: category.name)!.items
             
             for item in items {
-                if !category.getItems().contains(item.name) {
+                if category.getItems().contains(item.name) == false {
+                
                     if(item.hasImage) {
-                        category.items.append(Item(name: item.name, imageString: item.imageString!))
-                    }else {
-                        category.items.append(Item(name: item.name))
+                        existing?.getCategory(name: category.name)?.items.append(item)
+                    } else {
+                        existing?.getCategory(name: category.name)?.items.append(item)
                     }
-                    
                 }
             }
         }
+        
+        DataStore.deleteStore(store: existing!)
         DataStore.saveStoreData(store: existing!)
     }
     
