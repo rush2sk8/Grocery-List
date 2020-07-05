@@ -73,7 +73,6 @@ class TableController: UITableViewController {
         }
         self.isCollapsed.toggle()
         tableView.reloadData()
-        
     }
     
     @objc func userDidTapShare() {
@@ -192,7 +191,20 @@ class TableController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         
-        cell.textLabel?.text = store.categories[indexPath.section].items[indexPath.row].name
+        
+        let item = store.categories[indexPath.section].items[indexPath.row]
+        
+        if item.hasImage {
+            let newImageData = Data(base64Encoded: item.imageString!)
+            if let img = newImageData {
+                let image = UIImage(data: img)
+                cell.imageView?.image = image
+            }else {
+                cell.imageView?.image = nil
+            }
+        }
+        
+        cell.textLabel?.text = item.name
         cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 20)
         return cell
     }
