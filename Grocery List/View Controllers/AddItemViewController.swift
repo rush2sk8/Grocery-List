@@ -135,6 +135,8 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    //privet
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(!editMode){
             self.selectedCategory = indexPath.row
