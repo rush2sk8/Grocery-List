@@ -25,6 +25,7 @@
 		2464643324A691E2001A0767 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464643224A691E2001A0767 /* OptionsViewController.swift */; };
 		24677078248D81FD00781021 /* CollapsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */; };
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
+		24B4AF1024B671E200BAD2FC /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 24B4AF0F24B671E200BAD2FC /* appstore.png */; };
 		24C3A7B324A57B2D0084D49F /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C3A7B224A57B2D0084D49F /* HomescreenViewController.swift */; };
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		2464643224A691E2001A0767 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 		2494FFA7248C10CA00DC58E0 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		24B4AF0F24B671E200BAD2FC /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
 		24C3A7B224A57B2D0084D49F /* HomescreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
 		4FD008632E60DB9E3C8B3BC9 /* Pods-Grocery List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.debug.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.debug.xcconfig"; sourceTree = "<group>"; };
 		8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 				2461A83224882541009BE0AB /* Main.storyboard */,
 				2461A82E24882541009BE0AB /* AppDelegate.swift */,
 				2461A83524882543009BE0AB /* Assets.xcassets */,
+				24B4AF0F24B671E200BAD2FC /* appstore.png */,
 				2461A83724882543009BE0AB /* LaunchScreen.storyboard */,
 				2461A83A24882543009BE0AB /* Info.plist */,
 				2409D27424A7D738001FAD06 /* ImagePicker.swift */,
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2461A83924882543009BE0AB /* LaunchScreen.storyboard in Resources */,
+				24B4AF1024B671E200BAD2FC /* appstore.png in Resources */,
 				2461A83624882543009BE0AB /* Assets.xcassets in Resources */,
 				2461A83424882541009BE0AB /* Main.storyboard in Resources */,
 			);
