@@ -263,6 +263,11 @@ class TableController: UITableViewController {
         if item.isDone {
             attributedString = NSMutableAttributedString(string: item.name, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.thick])
             attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value:   NSUnderlineStyle.single.rawValue , range: NSMakeRange(0, item.name.count))
+            
+            cell.selectionStyle = .none
+        }
+        else {
+            cell.selectionStyle = .default
         }
 
         cell.textLabel?.attributedText = attributedString
