@@ -142,6 +142,7 @@ class TableController: UITableViewController {
         updateTitle()
     }
     
+    //add edit functionality
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let action = UIContextualAction(style: .normal, title: "Edit") { [self] (action, view, completion) in
@@ -154,24 +155,24 @@ class TableController: UITableViewController {
         
         action.backgroundColor = .systemBlue
         return UISwipeActionsConfiguration(actions: [action])
-        
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let delete = UIContextualAction(style: .normal, title: "Delete") { [self] (action, view, completion) in
-            
+            //delete the data from the thing and make it persist
             store.categories[indexPath[0]].items.remove(at: indexPath[1])
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
             DataStore.saveStoreData(store: self.store)
             
-            tableView.reloadData()
             updateTitle()
+            tableView.reloadData()
             
             completion(true)
         }
+        
         delete.title = "Delete"
         delete.backgroundColor = .systemRed
         
@@ -200,10 +201,12 @@ class TableController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [done,delete])
     }
     
+    //return number of categories in the store
     override func numberOfSections(in tableView: UITableView) -> Int {
         return store.categories.count
     }
     
+    //return the number of items in the category
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return store.categories[section].collapsed ? 0 : store.categories[section].items.count
     }
@@ -212,12 +215,14 @@ class TableController: UITableViewController {
         return UITableView.automaticDimension
     }
     
+    //return the collapsible header
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         
         
         header.titleLabel.text = store.categories[section].name
         header.titleLabel.font = UIFont.init(name: "Avenir-Medium", size: 14)
+        
         header.arrowLabel.font = UIFont.init(name: "Avenir-Medium", size: 14)
         
         let numItems = store.categories[section].getNonDoneItems()
