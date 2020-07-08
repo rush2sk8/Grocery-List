@@ -61,6 +61,8 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
             if(item.hasImage){
                 imageView.image = item.getGreyImage()
+                imageView.layer.cornerRadius = 8.0
+                imageView.clipsToBounds = true
             }
             
         } else{

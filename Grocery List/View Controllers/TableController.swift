@@ -262,7 +262,7 @@ class TableController: UITableViewController {
         //if the item is marked as done then make the string strikedthrough
         if item.isDone {
             attributedString = NSMutableAttributedString(string: item.name, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.thick])
-            attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, item.name.count))
+            attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value:   NSUnderlineStyle.single.rawValue , range: NSMakeRange(0, item.name.count))
         }
 
         cell.textLabel?.attributedText = attributedString
