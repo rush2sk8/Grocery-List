@@ -26,6 +26,15 @@ class Store: Codable {
         self.numItems = 0
     }
     
+    public func getNumNonDoneItems() -> Int {
+        var total = 0
+        
+        for x in self.categories {
+            total += x.getNonDoneItems()
+        }
+        return total
+    }
+    
     public func getNumItems() -> Int {
        var total = 0
         

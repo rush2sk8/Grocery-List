@@ -35,6 +35,7 @@
 		2418684224884B42003E7C69 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2418684424884B6C003E7C69 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		2418684724885824003E7C69 /* StoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresTableViewController.swift; sourceTree = "<group>"; };
+		2419C7D824B652FD004F5096 /* StrikethroughLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StrikethroughLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4724ABC850002E2DCA /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4924ABC850002E2DCA /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4B24ABC850002E2DCA /* Lightbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lightbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +150,7 @@
 		FD6CE4CE15A5E7A1540EC50C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2419C7D824B652FD004F5096 /* StrikethroughLabel.framework */,
 				244CEC4724ABC850002E2DCA /* Cache.framework */,
 				244CEC4924ABC850002E2DCA /* Imaginary.framework */,
 				244CEC4B24ABC850002E2DCA /* Lightbox.framework */,

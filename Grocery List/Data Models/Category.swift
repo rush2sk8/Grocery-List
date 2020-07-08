@@ -24,5 +24,15 @@ class Category: Codable {
         return sItems
     }
 
+    func getNonDoneItems() -> Int {
+        var total = 0
+        for item in items {
+            if item.isDone == false {
+                
+            total += 1
+            }
+        }
+        return total
+    }
      
 }

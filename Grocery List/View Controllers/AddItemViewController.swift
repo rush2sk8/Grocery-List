@@ -60,26 +60,18 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             addImageBtn.isEnabled = false
         
             if(item.hasImage){
-                let newImageData = Data(base64Encoded: item.imageString!)
-                if let img = newImageData {
-                    let image = UIImage(data: img)
-                    let ciImage = CIImage(image: image!)
-                    let bw = ciImage!.applyingFilter("CIColorControls", parameters: ["inputSaturation": 0, "inputContrast": 1])
-                    imageView.image = UIImage(ciImage: bw)
-                }
+                imageView.image = item.getGreyImage()
             }
             
         } else{
             navigationItem.title = "Add Item"
             addButton.title = "Add Item"
         }
-        
     }
     
     @IBAction func addImage(_ sender: UIButton) {
         imagePicker.present(from: sender)
     }
-    
     
     @IBAction func addItem(_ sender: Any) {
         if(!textField.text!.isEmpty && selectedCategory != nil){
@@ -160,7 +152,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         return true
     }
 }
-
 
 extension AddItemViewController: ImagePickerDelegate {
 
