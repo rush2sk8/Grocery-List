@@ -110,12 +110,11 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CollapsibleTableViewCell ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         
         cell.textLabel?.text = self.store?.categories[indexPath.row].name
         cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 14)
         
-    
         if(editMode){
             cell.isUserInteractionEnabled = false
             cell.textLabel?.isEnabled = false

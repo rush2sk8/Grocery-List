@@ -8,9 +8,8 @@
 
 import Foundation
 import UIKit
-import Lightbox
 
-class TableController: UITableViewController {
+class TableController: UITableViewController{
     
     var store = Store()
     var isCollapsed = false
@@ -18,6 +17,7 @@ class TableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
+        self.navigationItem.title = store.name.capitalized
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
@@ -38,29 +38,20 @@ class TableController: UITableViewController {
             self.store = savedStore
             tableView.reloadData()
         }
-        updateTitle()
+        tableView.register(ItemCell.self, forCellReuseIdentifier: "cell")
     }
     
-    @objc func refreshTableData(){
-        self.tableView.reloadData()
-        self.updateTitle()
-        refreshControl?.endRefreshing()
-    }
-    
-    @objc func longPress(longpressGR: UILongPressGestureRecognizer){
-        if longpressGR.state == UIGestureRecognizer.State.began {
-            
-            let touchPoint = longpressGR.location(in: self.view)
-            
-            if let indexPath = tableView.indexPathForRow(at: touchPoint){
-                
-                let item = store.categories[indexPath[0]].items[indexPath[1]]
-                
-                if item.hasImage {
-                    showImagePopup(item: item)
-                }
-            }
+    @objc func refreshTableData() {
+        
+        var paths: [IndexPath] = [IndexPath]()
+        
+        for i in 0..<store.categories.count {
+            let count = tableView.numberOfRows(inSection: i)
+            paths.append(contentsOf: (0..<count).map { IndexPath(row: $0, section: i)})
         }
+        
+        self.tableView.reloadRows(at: paths, with: .left)
+        refreshControl?.endRefreshing()
     }
     
     @objc func didTapBar(){
@@ -72,7 +63,6 @@ class TableController: UITableViewController {
     }
     
     @objc func userDidTapShare() {
-        
         let url = self.store.exportToURL()
         
         let activity = UIActivityViewController(activityItems: ["Here is my list for \(self.store.name)", url!], applicationActivities: nil)
@@ -84,32 +74,8 @@ class TableController: UITableViewController {
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
     
-    func showImagePopup(item: Item) {
-        let newImageData = Data(base64Encoded: item.imageString!)
-        
-        if let img = newImageData {
-            
-            let i = UIImage(data: img)
-            let images = [LightboxImage(image: i!)]
-            
-            let controller = LightboxController(images: images)
-            
-            controller.dynamicBackground = true
-            controller.modalPresentationStyle = .fullScreen
-            
-            present(controller, animated: true, completion: nil)
-        }
-    }
-    
-    func updateTitle(){
-        let numLeft: Int = self.store.getNumNonDoneItems()
-        
-        if numLeft == 0 {
-            self.navigationItem.title = self.store.name.capitalized
-        }
-        else {
-            self.navigationItem.title = "\(self.store.name.capitalized) (\(numLeft))"
-        }
+    func save() {
+        DataStore.saveStoreData(store: self.store)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -139,7 +105,6 @@ class TableController: UITableViewController {
             self.store = savedStore
         }
         tableView.reloadData()
-        updateTitle()
     }
     
     //add edit functionality
@@ -159,22 +124,24 @@ class TableController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
+        let item = store.categories[indexPath.section].items[indexPath.row]
+        
         let delete = UIContextualAction(style: .normal, title: "Delete") { [self] (action, view, completion) in
-            //delete the data from the thing and make it persist
-            store.categories[indexPath[0]].items.remove(at: indexPath[1])
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
-            DataStore.saveStoreData(store: self.store)
-            
-            updateTitle()
-            tableView.reloadData()
-            
+            if item.isFavorite == false {
+                //delete the data from the thing and make it persist
+                store.categories[indexPath[0]].items.remove(at: indexPath[1])
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.endUpdates()
+                self.save()
+                
+                tableView.reloadData()
+            }
             completion(true)
         }
         
         delete.title = "Delete"
-        delete.backgroundColor = .systemRed
+        delete.backgroundColor = item.isFavorite ? .lightGray : .systemRed
         
         //swipe action to mark item as done
         let done = UIContextualAction(style: .normal, title: "Done") { [self] (action, view, completion) in
@@ -183,14 +150,11 @@ class TableController: UITableViewController {
             let item = self.store.categories[indexPath[0]].items[indexPath[1]]
             item.isDone.toggle()
             
-            //update the number of non-done items in the title
-            updateTitle()
-            
             //reload table to trigger rerender of info
             tableView.reloadData()
             
             //make the change persist
-            DataStore.saveStoreData(store: self.store)
+            self.save()
             
             completion(true)
         }
@@ -219,7 +183,6 @@ class TableController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         
-        
         header.titleLabel.text = store.categories[section].name
         header.titleLabel.font = UIFont.init(name: "Avenir-Medium", size: 14)
         
@@ -227,51 +190,32 @@ class TableController: UITableViewController {
         
         let numItems = store.categories[section].getNonDoneItems()
         
-        if numItems == 0 {
-            header.arrowLabel.text = "✓"
-        } else{
+    
             header.setCollapsed(store.categories[section].collapsed, numItems)
-        }
+        
         
         header.section = section
         header.delegate = self
         return header
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ItemCell 
         
         let item = store.categories[indexPath.section].items[indexPath.row]
-        cell.imageView?.isUserInteractionEnabled = true
         
-        if item.hasImage {
-
-            let longpressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
-            cell.imageView?.addGestureRecognizer(longpressRecognizer)
-            
-            cell.imageView?.image = (item.isDone ? item.getGreyImage() : item.getImage())
-            cell.imageView?.layer.cornerRadius = 8.0
-            cell.imageView?.clipsToBounds = true
-       
-        } else {
-            cell.imageView?.image = nil
-        }
+        cell.item = item
+        cell.parentVC = self
         
-        var attributedString = NSMutableAttributedString(string: item.name)
+        cell.setItemTitle()
+        cell.setImageView()
+        cell.setFavorite()
         
-        //if the item is marked as done then make the string strikedthrough
-        if item.isDone {
-            attributedString = NSMutableAttributedString(string: item.name, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.thick])
-            attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value:   NSUnderlineStyle.single.rawValue , range: NSMakeRange(0, item.name.count))
-            
-            cell.selectionStyle = .none
-        }
-        else {
-            cell.selectionStyle = .default
-        }
-
-        cell.textLabel?.attributedText = attributedString
-        cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 20)
         return cell
     }
     
@@ -283,7 +227,7 @@ class TableController: UITableViewController {
         super.viewWillDisappear(animated)
         
         if(self.isMovingFromParent){
-            DataStore.saveStoreData(store: self.store)
+            self.save()
         }
         tableView.reloadData()
     }
@@ -295,10 +239,11 @@ extension TableController: CollapsibleTableViewHeaderDelegate {
         
         if store.categories[section].items.count != 0 {
             store.categories[section].collapsed = collapsed
-            header.setCollapsed(collapsed, store.categories[section].items.count )
+            header.setCollapsed(collapsed, store.categories[section].getNonDoneItems())
         }
         
         tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
         
     }
 }
+
