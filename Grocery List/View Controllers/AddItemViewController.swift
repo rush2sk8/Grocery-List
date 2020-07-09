@@ -115,7 +115,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.text = self.store?.categories[indexPath.row].name
         cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 14)
         
-    
         if(editMode){
             cell.isUserInteractionEnabled = false
             cell.textLabel?.isEnabled = false

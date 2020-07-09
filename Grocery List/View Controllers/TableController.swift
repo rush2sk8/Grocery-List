@@ -133,7 +133,7 @@ class TableController: UITableViewController{
                 tableView.beginUpdates()
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 tableView.endUpdates()
-                DataStore.saveStoreData(store: self.store)
+                self.save()
                 
                 tableView.reloadData()
             }
@@ -154,7 +154,7 @@ class TableController: UITableViewController{
             tableView.reloadData()
             
             //make the change persist
-            DataStore.saveStoreData(store: self.store)
+            self.save()
             
             completion(true)
         }
@@ -190,11 +190,9 @@ class TableController: UITableViewController{
         
         let numItems = store.categories[section].getNonDoneItems()
         
-        if numItems == 0 {
-            header.arrowLabel.text = "✓"
-        } else{
+    
             header.setCollapsed(store.categories[section].collapsed, numItems)
-        }
+        
         
         header.section = section
         header.delegate = self
@@ -203,7 +201,7 @@ class TableController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 34
+        return 30
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -229,11 +227,10 @@ class TableController: UITableViewController{
         super.viewWillDisappear(animated)
         
         if(self.isMovingFromParent){
-            DataStore.saveStoreData(store: self.store)
+            self.save()
         }
         tableView.reloadData()
     }
-    
 }
 
 extension TableController: CollapsibleTableViewHeaderDelegate {
@@ -242,7 +239,7 @@ extension TableController: CollapsibleTableViewHeaderDelegate {
         
         if store.categories[section].items.count != 0 {
             store.categories[section].collapsed = collapsed
-            header.setCollapsed(collapsed, store.categories[section].items.count )
+            header.setCollapsed(collapsed, store.categories[section].getNonDoneItems())
         }
         
         tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)

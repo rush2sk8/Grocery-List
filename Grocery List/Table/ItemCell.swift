@@ -89,13 +89,9 @@ class ItemCell: UITableViewCell {
             if i.isDone {
                 attributedString = NSMutableAttributedString(string: i.name, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.thick])
                 attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value:   NSUnderlineStyle.single.rawValue , range: NSMakeRange(0, i.name.count))
-                
-                selectionStyle = .none
+                            
             }
-            else {
-                selectionStyle = .default
-            }
-            
+            selectionStyle = .none
             textLabel?.attributedText = attributedString
             textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 20)
         }

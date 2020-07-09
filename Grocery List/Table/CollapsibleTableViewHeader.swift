@@ -54,20 +54,16 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
     }
     
     func setCollapsed(_ collapsed: Bool, _ numItems: Int){
-        if numItems != 0 {
-            if collapsed == false {
-                arrowLabel.text = "\(numItems)  ↓"
-            }
-            else {
-                arrowLabel.text = "\(numItems)  →"
-            }
+        if numItems == 0 {
+            arrowLabel.text = "✓"
+        } else {
+            arrowLabel.text = collapsed == false ? "\(numItems)  ↓" : "\(numItems)  →"
         }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 protocol CollapsibleTableViewHeaderDelegate {
