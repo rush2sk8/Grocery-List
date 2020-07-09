@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class TableController: UITableViewController{
-  
+    
     var store = Store()
     var isCollapsed = false
     
@@ -124,21 +124,24 @@ class TableController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
+        let item = store.categories[indexPath.section].items[indexPath.row]
+        
         let delete = UIContextualAction(style: .normal, title: "Delete") { [self] (action, view, completion) in
-            //delete the data from the thing and make it persist
-            store.categories[indexPath[0]].items.remove(at: indexPath[1])
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
-            DataStore.saveStoreData(store: self.store)
-            
-            tableView.reloadData()
-            
+            if item.isFavorite == false {
+                //delete the data from the thing and make it persist
+                store.categories[indexPath[0]].items.remove(at: indexPath[1])
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.endUpdates()
+                DataStore.saveStoreData(store: self.store)
+                
+                tableView.reloadData()
+            }
             completion(true)
         }
         
         delete.title = "Delete"
-        delete.backgroundColor = .systemRed
+        delete.backgroundColor = item.isFavorite ? .lightGray : .systemRed
         
         //swipe action to mark item as done
         let done = UIContextualAction(style: .normal, title: "Done") { [self] (action, view, completion) in
