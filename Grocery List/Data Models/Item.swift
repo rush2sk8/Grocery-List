@@ -17,21 +17,25 @@ class Item: Codable {
     var name: String
     
     var isDone: Bool
+    var isFavorite: Bool
     
     init(name: String) {
         self.name = name
         self.isDone = false
+        self.isFavorite = false
     }
     
     init(){
         self.name = ""
         self.isDone = false
+        self.isFavorite = false
     }
     
     init(name: String, imageString: String) {
         self.name = name
         self.imageString = imageString
         self.isDone = false
+        self.isFavorite = false
     }
     
     func getImage() -> UIImage? {

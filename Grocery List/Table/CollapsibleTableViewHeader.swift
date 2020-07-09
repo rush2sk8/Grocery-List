@@ -35,7 +35,7 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         arrowLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
         arrowLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         arrowLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
-       
+        
         contentView.addSubview(titleLabel)
         titleLabel.textColor = UIColor.white
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -54,13 +54,14 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
     }
     
     func setCollapsed(_ collapsed: Bool, _ numItems: Int){
-        if collapsed == false {
-            arrowLabel.text = "\(numItems)  ↓"
+        if numItems != 0 {
+            if collapsed == false {
+                arrowLabel.text = "\(numItems)  ↓"
+            }
+            else {
+                arrowLabel.text = "\(numItems)  →"
+            }
         }
-        else {
-            arrowLabel.text = "\(numItems)  →"
-        }
-
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -71,21 +72,6 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
 
 protocol CollapsibleTableViewHeaderDelegate {
     func toggleSection(_ header: CollapsibleTableViewHeader, section: Int)
-}
-
-extension UIView {
-    
-    func rotate(_ toValue: CGFloat, duration: CFTimeInterval = 0.2){
-        let anim = CABasicAnimation(keyPath: "transform.rotation")
-        
-        anim.toValue = toValue
-        anim.duration = duration
-        anim.isRemovedOnCompletion = false
-        anim.fillMode = CAMediaTimingFillMode.forwards
-        
-        self.layer.add(anim, forKey: nil)
-    }
-    
 }
 
 extension UIColor {

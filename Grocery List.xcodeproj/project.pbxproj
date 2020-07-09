@@ -12,6 +12,7 @@
 		2418684324884B42003E7C69 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684224884B42003E7C69 /* Category.swift */; };
 		2418684524884B6C003E7C69 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684424884B6C003E7C69 /* Store.swift */; };
 		2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684724885824003E7C69 /* StoresTableViewController.swift */; };
+		241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241F0F7B24B7A35800A3F67C /* ItemCell.swift */; };
 		244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4724ABC850002E2DCA /* Cache.framework */; };
 		244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4924ABC850002E2DCA /* Imaginary.framework */; };
 		244CEC4C24ABC850002E2DCA /* Lightbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4B24ABC850002E2DCA /* Lightbox.framework */; };
@@ -23,7 +24,6 @@
 		2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A84224882D1D009BE0AB /* AddItemViewController.swift */; };
 		2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */; };
 		2464643324A691E2001A0767 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464643224A691E2001A0767 /* OptionsViewController.swift */; };
-		24677078248D81FD00781021 /* CollapsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */; };
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 		24B4AF1024B671E200BAD2FC /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 24B4AF0F24B671E200BAD2FC /* appstore.png */; };
 		24C3A7B324A57B2D0084D49F /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C3A7B224A57B2D0084D49F /* HomescreenViewController.swift */; };
@@ -37,6 +37,7 @@
 		2418684424884B6C003E7C69 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		2418684724885824003E7C69 /* StoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresTableViewController.swift; sourceTree = "<group>"; };
 		2419C7D824B652FD004F5096 /* StrikethroughLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StrikethroughLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		241F0F7B24B7A35800A3F67C /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		244CEC4724ABC850002E2DCA /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4924ABC850002E2DCA /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4B24ABC850002E2DCA /* Lightbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lightbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +51,6 @@
 		2461A84224882D1D009BE0AB /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
 		2464643224A691E2001A0767 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
-		24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 		2494FFA7248C10CA00DC58E0 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		24B4AF0F24B671E200BAD2FC /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
 		24C3A7B224A57B2D0084D49F /* HomescreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 			children = (
 				2418684624884C4F003E7C69 /* Data Models */,
 				2418684924885827003E7C69 /* View Controllers */,
-				24C3A7B124A577C50084D49F /* Collapsible Table */,
+				24C3A7B124A577C50084D49F /* Table */,
 				2461A83224882541009BE0AB /* Main.storyboard */,
 				2461A82E24882541009BE0AB /* AppDelegate.swift */,
 				2461A83524882543009BE0AB /* Assets.xcassets */,
@@ -132,13 +132,13 @@
 			path = "Grocery List";
 			sourceTree = "<group>";
 		};
-		24C3A7B124A577C50084D49F /* Collapsible Table */ = {
+		24C3A7B124A577C50084D49F /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				24677077248D81FD00781021 /* CollapsibleTableViewCell.swift */,
+				241F0F7B24B7A35800A3F67C /* ItemCell.swift */,
 				2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */,
 			);
-			path = "Collapsible Table";
+			path = Table;
 			sourceTree = "<group>";
 		};
 		575ECE3C63906CE9504E2790 /* Pods */ = {
@@ -278,10 +278,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */,
 				2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */,
 				2464643324A691E2001A0767 /* OptionsViewController.swift in Sources */,
 				2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */,
-				24677078248D81FD00781021 /* CollapsibleTableViewCell.swift in Sources */,
 				2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */,
 				2418684324884B42003E7C69 /* Category.swift in Sources */,
 				24C3A7B324A57B2D0084D49F /* HomescreenViewController.swift in Sources */,
@@ -368,7 +368,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -424,7 +424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
