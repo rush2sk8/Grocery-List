@@ -12,7 +12,7 @@ import Lightbox
 class ItemCell: UITableViewCell {
     
     var item: Item?
-    var parentVC: TableController?
+    var store: Store?
     var starButton: UIButton?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,9 +31,9 @@ class ItemCell: UITableViewCell {
     @objc private func handleFav(){
         
         if let i = item {
-            if let vc = parentVC {
+            if let s = self.store {
                 i.isFavorite.toggle()
-                vc.save()
+                s.save()
                 setFavorite()
             }
         }

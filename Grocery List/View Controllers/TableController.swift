@@ -74,10 +74,6 @@ class TableController: UITableViewController{
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
     
-    func save() {
-        DataStore.saveStoreData(store: self.store)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is AddItemViewController {
@@ -133,7 +129,7 @@ class TableController: UITableViewController{
                 tableView.beginUpdates()
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 tableView.endUpdates()
-                self.save()
+                store.save()
                 
                 tableView.reloadData()
             }
@@ -154,7 +150,7 @@ class TableController: UITableViewController{
             tableView.reloadData()
             
             //make the change persist
-            self.save()
+            store.save()
             
             completion(true)
         }
@@ -210,7 +206,7 @@ class TableController: UITableViewController{
         let item = store.categories[indexPath.section].items[indexPath.row]
         
         cell.item = item
-        cell.parentVC = self
+        cell.store = self.store
         
         cell.setItemTitle()
         cell.setImageView()
@@ -227,7 +223,7 @@ class TableController: UITableViewController{
         super.viewWillDisappear(animated)
         
         if(self.isMovingFromParent){
-            self.save()
+            store.save()
         }
         tableView.reloadData()
     }

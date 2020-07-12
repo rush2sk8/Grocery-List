@@ -77,10 +77,13 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func addItem(_ sender: Any) {
         if(!textField.text!.isEmpty && selectedCategory != nil){
+            
+            let category = store!.categories[self.selectedCategory!]
+            
             if(editMode) {
                 
                 if let row = store!.categories[self.selectedCategory!].getItems().firstIndex( where: {$0 == itemToEdit}){
-                    store!.categories[self.selectedCategory!].items[row].name = textField.text!.capitalized
+                    store!.editItem(category: category, itemIndex: row, newItemName: textField.text!.capitalized)
                 }
             }
                 
@@ -96,10 +99,8 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 }
                
-                store?.categories[self.selectedCategory!].items.append(toAdd)
+                store?.addItem(category: category, item: toAdd)
             }
-            
-            DataStore.saveStoreData(store: self.store!)
             navigationController?.popViewController(animated: true)
         }
     }
