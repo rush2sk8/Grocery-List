@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240436B824BB9BA20027D973 /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240436B724BB9BA20027D973 /* Cache.framework */; };
+		240436BA24BB9BA20027D973 /* Imaginary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240436B924BB9BA20027D973 /* Imaginary.framework */; };
+		240436BC24BB9BA20027D973 /* Lightbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240436BB24BB9BA20027D973 /* Lightbox.framework */; };
+		240436BD24BB9BA70027D973 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 		2409D27524A7D738001FAD06 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409D27424A7D738001FAD06 /* ImagePicker.swift */; };
 		241525B724AAAD56000DE4BA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241525B624AAAD56000DE4BA /* Item.swift */; };
 		2418684324884B42003E7C69 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684224884B42003E7C69 /* Category.swift */; };
 		2418684524884B6C003E7C69 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684424884B6C003E7C69 /* Store.swift */; };
 		2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684724885824003E7C69 /* StoresTableViewController.swift */; };
 		241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241F0F7B24B7A35800A3F67C /* ItemCell.swift */; };
+		2423A01F24BB93CC0089181C /* Grocery_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */; };
 		244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4724ABC850002E2DCA /* Cache.framework */; };
 		244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4924ABC850002E2DCA /* Imaginary.framework */; };
 		244CEC4C24ABC850002E2DCA /* Lightbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4B24ABC850002E2DCA /* Lightbox.framework */; };
@@ -30,7 +35,20 @@
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2423A02124BB93CC0089181C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2461A82324882541009BE0AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2461A82A24882541009BE0AB;
+			remoteInfo = "Grocery List";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		240436B724BB9BA20027D973 /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		240436B924BB9BA20027D973 /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		240436BB24BB9BA20027D973 /* Lightbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lightbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2409D27424A7D738001FAD06 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		241525B624AAAD56000DE4BA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2418684224884B42003E7C69 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -38,6 +56,9 @@
 		2418684724885824003E7C69 /* StoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresTableViewController.swift; sourceTree = "<group>"; };
 		2419C7D824B652FD004F5096 /* StrikethroughLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StrikethroughLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		241F0F7B24B7A35800A3F67C /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		2423A01C24BB93CC0089181C /* Grocery ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grocery ListTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListTests.swift; sourceTree = "<group>"; };
+		2423A02024BB93CC0089181C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		244CEC4724ABC850002E2DCA /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4924ABC850002E2DCA /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4B24ABC850002E2DCA /* Lightbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lightbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +81,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2423A01924BB93CC0089181C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				240436BD24BB9BA70027D973 /* Pods_Grocery_List.framework in Frameworks */,
+				240436BC24BB9BA20027D973 /* Lightbox.framework in Frameworks */,
+				240436BA24BB9BA20027D973 /* Imaginary.framework in Frameworks */,
+				240436B824BB9BA20027D973 /* Cache.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2461A82824882541009BE0AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,10 +129,20 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		2423A01D24BB93CC0089181C /* Grocery ListTests */ = {
+			isa = PBXGroup;
+			children = (
+				2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */,
+				2423A02024BB93CC0089181C /* Info.plist */,
+			);
+			path = "Grocery ListTests";
+			sourceTree = "<group>";
+		};
 		2461A82224882541009BE0AB = {
 			isa = PBXGroup;
 			children = (
 				2461A82D24882541009BE0AB /* Grocery List */,
+				2423A01D24BB93CC0089181C /* Grocery ListTests */,
 				2461A82C24882541009BE0AB /* Products */,
 				575ECE3C63906CE9504E2790 /* Pods */,
 				FD6CE4CE15A5E7A1540EC50C /* Frameworks */,
@@ -111,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				2461A82B24882541009BE0AB /* Grocery List.app */,
+				2423A01C24BB93CC0089181C /* Grocery ListTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +196,9 @@
 		FD6CE4CE15A5E7A1540EC50C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				240436B724BB9BA20027D973 /* Cache.framework */,
+				240436B924BB9BA20027D973 /* Imaginary.framework */,
+				240436BB24BB9BA20027D973 /* Lightbox.framework */,
 				2419C7D824B652FD004F5096 /* StrikethroughLabel.framework */,
 				244CEC4724ABC850002E2DCA /* Cache.framework */,
 				244CEC4924ABC850002E2DCA /* Imaginary.framework */,
@@ -165,6 +211,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2423A01B24BB93CC0089181C /* Grocery ListTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2423A02324BB93CC0089181C /* Build configuration list for PBXNativeTarget "Grocery ListTests" */;
+			buildPhases = (
+				2423A01824BB93CC0089181C /* Sources */,
+				2423A01924BB93CC0089181C /* Frameworks */,
+				2423A01A24BB93CC0089181C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2423A02224BB93CC0089181C /* PBXTargetDependency */,
+			);
+			name = "Grocery ListTests";
+			productName = "Grocery ListTests";
+			productReference = 2423A01C24BB93CC0089181C /* Grocery ListTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2461A82A24882541009BE0AB /* Grocery List */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2461A83D24882543009BE0AB /* Build configuration list for PBXNativeTarget "Grocery List" */;
@@ -190,10 +254,14 @@
 		2461A82324882541009BE0AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Rushad Antia";
 				TargetAttributes = {
+					2423A01B24BB93CC0089181C = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 2461A82A24882541009BE0AB;
+					};
 					2461A82A24882541009BE0AB = {
 						CreatedOnToolsVersion = 10.2;
 					};
@@ -213,11 +281,19 @@
 			projectRoot = "";
 			targets = (
 				2461A82A24882541009BE0AB /* Grocery List */,
+				2423A01B24BB93CC0089181C /* Grocery ListTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2423A01A24BB93CC0089181C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2461A82924882541009BE0AB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,6 +350,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2423A01824BB93CC0089181C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2423A01F24BB93CC0089181C /* Grocery_ListTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2461A82724882541009BE0AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -296,6 +380,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2423A02224BB93CC0089181C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2461A82A24882541009BE0AB /* Grocery List */;
+			targetProxy = 2423A02124BB93CC0089181C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		2461A83224882541009BE0AB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -316,6 +408,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2423A02424BB93CC0089181C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DH439G95GZ;
+				INFOPLIST_FILE = "Grocery ListTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "rantia.Grocery-ListTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Grocery List.app/Grocery List";
+			};
+			name = Debug;
+		};
+		2423A02524BB93CC0089181C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DH439G95GZ;
+				INFOPLIST_FILE = "Grocery ListTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "rantia.Grocery-ListTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Grocery List.app/Grocery List";
+			};
+			name = Release;
+		};
 		2461A83B24882543009BE0AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -477,6 +611,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2423A02324BB93CC0089181C /* Build configuration list for PBXNativeTarget "Grocery ListTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2423A02424BB93CC0089181C /* Debug */,
+				2423A02524BB93CC0089181C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2461A82624882541009BE0AB /* Build configuration list for PBXProject "Grocery List" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
