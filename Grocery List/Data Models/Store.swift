@@ -26,6 +26,21 @@ class Store: Codable {
         self.numItems = 0
     }
     
+    public func addItem(category: Category, item: Item){
+        category.items.append(item)
+        save()
+    }
+    
+    public func addItem(category: String, item: Item){
+        getCategory(name: category)?.items.append(item)
+        save()
+    }
+    
+    public func editItem(category: Category, itemIndex: Int, newItemName: String){
+        category.items[itemIndex].name = newItemName
+        save()
+    }
+    
     public func getNumNonDoneItems() -> Int {
         var total = 0
         
@@ -88,5 +103,9 @@ class Store: Codable {
             print(error.localizedDescription)
             return nil
         }
+    }
+    
+    func save() {
+        DataStore.saveStoreData(store: self)
     }
 }

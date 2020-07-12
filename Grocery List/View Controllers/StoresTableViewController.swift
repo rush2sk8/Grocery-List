@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class StoresTableViewController: UITableViewController{
-    
  
     var stores: [Store] = [Store]()
     
