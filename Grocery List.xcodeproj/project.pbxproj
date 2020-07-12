@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		240436B824BB9BA20027D973 /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240436B724BB9BA20027D973 /* Cache.framework */; };
-		240436BA24BB9BA20027D973 /* Imaginary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240436B924BB9BA20027D973 /* Imaginary.framework */; };
-		240436BC24BB9BA20027D973 /* Lightbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240436BB24BB9BA20027D973 /* Lightbox.framework */; };
-		240436BD24BB9BA70027D973 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 		2409D27524A7D738001FAD06 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409D27424A7D738001FAD06 /* ImagePicker.swift */; };
 		241525B724AAAD56000DE4BA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241525B624AAAD56000DE4BA /* Item.swift */; };
 		2418684324884B42003E7C69 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684224884B42003E7C69 /* Category.swift */; };
@@ -32,6 +28,7 @@
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 		24B4AF1024B671E200BAD2FC /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 24B4AF0F24B671E200BAD2FC /* appstore.png */; };
 		24C3A7B324A57B2D0084D49F /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C3A7B224A57B2D0084D49F /* HomescreenViewController.swift */; };
+		4010B5AF02684B5E5F246805 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,10 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				240436BD24BB9BA70027D973 /* Pods_Grocery_List.framework in Frameworks */,
-				240436BC24BB9BA20027D973 /* Lightbox.framework in Frameworks */,
-				240436BA24BB9BA20027D973 /* Imaginary.framework in Frameworks */,
-				240436B824BB9BA20027D973 /* Cache.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +93,7 @@
 				244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */,
 				244CEC4C24ABC850002E2DCA /* Lightbox.framework in Frameworks */,
 				CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */,
+				4010B5AF02684B5E5F246805 /* Pods_Grocery_List.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +262,7 @@
 				};
 			};
 			buildConfigurationList = 2461A82624882541009BE0AB /* Build configuration list for PBXProject "Grocery List" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
