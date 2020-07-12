@@ -23,6 +23,25 @@ class Grocery_ListTests: XCTestCase {
         XCTAssertTrue(store.name == "Wegmans")
     }
   
+    func testAddItemToStore(){
+        store.addItem(category: "Dairy", item: Item(name: "Milk"))
+        
+        XCTAssertTrue(store.getCategory(name: "Dairy")?.items.first?.name == "Milk")
+    }
   
+    func testGetCategoryFail(){
+        XCTAssertNil(store.getCategory(name: "dairy"))
+    }
+    
+    func testGetCategoryPass(){
+        XCTAssertTrue(store.getCategory(name: "Dairy")!.name == "Dairy")
+    }
+    
+    func testEditItem(){
+        store.editItem(category: Category(name: "Dairy"), itemIndex: 0, newItemName: "Cheese")
+        
+        XCTAssertTrue(store.getCategory(name: "Dairy")?.items.first?.name == "Cheese")
+    }
+    
 
 }

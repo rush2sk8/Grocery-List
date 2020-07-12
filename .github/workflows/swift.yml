@@ -1,4 +1,4 @@
-name: Swift
+name: CI
 
 on:
   push:
@@ -7,13 +7,12 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-and-test:
 
     runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      run: xcodebuild build-for-testing -workspace Grocery\ List.xcworkspace -scheme "Grocery List"
