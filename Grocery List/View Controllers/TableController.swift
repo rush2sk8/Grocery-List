@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import InstantSearchVoiceOverlay
 
-class TableController: UITableViewController{
+class TableController: UITableViewController {
     
     var store = Store()
     var isCollapsed = false
@@ -74,6 +75,23 @@ class TableController: UITableViewController{
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
     
+    @IBAction func addItemVoice(_ sender: Any) {
+        let vc = VoiceOverlayController()
+        vc.settings.autoStart = true
+        vc.settings.autoStopTimeout = 2
+        
+        vc.start(on: self, textHandler: { (text, final, o)  in
+            print(text)
+            if final {
+                print("final \(text)")
+                //parse text
+                
+            }
+        }, errorHandler: {(error) in
+            print(error)
+        })
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is AddItemViewController {

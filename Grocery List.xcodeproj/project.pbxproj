@@ -14,6 +14,7 @@
 		2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684724885824003E7C69 /* StoresTableViewController.swift */; };
 		241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241F0F7B24B7A35800A3F67C /* ItemCell.swift */; };
 		2423A01F24BB93CC0089181C /* Grocery_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */; };
+		24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */; };
 		244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4724ABC850002E2DCA /* Cache.framework */; };
 		244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4924ABC850002E2DCA /* Imaginary.framework */; };
 		244CEC4C24ABC850002E2DCA /* Lightbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4B24ABC850002E2DCA /* Lightbox.framework */; };
@@ -56,6 +57,7 @@
 		2423A01C24BB93CC0089181C /* Grocery ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grocery ListTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListTests.swift; sourceTree = "<group>"; };
 		2423A02024BB93CC0089181C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InstantSearchVoiceOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4724ABC850002E2DCA /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4924ABC850002E2DCA /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4B24ABC850002E2DCA /* Lightbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lightbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */,
 				244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */,
 				244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */,
 				244CEC4C24ABC850002E2DCA /* Lightbox.framework in Frameworks */,
@@ -190,6 +193,7 @@
 		FD6CE4CE15A5E7A1540EC50C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */,
 				240436B724BB9BA20027D973 /* Cache.framework */,
 				240436B924BB9BA20027D973 /* Imaginary.framework */,
 				240436BB24BB9BA20027D973 /* Lightbox.framework */,
@@ -406,6 +410,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DH439G95GZ;
 				INFOPLIST_FILE = "Grocery ListTests/Info.plist";
