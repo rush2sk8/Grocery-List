@@ -123,10 +123,13 @@ class TableController: UITableViewController {
                     }
                     
                     print(categoryString)
-                    self.tableView.reloadData()
                 }
             }
+        }else {
+            self.store.addItem(category: "Other", item: Item(name: strings[0..<strings.count].joined(separator: " ").capitalized))
         }
+        
+        self.tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
