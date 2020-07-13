@@ -41,9 +41,15 @@ class Store: Codable {
         save()
     }
     
-  //  xcodebuild build-for-testing -workspace Grocery\ List.xcworkspace -scheme "Grocery List" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
-    
-    
+    public func getCategories() -> [String] {
+        var categories = [String]()
+        
+        for c in self.categories {
+            categories.append(c.name.lowercased())
+        }
+        return categories
+    }
+
     public func getNumNonDoneItems() -> Int {
         var total = 0
         

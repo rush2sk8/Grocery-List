@@ -14,6 +14,7 @@ class TableController: UITableViewController {
     
     var store = Store()
     var isCollapsed = false
+    let vc = VoiceOverlayController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,19 @@ class TableController: UITableViewController {
             self.store = savedStore
             tableView.reloadData()
         }
+        
         tableView.register(ItemCell.self, forCellReuseIdentifier: "cell")
+        
+        vc.settings.autoStart = true
+        vc.settings.autoStop = true
+        vc.settings.autoStopTimeout = 1
+        
+        vc.settings.showResultScreen = false
+        
+        vc.settings.layout.inputScreen.subtitleBulletList = ["Hello"]
+        vc.settings.layout.inputScreen.titleListening = "Listening for item"
+        vc.settings.layout.permissionScreen.backgroundColor = .red
+        
     }
     
     @objc func refreshTableData() {
@@ -76,22 +89,46 @@ class TableController: UITableViewController {
     }
     
     @IBAction func addItemVoice(_ sender: Any) {
-        let vc = VoiceOverlayController()
-        vc.settings.autoStart = true
-        vc.settings.autoStopTimeout = 2
-        
-        vc.start(on: self, textHandler: { (text, final, o)  in
+        vc.start(on: self, textHandler: { (text, final, o) in
             print(text)
             if final {
-                print("final \(text)")
                 //parse text
-                
+                self.addVoiceText(text)
             }
-        }, errorHandler: {(error) in
-            print(error)
+        }, errorHandler: { (error) in
+            print(error ?? "Error")
         })
     }
-
+    
+    func addVoiceText(_ text: String){
+        var strings = text.components(separatedBy: " ").map { x in x.lowercased() }
+        
+        if strings.contains("add"){
+            strings.remove(at: strings.firstIndex(of: "add")!)
+        }
+        
+        if strings.contains("category") || strings.contains("kategory") {
+            let index = strings.lastIndex(of: "category")!
+            
+            if index + 1  < strings.count {
+                let categoryString = strings[(index + 1)..<strings.count].joined(separator: " ").capitalized
+                
+                if index - 1 >= 0 {
+                    let itemName: String = strings[0..<index].joined(separator: " ").capitalized
+                
+                    if store.getCategories().contains(categoryString.lowercased()){
+                        self.store.addItem(category: categoryString, item: Item(name: itemName))
+                    } else {
+                        self.store.addItem(category: "Other", item: Item(name: itemName))
+                    }
+                    
+                    print(categoryString)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is AddItemViewController {
@@ -204,9 +241,7 @@ class TableController: UITableViewController {
         
         let numItems = store.categories[section].getNonDoneItems()
         
-    
-            header.setCollapsed(store.categories[section].collapsed, numItems)
-        
+        header.setCollapsed(store.categories[section].collapsed, numItems)
         
         header.section = section
         header.delegate = self
@@ -257,7 +292,6 @@ extension TableController: CollapsibleTableViewHeaderDelegate {
         }
         
         tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
-        
     }
 }
 
