@@ -41,6 +41,36 @@ class Store: Codable {
         save()
     }
     
+    func addItemFromVoiceString(_ text: String){
+        var strings = text.components(separatedBy: " ").map { x in x.lowercased() }
+        
+        if strings.contains("add"){
+            strings.remove(at: strings.firstIndex(of: "add")!)
+        }
+        
+        if strings.contains("category") || strings.contains("kategory") {
+            let index = strings.lastIndex(of: "category")!
+            
+            if index + 1  < strings.count {
+                let categoryString = strings[(index + 1)..<strings.count].joined(separator: " ").capitalized
+                
+                if index - 1 >= 0 {
+                    let itemName: String = strings[0..<index].joined(separator: " ").capitalized
+                    
+                    if self.getCategories().contains(categoryString.lowercased()){
+                        self.addItem(category: categoryString, item: Item(name: itemName))
+                    } else {
+                        self.addItem(category: "Other", item: Item(name: itemName))
+                    }
+                    
+                    print(categoryString)
+                }
+            }
+        }else {
+            self.addItem(category: "Other", item: Item(name: strings[0..<strings.count].joined(separator: " ").capitalized))
+        }
+    }
+    
     public func getCategories() -> [String] {
         var categories = [String]()
         

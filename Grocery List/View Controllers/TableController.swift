@@ -92,46 +92,17 @@ class TableController: UITableViewController {
         vc.start(on: self, textHandler: { (text, final, o) in
             print(text)
             if final {
-                //parse text
-                self.addVoiceText(text)
+                
+                self.store.addItemFromVoiceString(text)
+                
+                self.tableView.reloadData()
+                
             }
         }, errorHandler: { (error) in
             print(error ?? "Error")
         })
     }
-    
-    func addVoiceText(_ text: String){
-        var strings = text.components(separatedBy: " ").map { x in x.lowercased() }
-        
-        if strings.contains("add"){
-            strings.remove(at: strings.firstIndex(of: "add")!)
-        }
-        
-        if strings.contains("category") || strings.contains("kategory") {
-            let index = strings.lastIndex(of: "category")!
-            
-            if index + 1  < strings.count {
-                let categoryString = strings[(index + 1)..<strings.count].joined(separator: " ").capitalized
-                
-                if index - 1 >= 0 {
-                    let itemName: String = strings[0..<index].joined(separator: " ").capitalized
-                
-                    if store.getCategories().contains(categoryString.lowercased()){
-                        self.store.addItem(category: categoryString, item: Item(name: itemName))
-                    } else {
-                        self.store.addItem(category: "Other", item: Item(name: itemName))
-                    }
-                    
-                    print(categoryString)
-                }
-            }
-        }else {
-            self.store.addItem(category: "Other", item: Item(name: strings[0..<strings.count].joined(separator: " ").capitalized))
-        }
-        
-        self.tableView.reloadData()
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is AddItemViewController {

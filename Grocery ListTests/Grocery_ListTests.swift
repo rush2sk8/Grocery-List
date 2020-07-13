@@ -18,7 +18,6 @@ class Grocery_ListTests: XCTestCase {
         self.store = Store(name: "Wegmans")
     }
     
-    
     func testStoreName(){
         XCTAssertTrue(store.name == "Wegmans")
     }
@@ -37,4 +36,37 @@ class Grocery_ListTests: XCTestCase {
         XCTAssertTrue(store.getCategory(name: "Dairy")!.name == "Dairy")
     }    
 
+    func testVoiceAddDefault(){
+        self.store.addItemFromVoiceString("add coffee")
+        
+        XCTAssertTrue(store.getNumItems() == 1)
+        XCTAssertTrue(store.getCategory(name: "Other")?.items.first?.name == "Coffee")
+    }
+    
+    func testVoiceAddSpecific(){
+        self.store.addItemFromVoiceString("add milk category dairy")
+        
+        XCTAssertTrue(store.getNumItems() == 1)
+        XCTAssertTrue(store.getCategory(name: "Dairy")?.items.first?.name == "Milk")
+    }
+    
+    func testVoiceAddDefaultMultipleWords(){
+        self.store.addItemFromVoiceString("add honey nut cheerios")
+        
+        XCTAssertTrue(store.getNumItems() == 1)
+        XCTAssertTrue(store.getCategory(name: "Other")?.items.first?.name == "Honey Nut Cheerios")
+    }
+    
+    func testVoiceAddSpecificMultipleWords(){
+        self.store.addItemFromVoiceString("add wipes category cleaning supplies")
+        
+        XCTAssertTrue(store.getNumItems() == 1)
+        XCTAssertTrue(store.getCategory(name: "Cleaning Supplies")?.items.first?.name == "Wipes")
+    }
+    
+    func testGetCategories() {
+        let categories = ["veggies", "fruits", "bread", "meats", "dairy", "cleaning supplies", "snacks", "baking", "beauty", "frozen foods", "other"]
+        XCTAssertTrue(categories == self.store.getCategories())
+    }
+    
 }
