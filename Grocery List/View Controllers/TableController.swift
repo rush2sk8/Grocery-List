@@ -125,11 +125,11 @@ class TableController: UITableViewController{
         let delete = UIContextualAction(style: .normal, title: "Delete") { [self] (action, view, completion) in
             if item.isFavorite == false {
                 //delete the data from the thing and make it persist
-                store.categories[indexPath[0]].items.remove(at: indexPath[1])
+                self.store.categories[indexPath[0]].items.remove(at: indexPath[1])
                 tableView.beginUpdates()
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 tableView.endUpdates()
-                store.save()
+                self.store.save()
                 
                 tableView.reloadData()
             }
@@ -150,7 +150,7 @@ class TableController: UITableViewController{
             tableView.reloadData()
             
             //make the change persist
-            store.save()
+            self.store.save()
             
             completion(true)
         }

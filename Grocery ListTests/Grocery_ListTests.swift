@@ -35,13 +35,6 @@ class Grocery_ListTests: XCTestCase {
     
     func testGetCategoryPass(){
         XCTAssertTrue(store.getCategory(name: "Dairy")!.name == "Dairy")
-    }
-    
-    func testEditItem(){
-        store.editItem(category: Category(name: "Dairy"), itemIndex: 0, newItemName: "Cheese")
-        
-        XCTAssertTrue(store.getCategory(name: "Dairy")?.items.first?.name == "Cheese")
-    }
-    
+    }    
 
 }
