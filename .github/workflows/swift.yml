@@ -7,12 +7,18 @@ on:
     branches: [ master ]
 
 jobs:
-  build-and-test:
+    build:
+      name: Build and Test
+      runs-on: macos-latest
+      strategy:
+          matrix:
+            destination: ['platform=iOS Simulator,name=iPhone 11']
 
-    runs-on: macos-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Build
-      run:   xcodebuild build-for-testing -workspace Grocery\ List.xcworkspace -scheme "Grocery List" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11" CODE_SIGNING_REQUIRED=NO
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Build
+          run:
+             xcodebuild clean build test -resultBundlePath xccov.xcresult -project Grocery\ List.xcodeproj -workspace Grocery\ List.xcworkspace -scheme "Grocery List" -destination "${destination}" -enableCodeCoverage YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+          env:
+           destination: ${{ matrix.destination }}
