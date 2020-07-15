@@ -48,26 +48,33 @@ class Store: Codable {
             strings.remove(at: strings.firstIndex(of: "add")!)
         }
         
-        if strings.contains("category") || strings.contains("kategory") {
-            let index = strings.lastIndex(of: "category")!
-            
-            if index + 1  < strings.count {
-                let categoryString = strings[(index + 1)..<strings.count].joined(separator: " ").capitalized
-                
-                if index - 1 >= 0 {
-                    let itemName: String = strings[0..<index].joined(separator: " ").capitalized
-                    
-                    if self.getCategories().contains(categoryString.lowercased()){
-                        self.addItem(category: categoryString, item: Item(name: itemName))
-                    } else {
-                        self.addItem(category: "Other", item: Item(name: itemName))
-                    }
-                    
-                    print(categoryString)
-                }
-            }
+        var index = -1
+        
+        if strings.contains("category")   {
+            index = strings.lastIndex(of: "category")!
+        }else if strings.contains("kategory") {
+            index = strings.lastIndex(of: "kategory")!
+        }else if strings.contains("under"){
+            index = strings.lastIndex(of: "under")!
         }else {
             self.addItem(category: "Other", item: Item(name: strings[0..<strings.count].joined(separator: " ").capitalized))
+            return
+        }
+        
+        if index + 1  < strings.count {
+            let categoryString = strings[(index + 1)..<strings.count].joined(separator: " ").capitalized
+            
+            if index - 1 >= 0 {
+                let itemName: String = strings[0..<index].joined(separator: " ").capitalized
+                
+                if self.getCategories().contains(categoryString.lowercased()){
+                    self.addItem(category: categoryString, item: Item(name: itemName))
+                } else {
+                    self.addItem(category: "Other", item: Item(name: itemName))
+                }
+                
+                print(categoryString)
+            }
         }
     }
     
@@ -79,7 +86,7 @@ class Store: Codable {
         }
         return categories
     }
-
+    
     public func getNumNonDoneItems() -> Int {
         var total = 0
         
@@ -90,7 +97,7 @@ class Store: Codable {
     }
     
     public func getNumItems() -> Int {
-       var total = 0
+        var total = 0
         
         for c in self.categories {
             total += c.items.count

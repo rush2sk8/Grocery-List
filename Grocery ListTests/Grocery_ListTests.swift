@@ -69,4 +69,18 @@ class Grocery_ListTests: XCTestCase {
         XCTAssertTrue(categories == self.store.getCategories())
     }
     
+    func testVoiceAddSpecificMultipleWordsMisspelled(){
+        self.store.addItemFromVoiceString("add wipes kategory cleaning supplies")
+        
+        XCTAssertTrue(store.getNumItems() == 1)
+        XCTAssertTrue(store.getCategory(name: "Cleaning Supplies")?.items.first?.name == "Wipes")
+    }
+    
+    func testVoiceAddSpecificMultipleWordsUnder(){
+        self.store.addItemFromVoiceString("add wipes under cleaning supplies")
+        
+        XCTAssertTrue(store.getNumItems() == 1)
+        XCTAssertTrue(store.getCategory(name: "Cleaning Supplies")?.items.first?.name == "Wipes")
+    }
+    
 }
