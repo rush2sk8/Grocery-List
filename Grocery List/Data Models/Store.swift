@@ -41,8 +41,51 @@ class Store: Codable {
         save()
     }
     
-  //  xcodebuild build-for-testing -workspace Grocery\ List.xcworkspace -scheme "Grocery List" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+    func addItemFromVoiceString(_ text: String){
+        var strings = text.components(separatedBy: " ").map { x in x.lowercased() }
+        
+        if strings.contains("add"){
+            strings.remove(at: strings.firstIndex(of: "add")!)
+        }
+        
+        var index = -1
+        
+        if strings.contains("category")   {
+            index = strings.lastIndex(of: "category")!
+        }else if strings.contains("kategory") {
+            index = strings.lastIndex(of: "kategory")!
+        }else if strings.contains("under"){
+            index = strings.lastIndex(of: "under")!
+        }else {
+            self.addItem(category: "Other", item: Item(name: strings[0..<strings.count].joined(separator: " ").capitalized))
+            return
+        }
+        
+        if index + 1  < strings.count {
+            let categoryString = strings[(index + 1)..<strings.count].joined(separator: " ").capitalized
+            
+            if index - 1 >= 0 {
+                let itemName: String = strings[0..<index].joined(separator: " ").capitalized
+                
+                if self.getCategories().contains(categoryString.lowercased()){
+                    self.addItem(category: categoryString, item: Item(name: itemName))
+                } else {
+                    self.addItem(category: "Other", item: Item(name: itemName))
+                }
+                
+                print(categoryString)
+            }
+        }
+    }
     
+    public func getCategories() -> [String] {
+        var categories = [String]()
+        
+        for c in self.categories {
+            categories.append(c.name.lowercased())
+        }
+        return categories
+    }
     
     public func getNumNonDoneItems() -> Int {
         var total = 0
@@ -54,7 +97,7 @@ class Store: Codable {
     }
     
     public func getNumItems() -> Int {
-       var total = 0
+        var total = 0
         
         for c in self.categories {
             total += c.items.count

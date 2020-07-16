@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
+import InstantSearchVoiceOverlay
 
-class TableController: UITableViewController{
+class TableController: UITableViewController {
     
     var store = Store()
     var isCollapsed = false
+    let vc = VoiceOverlayController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,19 @@ class TableController: UITableViewController{
             self.store = savedStore
             tableView.reloadData()
         }
+        
         tableView.register(ItemCell.self, forCellReuseIdentifier: "cell")
+        
+        vc.settings.autoStart = true
+        vc.settings.autoStop = true
+        vc.settings.autoStopTimeout = 1
+        
+        vc.settings.showResultScreen = false
+        
+        vc.settings.layout.inputScreen.subtitleBulletList = ["Hello"]
+        vc.settings.layout.inputScreen.titleListening = "Listening for item"
+        vc.settings.layout.permissionScreen.backgroundColor = .red
+        
     }
     
     @objc func refreshTableData() {
@@ -74,6 +88,21 @@ class TableController: UITableViewController{
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
     
+    @IBAction func addItemVoice(_ sender: Any) {
+        vc.start(on: self, textHandler: { (text, final, o) in
+            print(text)
+            if final {
+                
+                self.store.addItemFromVoiceString(text)
+                
+                self.tableView.reloadData()
+                
+            }
+        }, errorHandler: { (error) in
+            print(error ?? "Error")
+        })
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is AddItemViewController {
@@ -186,9 +215,7 @@ class TableController: UITableViewController{
         
         let numItems = store.categories[section].getNonDoneItems()
         
-    
-            header.setCollapsed(store.categories[section].collapsed, numItems)
-        
+        header.setCollapsed(store.categories[section].collapsed, numItems)
         
         header.section = section
         header.delegate = self
@@ -239,7 +266,6 @@ extension TableController: CollapsibleTableViewHeaderDelegate {
         }
         
         tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
-        
     }
 }
 

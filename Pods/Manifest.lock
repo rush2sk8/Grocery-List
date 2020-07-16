@@ -2,23 +2,27 @@ PODS:
   - Cache (5.3.0)
   - Imaginary (4.3.1):
     - Cache (~> 5.3.0)
+  - InstantSearchVoiceOverlay (1.0.0)
   - Lightbox (2.4.1):
     - Imaginary (~> 4.3.1)
 
 DEPENDENCIES:
+  - InstantSearchVoiceOverlay (~> 1.0.0)
   - Lightbox
 
 SPEC REPOS:
   trunk:
     - Cache
     - Imaginary
+    - InstantSearchVoiceOverlay
     - Lightbox
 
 SPEC CHECKSUMS:
   Cache: 48762993ec44e1d93483c4d4a13edd18452326f4
   Imaginary: 18c5bba364229eef383b925199db442e71d175e1
+  InstantSearchVoiceOverlay: b34c48dcbf3191c0441642ba4f37547dbc77ffc7
   Lightbox: cede4a64f2d864da1f7e7959aa78a8659a311e7c
 
-PODFILE CHECKSUM: 7e5da5aa7e3826138c541b0fe2cad6a77609b305
+PODFILE CHECKSUM: d2f903cca8162d446969c5705bb0316c51e15ad7
 
 COCOAPODS: 1.9.1
