@@ -236,13 +236,7 @@
                             <outlet property="delegate" destination="3Et-EM-gYM" id="hWW-nt-d3m"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Add Store" width="431" id="TPk-oL-jEi">
-                            <connections>
-                                <action selector="addStore:" destination="3Et-EM-gYM" id="97k-Gc-Mhx"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="f5n-mF-est"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

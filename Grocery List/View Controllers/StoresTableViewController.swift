@@ -15,7 +15,6 @@ class StoresTableViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setToolbarHidden(false, animated: true)
         self.navigationItem.title = "Stores"
         
         self.reloadStores()
@@ -23,6 +22,13 @@ class StoresTableViewController: UITableViewController{
         refreshControl = UIRefreshControl()
         self.tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
+       
+        let addBar = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addStoreAction))
+        self.navigationItem.rightBarButtonItem = addBar
+    }
+    
+    @objc func addStoreAction(){
+        showAddStoreDialog()
     }
     
     @objc func refreshTableData() {
@@ -41,11 +47,7 @@ class StoresTableViewController: UITableViewController{
             }
         }
     }
-    
-    @IBAction func addStore(_ sender: Any) {
-        showAddStoreDialog()
-    }
-    
+
     func showAddStoreDialog(){
         let alert = UIAlertController(title: "Store Name", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
