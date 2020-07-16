@@ -87,6 +87,7 @@
         <!--List-->
         <scene sceneID="fox-bh-2Ky">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fzq-HN-0Rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController title="List" id="fRW-bz-Bk0" customClass="TableController" customModule="Grocery_List" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vo2-eT-rA9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -107,18 +108,7 @@
                             <outlet property="delegate" destination="fRW-bz-Bk0" id="tHF-Th-YSS"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Add Item" width="218.66666666666669" id="dq8-f4-uzn">
-                            <connections>
-                                <action selector="addItem:" destination="fRW-bz-Bk0" id="SXF-CP-eYB"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem title="Voice Add" id="xU6-wS-Jr8">
-                            <connections>
-                                <action selector="addItemVoice:" destination="fRW-bz-Bk0" id="jX2-Iu-WF1"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="Tmr-SB-34z"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -126,7 +116,6 @@
                         <segue destination="NBI-PU-Kym" kind="show" identifier="toEdit" id="cD1-wZ-kpa"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fzq-HN-0Rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1836" y="-270"/>
         </scene>
@@ -265,7 +254,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WMn-pa-KSf"/>
+        <segue reference="cD1-wZ-kpa"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="linkColor">

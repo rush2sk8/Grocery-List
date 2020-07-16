@@ -21,6 +21,23 @@ class TableController: UITableViewController {
         self.navigationController?.setToolbarHidden(false, animated: true)
         self.navigationItem.title = store.name.capitalized
         
+        var toolbarItems = [UIBarButtonItem]()
+    
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addItemVoice))
+        longPressGesture.minimumPressDuration = 1
+        
+        let addBarbuttonItem = UIButton(type: .custom)
+        addBarbuttonItem.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        addBarbuttonItem.setImage(UIImage(systemName: "plus"), for: .normal)
+        addBarbuttonItem.addGestureRecognizer(longPressGesture)
+        addBarbuttonItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addItem)))
+        
+        toolbarItems.append(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(finishShopping)))
+        toolbarItems.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
+        toolbarItems.append(UIBarButtonItem(customView: addBarbuttonItem))
+        
+        self.toolbarItems = toolbarItems
+        
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         
@@ -52,7 +69,20 @@ class TableController: UITableViewController {
         vc.settings.layout.inputScreen.subtitleBulletList = ["Hello"]
         vc.settings.layout.inputScreen.titleListening = "Listening for item"
         vc.settings.layout.permissionScreen.backgroundColor = .red
-        
+    }
+    
+    @objc func finishShopping() {
+        if store.getNumNonDoneItems() == 0 {
+            store.finishShopping()
+        } else {
+            let alert = UIAlertController(title: "Are you sure you're finished?", message: "Your list still has \(store.getNumNonDoneItems()) items left", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {_ in
+                self.store.finishShopping()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+        self.tableView.reloadData()
     }
     
     @objc func refreshTableData() {
@@ -84,11 +114,11 @@ class TableController: UITableViewController {
         present(activity, animated: true, completion: nil)
     }
     
-    @IBAction func addItem(_ sender: Any) {
+    @objc func addItem(_ sender: Any) {
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
     
-    @IBAction func addItemVoice(_ sender: Any) {
+    @objc func addItemVoice(_ sender: Any) {
         vc.start(on: self, textHandler: { (text, final, o) in
             print(text)
             if final {
