@@ -74,15 +74,16 @@ class TableController: UITableViewController {
     @objc func finishShopping() {
         if store.getNumNonDoneItems() == 0 {
             store.finishShopping()
+            self.tableView.reloadData()
         } else {
             let alert = UIAlertController(title: "Are you sure you're finished?", message: "Your list still has \(store.getNumNonDoneItems()) items left", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {_ in
                 self.store.finishShopping()
+                self.tableView.reloadData()
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         }
-        self.tableView.reloadData()
     }
     
     @objc func refreshTableData() {

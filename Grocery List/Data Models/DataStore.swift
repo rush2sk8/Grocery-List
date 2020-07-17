@@ -13,17 +13,21 @@ class DataStore {
     
     static func saveStoreData(store: Store) {
         
-        let encode = try! JSONEncoder().encode(store)
-        let string = String(bytes: encode, encoding: .utf8)!
      
-        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             
-            let fileURL = dir.appendingPathComponent("\(store.name.lowercased()).json")
             
-            do{
-                try string.write(to: fileURL, atomically: false, encoding: .utf8)
-            }catch {
-                print(error.localizedDescription)
+            let encode = try! JSONEncoder().encode(store)
+            let string = String(bytes: encode, encoding: .utf8)!
+            
+            if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                
+                let fileURL = dir.appendingPathComponent("\(store.name.lowercased()).json")
+                
+                do{
+                    try string.write(to: fileURL, atomically: false, encoding: .utf8)
+                }catch {
+                    print(error.localizedDescription)
+                
             }
         }
     }
@@ -36,7 +40,7 @@ class DataStore {
             
             for item in items {
                 if category.getItems().contains(item.name) == false {
-                
+                    
                     if(item.hasImage) {
                         existing?.getCategory(name: category.name)?.items.append(item)
                     } else {
@@ -53,11 +57,11 @@ class DataStore {
     static func importList(from url: URL){
         let data = try? Data(contentsOf: url)
         let store = try? JSONDecoder().decode(Store.self, from: data!)
-
+        
         if let names = DataStore.getStoreNames() {
-
+            
             if names.contains(store!.name){
-
+                
                 DataStore.mergeToExistingListAndSave(store: store!)
             } else {
                 DataStore.saveNewStore(store: store!.name)
