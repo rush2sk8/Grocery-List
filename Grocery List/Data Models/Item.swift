@@ -25,6 +25,12 @@ class Item: Codable {
         self.isFavorite = false
     }
     
+    init(name: String, isFav: Bool) {
+        self.name = name
+        self.isDone = false
+        self.isFavorite = isFav
+    }
+    
     init(){
         self.name = ""
         self.isDone = false

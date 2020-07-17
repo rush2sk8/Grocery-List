@@ -83,4 +83,14 @@ class Grocery_ListTests: XCTestCase {
         XCTAssertTrue(store.getCategory(name: "Cleaning Supplies")?.items.first?.name == "Wipes")
     }
     
+    func testFinishShopping(){
+        store.addItem(category: "Dairy", item: Item(name: "Milk"))
+        XCTAssertTrue(store.getCategory(name: "Dairy")?.items.first?.name == "Milk")
+        
+        store.addItem(category: "Dairy", item: Item(name: "Cheese", isFav: true))
+        XCTAssertTrue(store.getCategory(name: "Dairy")?.items[1].name == "Cheese")
+        
+        store.finishShopping()
+        XCTAssertTrue(store.getCategory(name: "Dairy")?.items.first?.name == "Cheese")
+    }
 }
