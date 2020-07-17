@@ -78,6 +78,13 @@ class Store: Codable {
         }
     }
     
+    public func finishShopping() {
+        for category in categories {
+            category.pruneNonFavorites()
+        }
+        save()
+    }
+    
     public func getCategories() -> [String] {
         var categories = [String]()
         
