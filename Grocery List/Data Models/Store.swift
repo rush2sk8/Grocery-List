@@ -41,6 +41,25 @@ class Store: Codable {
         save()
     }
     
+    public func deleteItem(category: String, item: Item){
+        let items = getCategory(name: category)!.items
+        
+        var index = -1
+        
+        for i in 0..<items.count {
+            if items[i].name == item.name {
+                index = i
+                break
+            }
+        }
+        
+        if index != -1 {
+            getCategory(name: category)?.items.remove(at: index)
+        }
+    
+        save()
+    }
+    
     func addItemFromVoiceString(_ text: String){
         var strings = text.components(separatedBy: " ").map { x in x.lowercased() }
         

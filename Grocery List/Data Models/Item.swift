@@ -15,9 +15,21 @@ class Item: Codable {
     }
     
     var name: String
-    
-    var isDone: Bool
+    var isDone: Bool = false
     var isFavorite: Bool
+    
+    init(name: String, isFave: Bool, imageString: String, isDone: Bool){
+        self.name = name
+        self.imageString = imageString
+        self.isDone = isDone
+        self.isFavorite = isFave
+    }
+    
+    init(name: String, isFave: Bool, isDone: Bool){
+        self.name = name
+        self.isDone = isDone
+        self.isFavorite = isFave
+    }
     
     init(name: String) {
         self.name = name

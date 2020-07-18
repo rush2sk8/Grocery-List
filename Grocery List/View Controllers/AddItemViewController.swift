@@ -54,17 +54,16 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             navigationItem.title = "Edit Item"
             addButton.title = "Edit Item"
-            tableView.allowsSelection = false
             
             addImageBtn.layer.backgroundColor = UIColor.gray.cgColor
             addImageBtn.isEnabled = false
-        
+            
             if(item.hasImage){
                 imageView.image = item.getGreyImage()
                 imageView.layer.cornerRadius = 8.0
                 imageView.clipsToBounds = true
             }
-            
+        
         } else{
             navigationItem.title = "Add Item"
             addButton.title = "Add Item"
@@ -82,23 +81,33 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if(editMode) {
                 
-                if let row = store!.categories[self.selectedCategory!].getItems().firstIndex( where: {$0 == itemToEdit}){
-                    store!.editItem(category: category, itemIndex: row, newItemName: textField.text!.capitalized)
+                if category.name != itemCategory {
+                    
+                    store?.deleteItem(category: itemCategory, item: item)
+                    let newItem = item.hasImage ? Item(name: textField.text!.capitalized, isFave: item.isFavorite, imageString: item.imageString!, isDone: item.isDone) : Item(name: textField.text!.capitalized, isFave: item.isFavorite, isDone: item.isDone)
+                    store?.addItem(category: (store?.categories[self.selectedCategory!])!, item: newItem)
+                    
+                }
+                else {
+                    
+                    if let row = store!.categories[self.selectedCategory!].getItems().firstIndex( where: {$0 == itemToEdit}){
+                        store!.editItem(category: category, itemIndex: row, newItemName: textField.text!.capitalized)
+                    }
                 }
             }
-                
+            
             else {
                 let toAdd = Item(name: textField.text!.capitalized)
                 
                 if let image = imageView.image {
                     let imageData = image.jpegData(compressionQuality: 0.3)
                     let imageb64 = imageData?.base64EncodedString()
-                   
+                    
                     if let i64 = imageb64 {
                         toAdd.imageString = i64
                     }
                 }
-               
+                
                 store?.addItem(category: category, item: toAdd)
             }
             navigationController?.popViewController(animated: true)
@@ -109,41 +118,31 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.store?.categories.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         
         cell.textLabel?.text = self.store?.categories[indexPath.row].name
         cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 14)
-        
-        if(editMode){
-            cell.isUserInteractionEnabled = false
-            cell.textLabel?.isEnabled = false
-            cell.detailTextLabel?.isEnabled = false
-       
-            if indexPath[1] == selectedCategory {
-                cell.accessoryType = .checkmark
-            }
-        }
-        
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(!editMode){
-            self.selectedCategory = indexPath.row
-        }
+        
+        self.selectedCategory = indexPath.row
+        
         textField.resignFirstResponder()
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         
-        if(!editMode){
-            if let oldIndex = tableView.indexPathForSelectedRow {
-                tableView.cellForRow(at: oldIndex)?.accessoryType = .none
-            }
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        if let oldIndex = tableView.indexPathForSelectedRow {
+            tableView.cellForRow(at: oldIndex)?.accessoryType = .none
         }
+        
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        
         return indexPath
     }
     
@@ -156,7 +155,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
 }
 
 extension AddItemViewController: ImagePickerDelegate {
-
+    
     func didSelect(image: UIImage?) {
         self.imageView.image = image
     }
