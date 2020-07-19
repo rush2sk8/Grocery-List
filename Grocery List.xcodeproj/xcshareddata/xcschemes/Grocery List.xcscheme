@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Grocery List.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "24B25E2E24C4CD5F00E38D01"
+               BuildableName = "Grocery ListUITests.xctest"
+               BlueprintName = "Grocery ListUITests"
+               ReferencedContainer = "container:Grocery List.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
