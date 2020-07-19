@@ -21,6 +21,7 @@ class TableController: UITableViewController {
         self.navigationController?.setToolbarHidden(false, animated: true)
         self.navigationItem.title = store.name.capitalized
         
+        /*Setup the bottom toolbar**/
         var toolbarItems = [UIBarButtonItem]()
     
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addItemVoice))
@@ -37,18 +38,22 @@ class TableController: UITableViewController {
         toolbarItems.append(UIBarButtonItem(customView: addBarbuttonItem))
         
         self.toolbarItems = toolbarItems
+        /*Finish setting up the bottom toolbar*/
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         
         tableView.delegate = self
         
+        //add share list bar item
         let shareBar = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(TableController.userDidTapShare))
         self.navigationItem.rightBarButtonItem = shareBar
         
+        //collapse items on tapping the bar
         let barTap = UITapGestureRecognizer(target: self, action: #selector(didTapBar))
         self.navigationController?.navigationBar.addGestureRecognizer(barTap)
         
+        //add pull to refresh
         refreshControl = UIRefreshControl()
         self.tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
@@ -60,6 +65,7 @@ class TableController: UITableViewController {
         
         tableView.register(ItemCell.self, forCellReuseIdentifier: "cell")
         
+        //setup voice controller
         vc.settings.autoStart = true
         vc.settings.autoStop = true
         vc.settings.autoStopTimeout = 1
@@ -71,21 +77,33 @@ class TableController: UITableViewController {
         vc.settings.layout.permissionScreen.backgroundColor = .red
     }
     
+    //action for when a user is done shopping
     @objc func finishShopping() {
+        
+        //if the number of items left is 0 then finish and clean up
         if store.getNumNonDoneItems() == 0 {
             store.finishShopping()
             self.tableView.reloadData()
-        } else {
-            let alert = UIAlertController(title: "Are you sure you're finished?", message: "Your list still has \(store.getNumNonDoneItems()) items left", preferredStyle: .alert)
+        }
+        
+        //otherwise prompt them if there are some non done items
+        else {
+            let alert = UIAlertController(
+                title: "Are you sure you're finished?",
+                message: "Your list still has \(store.getNumNonDoneItems()) items left",
+                preferredStyle: .alert)
+          
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {_ in
                 self.store.finishShopping()
                 self.tableView.reloadData()
             }))
+            
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         }
     }
     
+    //refresh all the data in the table on pull
     @objc func refreshTableData() {
         
         var paths: [IndexPath] = [IndexPath]()
@@ -99,6 +117,7 @@ class TableController: UITableViewController {
         refreshControl?.endRefreshing()
     }
     
+    //collapse or dont collapse all items
     @objc func didTapBar(){
         for c in self.store.categories {
             c.collapsed = self.isCollapsed
@@ -107,6 +126,7 @@ class TableController: UITableViewController {
         tableView.reloadData()
     }
     
+    //function to export list to share
     @objc func userDidTapShare() {
         let url = self.store.exportToURL()
         
@@ -115,10 +135,12 @@ class TableController: UITableViewController {
         present(activity, animated: true, completion: nil)
     }
     
+    //add an item button click
     @objc func addItem(_ sender: Any) {
         performSegue(withIdentifier: "toAdd", sender: self.store)
     }
     
+    //add an item with the voice controller
     @objc func addItemVoice(_ sender: Any) {
         vc.start(on: self, textHandler: { (text, final, o) in
             print(text)
@@ -155,6 +177,7 @@ class TableController: UITableViewController {
         }
     }
     
+    //resave store on view shown and reload
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(false, animated: true)
         if let savedStore = DataStore.getStoreData(store: store) {
@@ -254,10 +277,12 @@ class TableController: UITableViewController {
         
     }
     
+    //header height
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 34
     }
     
+    //style the cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ItemCell 
         
@@ -272,7 +297,8 @@ class TableController: UITableViewController {
         
         return cell
     }
-    
+   
+    //allow row movement
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -280,6 +306,7 @@ class TableController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        //just save incase something happens between segues
         if(self.isMovingFromParent){
             store.save()
         }

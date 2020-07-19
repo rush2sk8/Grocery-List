@@ -45,6 +45,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
+        //if we are editing an item
         if(editMode) {
             textField.text = itemToEdit
             
@@ -70,10 +71,12 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    //show the image picker
     @IBAction func addImage(_ sender: UIButton) {
         imagePicker.present(from: sender)
     }
     
+    //add an item or edit an item
     @IBAction func addItem(_ sender: Any) {
         if(!textField.text!.isEmpty && selectedCategory != nil){
             

@@ -37,6 +37,7 @@ class StoresTableViewController: UITableViewController{
         self.refreshControl?.endRefreshing()
     }
     
+    //just reload the store names from the userdefaults
     func reloadStores() {
         if let storeNames = DataStore.getStoreNames() {
        
@@ -48,6 +49,7 @@ class StoresTableViewController: UITableViewController{
         }
     }
 
+    //shows the popup dialog to add a store
     func showAddStoreDialog(){
         let alert = UIAlertController(title: "Store Name", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -59,6 +61,7 @@ class StoresTableViewController: UITableViewController{
         alert.addAction(UIAlertAction(title: "Add", style: .default , handler: { (action) in
             if let storeName = alert.textFields?.first?.text?.lowercased() {
                 
+                //if the field is left blank
                 if(storeName == ""){
                     return
                 }
@@ -79,6 +82,7 @@ class StoresTableViewController: UITableViewController{
             }
         }))
         
+        //show the alert
         self.present(alert, animated: true)
     }
     
@@ -89,25 +93,19 @@ class StoresTableViewController: UITableViewController{
         self.present(alert, animated: true)
     }
     
+    //unused alert for when the 2 lists are merged
     func showMergedAlert(storeName: String){
         let alert = UIAlertController(title: "Successfully imported data", message: "New \(storeName.capitalized) data has been merged", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
-    
-    func reloadData() {
-        if let storeNames = DataStore.getStoreNames() {
-            for storeName in storeNames {
-                stores.append(Store(name: storeName))
-            }
-        }
-        tableView.reloadData()
-    }
-    
+
+    //hide the toolbar on view appearing
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setToolbarHidden(false, animated: true)
+        self.navigationController?.setToolbarHidden(true, animated: true)
     }
     
+    //only 1 section in the list
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -116,6 +114,7 @@ class StoresTableViewController: UITableViewController{
         return stores.count
     }
     
+    //style each store cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "storeCell")
         
@@ -124,13 +123,14 @@ class StoresTableViewController: UITableViewController{
         return cell
     }
     
+    //method to allow editing
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    //method that will handle cell deletion
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        //index path [category index, item number]
-        
+    
         if(editingStyle == .delete){
             
             let toRemove = stores[indexPath[1]]
@@ -143,16 +143,17 @@ class StoresTableViewController: UITableViewController{
         }
     }
     
+    //if they select the row then perform a segue to that list
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toList", sender: indexPath[1])
     }
     
+    //setup segue movement
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is TableController {
             let vc = segue.destination as? TableController
             let store = stores[(sender as? Int)!]
             vc?.store = store
-            
         }
     }
 }
