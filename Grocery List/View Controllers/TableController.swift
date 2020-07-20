@@ -31,7 +31,10 @@ class TableController: UITableViewController {
         let addBarbuttonItem = UIButton(type: .custom)
         addBarbuttonItem.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         addBarbuttonItem.setImage(UIImage(systemName: "plus"), for: .normal)
-        addBarbuttonItem.addGestureRecognizer(longPressGesture)
+        
+        //disable this
+        //addBarbuttonItem.addGestureRecognizer(longPressGesture)
+        
         addBarbuttonItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addItem)))
         
         toolbarItems.append(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(finishShopping)))
@@ -39,6 +42,7 @@ class TableController: UITableViewController {
         toolbarItems.append(UIBarButtonItem(customView: addBarbuttonItem))
         
         self.toolbarItems = toolbarItems
+        
         /*Finish setting up the bottom toolbar*/
         
         tableView.estimatedRowHeight = 44.0
