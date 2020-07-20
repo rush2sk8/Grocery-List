@@ -25,7 +25,35 @@ class ItemCell: UITableViewCell {
         starButton!.addTarget(self, action: #selector(handleFav), for: .touchUpInside)
         accessoryView = starButton
         
+        layer.masksToBounds = false
+        layer.shadowOpacity = 0.23
+        layer.shadowRadius = 4
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowColor = UIColor.black.cgColor
+        
+        //cell color
+        contentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        contentView.layer.cornerRadius = 20
+        
+        self.backgroundColor = .clear
         self.starButton!.tintColor = .lightGray
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        var cView = self.contentView.frame
+        cView = cView.insetBy(dx: 5, dy: 0)
+       
+        self.contentView.frame = cView
+        self.contentView.frame.size.width += (accessoryView?.frame.size.width)! - 10
+        
+        self.imageView?.frame.size.height -= 2
+        self.imageView?.frame = (imageView?.frame.insetBy(dx: 0, dy: 4))!
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     @objc private func handleFav(){
@@ -93,12 +121,10 @@ class ItemCell: UITableViewCell {
             }
             selectionStyle = .none
             textLabel?.attributedText = attributedString
+            textLabel?.textColor = .white
             textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 20)
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
 }

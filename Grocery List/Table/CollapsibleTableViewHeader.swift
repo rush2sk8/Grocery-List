@@ -23,8 +23,8 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         contentView.addSubview(arrowLabel)
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CollapsibleTableViewHeader.tapHeader(_:))))
         
-        contentView.backgroundColor = #colorLiteral(red: 0.1764468253, green: 0.1764842868, blue: 0.1764444411, alpha: 1)
-        
+        //header color
+        contentView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         let marginGuide = contentView.layoutMarginsGuide
         

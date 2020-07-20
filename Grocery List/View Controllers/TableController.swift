@@ -294,7 +294,7 @@ class TableController: UITableViewController {
     
     //style the cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ItemCell 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ItemCell
         
         let item = store.categories[indexPath.section].items[indexPath.row]
         
@@ -311,6 +311,14 @@ class TableController: UITableViewController {
     //allow row movement
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.contentView.layer.masksToBounds = true
+        
+        let radius = cell.contentView.layer.cornerRadius
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
     }
     
     override func viewWillDisappear(_ animated: Bool) {
