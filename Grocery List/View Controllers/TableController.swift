@@ -19,6 +19,7 @@ class TableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
+        self.navigationItem.largeTitleDisplayMode = .never
         self.navigationItem.title = store.name.capitalized
         
         /*Setup the bottom toolbar**/
@@ -55,6 +56,7 @@ class TableController: UITableViewController {
         
         //add pull to refresh
         refreshControl = UIRefreshControl()
+        refreshControl!.tintColor = .white
         self.tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
         
@@ -75,6 +77,10 @@ class TableController: UITableViewController {
         vc.settings.layout.inputScreen.subtitleBulletList = ["Hello"]
         vc.settings.layout.inputScreen.titleListening = "Listening for item"
         vc.settings.layout.permissionScreen.backgroundColor = .red
+        
+        self.tableView.separatorColor = .clear
+        self.tableView.tableFooterView = UIView()
+        
     }
     
     //action for when a user is done shopping

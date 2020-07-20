@@ -15,6 +15,7 @@
 		241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241F0F7B24B7A35800A3F67C /* ItemCell.swift */; };
 		2423A01F24BB93CC0089181C /* Grocery_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */; };
 		24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */; };
+		24390CBF24C61B6700189D75 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24390CBE24C61B6700189D75 /* StoreCell.swift */; };
 		244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4724ABC850002E2DCA /* Cache.framework */; };
 		244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4924ABC850002E2DCA /* Imaginary.framework */; };
 		244CEC4C24ABC850002E2DCA /* Lightbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4B24ABC850002E2DCA /* Lightbox.framework */; };
@@ -25,11 +26,9 @@
 		2461A841248829B7009BE0AB /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A840248829B6009BE0AB /* TableController.swift */; };
 		2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A84224882D1D009BE0AB /* AddItemViewController.swift */; };
 		2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */; };
-		2464643324A691E2001A0767 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464643224A691E2001A0767 /* OptionsViewController.swift */; };
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 		24B25E3224C4CD5F00E38D01 /* Grocery_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */; };
 		24B4AF1024B671E200BAD2FC /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 24B4AF0F24B671E200BAD2FC /* appstore.png */; };
-		24C3A7B324A57B2D0084D49F /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C3A7B224A57B2D0084D49F /* HomescreenViewController.swift */; };
 		4010B5AF02684B5E5F246805 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +65,7 @@
 		2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListTests.swift; sourceTree = "<group>"; };
 		2423A02024BB93CC0089181C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InstantSearchVoiceOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24390CBE24C61B6700189D75 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreCell.swift; path = "Grocery List/Table/StoreCell.swift"; sourceTree = SOURCE_ROOT; };
 		244CEC4724ABC850002E2DCA /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4924ABC850002E2DCA /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4B24ABC850002E2DCA /* Lightbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lightbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,13 +78,11 @@
 		2461A840248829B6009BE0AB /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		2461A84224882D1D009BE0AB /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
-		2464643224A691E2001A0767 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		2494FFA7248C10CA00DC58E0 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		24B25E2F24C4CD5F00E38D01 /* Grocery ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grocery ListUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListUITests.swift; sourceTree = "<group>"; };
 		24B25E3324C4CD5F00E38D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24B4AF0F24B671E200BAD2FC /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
-		24C3A7B224A57B2D0084D49F /* HomescreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
 		4FD008632E60DB9E3C8B3BC9 /* Pods-Grocery List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.debug.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.debug.xcconfig"; sourceTree = "<group>"; };
 		8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD38424FF3E64C73D4C651DF /* Pods-Grocery List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.release.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,11 +133,9 @@
 		2418684924885827003E7C69 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				24C3A7B224A57B2D0084D49F /* HomescreenViewController.swift */,
 				2418684724885824003E7C69 /* StoresTableViewController.swift */,
 				2461A840248829B6009BE0AB /* TableController.swift */,
 				2461A84224882D1D009BE0AB /* AddItemViewController.swift */,
-				2464643224A691E2001A0767 /* OptionsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -204,6 +200,7 @@
 		24C3A7B124A577C50084D49F /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				24390CBE24C61B6700189D75 /* StoreCell.swift */,
 				241F0F7B24B7A35800A3F67C /* ItemCell.swift */,
 				2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */,
 			);
@@ -421,15 +418,14 @@
 			files = (
 				241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */,
 				2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */,
-				2464643324A691E2001A0767 /* OptionsViewController.swift in Sources */,
 				2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */,
 				2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */,
 				2418684324884B42003E7C69 /* Category.swift in Sources */,
-				24C3A7B324A57B2D0084D49F /* HomescreenViewController.swift in Sources */,
 				241525B724AAAD56000DE4BA /* Item.swift in Sources */,
 				2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */,
 				2418684524884B6C003E7C69 /* Store.swift in Sources */,
 				2409D27524A7D738001FAD06 /* ImagePicker.swift in Sources */,
+				24390CBF24C61B6700189D75 /* StoreCell.swift in Sources */,
 				2461A841248829B7009BE0AB /* TableController.swift in Sources */,
 				2461A82F24882541009BE0AB /* AppDelegate.swift in Sources */,
 			);

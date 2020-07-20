@@ -9,22 +9,28 @@
 import Foundation
 import UIKit
 
-class StoresTableViewController: UITableViewController{
+class StoresTableViewController: UITableViewController {
  
     var stores: [Store] = [Store]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.navigationItem.title = "Stores"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
         self.reloadStores()
         
         refreshControl = UIRefreshControl()
+        refreshControl?.tintColor = .white
         self.tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
        
         let addBar = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addStoreAction))
         self.navigationItem.rightBarButtonItem = addBar
+        
+        self.tableView.separatorColor = .clear
+        self.tableView.tableFooterView = UIView()
     }
     
     @objc func addStoreAction(){
@@ -116,10 +122,11 @@ class StoresTableViewController: UITableViewController{
     
     //style each store cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell") as UITableViewCell? ?? UITableViewCell(style: .default, reuseIdentifier: "storeCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell") as! StoreCell
         
-        cell.textLabel?.text = stores[indexPath[1]].name.capitalized
-        cell.textLabel?.font = UIFont.init(name: "Avenir-Medium", size: 20)
+        
+        cell.storeLabel?.text = stores[indexPath[1]].name.capitalized
+        cell.storeLabel?.font = UIFont.init(name: "Avenir-Medium", size: 30)
         return cell
     }
     
