@@ -230,7 +230,7 @@ class TableController: UITableViewController {
         }
         
         delete.title = "Delete"
-        delete.backgroundColor = item.isFavorite ? .lightGray : .systemRed
+        delete.backgroundColor = item.isFavorite ? .systemRed : .systemRed
         
         //swipe action to mark item as done
         let done = UIContextualAction(style: .normal, title: "Done") { [self] (action, view, completion) in
@@ -249,7 +249,7 @@ class TableController: UITableViewController {
         }
         
         done.title = "Done"
-        done.backgroundColor = .blue
+        done.backgroundColor = .systemGreen
         
         return UISwipeActionsConfiguration(actions: [done,delete])
     }

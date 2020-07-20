@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class StoresTableViewController: UITableViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
  
     var stores: [Store] = [Store]()
     

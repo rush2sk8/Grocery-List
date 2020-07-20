@@ -12,11 +12,13 @@
         <!--Navigation Controller-->
         <scene sceneID="1Ca-XH-Hjy">
             <objects>
-                <navigationController id="dnj-Mz-PTP" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UOb-2l-cGG">
+                <navigationController toolbarHidden="NO" id="dnj-Mz-PTP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="UOb-2l-cGG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.14514055849999999" green="0.1450723112" blue="0.16950750349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.086272872979999998" green="0.086273662749999994" blue="0.086275704209999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.95502287149999998" green="0.20447647569999999" blue="0.43530109519999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.078450731930000003" green="0.078380160030000007" blue="0.082354597749999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -24,6 +26,13 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Vpe-wo-bgc">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.078450731930000003" green="0.078380160030000007" blue="0.082354597749999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.95502287149999998" green="0.20447647569999999" blue="0.43530109519999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.078429810700000005" green="0.078430555760000006" blue="0.078432478010000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </toolbar>
                     <connections>
                         <segue destination="3Et-EM-gYM" kind="relationship" relationship="rootViewController" id="sX4-wZ-QWm"/>
                     </connections>
@@ -39,9 +48,9 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vo2-eT-rA9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.14514055849999999" green="0.1450723112" blue="0.16950750349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.14514055849999999" green="0.1450723112" blue="0.16950750349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.14514055849999999" green="0.1450723112" blue="0.16950750349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.054900787770000001" green="0.058868952099999997" blue="0.0549023971" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.95502287149999998" green="0.20447647569999999" blue="0.43530109519999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="sectionIndexBackgroundColor" red="0.054900787770000001" green="0.058868952099999997" blue="0.0549023971" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="62" id="PCM-ep-RLr">
                                 <rect key="frame" x="0.0" y="28" width="414" height="62"/>
@@ -50,6 +59,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.95502287149999998" green="0.20447647569999999" blue="0.43530109519999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -79,6 +89,8 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BIY-PZ-8iA">
                                 <rect key="frame" x="23.5" y="133" width="370.5" height="34"/>
+                                <color key="backgroundColor" red="0.1215666011" green="0.12156755480000001" blue="0.1215701029" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.32586547729999998" green="0.64543908829999996" blue="0.38819706440000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -90,7 +102,8 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ieb-Nt-e5c">
                                 <rect key="frame" x="24" y="241.5" width="366" height="395.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.1215666011" green="0.12156755480000001" blue="0.1215701029" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.32586547729999998" green="0.64543908829999996" blue="0.38819706440000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-hB-tI6">
                                 <rect key="frame" x="125" y="645" width="268.5" height="143"/>
@@ -108,7 +121,8 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3ey-3C-UVS"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.058822199700000001" green="0.058822855350000001" blue="0.05882447213" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.95502287149999998" green="0.20447647569999999" blue="0.43530109519999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="trailing" secondItem="lIu-2v-Ni5" secondAttribute="trailingMargin" id="0CX-C5-xoF"/>
                             <constraint firstItem="hgn-ph-bAK" firstAttribute="top" secondItem="ieb-Nt-e5c" secondAttribute="bottom" constant="36" id="7Jf-9T-Zmi"/>
@@ -132,6 +146,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem title="Add Item" width="434" id="CZq-f4-McN">
+                            <color key="tintColor" red="0.95502287149999998" green="0.20447647569999999" blue="0.43530109519999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="addItem:" destination="NBI-PU-Kym" id="01a-6s-qoY"/>
                             </connections>
@@ -159,8 +174,9 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="owc-Mn-aau">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.14514055849999999" green="0.1450723112" blue="0.16950750349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.14514055849999999" green="0.1450723112" blue="0.16950750349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.058822199700000001" green="0.058822855350000001" blue="0.05882447213" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.95502287149999998" green="0.20447647569999999" blue="0.43530109519999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="sectionIndexBackgroundColor" red="0.054900787770000001" green="0.058868952099999997" blue="0.0549023971" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="storeCell" rowHeight="92" id="I3X-dd-Xaq" customClass="StoreCell" customModule="Grocery_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="92"/>
@@ -176,7 +192,7 @@
                                                     <rect key="frame" x="15" y="15" width="359" height="42"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="31"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="highlightedColor" red="0.1215874031" green="0.1215174124" blue="0.12549221520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.20381763580000001" green="0.20347070689999999" blue="0.2283300459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -193,7 +209,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.1449987888" green="0.14463511109999999" blue="0.1694982052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.054900787770000001" green="0.058868952099999997" blue="0.0549023971" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="12z-bQ-wOv" secondAttribute="bottom" constant="10" id="Jdm-5d-73N"/>
                                         <constraint firstAttribute="trailing" secondItem="12z-bQ-wOv" secondAttribute="trailing" constant="20" id="cin-yl-SeI"/>
@@ -224,7 +240,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cD1-wZ-kpa"/>
+        <segue reference="WMn-pa-KSf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="linkColor">
