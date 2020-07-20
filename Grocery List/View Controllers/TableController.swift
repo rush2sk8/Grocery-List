@@ -30,7 +30,7 @@ class TableController: UITableViewController {
         let addBarbuttonItem = UIButton(type: .custom)
         addBarbuttonItem.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         addBarbuttonItem.setImage(UIImage(systemName: "plus"), for: .normal)
-        addBarbuttonItem.addGestureRecognizer(longPressGesture)
+        //addBarbuttonItem.addGestureRecognizer(longPressGesture)
         addBarbuttonItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addItem)))
         
         toolbarItems.append(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(finishShopping)))
