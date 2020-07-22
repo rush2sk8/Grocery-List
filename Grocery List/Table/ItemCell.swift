@@ -33,7 +33,7 @@ class ItemCell: UITableViewCell {
         
         //cell color
         contentView.backgroundColor = #colorLiteral(red: 0.1215499714, green: 0.1215790883, blue: 0.1215502545, alpha: 1)
-        contentView.layer.cornerRadius = 0
+        contentView.layer.cornerRadius = 20
         
         self.backgroundColor = .clear
         self.starButton!.tintColor = .lightGray
