@@ -114,14 +114,18 @@ class TableController: UITableViewController {
     
     //refresh all the data in the table on pull
     @objc func refreshTableData() {
-        
+        if let savedStore = DataStore.getStoreData(store: store) {
+            self.store = savedStore
+            self.tableView.reloadData()
+        }
+    
         var paths: [IndexPath] = [IndexPath]()
-        
+
         for i in 0..<store.categories.count {
             let count = tableView.numberOfRows(inSection: i)
             paths.append(contentsOf: (0..<count).map { IndexPath(row: $0, section: i)})
         }
-        
+
         self.tableView.reloadRows(at: paths, with: .left)
         refreshControl?.endRefreshing()
     }
