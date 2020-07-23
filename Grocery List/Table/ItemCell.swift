@@ -29,7 +29,7 @@ class ItemCell: UITableViewCell {
         layer.shadowOpacity = 0.23
         layer.shadowRadius = 4
         layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = UIColor.clear.cgColor //UIColor.black.cgColor
         
         //cell color
         contentView.backgroundColor = #colorLiteral(red: 0.1215499714, green: 0.1215790883, blue: 0.1215502545, alpha: 1)
@@ -37,6 +37,8 @@ class ItemCell: UITableViewCell {
         
         self.backgroundColor = .clear
         self.starButton!.tintColor = .lightGray
+        
+        self.separatorInset = .zero
     }
     
     override func layoutSubviews() {
@@ -47,6 +49,7 @@ class ItemCell: UITableViewCell {
        
         self.contentView.frame = cView
         self.contentView.frame.size.width += (accessoryView?.frame.size.width)! - 10
+        self.contentView.frame.size.height -= 2
         
         self.imageView?.frame.size.height -= 2
         self.imageView?.frame = (imageView?.frame.insetBy(dx: 0, dy: 4))!
