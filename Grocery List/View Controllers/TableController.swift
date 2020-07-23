@@ -22,29 +22,6 @@ class TableController: UITableViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         self.navigationItem.title = store.name.capitalized
         
-        /*Setup the bottom toolbar**/
-        var toolbarItems = [UIBarButtonItem]()
-    
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addItemVoice))
-        longPressGesture.minimumPressDuration = 1
-        
-        let addBarbuttonItem = UIButton(type: .custom)
-        addBarbuttonItem.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        addBarbuttonItem.setImage(UIImage(systemName: "plus"), for: .normal)
-
-        //disable this
-        //addBarbuttonItem.addGestureRecognizer(longPressGesture)
-
-        addBarbuttonItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addItem)))
-        
-        toolbarItems.append(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(finishShopping)))
-        toolbarItems.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
-        toolbarItems.append(UIBarButtonItem(customView: addBarbuttonItem))
-        
-        self.toolbarItems = toolbarItems
-        
-        /*Finish setting up the bottom toolbar*/
-        
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         
@@ -88,7 +65,7 @@ class TableController: UITableViewController {
     }
     
     //action for when a user is done shopping
-    @objc func finishShopping() {
+   @IBAction func finishShopping() {
         
         //if the number of items left is 0 then finish and clean up
         if store.getNumNonDoneItems() == 0 {
@@ -102,7 +79,7 @@ class TableController: UITableViewController {
                 title: "Are you sure you're finished?",
                 message: "Your list still has \(store.getNumNonDoneItems()) items left",
                 preferredStyle: .alert)
-          
+            
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {_ in
                 self.store.finishShopping()
                 self.tableView.reloadData()
@@ -112,6 +89,28 @@ class TableController: UITableViewController {
             self.present(alert, animated: true)
         }
     }
+    
+    //add an item button click
+    @IBAction func addItem(_ sender: Any) {
+        performSegue(withIdentifier: "toAdd", sender: self.store)
+    }
+    
+    //add an item with the voice controller
+    @IBAction func addItemVoice(_ sender: Any) {
+        self.vc.start(on: self, textHandler: { (text, final, o) in
+            print(text)
+            if final {
+                
+                self.store.addItemFromVoiceString(text)
+                
+                self.tableView.reloadData()
+                
+            }
+        }, errorHandler: { (error) in
+            print(error ?? "Error")
+        })
+    }
+    
     
     //refresh all the data in the table on pull
     @objc func refreshTableData() {
@@ -145,27 +144,6 @@ class TableController: UITableViewController {
         present(activity, animated: true, completion: nil)
     }
     
-    //add an item button click
-    @objc func addItem(_ sender: Any) {
-        performSegue(withIdentifier: "toAdd", sender: self.store)
-    }
-    
-    //add an item with the voice controller
-    @objc func addItemVoice(_ sender: Any) {
-        vc.start(on: self, textHandler: { (text, final, o) in
-            print(text)
-            if final {
-                
-                self.store.addItemFromVoiceString(text)
-                
-                self.tableView.reloadData()
-                
-            }
-        }, errorHandler: { (error) in
-            print(error ?? "Error")
-        })
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is AddItemViewController {
@@ -307,7 +285,7 @@ class TableController: UITableViewController {
         
         return cell
     }
-   
+    
     //allow row movement
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

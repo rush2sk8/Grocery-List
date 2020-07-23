@@ -7,5 +7,5 @@ target 'Grocery List' do
 
   # Pods for Grocery List
 pod 'Lightbox'
-pod 'InstantSearchVoiceOverlay', '~> 1.0.0'
+pod 'InstantSearchVoiceOverlay', '~> 1.1.0'
 end

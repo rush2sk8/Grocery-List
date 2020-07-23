@@ -67,7 +67,25 @@
                             <outlet property="delegate" destination="fRW-bz-Bk0" id="tHF-Th-YSS"/>
                         </connections>
                     </tableView>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Done" id="tp7-bF-ZEf">
+                            <connections>
+                                <action selector="finishShopping" destination="fRW-bz-Bk0" id="pVG-K8-X2d"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="244" style="plain" systemItem="fixedSpace" id="Ahp-ze-jx6"/>
+                        <barButtonItem title="Item" image="mic.fill" catalog="system" id="4JJ-h2-Xag">
+                            <connections>
+                                <action selector="addItemVoice:" destination="fRW-bz-Bk0" id="bBh-Yj-j1x"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="obT-Rl-bUr"/>
+                        <barButtonItem title="Item" image="plus" catalog="system" id="0PU-XT-wcE">
+                            <connections>
+                                <action selector="addItem:" destination="fRW-bz-Bk0" id="uqi-6b-lLa"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Tmr-SB-34z"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -243,6 +261,8 @@
         <segue reference="WMn-pa-KSf"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="mic.fill" catalog="system" width="108" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
