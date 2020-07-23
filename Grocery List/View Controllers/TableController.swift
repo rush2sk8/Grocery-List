@@ -171,6 +171,7 @@ class TableController: UITableViewController {
     
     //resave store on view shown and reload
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(false, animated: true)
         if let savedStore = DataStore.getStoreData(store: store) {
             self.store = savedStore

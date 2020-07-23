@@ -57,6 +57,7 @@ class StoresTableViewController: UITableViewController {
                 stores.append(Store(name: storeName))
             }
         }
+        tableView.reloadData()
     }
 
     //shows the popup dialog to add a store
@@ -103,16 +104,11 @@ class StoresTableViewController: UITableViewController {
         self.present(alert, animated: true)
     }
     
-    //unused alert for when the 2 lists are merged
-    func showMergedAlert(storeName: String){
-        let alert = UIAlertController(title: "Successfully imported data", message: "New \(storeName.capitalized) data has been merged", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true)
-    }
-
     //hide the toolbar on view appearing
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(true, animated: true)
+        reloadStores()
     }
     
     //only 1 section in the list
@@ -127,7 +123,6 @@ class StoresTableViewController: UITableViewController {
     //style each store cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell") as! StoreCell
-        
         
         cell.storeLabel?.text = stores[indexPath[1]].name.capitalized
         cell.storeLabel?.font = UIFont.init(name: "Avenir-Medium", size: 30)
