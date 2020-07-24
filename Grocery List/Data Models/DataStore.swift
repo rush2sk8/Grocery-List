@@ -12,21 +12,17 @@ import UIKit
 class DataStore {
     
     static func saveStoreData(store: Store) {
+        let encode = try! JSONEncoder().encode(store)
+        let string = String(bytes: encode, encoding: .utf8)!
         
-     
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             
+            let fileURL = dir.appendingPathComponent("\(store.name.lowercased()).json")
             
-            let encode = try! JSONEncoder().encode(store)
-            let string = String(bytes: encode, encoding: .utf8)!
-            
-            if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                
-                let fileURL = dir.appendingPathComponent("\(store.name.lowercased()).json")
-                
-                do{
-                    try string.write(to: fileURL, atomically: false, encoding: .utf8)
-                }catch {
-                    print(error.localizedDescription)
+            do{
+                try string.write(to: fileURL, atomically: false, encoding: .utf8)
+            }catch {
+                print(error.localizedDescription)
                 
             }
         }
@@ -41,16 +37,12 @@ class DataStore {
             for item in items {
                 if category.getItems().contains(item.name) == false {
                     
-                    if(item.hasImage) {
-                        existing?.getCategory(name: category.name)?.items.append(item)
-                    } else {
-                        existing?.getCategory(name: category.name)?.items.append(item)
-                    }
+                    existing!.getCategory(name: category.name)?.items.append(item)
+                    
                 }
             }
         }
         
-        DataStore.deleteStore(store: existing!)
         DataStore.saveStoreData(store: existing!)
     }
     

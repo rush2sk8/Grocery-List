@@ -19,26 +19,8 @@ class TableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
+        self.navigationItem.largeTitleDisplayMode = .never
         self.navigationItem.title = store.name.capitalized
-        
-        /*Setup the bottom toolbar**/
-        var toolbarItems = [UIBarButtonItem]()
-    
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addItemVoice))
-        longPressGesture.minimumPressDuration = 1
-        
-        let addBarbuttonItem = UIButton(type: .custom)
-        addBarbuttonItem.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        addBarbuttonItem.setImage(UIImage(systemName: "plus"), for: .normal)
-        //addBarbuttonItem.addGestureRecognizer(longPressGesture)
-        addBarbuttonItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addItem)))
-        
-        toolbarItems.append(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(finishShopping)))
-        toolbarItems.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
-        toolbarItems.append(UIBarButtonItem(customView: addBarbuttonItem))
-        
-        self.toolbarItems = toolbarItems
-        /*Finish setting up the bottom toolbar*/
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
@@ -55,6 +37,7 @@ class TableController: UITableViewController {
         
         //add pull to refresh
         refreshControl = UIRefreshControl()
+        refreshControl!.tintColor = .white
         self.tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
         
@@ -75,10 +58,14 @@ class TableController: UITableViewController {
         vc.settings.layout.inputScreen.subtitleBulletList = ["Hello"]
         vc.settings.layout.inputScreen.titleListening = "Listening for item"
         vc.settings.layout.permissionScreen.backgroundColor = .red
+        
+        self.tableView.separatorColor = .clear
+        self.tableView.tableFooterView = UIView()
+        
     }
     
     //action for when a user is done shopping
-    @objc func finishShopping() {
+   @IBAction func finishShopping() {
         
         //if the number of items left is 0 then finish and clean up
         if store.getNumNonDoneItems() == 0 {
@@ -92,7 +79,7 @@ class TableController: UITableViewController {
                 title: "Are you sure you're finished?",
                 message: "Your list still has \(store.getNumNonDoneItems()) items left",
                 preferredStyle: .alert)
-          
+            
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {_ in
                 self.store.finishShopping()
                 self.tableView.reloadData()
@@ -103,16 +90,42 @@ class TableController: UITableViewController {
         }
     }
     
+    //add an item button click
+    @IBAction func addItem(_ sender: Any) {
+        performSegue(withIdentifier: "toAdd", sender: self.store)
+    }
+    
+    //add an item with the voice controller
+    @IBAction func addItemVoice(_ sender: Any) {
+        self.vc.start(on: self, textHandler: { (text, final, o) in
+            print(text)
+            if final {
+                
+                self.store.addItemFromVoiceString(text)
+                
+                self.tableView.reloadData()
+                
+            }
+        }, errorHandler: { (error) in
+            print(error ?? "Error")
+        })
+    }
+    
+    
     //refresh all the data in the table on pull
     @objc func refreshTableData() {
-        
+        if let savedStore = DataStore.getStoreData(store: store) {
+            self.store = savedStore
+            self.tableView.reloadData()
+        }
+    
         var paths: [IndexPath] = [IndexPath]()
-        
+
         for i in 0..<store.categories.count {
             let count = tableView.numberOfRows(inSection: i)
             paths.append(contentsOf: (0..<count).map { IndexPath(row: $0, section: i)})
         }
-        
+
         self.tableView.reloadRows(at: paths, with: .left)
         refreshControl?.endRefreshing()
     }
@@ -135,27 +148,6 @@ class TableController: UITableViewController {
         present(activity, animated: true, completion: nil)
     }
     
-    //add an item button click
-    @objc func addItem(_ sender: Any) {
-        performSegue(withIdentifier: "toAdd", sender: self.store)
-    }
-    
-    //add an item with the voice controller
-    @objc func addItemVoice(_ sender: Any) {
-        vc.start(on: self, textHandler: { (text, final, o) in
-            print(text)
-            if final {
-                
-                self.store.addItemFromVoiceString(text)
-                
-                self.tableView.reloadData()
-                
-            }
-        }, errorHandler: { (error) in
-            print(error ?? "Error")
-        })
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is AddItemViewController {
@@ -179,6 +171,7 @@ class TableController: UITableViewController {
     
     //resave store on view shown and reload
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(false, animated: true)
         if let savedStore = DataStore.getStoreData(store: store) {
             self.store = savedStore
@@ -220,7 +213,7 @@ class TableController: UITableViewController {
         }
         
         delete.title = "Delete"
-        delete.backgroundColor = item.isFavorite ? .lightGray : .systemRed
+        delete.backgroundColor = item.isFavorite ? .systemRed : .systemRed
         
         //swipe action to mark item as done
         let done = UIContextualAction(style: .normal, title: "Done") { [self] (action, view, completion) in
@@ -239,7 +232,7 @@ class TableController: UITableViewController {
         }
         
         done.title = "Done"
-        done.backgroundColor = .blue
+        done.backgroundColor = .systemGreen
         
         return UISwipeActionsConfiguration(actions: [done,delete])
     }
@@ -284,7 +277,7 @@ class TableController: UITableViewController {
     
     //style the cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ItemCell 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ItemCell
         
         let item = store.categories[indexPath.section].items[indexPath.row]
         
@@ -297,10 +290,18 @@ class TableController: UITableViewController {
         
         return cell
     }
-   
+    
     //allow row movement
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.contentView.layer.masksToBounds = true
+        
+        let radius = cell.contentView.layer.cornerRadius
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
     }
     
     override func viewWillDisappear(_ animated: Bool) {

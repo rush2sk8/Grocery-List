@@ -34,6 +34,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
+        self.navigationItem.largeTitleDisplayMode = .never
         
         addImageBtn.layer.cornerRadius = 10
         
