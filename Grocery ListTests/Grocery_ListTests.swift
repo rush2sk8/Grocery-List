@@ -65,7 +65,7 @@ class Grocery_ListTests: XCTestCase {
     }
     
     func testGetCategories() {
-        let categories = ["veggies", "fruits", "bread", "meats", "dairy", "cleaning supplies", "snacks", "baking", "beauty", "frozen foods", "other"]
+        let categories = ["vegetables", "fruits", "bread", "meats", "dairy", "cleaning supplies", "snacks", "baking", "beauty", "frozen foods", "other"]
         XCTAssertTrue(categories == self.store.getCategories())
     }
     
