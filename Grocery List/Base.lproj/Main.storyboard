@@ -128,7 +128,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="165" id="q16-ey-neT"/>
                                     <constraint firstAttribute="width" secondItem="hgn-ph-bAK" secondAttribute="height" multiplier="1:1" id="saq-JL-Csj"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="yI8-OI-84K"/>
                                 </constraints>
                                 <state key="normal" image="photo.fill" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,12 +142,11 @@
                         <color key="tintColor" red="0.95502287149999998" green="0.20447647569999999" blue="0.43530109519999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="trailing" secondItem="lIu-2v-Ni5" secondAttribute="trailingMargin" id="0CX-C5-xoF"/>
-                            <constraint firstItem="hgn-ph-bAK" firstAttribute="top" secondItem="ieb-Nt-e5c" secondAttribute="bottom" constant="20" id="7Jf-9T-Zmi"/>
+                            <constraint firstItem="3ey-3C-UVS" firstAttribute="trailing" secondItem="hgn-ph-bAK" secondAttribute="trailing" constant="123" id="3nS-Qc-qkj"/>
                             <constraint firstItem="3ey-3C-UVS" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hgn-ph-bAK" secondAttribute="trailing" symbolic="YES" id="Eik-oA-VXn"/>
                             <constraint firstItem="3ey-3C-UVS" firstAttribute="bottom" secondItem="ieb-Nt-e5c" secondAttribute="bottom" constant="199" id="Erl-xF-oyd"/>
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="trailing" secondItem="ieb-Nt-e5c" secondAttribute="trailing" constant="4" id="Hi3-MX-Dom"/>
                             <constraint firstItem="3ey-3C-UVS" firstAttribute="trailing" secondItem="hgn-ph-bAK" secondAttribute="trailing" constant="123" id="KmC-NK-aMl"/>
-                            <constraint firstItem="hgn-ph-bAK" firstAttribute="leading" secondItem="3ey-3C-UVS" secondAttribute="leading" constant="126" id="Q0s-DS-N7E"/>
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="centerX" secondItem="lIu-2v-Ni5" secondAttribute="centerX" id="QOd-iO-S7e"/>
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="leading" secondItem="aUl-FK-UGA" secondAttribute="leading" id="T1d-Y6-WNZ"/>
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="top" secondItem="aUl-FK-UGA" secondAttribute="bottom" constant="-23.5" id="TzE-p7-qiL"/>
@@ -156,6 +154,7 @@
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="top" secondItem="3ey-3C-UVS" secondAttribute="top" constant="45" id="gWX-Hb-Lod"/>
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="leading" secondItem="aUl-FK-UGA" secondAttribute="trailing" constant="-128" id="t1I-H1-Ub9"/>
                             <constraint firstItem="3ey-3C-UVS" firstAttribute="bottom" secondItem="hgn-ph-bAK" secondAttribute="bottom" constant="14" id="urZ-fe-Fk5"/>
+                            <constraint firstItem="hgn-ph-bAK" firstAttribute="leading" secondItem="3ey-3C-UVS" secondAttribute="leading" constant="126" id="x3I-rD-fhq"/>
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="top" secondItem="aUl-FK-UGA" secondAttribute="bottom" constant="-23.5" id="yfG-ug-wtd"/>
                         </constraints>
                     </view>
