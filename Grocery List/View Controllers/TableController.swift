@@ -55,13 +55,12 @@ class TableController: UITableViewController {
         
         vc.settings.showResultScreen = false
         
-        vc.settings.layout.inputScreen.subtitleBulletList = ["Hello"]
+        vc.settings.layout.inputScreen.subtitleBulletList = ["Add item [under] [category name]", "Add item [category] [category name]"]
         vc.settings.layout.inputScreen.titleListening = "Listening for item"
         vc.settings.layout.permissionScreen.backgroundColor = .red
         
         self.tableView.separatorColor = .clear
         self.tableView.tableFooterView = UIView()
-        
     }
     
     //action for when a user is done shopping
@@ -69,8 +68,18 @@ class TableController: UITableViewController {
         
         //if the number of items left is 0 then finish and clean up
         if store.getNumNonDoneItems() == 0 {
-            store.finishShopping()
-            self.tableView.reloadData()
+            let alert = UIAlertController(
+                title: "Finished shopping?",
+                message: "Are you sure?",
+                preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+                self.store.finishShopping()
+                self.tableView.reloadData()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
         }
         
         //otherwise prompt them if there are some non done items
@@ -110,7 +119,6 @@ class TableController: UITableViewController {
             print(error ?? "Error")
         })
     }
-    
     
     //refresh all the data in the table on pull
     @objc func refreshTableData() {

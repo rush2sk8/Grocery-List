@@ -78,7 +78,8 @@ class Store: Codable {
         }
         
         if index + 1  < strings.count {
-            let categoryString = strings[(index + 1)..<strings.count].joined(separator: " ").capitalized
+            var categoryString = strings[(index + 1)..<strings.count].joined(separator: " ").capitalized
+            categoryString = categoryReplacement(categoryString)
             
             if index - 1 >= 0 {
                 let itemName: String = strings[0..<index].joined(separator: " ").capitalized
@@ -91,6 +92,26 @@ class Store: Codable {
                 
                 print(categoryString)
             }
+        }
+    }
+    
+    //TODO: move this to an alias field in the category
+    //this is horrible
+    private func categoryReplacement(_ categoryString: String) -> String {
+        if categoryString == "veggies"{
+            return "vegetables"
+        }
+        else if categoryString == "fruit" {
+            return "fruits"
+        }
+        else if categoryString == "meat"{
+            return "meats"
+        }
+        else if categoryString == "frozen"{
+            return "frozen foods"
+        }
+        else {
+            return categoryString
         }
     }
     
@@ -132,7 +153,7 @@ class Store: Codable {
     init(name: String){
         self.name = name
         self.categories = [
-            Category(name: "Veggies"),
+            Category(name: "Vegetables"),
             Category(name: "Fruits"),
             Category(name: "Bread"),
             Category(name: "Meats"),
