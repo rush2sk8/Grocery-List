@@ -65,6 +65,8 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             if(item.hasImage){
                 addImageBtn.setImage(item.getGreyImage(), for: .normal)
             }
+            
+            addImageBtn.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         
         } else{
             navigationItem.title = "Add Item"
