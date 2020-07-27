@@ -123,11 +123,10 @@
                                 <color key="tintColor" red="0.32586547729999998" green="0.64543908829999996" blue="0.38819706440000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgn-ph-bAK">
-                                <rect key="frame" x="126" y="634" width="165" height="165"/>
+                                <rect key="frame" x="107" y="622" width="172" height="170"/>
                                 <color key="backgroundColor" red="0.05881185085" green="0.058830253780000001" blue="0.058810673649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="165" id="q16-ey-neT"/>
-                                    <constraint firstAttribute="width" secondItem="hgn-ph-bAK" secondAttribute="height" multiplier="1:1" id="saq-JL-Csj"/>
+                                    <constraint firstAttribute="height" constant="170" id="EnN-aB-he9"/>
                                 </constraints>
                                 <state key="normal" image="photo.fill" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,19 +141,22 @@
                         <color key="tintColor" red="0.95502287149999998" green="0.20447647569999999" blue="0.43530109519999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="trailing" secondItem="lIu-2v-Ni5" secondAttribute="trailingMargin" id="0CX-C5-xoF"/>
-                            <constraint firstItem="3ey-3C-UVS" firstAttribute="trailing" secondItem="hgn-ph-bAK" secondAttribute="trailing" constant="123" id="3nS-Qc-qkj"/>
-                            <constraint firstItem="3ey-3C-UVS" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hgn-ph-bAK" secondAttribute="trailing" symbolic="YES" id="Eik-oA-VXn"/>
+                            <constraint firstItem="hgn-ph-bAK" firstAttribute="width" secondItem="lIu-2v-Ni5" secondAttribute="height" multiplier="43:224" id="3S9-Da-24E"/>
+                            <constraint firstItem="hgn-ph-bAK" firstAttribute="leading" secondItem="3ey-3C-UVS" secondAttribute="leading" constant="107" id="3SB-22-sTY"/>
+                            <constraint firstItem="hgn-ph-bAK" firstAttribute="leading" secondItem="3ey-3C-UVS" secondAttribute="leading" constant="107" id="7Xn-gb-cqJ"/>
                             <constraint firstItem="3ey-3C-UVS" firstAttribute="bottom" secondItem="ieb-Nt-e5c" secondAttribute="bottom" constant="199" id="Erl-xF-oyd"/>
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="trailing" secondItem="ieb-Nt-e5c" secondAttribute="trailing" constant="4" id="Hi3-MX-Dom"/>
-                            <constraint firstItem="3ey-3C-UVS" firstAttribute="trailing" secondItem="hgn-ph-bAK" secondAttribute="trailing" constant="123" id="KmC-NK-aMl"/>
+                            <constraint firstItem="3ey-3C-UVS" firstAttribute="trailing" secondItem="hgn-ph-bAK" secondAttribute="trailing" constant="135" id="NSn-rZ-giM"/>
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="centerX" secondItem="lIu-2v-Ni5" secondAttribute="centerX" id="QOd-iO-S7e"/>
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="leading" secondItem="aUl-FK-UGA" secondAttribute="leading" id="T1d-Y6-WNZ"/>
+                            <constraint firstItem="3ey-3C-UVS" firstAttribute="trailing" secondItem="hgn-ph-bAK" secondAttribute="trailing" constant="135" id="THn-vj-3G3"/>
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="top" secondItem="aUl-FK-UGA" secondAttribute="bottom" constant="-23.5" id="TzE-p7-qiL"/>
                             <constraint firstItem="aUl-FK-UGA" firstAttribute="top" secondItem="BIY-PZ-8iA" secondAttribute="bottom" constant="43" id="etc-w4-LO7"/>
                             <constraint firstItem="BIY-PZ-8iA" firstAttribute="top" secondItem="3ey-3C-UVS" secondAttribute="top" constant="45" id="gWX-Hb-Lod"/>
+                            <constraint firstItem="3ey-3C-UVS" firstAttribute="bottom" secondItem="hgn-ph-bAK" secondAttribute="bottom" constant="21" id="ghw-Ax-5P1"/>
+                            <constraint firstItem="hgn-ph-bAK" firstAttribute="centerX" secondItem="3ey-3C-UVS" secondAttribute="centerX" constant="-14" id="mSg-ch-gas"/>
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="leading" secondItem="aUl-FK-UGA" secondAttribute="trailing" constant="-128" id="t1I-H1-Ub9"/>
-                            <constraint firstItem="3ey-3C-UVS" firstAttribute="bottom" secondItem="hgn-ph-bAK" secondAttribute="bottom" constant="14" id="urZ-fe-Fk5"/>
-                            <constraint firstItem="hgn-ph-bAK" firstAttribute="leading" secondItem="3ey-3C-UVS" secondAttribute="leading" constant="126" id="x3I-rD-fhq"/>
+                            <constraint firstItem="hgn-ph-bAK" firstAttribute="top" secondItem="ieb-Nt-e5c" secondAttribute="bottom" constant="8" symbolic="YES" id="yYt-C2-5ub"/>
                             <constraint firstItem="ieb-Nt-e5c" firstAttribute="top" secondItem="aUl-FK-UGA" secondAttribute="bottom" constant="-23.5" id="yfG-ug-wtd"/>
                         </constraints>
                     </view>
@@ -171,7 +173,6 @@
                     <connections>
                         <outlet property="addButton" destination="CZq-f4-McN" id="30P-YC-Fgq"/>
                         <outlet property="addImageBtn" destination="hgn-ph-bAK" id="FAC-Md-7QI"/>
-                        <outlet property="background" destination="lIu-2v-Ni5" id="7oM-Wv-NkH"/>
                         <outlet property="tableView" destination="ieb-Nt-e5c" id="Abv-TM-xPR"/>
                         <outlet property="textField" destination="BIY-PZ-8iA" id="3hb-Ni-Sil"/>
                     </connections>

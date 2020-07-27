@@ -22,7 +22,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var imagePicker: ImagePicker!
     
-    @IBOutlet var background: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
@@ -45,6 +44,10 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.allowsSelection = true
         
         textField.delegate = self
+        
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGR.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGR)
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
@@ -72,6 +75,10 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             navigationItem.title = "Add Item"
             addButton.title = "Add Item"
         }
+    }
+    
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
     }
     
     //show the image picker
@@ -155,7 +162,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         self.view.endEditing(true)
-        background.endEditing(true)
         return true
     }
 }
