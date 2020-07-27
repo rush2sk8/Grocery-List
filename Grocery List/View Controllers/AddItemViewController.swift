@@ -22,14 +22,12 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var imagePicker: ImagePicker!
     
-    @IBOutlet var background: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var addButton: UIBarButtonItem!
-    @IBOutlet weak var addImageBtn: UIButton!
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var addImageBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +35,19 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationItem.largeTitleDisplayMode = .never
         
         addImageBtn.layer.cornerRadius = 10
+        addImageBtn.layer.borderWidth = 3
+        addImageBtn.layer.borderColor = #colorLiteral(red: 0.9921568627, green: 0, blue: 0.4274509804, alpha: 1)
+        addImageBtn.clipsToBounds = true
         
         tableView.delegate = self 
         tableView.dataSource = self
         tableView.allowsSelection = true
         
         textField.delegate = self
+        
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGR.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGR)
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
@@ -61,15 +66,19 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             addImageBtn.isEnabled = false
             
             if(item.hasImage){
-                imageView.image = item.getGreyImage()
-                imageView.layer.cornerRadius = 8.0
-                imageView.clipsToBounds = true
+                addImageBtn.setImage(item.getGreyImage(), for: .normal)
             }
+            
+            addImageBtn.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         
         } else{
             navigationItem.title = "Add Item"
             addButton.title = "Add Item"
         }
+    }
+    
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
     }
     
     //show the image picker
@@ -103,7 +112,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             else {
                 let toAdd = Item(name: textField.text!.capitalized)
                 
-                if let image = imageView.image {
+                if let image = addImageBtn.backgroundImage(for: .normal) {
                     let imageData = image.jpegData(compressionQuality: 0.3)
                     let imageb64 = imageData?.base64EncodedString()
                     
@@ -153,7 +162,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         self.view.endEditing(true)
-        background.endEditing(true)
         return true
     }
 }
@@ -161,6 +169,8 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
 extension AddItemViewController: ImagePickerDelegate {
     
     func didSelect(image: UIImage?) {
-        self.imageView.image = image
+        self.addImageBtn.setBackgroundImage(image, for: .normal)
+        self.addImageBtn.imageView?.layer.cornerRadius = 10
+        self.addImageBtn.setImage(nil, for: .normal)
     }
 }

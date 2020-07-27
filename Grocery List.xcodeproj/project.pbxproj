@@ -29,7 +29,6 @@
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 		24B25E3224C4CD5F00E38D01 /* Grocery_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */; };
 		24B4AF1024B671E200BAD2FC /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 24B4AF0F24B671E200BAD2FC /* appstore.png */; };
-		4010B5AF02684B5E5F246805 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,7 +104,6 @@
 				244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */,
 				244CEC4C24ABC850002E2DCA /* Lightbox.framework in Frameworks */,
 				CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */,
-				4010B5AF02684B5E5F246805 /* Pods_Grocery_List.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,10 +676,11 @@
 		24B25E3624C4CD5F00E38D01 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6Z6P82U77X;
+				DEVELOPMENT_TEAM = DH439G95GZ;
 				INFOPLIST_FILE = "Grocery ListUITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -701,7 +700,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Z6P82U77X;
 				INFOPLIST_FILE = "Grocery ListUITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
