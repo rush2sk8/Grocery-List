@@ -118,7 +118,9 @@ class Store: Codable {
     public func finishShopping() {
         for category in categories {
             category.pruneNonFavorites()
+            category.resetFavorites()
         }
+        
         save()
     }
     

@@ -46,4 +46,11 @@ class Category: Codable {
         self.items = faves
     }
     
+    func resetFavorites(){
+        for item in self.items {
+            if item.isFavorite && item.isDone {
+                item.isDone = false
+            }
+        }
+    }
 }
