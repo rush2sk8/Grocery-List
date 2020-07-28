@@ -104,7 +104,7 @@ class Grocery_ListUITests: XCTestCase {
         
         let elementsQuery = app.alerts["Are you sure you're finished?"].scrollViews.otherElements
         
-        XCTAssertTrue(elementsQuery.staticTexts["Your list still has 2 items left"].exists)
+        XCTAssertTrue(elementsQuery.staticTexts["Your list still has 1 items left"].exists)
         elementsQuery.buttons["Yes"]/*@START_MENU_TOKEN@*/.tap()/*[[".tap()",".press(forDuration: 0.9);"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/
         
         XCTAssertFalse(tablesQuery.staticTexts["Milk"].exists)
