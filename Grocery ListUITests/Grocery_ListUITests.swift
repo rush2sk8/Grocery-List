@@ -77,6 +77,38 @@ class Grocery_ListUITests: XCTestCase {
         XCUIApplication().tables/*@START_MENU_TOKEN@*/.buttons["Delete"].tap()/*[[".cells.buttons[\"Delete\"]",".tap()",".press(forDuration: 0.5);",".buttons[\"Delete\"]"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,1]]@END_MENU_TOKEN@*/
         
         XCTAssertFalse(tablesQuery.staticTexts["Milk"].exists)
+    }
+    
+    func testFinishShopping() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let tablesQuery = XCUIApplication().tables
+        tablesQuery.cells.containing(.staticText, identifier:"Wegmans").element.tap()
+        
+        let toolbar = app.toolbars["Toolbar"]
+        let itemButton = toolbar.children(matching: .other).element.children(matching: .other).element.children(matching: .button).matching(identifier: "Item").element(boundBy: 1)
+        itemButton.tap()
+        
+        let itemNameTextField = app.textFields["Item Name"]
+        itemNameTextField.tap()
+        app.textFields.firstMatch.typeText("Milk")
+        
+        let dairyStaticText = tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Dairy"]/*[[".cells.staticTexts[\"Dairy\"]",".staticTexts[\"Dairy\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        dairyStaticText.tap()
+        
+        let addItemButton = toolbar.buttons["Add Item"]
+        addItemButton.tap()
+        
+        toolbar.buttons["Done"].tap()
+        
+        let elementsQuery = app.alerts["Are you sure you're finished?"].scrollViews.otherElements
+        
+        XCTAssertTrue(elementsQuery.staticTexts["Your list still has 2 items left"].exists)
+        elementsQuery.buttons["Yes"]/*@START_MENU_TOKEN@*/.tap()/*[[".tap()",".press(forDuration: 0.9);"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/
+        
+        XCTAssertFalse(tablesQuery.staticTexts["Milk"].exists)
+        XCTAssertFalse(tablesQuery.staticTexts["Cheese"].exists)
         
         addTeardownBlock {
             let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
@@ -92,11 +124,8 @@ class Grocery_ListUITests: XCTestCase {
                 springboard.coordinate(withNormalizedOffset: CGVector(dx: (icFrame.minX + 3) / springboard.frame.maxX, dy: (icFrame.minY + 3) / springFrame.maxY)).tap()
                 springboard.alerts.buttons["Delete"].tap()
             }
-            
         }
     }
-    
-    
 
 }
 
