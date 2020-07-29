@@ -110,23 +110,24 @@ class Grocery_ListUITests: XCTestCase {
         XCTAssertFalse(tablesQuery.staticTexts["Milk"].exists)
         XCTAssertFalse(tablesQuery.staticTexts["Cheese"].exists)
         
-        addTeardownBlock {
-            let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
-            
-            XCUIApplication().terminate()
-            let icon = springboard.icons["Grocery List"]
-            
-            if icon.exists {
-                let icFrame = icon.frame
-                let springFrame = springboard.frame
-                icon.press(forDuration: 5)
-                
-                springboard.coordinate(withNormalizedOffset: CGVector(dx: (icFrame.minX + 3) / springboard.frame.maxX, dy: (icFrame.minY + 3) / springFrame.maxY)).tap()
-                springboard.alerts.buttons["Delete"].tap()
-            }
-        }
     }
 
+    func deleteApp(){
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        
+        XCUIApplication().terminate()
+        let icon = springboard.icons["Grocery List"]
+        
+        if icon.exists {
+            let icFrame = icon.frame
+            let springFrame = springboard.frame
+            icon.press(forDuration: 5)
+            
+            springboard.coordinate(withNormalizedOffset: CGVector(dx: (icFrame.minX + 3) / springboard.frame.maxX, dy: (icFrame.minY + 3) / springFrame.maxY)).tap()
+            springboard.alerts.buttons["Delete"].tap()
+        }
+    }
+    
 }
 
 extension XCUIElement {
