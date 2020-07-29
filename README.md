@@ -1,6 +1,11 @@
 # Grocery-List
+<p align="center">
+    <img src="https://img.shields.io/badge/swift-5.0-orange.svg" alt="swift 5.0 badge" />
+    <img src="https://img.shields.io/badge/platform-iOS-lightgrey.svg" alt="platform iOS badge" />
+<img src="https://github.com/rushadantia/Grocery-List/workflows/Grocery%20List/badge.svg" alt="Status" />
+ 
+</p>
 
-![Grocery List](https://github.com/rushadantia/Grocery-List/workflows/Grocery%20List/badge.svg)
 
 App to categorize groceries to make it easier to go shopping
 
