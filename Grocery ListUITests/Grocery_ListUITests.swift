@@ -19,14 +19,14 @@ class Grocery_ListUITests: XCTestCase {
         app.launch()
         app.navigationBars["Stores"].buttons["Add"].tap()
         app.textFields["Store Name"].tap()
-        
+
         app.textFields["Store Name"].typeText("Wegmans")
-        
-        app.buttons["Add Store"].tap()
-        
+
+        app.buttons["+"].tap()
+
         let tablesQuery = app.tables
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Wegmans"]/*[[".cells.staticTexts[\"Wegmans\"]",".staticTexts[\"Wegmans\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
+
         XCTAssertTrue(app.navigationBars["Wegmans"].staticTexts["Wegmans"].exists)
     }
     

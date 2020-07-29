@@ -120,7 +120,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ieb-Nt-e5c">
                                 <rect key="frame" x="24" y="210" width="366" height="404"/>
                                 <color key="backgroundColor" red="0.1215666011" green="0.12156755480000001" blue="0.1215701029" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="tintColor" red="0.32586547729999998" green="0.64543908829999996" blue="0.38819706440000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgn-ph-bAK">
                                 <rect key="frame" x="107" y="622" width="172" height="170"/>
