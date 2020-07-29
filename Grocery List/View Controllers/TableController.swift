@@ -221,7 +221,7 @@ class TableController: UITableViewController {
         }
         
         delete.title = "Delete"
-        delete.backgroundColor = item.isFavorite ? .systemRed : .systemRed
+        delete.backgroundColor = item.isFavorite ? .gray : .systemRed
         
         //swipe action to mark item as done
         let done = UIContextualAction(style: .normal, title: "Done") { [self] (action, view, completion) in
@@ -229,6 +229,12 @@ class TableController: UITableViewController {
             //get the selected item and toggle its "doneness"
             let item = self.store.categories[indexPath[0]].items[indexPath[1]]
             item.isDone.toggle()
+            
+            //if thats the last item of the section then collapse it
+            if self.store.categories[indexPath[0]].getNonDoneItems() == 0 {
+                let sectionHeader = tableView.headerView(forSection: indexPath.section) as! CollapsibleTableViewHeader
+                sectionHeader.delegate?.toggleSection(sectionHeader, section: indexPath.section)
+            }
             
             //reload table to trigger rerender of info
             tableView.reloadData()
@@ -240,7 +246,7 @@ class TableController: UITableViewController {
         }
         
         done.title = "Done"
-        done.backgroundColor = .systemGreen
+        done.backgroundColor = .blue
         
         return UISwipeActionsConfiguration(actions: [done,delete])
     }
