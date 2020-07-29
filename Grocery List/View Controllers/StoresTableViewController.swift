@@ -69,7 +69,7 @@ class StoresTableViewController: UITableViewController {
         let page = AddStoreBulletinPage(title: "Add Store")
         page.isDismissable = true
         page.descriptionText = "Enter a Store Name"
-        page.actionButtonTitle = "Add Store"
+        page.actionButtonTitle = "Add"
         page.appearance.actionButtonColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
         page.appearance.alternativeButtonTitleColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
         page.appearance.actionButtonTitleColor = .white
