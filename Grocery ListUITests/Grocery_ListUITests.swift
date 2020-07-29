@@ -14,24 +14,16 @@ class Grocery_ListUITests: XCTestCase {
         continueAfterFailure = false
     }
     
-    func testAddStore(){
-        
-        //launch app
+    func testAddStore(){ 
         let app = XCUIApplication()
         app.launch()
-        app/*@START_MENU_TOKEN@*/.staticTexts["Stores"]/*[[".buttons[\"Stores\"].staticTexts[\"Stores\"]",".staticTexts[\"Stores\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        //add store
         app.navigationBars["Stores"].buttons["Add"].tap()
+        app.textFields["Store Name"].tap()
         
-        //type "wegmans"
-        app.textFields.firstMatch.typeText("Wegmans")
-        XCTAssertTrue((app.textFields.firstMatch.value as! String) == "Wegmans")
+        app.textFields["Store Name"].typeText("Wegmans")
         
-        //add the store
-        app.alerts["Store Name"].scrollViews.otherElements.buttons["Add"].tap()
+        app.buttons["Add Store"].tap()
         
-        //click on the store
         let tablesQuery = app.tables
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Wegmans"]/*[[".cells.staticTexts[\"Wegmans\"]",".staticTexts[\"Wegmans\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
