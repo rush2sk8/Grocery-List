@@ -15,6 +15,8 @@
 		241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241F0F7B24B7A35800A3F67C /* ItemCell.swift */; };
 		2423A01F24BB93CC0089181C /* Grocery_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */; };
 		24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */; };
+		243827FE24D1EF8E00AB7E20 /* BLTNBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */; };
+		2438280224D1F4E400AB7E20 /* AddStoreBulletinPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2438280124D1F4E400AB7E20 /* AddStoreBulletinPage.swift */; };
 		24390CBF24C61B6700189D75 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24390CBE24C61B6700189D75 /* StoreCell.swift */; };
 		244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4724ABC850002E2DCA /* Cache.framework */; };
 		244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4924ABC850002E2DCA /* Imaginary.framework */; };
@@ -64,6 +66,8 @@
 		2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListTests.swift; sourceTree = "<group>"; };
 		2423A02024BB93CC0089181C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InstantSearchVoiceOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BLTNBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2438280124D1F4E400AB7E20 /* AddStoreBulletinPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreBulletinPage.swift; sourceTree = "<group>"; };
 		24390CBE24C61B6700189D75 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreCell.swift; path = "Grocery List/Table/StoreCell.swift"; sourceTree = SOURCE_ROOT; };
 		244CEC4724ABC850002E2DCA /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4924ABC850002E2DCA /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				243827FE24D1EF8E00AB7E20 /* BLTNBoard.framework in Frameworks */,
 				24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */,
 				244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */,
 				244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */,
@@ -132,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				2418684724885824003E7C69 /* StoresTableViewController.swift */,
+				2438280124D1F4E400AB7E20 /* AddStoreBulletinPage.swift */,
 				2461A840248829B6009BE0AB /* TableController.swift */,
 				2461A84224882D1D009BE0AB /* AddItemViewController.swift */,
 			);
@@ -217,6 +223,7 @@
 		FD6CE4CE15A5E7A1540EC50C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */,
 				24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */,
 				240436B724BB9BA20027D973 /* Cache.framework */,
 				240436B924BB9BA20027D973 /* Imaginary.framework */,
@@ -419,6 +426,7 @@
 				2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */,
 				2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */,
 				2418684324884B42003E7C69 /* Category.swift in Sources */,
+				2438280224D1F4E400AB7E20 /* AddStoreBulletinPage.swift in Sources */,
 				241525B724AAAD56000DE4BA /* Item.swift in Sources */,
 				2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */,
 				2418684524884B6C003E7C69 /* Store.swift in Sources */,

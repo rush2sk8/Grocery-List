@@ -1,4 +1,5 @@
 PODS:
+  - BulletinBoard (4.1.2)
   - Cache (5.3.0)
   - Imaginary (4.3.1):
     - Cache (~> 5.3.0)
@@ -7,22 +8,25 @@ PODS:
     - Imaginary (~> 4.3.1)
 
 DEPENDENCIES:
+  - BulletinBoard
   - InstantSearchVoiceOverlay (~> 1.1.0)
   - Lightbox
 
 SPEC REPOS:
   trunk:
+    - BulletinBoard
     - Cache
     - Imaginary
     - InstantSearchVoiceOverlay
     - Lightbox
 
 SPEC CHECKSUMS:
+  BulletinBoard: 1c0cb191b6c6245d08f51bd2445f1e36414ec0ed
   Cache: 48762993ec44e1d93483c4d4a13edd18452326f4
   Imaginary: 18c5bba364229eef383b925199db442e71d175e1
   InstantSearchVoiceOverlay: 8fcbd0c143c872e6b39ef9b6475f1dfeb9ebfbcf
   Lightbox: cede4a64f2d864da1f7e7959aa78a8659a311e7c
 
-PODFILE CHECKSUM: c08eaedeadf807e7ff225b63b6071dd330833c25
+PODFILE CHECKSUM: 2b6daf94014fa42ca6da28c35d2a7848de7e9ee2
 
 COCOAPODS: 1.9.1

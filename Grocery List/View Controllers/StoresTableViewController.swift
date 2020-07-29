@@ -8,18 +8,20 @@
 
 import Foundation
 import UIKit
+import BLTNBoard
 
 class StoresTableViewController: UITableViewController {
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
- 
     var stores: [Store] = [Store]()
+    
+    lazy var bulletinManager: BLTNItemManager = {
+        let introPage = makeAddStoreBulletin()
+        return BLTNItemManager(rootItem: introPage)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationItem.title = "Stores"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -29,12 +31,14 @@ class StoresTableViewController: UITableViewController {
         refreshControl?.tintColor = .white
         self.tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
-       
+        
         let addBar = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addStoreAction))
         self.navigationItem.rightBarButtonItem = addBar
         
         self.tableView.separatorColor = .clear
         self.tableView.tableFooterView = UIView()
+        
+        self.bulletinManager.backgroundViewStyle = .blurredDark
     }
     
     @objc func addStoreAction(){
@@ -50,7 +54,7 @@ class StoresTableViewController: UITableViewController {
     //just reload the store names from the userdefaults
     func reloadStores() {
         if let storeNames = DataStore.getStoreNames() {
-       
+            
             self.stores = [Store]()
             
             for storeName in storeNames {
@@ -59,31 +63,25 @@ class StoresTableViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-
-    //shows the popup dialog to add a store
-    func showAddStoreDialog(){
-        let alert = UIAlertController(title: "Store Name", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    
+    func makeAddStoreBulletin() -> AddStoreBulletinPage {
         
-        alert.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = "Store Name"
-        })
+        let page = AddStoreBulletinPage(title: "Add Store")
+        page.isDismissable = true
+        page.descriptionText = "Enter a Store Name"
+        page.actionButtonTitle = "Add"
+        page.appearance.actionButtonColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
+        page.appearance.alternativeButtonTitleColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
+        page.appearance.actionButtonTitleColor = .white
+        page.appearance.titleTextColor = .white
         
-        alert.addAction(UIAlertAction(title: "Add", style: .default , handler: { (action) in
-            if let storeName = alert.textFields?.first?.text?.lowercased() {
-                
-                //if the field is left blank
-                if(storeName == ""){
-                    return
-                }
+        page.textInputHandler = { (item, text) in
+            print("Text: \(text ?? "nil")")
+            
+            if let storeName = text {
                 
                 //if the store exists then dont add it
-                if let existingStores = DataStore.getStoreNames(){
-                    if(existingStores.contains(storeName)){
-                        self.showAddStoreAlertErrorDialog(storeName: storeName)
-                        return
-                    }
-                }
+          
                 
                 //save store name
                 DataStore.saveNewStore(store: storeName)
@@ -91,10 +89,17 @@ class StoresTableViewController: UITableViewController {
                 
                 self.tableView.reloadData()
             }
-        }))
+            
+            self.bulletinManager.dismissBulletin(animated: true)
+        }
         
-        //show the alert
-        self.present(alert, animated: true)
+        return page
+    }
+    
+    
+    //shows the popup dialog to add a store
+    func showAddStoreDialog(){
+        bulletinManager.showBulletin(above: self)
     }
     
     //error if they try to add the same store twice
@@ -136,7 +141,7 @@ class StoresTableViewController: UITableViewController {
     
     //method that will handle cell deletion
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    
+        
         if(editingStyle == .delete){
             
             let toRemove = stores[indexPath[1]]
