@@ -123,6 +123,7 @@ class DataStore {
             defaults.synchronize()
         } else{
             defaults.set(storeNames, forKey: "stores")
+            defaults.synchronize()
         }
     }
     
@@ -134,7 +135,7 @@ class DataStore {
             
             FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
             
-            let storeToSave = Store(name: store)
+            let storeToSave = Store(name: store.lowercased())
             DataStore.saveStoreData(store: storeToSave)
         }
         
@@ -145,6 +146,7 @@ class DataStore {
             defaults.synchronize()
         } else{
             defaults.set([store], forKey: "stores")
+            defaults.synchronize()
         }
     }
 }

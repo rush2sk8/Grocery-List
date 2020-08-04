@@ -59,7 +59,11 @@ extension AddStoreBulletinPage: UITextFieldDelegate {
                 textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
                 return
             }
+            else {
+                textInputHandler?(self, textField.text)
+            }
         }
-        textInputHandler?(self, textField.text)
+        
+     
     }
 }

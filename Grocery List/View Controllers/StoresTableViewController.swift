@@ -79,12 +79,9 @@ class StoresTableViewController: UITableViewController {
             print("Text: \(text ?? "nil")")
             
             if let storeName = text {
-                
-                //if the store exists then dont add it
-          
-                
+ 
                 //save store name
-                DataStore.saveNewStore(store: storeName)
+                DataStore.saveNewStore(store: storeName.lowercased())
                 self.stores.append(Store(name: storeName))
                 
                 self.tableView.reloadData()
