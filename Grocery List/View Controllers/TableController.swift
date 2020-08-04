@@ -9,12 +9,15 @@
 import Foundation
 import UIKit
 import InstantSearchVoiceOverlay
+import BLTNBoard
 
 class TableController: UITableViewController {
     
     var store = Store()
     var isCollapsed = false
     let vc = VoiceOverlayController()
+    
+    var bulletinManager: BLTNItemManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,42 +64,52 @@ class TableController: UITableViewController {
         
         self.tableView.separatorColor = .clear
         self.tableView.tableFooterView = UIView()
+        
     }
     
     //action for when a user is done shopping
-   @IBAction func finishShopping() {
+    @IBAction func finishShopping() {
+        bulletinManager = BLTNItemManager(rootItem: makeFinishShoppingBulletin())
+        bulletinManager!.backgroundViewStyle = .blurredDark
+        bulletinManager!.showBulletin(above: self)
         
-        //if the number of items left is 0 then finish and clean up
+    }
+    
+    func makeFinishShoppingBulletin() -> BLTNPageItem {
+        
+        let page = BLTNPageItem(title: "Finished shopping?")
+        
+        page.isDismissable = true
+        page.descriptionText = "Enter a Store Name"
+        
+        page.appearance.actionButtonColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
+        page.appearance.alternativeButtonTitleColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
+        page.appearance.actionButtonTitleColor = .white
+        page.appearance.titleTextColor = .white
+        
         if store.getNumNonDoneItems() == 0 {
-            let alert = UIAlertController(
-                title: "Finished shopping?",
-                message: "Are you sure?",
-                preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-                self.store.finishShopping()
-                self.tableView.reloadData()
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
+            page.descriptionText = "Are you sure?"
+        }
+        else {
+            page.descriptionText = "Your list still has \(store.getNumNonDoneItems()) items left"
         }
         
-        //otherwise prompt them if there are some non done items
-        else {
-            let alert = UIAlertController(
-                title: "Are you sure you're finished?",
-                message: "Your list still has \(store.getNumNonDoneItems()) items left",
-                preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {_ in
-                self.store.finishShopping()
-                self.tableView.reloadData()
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
+        page.actionButtonTitle = "Yes"
+        page.alternativeButtonTitle = "Cancel"
+        
+        page.isDismissable = true
+        
+        page.actionHandler = { item in
+            self.store.finishShopping()
+            self.tableView.reloadData()
+            self.bulletinManager?.dismissBulletin(animated: true)
         }
+        
+        page.alternativeHandler = { item in
+            self.bulletinManager?.dismissBulletin(animated: true)
+        }
+        
+        return page
     }
     
     //add an item button click
@@ -126,14 +139,14 @@ class TableController: UITableViewController {
             self.store = savedStore
             self.tableView.reloadData()
         }
-    
+        
         var paths: [IndexPath] = [IndexPath]()
-
+        
         for i in 0..<store.categories.count {
             let count = tableView.numberOfRows(inSection: i)
             paths.append(contentsOf: (0..<count).map { IndexPath(row: $0, section: i)})
         }
-
+        
         self.tableView.reloadRows(at: paths, with: .left)
         refreshControl?.endRefreshing()
     }

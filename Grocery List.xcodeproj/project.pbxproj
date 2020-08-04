@@ -137,11 +137,18 @@
 			isa = PBXGroup;
 			children = (
 				2418684724885824003E7C69 /* StoresTableViewController.swift */,
-				2438280124D1F4E400AB7E20 /* AddStoreBulletinPage.swift */,
 				2461A840248829B6009BE0AB /* TableController.swift */,
 				2461A84224882D1D009BE0AB /* AddItemViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		24235F9E24D9D642002A704F /* Bulletin Pages */ = {
+			isa = PBXGroup;
+			children = (
+				2438280124D1F4E400AB7E20 /* AddStoreBulletinPage.swift */,
+			);
+			path = "Bulletin Pages";
 			sourceTree = "<group>";
 		};
 		2423A01D24BB93CC0089181C /* Grocery ListTests */ = {
@@ -181,8 +188,9 @@
 				2418684624884C4F003E7C69 /* Data Models */,
 				2418684924885827003E7C69 /* View Controllers */,
 				24C3A7B124A577C50084D49F /* Table */,
-				2461A83224882541009BE0AB /* Main.storyboard */,
+				24235F9E24D9D642002A704F /* Bulletin Pages */,
 				2461A82E24882541009BE0AB /* AppDelegate.swift */,
+				2461A83224882541009BE0AB /* Main.storyboard */,
 				2461A83524882543009BE0AB /* Assets.xcassets */,
 				24B4AF0F24B671E200BAD2FC /* appstore.png */,
 				2461A83724882543009BE0AB /* LaunchScreen.storyboard */,

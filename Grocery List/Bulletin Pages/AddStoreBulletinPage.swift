@@ -53,17 +53,14 @@ extension AddStoreBulletinPage: UITextFieldDelegate {
         }
         
         if let existingStores = DataStore.getStoreNames(){
-            if(existingStores.contains(textField.text!.lowercased())){
+            if(existingStores.contains(textField.text!.lowercased().trimmingCharacters(in: .whitespaces))){
                 descriptionLabel!.textColor = .red
                 descriptionLabel!.text = "Store Already Exists!"
                 textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
                 return
             }
-            else {
-                textInputHandler?(self, textField.text)
-            }
+            
         }
-        
-     
+        textInputHandler?(self, textField.text)
     }
 }
