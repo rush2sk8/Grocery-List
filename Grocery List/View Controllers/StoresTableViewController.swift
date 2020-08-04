@@ -79,7 +79,7 @@ class StoresTableViewController: UITableViewController {
             print("Text: \(text ?? "nil")")
             
             if let storeName = text {
- 
+                
                 //save store name
                 DataStore.saveNewStore(store: storeName.lowercased())
                 self.stores.append(Store(name: storeName))

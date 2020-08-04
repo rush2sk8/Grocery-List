@@ -25,9 +25,43 @@ class Grocery_ListUITests: XCTestCase {
         app.buttons["+"].tap()
 
         let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Wegmans"]/*[[".cells.staticTexts[\"Wegmans\"]",".staticTexts[\"Wegmans\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.cells.staticTexts["Wegmans"]/*[[".cells.staticTexts[\"Wegmans\"]",".staticTexts[\"Wegmans\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
 
         XCTAssertTrue(app.navigationBars["Wegmans"].staticTexts["Wegmans"].exists)
+    }
+    
+    func testDuplicateStore() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.navigationBars["Stores"].buttons["Add"].tap()
+        
+        let storeNameTextField = app.textFields["Store Name"]
+        storeNameTextField.tap()
+        storeNameTextField.tap()
+        
+        app.textFields["Store Name"].typeText("Wegmans")
+        
+        app.buttons["+"].tap()
+        
+        XCTAssertTrue(app.staticTexts["Store Already Exists!"].exists)
+    }
+    
+    func testTrailingWhitespaceFailure(){
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.navigationBars["Stores"].buttons["Add"].tap()
+        
+        let storeNameTextField = app.textFields["Store Name"]
+        storeNameTextField.tap()
+        storeNameTextField.tap()
+        
+        app.textFields["Store Name"].typeText("Wegmans    ")
+        
+        app.buttons["+"].tap()
+        
+        XCTAssertTrue(app.staticTexts["Store Already Exists!"].exists)
     }
     
     func testItemFavorite() {
@@ -50,10 +84,10 @@ class Grocery_ListUITests: XCTestCase {
         
         XCTAssertTrue(milkStaticText.exists)
         
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["star.fill"]/*[[".cells.buttons[\"star.fill\"]",".buttons[\"star.fill\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.cells.buttons["star.fill"]/*[[".cells.buttons[\"star.fill\"]",".buttons[\"star.fill\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
         
         milkStaticText.swipeLeft()
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["Delete"]/*[[".cells.buttons[\"Delete\"]",".buttons[\"Delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.cells.buttons["Delete"]/*[[".cells.buttons[\"Delete\"]",".buttons[\"Delete\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
         
         XCTAssertTrue(milkStaticText.exists)
     }
@@ -94,14 +128,14 @@ class Grocery_ListUITests: XCTestCase {
         
         toolbar.buttons["Done"].tap()
         
-        let elementsQuery = app.alerts["Are you sure you're finished?"].scrollViews.otherElements
+        app.staticTexts["Your list still has 1 items left"].tap()
         
-        XCTAssertTrue(elementsQuery.staticTexts["Your list still has 1 items left"].exists)
-        elementsQuery.buttons["Yes"]/*@START_MENU_TOKEN@*/.tap()/*[[".tap()",".press(forDuration: 0.9);"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/
+        XCTAssertTrue(app.staticTexts["Your list still has 1 items left"].exists)
+        
+        app.buttons["Yes"].tap()
         
         XCTAssertFalse(tablesQuery.staticTexts["Milk"].exists)
-        XCTAssertFalse(tablesQuery.staticTexts["Cheese"].exists)
-        
+    
     }
 
     func deleteApp(){
@@ -119,7 +153,6 @@ class Grocery_ListUITests: XCTestCase {
             springboard.alerts.buttons["Delete"].tap()
         }
     }
-    
 }
 
 extension XCUIElement {
