@@ -31,6 +31,7 @@
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 		24B25E3224C4CD5F00E38D01 /* Grocery_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */; };
 		24B4AF1024B671E200BAD2FC /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 24B4AF0F24B671E200BAD2FC /* appstore.png */; };
+		24FD68A524DB2EF300919494 /* CategoryAddPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD68A324DB2EC300919494 /* CategoryAddPage.swift */; };
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListUITests.swift; sourceTree = "<group>"; };
 		24B25E3324C4CD5F00E38D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24B4AF0F24B671E200BAD2FC /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
+		24FD68A324DB2EC300919494 /* CategoryAddPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryAddPage.swift; path = "Grocery List/Bulletin Pages/CategoryAddPage.swift"; sourceTree = SOURCE_ROOT; };
 		4FD008632E60DB9E3C8B3BC9 /* Pods-Grocery List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.debug.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.debug.xcconfig"; sourceTree = "<group>"; };
 		8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD38424FF3E64C73D4C651DF /* Pods-Grocery List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.release.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		24235F9E24D9D642002A704F /* Bulletin Pages */ = {
 			isa = PBXGroup;
 			children = (
+				24FD68A324DB2EC300919494 /* CategoryAddPage.swift */,
 				2438280124D1F4E400AB7E20 /* AddStoreBulletinPage.swift */,
 			);
 			path = "Bulletin Pages";
@@ -429,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24FD68A524DB2EF300919494 /* CategoryAddPage.swift in Sources */,
 				241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */,
 				2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */,
 				2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */,

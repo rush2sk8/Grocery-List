@@ -64,9 +64,9 @@ class StoresTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func makeAddStoreBulletin() -> AddStoreBulletinPage {
+    func makeAddStoreBulletin() -> CategoryAddPage {
         
-        let page = AddStoreBulletinPage(title: "Add Store")
+        let page = CategoryAddPage(title: "Category")//AddStoreBulletinPage(title: "Add Store")
         page.isDismissable = true
         page.descriptionText = "Enter a Store Name"
         page.actionButtonTitle = "+"
@@ -75,20 +75,20 @@ class StoresTableViewController: UITableViewController {
         page.appearance.actionButtonTitleColor = .white
         page.appearance.titleTextColor = .white
         
-        page.textInputHandler = { (item, text) in
-            print("Text: \(text ?? "nil")")
-            
-            if let storeName = text {
-                
-                //save store name
-                DataStore.saveNewStore(store: storeName.lowercased())
-                self.stores.append(Store(name: storeName))
-                
-                self.tableView.reloadData()
-            }
-            
-            self.bulletinManager.dismissBulletin(animated: true)
-        }
+//        page.textInputHandler = { (item, text) in
+//            print("Text: \(text ?? "nil")")
+//
+//            if let storeName = text {
+//
+//                //save store name
+//                DataStore.saveNewStore(store: storeName.lowercased())
+//                self.stores.append(Store(name: storeName))
+//
+//                self.tableView.reloadData()
+//            }
+//
+//            self.bulletinManager.dismissBulletin(animated: true)
+//        }
         
         return page
     }
