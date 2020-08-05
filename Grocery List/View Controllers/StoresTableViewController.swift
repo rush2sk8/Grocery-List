@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import BLTNBoard
+import Firebase
 
 class StoresTableViewController: UITableViewController {
     
@@ -19,9 +20,11 @@ class StoresTableViewController: UITableViewController {
         return BLTNItemManager(rootItem: introPage)
     }()
     
+    var db: Firestore?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        db = Firestore.firestore()
         self.navigationItem.title = "Stores"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -39,6 +42,16 @@ class StoresTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         
         self.bulletinManager.backgroundViewStyle = .blurredDark
+        
+        db?.collection("users").getDocuments {(snap, err) in
+            if let rr = err {
+                print(rr)
+            } else {
+                for document in snap!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                }
+            }
+        }
     }
     
     @objc func addStoreAction(){
@@ -85,6 +98,12 @@ class StoresTableViewController: UITableViewController {
                 self.stores.append(Store(name: storeName))
                 
                 self.tableView.reloadData()
+                
+                var ref: DocumentReference? = nil
+                ref = self.db?.collection("users").addDocument(data: [
+                    "first": "hi",
+                    "store": storeName
+                ])
             }
             
             self.bulletinManager.dismissBulletin(animated: true)
