@@ -9,4 +9,6 @@ target 'Grocery List' do
 pod 'BulletinBoard'
 pod 'Lightbox'
 pod 'InstantSearchVoiceOverlay', '~> 1.1.0'
+pod 'Firebase/Analytics'
+pod 'Firebase/Firestore'
 end

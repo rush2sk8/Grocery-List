@@ -31,6 +31,23 @@
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 		24B25E3224C4CD5F00E38D01 /* Grocery_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */; };
 		24B4AF1024B671E200BAD2FC /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 24B4AF0F24B671E200BAD2FC /* appstore.png */; };
+		24E5BC6624DB3DD000166612 /* absl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC6524DB3DD000166612 /* absl.framework */; };
+		24E5BC6C24DB3DD100166612 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC6B24DB3DD100166612 /* FBLPromises.framework */; };
+		24E5BC6E24DB3DD100166612 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC6D24DB3DD100166612 /* FirebaseCore.framework */; };
+		24E5BC7024DB3DD100166612 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC6F24DB3DD100166612 /* FirebaseCoreDiagnostics.framework */; };
+		24E5BC7224DB3DD100166612 /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC7124DB3DD100166612 /* FirebaseFirestore.framework */; };
+		24E5BC7424DB3DD100166612 /* FirebaseInstallations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC7324DB3DD100166612 /* FirebaseInstallations.framework */; };
+		24E5BC7624DB3DD100166612 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC7524DB3DD100166612 /* GoogleDataTransport.framework */; };
+		24E5BC7824DB3DD100166612 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC7724DB3DD100166612 /* GoogleUtilities.framework */; };
+		24E5BC7A24DB3DD100166612 /* grpc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC7924DB3DD100166612 /* grpc.framework */; };
+		24E5BC7C24DB3DD100166612 /* grpcpp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC7B24DB3DD100166612 /* grpcpp.framework */; };
+		24E5BC8224DB3DD100166612 /* leveldb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC8124DB3DD100166612 /* leveldb.framework */; };
+		24E5BC8424DB3DD100166612 /* Lightbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC8324DB3DD100166612 /* Lightbox.framework */; };
+		24E5BC8624DB3DD100166612 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC8524DB3DD100166612 /* nanopb.framework */; };
+		24E5BC8824DB3DD100166612 /* openssl_grpc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E5BC8724DB3DD100166612 /* openssl_grpc.framework */; };
+		24FD68A724DB3BAB00919494 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24FD68A624DB3BAB00919494 /* GoogleService-Info.plist */; };
+		24FD68A824DB3BAB00919494 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24FD68A624DB3BAB00919494 /* GoogleService-Info.plist */; };
+		24FD68A924DB3BAB00919494 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24FD68A624DB3BAB00919494 /* GoogleService-Info.plist */; };
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +103,25 @@
 		24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListUITests.swift; sourceTree = "<group>"; };
 		24B25E3324C4CD5F00E38D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24B4AF0F24B671E200BAD2FC /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
+		24E5BC6524DB3DD000166612 /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC6724DB3DD000166612 /* BLTNBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BLTNBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC6924DB3DD100166612 /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC6B24DB3DD100166612 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC6D24DB3DD100166612 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC6F24DB3DD100166612 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC7124DB3DD100166612 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC7324DB3DD100166612 /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC7524DB3DD100166612 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleDataTransport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC7724DB3DD100166612 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC7924DB3DD100166612 /* grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC7B24DB3DD100166612 /* grpcpp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpcpp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC7D24DB3DD100166612 /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC7F24DB3DD100166612 /* InstantSearchVoiceOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InstantSearchVoiceOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC8124DB3DD100166612 /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC8324DB3DD100166612 /* Lightbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lightbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC8524DB3DD100166612 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E5BC8724DB3DD100166612 /* openssl_grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = openssl_grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24FD68A624DB3BAB00919494 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4FD008632E60DB9E3C8B3BC9 /* Pods-Grocery List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.debug.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.debug.xcconfig"; sourceTree = "<group>"; };
 		8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD38424FF3E64C73D4C651DF /* Pods-Grocery List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.release.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.release.xcconfig"; sourceTree = "<group>"; };
@@ -103,6 +139,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E5BC6624DB3DD000166612 /* absl.framework in Frameworks */,
+				24E5BC6C24DB3DD100166612 /* FBLPromises.framework in Frameworks */,
+				24E5BC6E24DB3DD100166612 /* FirebaseCore.framework in Frameworks */,
+				24E5BC7024DB3DD100166612 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				24E5BC7224DB3DD100166612 /* FirebaseFirestore.framework in Frameworks */,
+				24E5BC7424DB3DD100166612 /* FirebaseInstallations.framework in Frameworks */,
+				24E5BC7624DB3DD100166612 /* GoogleDataTransport.framework in Frameworks */,
+				24E5BC7824DB3DD100166612 /* GoogleUtilities.framework in Frameworks */,
+				24E5BC7A24DB3DD100166612 /* grpc.framework in Frameworks */,
+				24E5BC7C24DB3DD100166612 /* grpcpp.framework in Frameworks */,
+				24E5BC8224DB3DD100166612 /* leveldb.framework in Frameworks */,
+				24E5BC8424DB3DD100166612 /* Lightbox.framework in Frameworks */,
+				24E5BC8624DB3DD100166612 /* nanopb.framework in Frameworks */,
+				24E5BC8824DB3DD100166612 /* openssl_grpc.framework in Frameworks */,
 				243827FE24D1EF8E00AB7E20 /* BLTNBoard.framework in Frameworks */,
 				24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */,
 				244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */,
@@ -195,6 +245,7 @@
 				24B4AF0F24B671E200BAD2FC /* appstore.png */,
 				2461A83724882543009BE0AB /* LaunchScreen.storyboard */,
 				2461A83A24882543009BE0AB /* Info.plist */,
+				24FD68A624DB3BAB00919494 /* GoogleService-Info.plist */,
 				2409D27424A7D738001FAD06 /* ImagePicker.swift */,
 			);
 			path = "Grocery List";
@@ -231,6 +282,24 @@
 		FD6CE4CE15A5E7A1540EC50C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24E5BC6524DB3DD000166612 /* absl.framework */,
+				24E5BC6724DB3DD000166612 /* BLTNBoard.framework */,
+				24E5BC6924DB3DD100166612 /* Cache.framework */,
+				24E5BC6B24DB3DD100166612 /* FBLPromises.framework */,
+				24E5BC6D24DB3DD100166612 /* FirebaseCore.framework */,
+				24E5BC6F24DB3DD100166612 /* FirebaseCoreDiagnostics.framework */,
+				24E5BC7124DB3DD100166612 /* FirebaseFirestore.framework */,
+				24E5BC7324DB3DD100166612 /* FirebaseInstallations.framework */,
+				24E5BC7524DB3DD100166612 /* GoogleDataTransport.framework */,
+				24E5BC7724DB3DD100166612 /* GoogleUtilities.framework */,
+				24E5BC7924DB3DD100166612 /* grpc.framework */,
+				24E5BC7B24DB3DD100166612 /* grpcpp.framework */,
+				24E5BC7D24DB3DD100166612 /* Imaginary.framework */,
+				24E5BC7F24DB3DD100166612 /* InstantSearchVoiceOverlay.framework */,
+				24E5BC8124DB3DD100166612 /* leveldb.framework */,
+				24E5BC8324DB3DD100166612 /* Lightbox.framework */,
+				24E5BC8524DB3DD100166612 /* nanopb.framework */,
+				24E5BC8724DB3DD100166612 /* openssl_grpc.framework */,
 				243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */,
 				24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */,
 				240436B724BB9BA20027D973 /* Cache.framework */,
@@ -351,6 +420,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24FD68A824DB3BAB00919494 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +430,7 @@
 			files = (
 				2461A83924882543009BE0AB /* LaunchScreen.storyboard in Resources */,
 				24B4AF1024B671E200BAD2FC /* appstore.png in Resources */,
+				24FD68A724DB3BAB00919494 /* GoogleService-Info.plist in Resources */,
 				2461A83624882543009BE0AB /* Assets.xcassets in Resources */,
 				2461A83424882541009BE0AB /* Main.storyboard in Resources */,
 			);
@@ -369,6 +440,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24FD68A924DB3BAB00919494 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
