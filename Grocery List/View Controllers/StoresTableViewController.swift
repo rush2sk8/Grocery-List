@@ -13,6 +13,7 @@ import BLTNBoard
 class StoresTableViewController: UITableViewController {
     
     var stores: [Store] = [Store]()
+    var currentStoreToBeAdded: Store?
     
     lazy var bulletinManager: BLTNItemManager = {
         let introPage = makeAddStoreBulletin()
@@ -64,35 +65,54 @@ class StoresTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func makeAddStoreBulletin() -> CategoryAddPage {
+    func makeAddStoreBulletin() -> AddStoreBulletinPage {
         
-        let page = CategoryAddPage(title: "Category")//AddStoreBulletinPage(title: "Add Store")
+        let page = AddStoreBulletinPage(title: "Add Store")
         page.isDismissable = true
         page.descriptionText = "Enter a Store Name"
-        page.actionButtonTitle = "+"
+        page.actionButtonTitle = "Continue"
+        page.appearance.actionButtonColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
+        page.appearance.actionButtonTitleColor = .white
+        page.appearance.titleTextColor = .white
+        
+        page.textInputHandler = { (item, text) in
+            print("Text: \(text ?? "nil")")
+
+            if let storeName = text {
+
+                //save store name
+                //DataStore.saveNewStore(store: storeName.lowercased())
+                self.currentStoreToBeAdded = Store(name: storeName.lowercased())
+                //self.stores.append(Store(name: storeName))
+
+                //self.tableView.reloadData()
+            }
+            
+            self.bulletinManager.displayNextItem()
+        }
+        
+        page.next = makeCategoryBulletin()
+        
+        return page
+    }
+    
+    func makeCategoryBulletin() -> CategoryAddPage {
+        
+        let page = CategoryAddPage(title: "Default Categories")
+        page.store = currentStoreToBeAdded
+        page.isDismissable = true
+        page.descriptionText = "Select Defaults"
+        page.actionButtonTitle = "Add Store"
+        page.alternativeButtonTitle = "Add Custom Categories"
         page.appearance.actionButtonColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
         page.appearance.alternativeButtonTitleColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
         page.appearance.actionButtonTitleColor = .white
         page.appearance.titleTextColor = .white
         
-//        page.textInputHandler = { (item, text) in
-//            print("Text: \(text ?? "nil")")
-//
-//            if let storeName = text {
-//
-//                //save store name
-//                DataStore.saveNewStore(store: storeName.lowercased())
-//                self.stores.append(Store(name: storeName))
-//
-//                self.tableView.reloadData()
-//            }
-//
-//            self.bulletinManager.dismissBulletin(animated: true)
-//        }
+        
         
         return page
     }
-    
     
     //shows the popup dialog to add a store
     func showAddStoreDialog(){
