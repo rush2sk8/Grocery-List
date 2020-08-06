@@ -99,14 +99,7 @@ class StoresTableViewController: UITableViewController {
         
         page.actionHandler = { (item: BLTNActionItem) in
             //save store name
-            var selectedCategories = [Category]()
-            
-            for button in page.buttons {
-                if button.tapped {
-                    print(button.titleLabel!.text!)
-                    selectedCategories.append(Category(name: button.titleLabel!.text!))
-                }
-            }
+            var selectedCategories = self.getCategoriesFromCardPage(page: page)
             
             if(selectedCategories.count == 0){
                 page.descriptionLabel!.textColor = .red
@@ -114,8 +107,6 @@ class StoresTableViewController: UITableViewController {
             }
             
             else {
-                selectedCategories.append(Category(name: "Other"))
-                
                 let store = Store(name: storeName, selectedCategories)
         
                 DataStore.saveNewStore(store: storeName)
@@ -128,8 +119,89 @@ class StoresTableViewController: UITableViewController {
         }
         
         page.alternativeHandler = { (item: BLTNActionItem) in
-            print("alternative tapped")
-            self.bulletinManager.dismissBulletin(animated: true)
+            var selectedCategories = self.getCategoriesFromCardPage(page: page)
+            selectedCategories.append(Category(name: "Other"))
+            
+            let store = Store(name: storeName, selectedCategories)
+            
+            page.next = self.makeCustomCategoryCard(store: store)
+            self.bulletinManager.displayNextItem()
+        }
+        
+        return page
+    }
+    
+    private func getCategoriesFromCardPage(page: CategoryAddPage) -> [Category] {
+        var selectedCategories = [Category]()
+        
+        for button in page.buttons {
+            if button.tapped {
+                print(button.titleLabel!.text!)
+                selectedCategories.append(Category(name: button.titleLabel!.text!))
+            }
+        }
+        return selectedCategories
+    }
+    
+    func makeCustomCategoryCard(store: Store) -> AddCustomCategoryCard {
+        let page = AddCustomCategoryCard(title: "Custom Category")
+        page.isDismissable = true
+        page.descriptionText = "Enter custom category name"
+        page.actionButtonTitle = "Finish Adding Store"
+        page.alternativeButtonTitle = "Add another custom category"
+        page.appearance.actionButtonColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
+        page.appearance.alternativeButtonTitleColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
+        page.appearance.actionButtonTitleColor = .white
+        page.appearance.titleTextColor = .white
+        
+        page.textInputHandler = { (item, text) in
+            print("Text: \(text ?? "nil")")
+            
+            let currentCategories = store.getCategories().map { p in p.lowercased() }
+            
+            if let categoryName = text {
+                
+                if(currentCategories.contains(categoryName.lowercased())){
+                    page.descriptionLabel!.textColor = .red
+                    page.descriptionLabel!.text = "Category already added!"
+                }
+                else {
+                    //add the final 2 categories
+                    store.addCategory(category: Category(name: categoryName))
+                    store.addCategory(category: Category(name: "Other"))
+                    
+                    DataStore.saveNewStore(store: store.name.lowercased())
+                    DataStore.saveStoreData(store: store)
+                    self.stores.append(store)
+                    self.tableView.reloadData()
+                    self.bulletinManager.dismissBulletin(animated: true)
+                }
+            }
+        }
+        
+        page.alternativeHandler = { (item: BLTNActionItem) in
+            let currentCategories = store.getCategories().map { p in p.lowercased() }
+            
+            if let categoryName = page.textField.text {
+                
+                if(categoryName == ""){
+                    page.descriptionLabel!.textColor = .red
+                    page.descriptionLabel!.text = "Please enter some text!"
+                    page.textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+                }
+                
+                else if(currentCategories.contains(categoryName.lowercased())){
+                    page.descriptionLabel!.textColor = .red
+                    page.descriptionLabel!.text = "Category already added!"
+                    page.textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+                }
+                
+                else {
+                    store.addCategory(category: Category(name: categoryName))
+                    page.next = self.makeCustomCategoryCard(store: store)
+                    self.bulletinManager.displayNextItem()
+                }
+            }
         }
         
         return page
