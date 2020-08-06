@@ -13,7 +13,6 @@ import BLTNBoard
 class StoresTableViewController: UITableViewController {
     
     var stores: [Store] = [Store]()
-    var currentStoreToBeAdded: Store?
     
     lazy var bulletinManager: BLTNItemManager = {
         let introPage = makeAddStoreBulletin()
@@ -77,39 +76,61 @@ class StoresTableViewController: UITableViewController {
         
         page.textInputHandler = { (item, text) in
             print("Text: \(text ?? "nil")")
-
-            if let storeName = text {
-
-                //save store name
-                //DataStore.saveNewStore(store: storeName.lowercased())
-                self.currentStoreToBeAdded = Store(name: storeName.lowercased())
-                //self.stores.append(Store(name: storeName))
-
-                //self.tableView.reloadData()
-            }
             
-            self.bulletinManager.displayNextItem()
+            if let storeName = text {
+                page.next = self.makeCategoryBulletin(storeName: storeName)
+                self.bulletinManager.displayNextItem()
+            }
         }
-        
-        page.next = makeCategoryBulletin()
-        
         return page
     }
     
-    func makeCategoryBulletin() -> CategoryAddPage {
+    func makeCategoryBulletin(storeName: String) -> CategoryAddPage {
         
         let page = CategoryAddPage(title: "Default Categories")
-        page.store = currentStoreToBeAdded
         page.isDismissable = true
         page.descriptionText = "Select Defaults"
         page.actionButtonTitle = "Add Store"
         page.alternativeButtonTitle = "Add Custom Categories"
         page.appearance.actionButtonColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
-        page.appearance.alternativeButtonTitleColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
+        page.appearance.alternativeButtonTitleColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         page.appearance.actionButtonTitleColor = .white
         page.appearance.titleTextColor = .white
         
+        page.actionHandler = { (item: BLTNActionItem) in
+            //save store name
+            var selectedCategories = [Category]()
+            
+            for button in page.buttons {
+                if button.tapped {
+                    print(button.titleLabel!.text!)
+                    selectedCategories.append(Category(name: button.titleLabel!.text!))
+                }
+            }
+            
+            if(selectedCategories.count == 0){
+                page.descriptionLabel!.textColor = .red
+                page.descriptionLabel!.text = "Please select atleast 1 category!"
+            }
+            
+            else {
+                selectedCategories.append(Category(name: "Other"))
+                
+                let store = Store(name: storeName, selectedCategories)
         
+                DataStore.saveNewStore(store: storeName)
+                DataStore.saveStoreData(store: store)
+                self.stores.append(store)
+                self.tableView.reloadData()
+                self.bulletinManager.dismissBulletin(animated: true)
+            }
+            
+        }
+        
+        page.alternativeHandler = { (item: BLTNActionItem) in
+            print("alternative tapped")
+            self.bulletinManager.dismissBulletin(animated: true)
+        }
         
         return page
     }

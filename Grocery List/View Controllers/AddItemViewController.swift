@@ -42,6 +42,8 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self 
         tableView.dataSource = self
         tableView.allowsSelection = true
+        tableView.separatorColor = .clear
+        tableView.tableFooterView = UIView()
         
         textField.delegate = self
         
