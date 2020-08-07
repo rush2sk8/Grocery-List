@@ -70,6 +70,12 @@
             ReferencedContainer = "container:Grocery List.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "defaults write com.apple.iphonesimulator ConnectHardwareKeyboard 0"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

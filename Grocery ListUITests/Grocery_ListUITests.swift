@@ -13,24 +13,20 @@ class Grocery_ListUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
-    
+    /*
     func testAddStore(){ 
         let app = XCUIApplication()
         app.launch()
+        
         app.navigationBars["Stores"].buttons["Add"].tap()
         app.textFields["Store Name"].tap()
-
         app.textFields["Store Name"].typeText("Wegmans")
-
-        app.buttons["+"].tap()
-
-        let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.cells.staticTexts["Wegmans"]/*[[".cells.staticTexts[\"Wegmans\"]",".staticTexts[\"Wegmans\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
-
-        XCTAssertTrue(app.navigationBars["Wegmans"].staticTexts["Wegmans"].exists)
+        app.buttons["Continue"].tap()
+        app.buttons["Add Store"].tap()
+        
     }
     
-    func testDuplicateStore() {
+    func testDuplicateStore(){
         let app = XCUIApplication()
         app.launch()
         
@@ -38,31 +34,133 @@ class Grocery_ListUITests: XCTestCase {
         
         let storeNameTextField = app.textFields["Store Name"]
         storeNameTextField.tap()
-        storeNameTextField.tap()
-        
         app.textFields["Store Name"].typeText("Wegmans")
-        
-        app.buttons["+"].tap()
+        app.buttons["Continue"].tap()
         
         XCTAssertTrue(app.staticTexts["Store Already Exists!"].exists)
     }
     
-    func testTrailingWhitespaceFailure(){
+    func testEmptyStore() {
         let app = XCUIApplication()
         app.launch()
         
         app.navigationBars["Stores"].buttons["Add"].tap()
-        
-        let storeNameTextField = app.textFields["Store Name"]
-        storeNameTextField.tap()
-        storeNameTextField.tap()
-        
-        app.textFields["Store Name"].typeText("Wegmans    ")
-        
-        app.buttons["+"].tap()
-        
-        XCTAssertTrue(app.staticTexts["Store Already Exists!"].exists)
+        app.textFields["Store Name"].tap()
+        app.buttons["Continue"].tap()
+        XCTAssertTrue(app.staticTexts["You must enter some text to continue."].exists)
     }
+    
+    
+        func testStoreMultipleCustomCategoriesSuccess(){
+            let app = XCUIApplication()
+            app.launch()
+    
+        }
+    
+        func testStoreCustomCategoriesWithFail(){
+            let app = XCUIApplication()
+            app.launch()
+    
+            app.navigationBars["Stores"].buttons["Add"].tap()
+    
+            app.textFields["Store Name"].tap()
+            app.textFields["Store Name"].typeText("Giant")
+    
+            app.buttons["Continue"].tap()
+    
+            app.buttons["Frozen Foods"].tap()
+            app.buttons["Beauty"].tap()
+            app.buttons["Baking"].tap()
+            app.buttons["Snacks"].tap()
+            app.buttons["Cleaning Supplies"].tap()
+            app.buttons["Dairy"].tap()
+            app.buttons["Meats"].tap()
+            app.buttons["Bread"].tap()
+            app.buttons["Fruits"].tap()
+            app.buttons["Vegetables"].tap()
+            app.buttons["Add Store"].tap()
+    
+            XCTAssertTrue(app.staticTexts["Please select atleast 1 category!"].exists)
+    
+            app.buttons["Add Custom Categories"].tap()
+    
+            let finishAddingStoreButton = app.buttons["Finish Adding Store"]
+            app.textFields["Category Name"].tap()
+            finishAddingStoreButton.tap()
+    
+            XCTAssertTrue(app.staticTexts["You must enter some text to continue."].exists)
+    
+            app.textFields["Category Name"].tap()
+    
+            let cname = app.textFields["Category Name"]
+            if cname.exists {
+                cname.tap()
+                //cname.typeText("Drinks")
+                UIPasteboard.general.string = "Drinks"
+                cname.press(forDuration: 1.1)
+                app.menuItems["Paste"].tap()
+            }
+    
+            app.buttons["Finish Adding Store"].tap()
+            app.tables/*@START_MENU_TOKEN@*/.staticTexts["Giant"]/*[[".cells.staticTexts[\"Giant\"]",".staticTexts[\"Giant\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    
+            XCTAssertTrue(app.tables["Empty list"].otherElements["Drinks"].staticTexts["Drinks"].exists)
+        }
+    
+        func testStoreCustomCategoriesFailCustomDuplicate() {
+            let app = XCUIApplication()
+            app.launch()
+    
+            app.navigationBars["Stores"].buttons["Add"].tap()
+            app.textFields["Store Name"].tap()
+            app.textFields["Store Name"].typeText("Walmart")
+    
+            app.buttons["Continue"].tap()
+            app.buttons["Frozen Foods"].tap()
+            app.buttons["Beauty"].tap()
+            app.buttons["Baking"].tap()
+            app.buttons["Snacks"].tap()
+            app.buttons["Cleaning Supplies"].tap()
+            app.buttons["Dairy"].tap()
+            app.buttons["Add Custom Categories"].tap()
+            app.textFields["Category Name"].tap()
+    
+            UIPasteboard.general.string = "fruits"
+            app.textFields["Category Name"].press(forDuration: 1.1)
+            app.menuItems["Paste"].tap()
+    
+            //app.textFields["Category Name"].typeText("fruits")
+    
+            app.buttons["Finish Adding Store"].tap()
+    
+            let categoryAlreadyAddedStaticText = app.staticTexts["Category already added!"]
+    
+            XCTAssertTrue(categoryAlreadyAddedStaticText.exists)
+            app.buttons["Add another custom category"].tap()
+            XCTAssertTrue(categoryAlreadyAddedStaticText.exists)
+        }
+    
+        func testTrailingWhitespaceFailure(){
+            let app = XCUIApplication()
+            app.launch()
+    
+            app.navigationBars["Stores"].buttons["Add"].tap()
+    
+            let storeNameTextField = app.textFields["Store Name"]
+            storeNameTextField.tap()
+            storeNameTextField.tap()
+    
+    
+    
+            UIPasteboard.general.string = "wegmans   "
+            app.textFields["Store Name"].press(forDuration: 1.1)
+            app.menuItems["Paste"].tap()
+            //app.textFields["Store Name"].typeText("Wegmans    ")
+    
+            app.buttons["Continue"].tap()
+    
+            XCTAssertTrue(app.staticTexts["Store Already Exists!"].exists)
+        }
     
     func testItemFavorite() {
         let app = XCUIApplication()
@@ -135,9 +233,9 @@ class Grocery_ListUITests: XCTestCase {
         app.buttons["Yes"].tap()
         
         XCTAssertFalse(tablesQuery.staticTexts["Milk"].exists)
-    
+        
     }
-
+    
     func deleteApp(){
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         
@@ -153,29 +251,7 @@ class Grocery_ListUITests: XCTestCase {
             springboard.alerts.buttons["Delete"].tap()
         }
     }
+     */
+    
 }
 
-extension XCUIElement {
-    
-    func clearText(andReplaceWith newText: String? = nil){
-        tap()
-        press(forDuration: 1.0)
-        var select = XCUIApplication().menuItems["Select All"]
-        
-        if !select.exists {
-            select = XCUIApplication().menuItems["Select"]
-        }
-        
-        if select.waitForExistence(timeout: 0.5) , select.exists {
-            select.tap()
-            
-           XCUIApplication().menuItems["Cut"].tap()
-        } else{
-            tap()
-        }
-        
-        if let newVal = newText {
-            typeText(newVal)
-        }
-    }
-}

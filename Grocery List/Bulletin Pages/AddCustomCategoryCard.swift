@@ -1,23 +1,22 @@
 //
-//  AddStoreBulletinPage.swift
-//  Grocery List
+//  AddCustomCategoryCard.swift
+//  
 //
-//  Created by Rushad Antia on 7/29/20.
-//  Copyright © 2020 Rushad Antia. All rights reserved.
+//  Created by Rushad Antia on 8/6/20.
 //
 
 import Foundation
 import BLTNBoard
 import UIKit
 
-class AddStoreBulletinPage: BLTNPageItem {
+class AddCustomCategoryCard: BLTNPageItem {
     
     @objc public var textField: UITextField!
     
     @objc public var textInputHandler: ((BLTNActionItem, String?) -> Void)? = nil
     
     override func makeViewsUnderDescription(with interfaceBuilder: BLTNInterfaceBuilder) -> [UIView]? {
-        textField = interfaceBuilder.makeTextField(placeholder: "Store Name", returnKey: .done, delegate: self)
+        textField = interfaceBuilder.makeTextField(placeholder: "Category Name", returnKey: .done, delegate: self)
         return [textField]
     }
     
@@ -32,7 +31,7 @@ class AddStoreBulletinPage: BLTNPageItem {
     }
 }
 
-extension AddStoreBulletinPage: UITextFieldDelegate {
+extension AddCustomCategoryCard: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
@@ -51,7 +50,7 @@ extension AddStoreBulletinPage: UITextFieldDelegate {
             textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
             return
         }
-
+  
         textInputHandler?(self, textField.text)
     }
 }

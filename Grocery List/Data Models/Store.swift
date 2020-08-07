@@ -154,20 +154,11 @@ class Store: Codable {
     // initializes with default categories
     init(name: String){
         self.name = name
-        self.categories = [
-            Category(name: "Vegetables"),
-            Category(name: "Fruits"),
-            Category(name: "Bread"),
-            Category(name: "Meats"),
-            Category(name: "Dairy"),
-            Category(name: "Cleaning Supplies"),
-            Category(name: "Snacks"),
-            Category(name: "Baking"),
-            Category(name: "Beauty"),
-            Category(name: "Frozen Foods"),
-            Category(name: "Other")
-        ]
-        
+        self.categories = [Category]()
+    }
+    
+    func addCategory(category: Category){
+        self.categories.append(category)
     }
     
     // gets a category from name
