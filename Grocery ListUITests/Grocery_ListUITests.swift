@@ -94,15 +94,16 @@ class Grocery_ListUITests: XCTestCase {
         let cname = app.textFields["Category Name"]
         if cname.exists {
             cname.tap()
-            cname.typeText("Drinks")
+            //cname.typeText("Drinks")
+            UIPasteboard.general.string = "Drinks"
+            cname.press(forDuration: 1.1)
+            app.menuItems["Paste"].tap()
         }
         
         app.buttons["Finish Adding Store"].tap()
         app.tables/*@START_MENU_TOKEN@*/.staticTexts["Giant"]/*[[".cells.staticTexts[\"Giant\"]",".staticTexts[\"Giant\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
   
         XCTAssertTrue(app.tables["Empty list"].otherElements["Drinks"].staticTexts["Drinks"].exists)
-
-                
     }
     
     func testStoreCustomCategoriesFailCustomDuplicate() {
@@ -122,7 +123,12 @@ class Grocery_ListUITests: XCTestCase {
         app.buttons["Dairy"].tap()
         app.buttons["Add Custom Categories"].tap()
         app.textFields["Category Name"].tap()
-        app.textFields["Category Name"].typeText("fruits")
+       
+        UIPasteboard.general.string = "fruits"
+        app.textFields["Category Name"].press(forDuration: 1.1)
+        app.menuItems["Paste"].tap()
+        
+        //app.textFields["Category Name"].typeText("fruits")
 
         app.buttons["Finish Adding Store"].tap()
         
@@ -143,7 +149,12 @@ class Grocery_ListUITests: XCTestCase {
         storeNameTextField.tap()
         storeNameTextField.tap()
         
-        app.textFields["Store Name"].typeText("Wegmans    ")
+        
+        
+        UIPasteboard.general.string = "wegmans   "
+        app.textFields["Store Name"].press(forDuration: 1.1)
+        app.menuItems["Paste"].tap()
+        //app.textFields["Store Name"].typeText("Wegmans    ")
         
         app.buttons["Continue"].tap()
         
