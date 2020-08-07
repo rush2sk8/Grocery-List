@@ -13,7 +13,7 @@ class Grocery_ListUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
-    
+    /*
     func testAddStore(){ 
         let app = XCUIApplication()
         app.launch()
@@ -50,7 +50,7 @@ class Grocery_ListUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["You must enter some text to continue."].exists)
     }
     
-    /*
+    
         func testStoreMultipleCustomCategoriesSuccess(){
             let app = XCUIApplication()
             app.launch()
@@ -161,8 +161,7 @@ class Grocery_ListUITests: XCTestCase {
     
             XCTAssertTrue(app.staticTexts["Store Already Exists!"].exists)
         }
-    */
-  
+    
     func testItemFavorite() {
         let app = XCUIApplication()
         app.launch()
@@ -252,5 +251,7 @@ class Grocery_ListUITests: XCTestCase {
             springboard.alerts.buttons["Delete"].tap()
         }
     }
+     */
+    
 }
 
