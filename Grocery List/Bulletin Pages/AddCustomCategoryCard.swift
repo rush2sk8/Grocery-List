@@ -50,7 +50,7 @@ extension AddCustomCategoryCard: UITextFieldDelegate {
             textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
             return
         }
-        
+  
         textInputHandler?(self, textField.text)
     }
 }

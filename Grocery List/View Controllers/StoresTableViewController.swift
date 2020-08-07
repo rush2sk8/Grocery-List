@@ -78,10 +78,24 @@ class StoresTableViewController: UITableViewController {
             print("Text: \(text ?? "nil")")
             
             if let storeName = text {
+                
+                if let existingStores = DataStore.getStoreNames() {
+                    
+                    let lowercased = existingStores.map { x in x.lowercased() }
+                    
+                    if(lowercased.contains(storeName.lowercased().trimmingCharacters(in: .whitespaces))){
+                        page.descriptionLabel!.textColor = .red
+                        page.descriptionLabel!.text = "Store Already Exists!"
+                        page.textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+                        return
+                    }
+                }
+                
                 page.next = self.makeCategoryBulletin(storeName: storeName)
                 self.bulletinManager.displayNextItem()
             }
         }
+        
         return page
     }
     
@@ -99,7 +113,7 @@ class StoresTableViewController: UITableViewController {
         
         page.actionHandler = { (item: BLTNActionItem) in
             //save store name
-            var selectedCategories = self.getCategoriesFromCardPage(page: page)
+            let selectedCategories = self.getCategoriesFromCardPage(page: page)
             
             if(selectedCategories.count == 0){
                 page.descriptionLabel!.textColor = .red
@@ -115,7 +129,6 @@ class StoresTableViewController: UITableViewController {
                 self.tableView.reloadData()
                 self.bulletinManager.dismissBulletin(animated: true)
             }
-            
         }
         
         page.alternativeHandler = { (item: BLTNActionItem) in
