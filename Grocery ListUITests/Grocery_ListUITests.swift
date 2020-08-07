@@ -43,13 +43,16 @@ class Grocery_ListUITests: XCTestCase {
     func testEmptyStore() {
         let app = XCUIApplication()
         app.launch()
-
+        
+        app.navigationBars["Stores"].buttons["Add"].tap()
         app.textFields["Store Name"].tap()
         app.buttons["Continue"].tap()
         XCTAssertTrue(app.staticTexts["You must enter some text to continue."].exists)
     }
     
-    func testStoreCustomCategoriesSuccess(){
+    func testStoreMultipleCustomCategoriesSuccess(){
+        let app = XCUIApplication()
+        app.launch()
         
     }
     

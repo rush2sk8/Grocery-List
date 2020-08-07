@@ -132,9 +132,8 @@ class StoresTableViewController: UITableViewController {
         }
         
         page.alternativeHandler = { (item: BLTNActionItem) in
-            var selectedCategories = self.getCategoriesFromCardPage(page: page)
-            selectedCategories.append(Category(name: "Other"))
-            
+            let selectedCategories = self.getCategoriesFromCardPage(page: page)
+    
             let store = Store(name: storeName, selectedCategories)
             
             page.next = self.makeCustomCategoryCard(store: store)
