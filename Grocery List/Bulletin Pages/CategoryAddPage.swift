@@ -9,13 +9,13 @@
 import UIKit
 import BLTNBoard
 
-//This code is horrible and usually i would never write stuff like this
 class CategoryAddPage: BLTNPageItem {
     
     public var buttons = [BulletinButton]()
     
     override func makeViewsUnderDescription(with interfaceBuilder: BLTNInterfaceBuilder) -> [UIView]? {
-        let stack = interfaceBuilder.makeGroupStack(spacing: 5) 
+        //berzhan this is cell spacing
+        let stack = interfaceBuilder.makeGroupStack(spacing: 7)
 
         let defaults = [
             "Vegetables",
@@ -78,7 +78,8 @@ class CategoryAddPage: BLTNPageItem {
         
         button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
-        let heightConstraint = button.heightAnchor.constraint(equalToConstant: 40)
+        //berzhan this is cell height
+        let heightConstraint = button.heightAnchor.constraint(equalToConstant: 35)
         heightConstraint.priority = .defaultHigh
         heightConstraint.isActive = true
         
