@@ -15,7 +15,25 @@ class Grocery_ListTests: XCTestCase {
     private var store: Store!
     
     override func setUpWithError() throws {
+        let defaults = [
+            "Vegetables",
+            "Fruits",
+            "Bread",
+            "Meats",
+            "Dairy",
+            "Cleaning Supplies",
+            "Snacks",
+            "Baking",
+            "Beauty",
+            "Frozen Foods",
+            "Other"
+        ]
+        
         self.store = Store(name: "Wegmans")
+        
+        for c in defaults {
+            store.addCategory(category: Category(name: c))
+        }
     }
     
     func testStoreName(){
