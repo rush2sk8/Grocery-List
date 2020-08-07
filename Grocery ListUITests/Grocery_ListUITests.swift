@@ -53,7 +53,7 @@ class Grocery_ListUITests: XCTestCase {
         
     }
     
-    func testStoreCustomCategoriesFail1(){
+    func testStoreCustomCategoriesWithFail(){
         let app = XCUIApplication()
         app.launch()
         
@@ -105,6 +105,29 @@ class Grocery_ListUITests: XCTestCase {
     func testStoreCustomCategoriesFailCustomDuplicate() {
         let app = XCUIApplication()
         app.launch()
+    
+        app.navigationBars["Stores"].buttons["Add"].tap()
+        app.textFields["Store Name"].tap()
+        app.textFields["Store Name"].typeText("Walmart")
+        
+        app.buttons["Continue"].tap()
+        app.buttons["Frozen Foods"].tap()
+        app.buttons["Beauty"].tap()
+        app.buttons["Baking"].tap()
+        app.buttons["Snacks"].tap()
+        app.buttons["Cleaning Supplies"].tap()
+        app.buttons["Dairy"].tap()
+        app.buttons["Add Custom Categories"].tap()
+        app.textFields["Category Name"].tap()
+        app.textFields["Category Name"].typeText("fruits")
+
+        app.buttons["Finish Adding Store"].tap()
+        
+        let categoryAlreadyAddedStaticText = app.staticTexts["Category already added!"]
+        
+        XCTAssertTrue(categoryAlreadyAddedStaticText.exists)
+        app.buttons["Add another custom category"].tap()
+        XCTAssertTrue(categoryAlreadyAddedStaticText.exists)
     }
     
     func testTrailingWhitespaceFailure(){
