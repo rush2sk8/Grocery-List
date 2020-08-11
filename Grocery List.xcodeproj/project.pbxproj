@@ -195,15 +195,23 @@
 				2418684924885827003E7C69 /* View Controllers */,
 				24C3A7B124A577C50084D49F /* Table */,
 				24235F9E24D9D642002A704F /* Bulletin Pages */,
-				2461A82E24882541009BE0AB /* AppDelegate.swift */,
+				247E02E724DDF32600148580 /* Other */,
 				2461A83224882541009BE0AB /* Main.storyboard */,
+				2461A82E24882541009BE0AB /* AppDelegate.swift */,
 				2461A83524882543009BE0AB /* Assets.xcassets */,
 				24B4AF0F24B671E200BAD2FC /* appstore.png */,
 				2461A83724882543009BE0AB /* LaunchScreen.storyboard */,
 				2461A83A24882543009BE0AB /* Info.plist */,
-				2409D27424A7D738001FAD06 /* ImagePicker.swift */,
 			);
 			path = "Grocery List";
+			sourceTree = "<group>";
+		};
+		247E02E724DDF32600148580 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2409D27424A7D738001FAD06 /* ImagePicker.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		24B25E3024C4CD5F00E38D01 /* Grocery ListUITests */ = {

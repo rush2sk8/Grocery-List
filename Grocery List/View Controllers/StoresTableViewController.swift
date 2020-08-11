@@ -122,7 +122,7 @@ class StoresTableViewController: UITableViewController {
             
             else {
                 let store = Store(name: storeName, selectedCategories)
-        
+                store.addCategory(category: Category(name: "Other"))
                 DataStore.saveNewStore(store: storeName)
                 DataStore.saveStoreData(store: store)
                 self.stores.append(store)
@@ -173,7 +173,7 @@ class StoresTableViewController: UITableViewController {
             
             if let categoryName = text {
                 
-                if(currentCategories.contains(categoryName.lowercased())){
+                if(currentCategories.contains(categoryName.lowercased()) || categoryName.lowercased() == "other"){
                     page.descriptionLabel!.textColor = .red
                     page.descriptionLabel!.text = "Category already added!"
                 }
