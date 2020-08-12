@@ -6,8 +6,7 @@
  
 </p>
 
-
-App to categorize groceries to make it easier to go shopping
+Made during the 2020 COVID pandemic to facilitate easier shopping. I created this because I did not want my parents to go outside and do any shopping during the pandemic. So I created this app to let them create a list of stuff to buy and make them send me their lists, the app then merges all the lists together to create one final list. Each item can be categorized under a default category or a custom one created by the user. This makes it easier when at the grocery store to go shopping because you can just look at the section in the list for where you are in the store, i.e I am in the fruits aisle -> look at the fruits section in the app.
 
 ## Images
 ![Image](https://raw.githubusercontent.com/rushadantia/Grocery-List/master/images/image1.png?raw=true)
