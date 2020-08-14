@@ -35,6 +35,7 @@ class StoresTableViewController: UITableViewController {
         let addBar = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addStoreAction))
         self.navigationItem.rightBarButtonItem = addBar
         
+        
         self.tableView.separatorColor = .clear
         self.tableView.tableFooterView = UIView()
         
