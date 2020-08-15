@@ -12,17 +12,15 @@ import UIKit
 class StoreCell: UITableViewCell {
     
     @IBOutlet weak var storeLabel: UILabel!
-    
-    
-   open override func layoutSubviews() {
+        
+    open override func layoutSubviews() {
         super.layoutSubviews()
-    
-    if let indicatorButton = allSubviews.compactMap({$0 as? UIButton}).last {
-        let image = indicatorButton.backgroundImage(for: .normal)?.withRenderingMode(.alwaysTemplate)
-        indicatorButton.setBackgroundImage(image, for: .normal)
-        indicatorButton.tintColor = .gray
-    }
-    
+        
+        if let indicatorButton = allSubviews.compactMap({$0 as? UIButton}).last {
+            let image = indicatorButton.backgroundImage(for: .normal)?.withRenderingMode(.alwaysTemplate)
+            indicatorButton.setBackgroundImage(image, for: .normal)
+            indicatorButton.tintColor = .gray
+        }
     }
 }
 
