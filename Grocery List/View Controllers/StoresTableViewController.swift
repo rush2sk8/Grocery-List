@@ -28,16 +28,14 @@ class StoresTableViewController: UITableViewController {
         self.reloadStores()
         
         refreshControl = UIRefreshControl()
-        refreshControl?.tintColor = .white
+        refreshControl?.tintColor = .black
         self.tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
         
         let addBar = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addStoreAction))
         self.navigationItem.rightBarButtonItem = addBar
         
-        
-        self.tableView.separatorColor = .clear
-        self.tableView.tableFooterView = UIView()
+        self.tableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)
         
         self.bulletinManager.backgroundViewStyle = .blurredDark
     }
@@ -253,8 +251,19 @@ class StoresTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell") as! StoreCell
         
         cell.storeLabel?.text = stores[indexPath[1]].name.capitalized
+        cell.separatorInset = .init(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
+        cell.layoutMargins = .zero
+        cell.tintColor = .black
         cell.storeLabel?.font = UIFont.init(name: "Avenir-Medium", size: 30)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.separatorInset = .init(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
+        cell.layoutMargins = .zero
+        cell.contentView.superview?.backgroundColor = .white
+        cell.backgroundColor = .white
+        cell.tintColor = .black
     }
     
     //method to allow editing
