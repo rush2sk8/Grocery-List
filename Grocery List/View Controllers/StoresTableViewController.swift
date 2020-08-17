@@ -32,7 +32,7 @@ class StoresTableViewController: UITableViewController {
         self.tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
         
-        let addBar = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addStoreAction))
+       // let addBar = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addStoreAction))
         //self.navigationItem.rightBarButtonItem = addBar
         
         self.tableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)

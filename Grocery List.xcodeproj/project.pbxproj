@@ -31,6 +31,9 @@
 		247E02E624DCDE5900148580 /* AddCustomCategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E02E424DCDDF800148580 /* AddCustomCategoryCard.swift */; };
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 		24B25E3224C4CD5F00E38D01 /* Grocery_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */; };
+		24E5F3FF24EB1345007DA4BE /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F3FE24EB1345007DA4BE /* ToolBarView.swift */; };
+		24E5F40124EB14D5007DA4BE /* AddStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */; };
+		24E5F40324EB16B7007DA4BE /* UIView+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */; };
 		24FD68A524DB2EF300919494 /* CategoryAddPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD68A324DB2EC300919494 /* CategoryAddPage.swift */; };
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +90,9 @@
 		24B25E2F24C4CD5F00E38D01 /* Grocery ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grocery ListUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListUITests.swift; sourceTree = "<group>"; };
 		24B25E3324C4CD5F00E38D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24E5F3FE24EB1345007DA4BE /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
+		24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreViewController.swift; sourceTree = "<group>"; };
+		24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Separator.swift"; sourceTree = "<group>"; };
 		24FD68A324DB2EC300919494 /* CategoryAddPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryAddPage.swift; path = "Grocery List/Bulletin Pages/CategoryAddPage.swift"; sourceTree = SOURCE_ROOT; };
 		4FD008632E60DB9E3C8B3BC9 /* Pods-Grocery List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.debug.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.debug.xcconfig"; sourceTree = "<group>"; };
 		8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +146,9 @@
 			children = (
 				2418684724885824003E7C69 /* StoresTableViewController.swift */,
 				2461A840248829B6009BE0AB /* TableController.swift */,
+				24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */,
 				2461A84224882D1D009BE0AB /* AddItemViewController.swift */,
+				24E5F3FE24EB1345007DA4BE /* ToolBarView.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -193,6 +201,7 @@
 				2418684924885827003E7C69 /* View Controllers */,
 				24C3A7B124A577C50084D49F /* Table */,
 				24235F9E24D9D642002A704F /* Bulletin Pages */,
+				24E5F40424EB16C0007DA4BE /* Extensions */,
 				247E02E724DDF32600148580 /* Other */,
 				2461A83224882541009BE0AB /* Main.storyboard */,
 				2461A82E24882541009BE0AB /* AppDelegate.swift */,
@@ -228,6 +237,14 @@
 				2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */,
 			);
 			path = Table;
+			sourceTree = "<group>";
+		};
+		24E5F40424EB16C0007DA4BE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		575ECE3C63906CE9504E2790 /* Pods */ = {
@@ -439,16 +456,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E5F40324EB16B7007DA4BE /* UIView+Separator.swift in Sources */,
 				247E02E624DCDE5900148580 /* AddCustomCategoryCard.swift in Sources */,
 				24FD68A524DB2EF300919494 /* CategoryAddPage.swift in Sources */,
 				241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */,
 				2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */,
 				2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */,
 				2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */,
+				24E5F40124EB14D5007DA4BE /* AddStoreViewController.swift in Sources */,
 				2418684324884B42003E7C69 /* Category.swift in Sources */,
 				2438280224D1F4E400AB7E20 /* AddStoreBulletinPage.swift in Sources */,
 				241525B724AAAD56000DE4BA /* Item.swift in Sources */,
 				2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */,
+				24E5F3FF24EB1345007DA4BE /* ToolBarView.swift in Sources */,
 				2418684524884B6C003E7C69 /* Store.swift in Sources */,
 				2409D27524A7D738001FAD06 /* ImagePicker.swift in Sources */,
 				24390CBF24C61B6700189D75 /* StoreCell.swift in Sources */,
