@@ -18,16 +18,16 @@ class AddStoreViewController: UIViewController {
     @IBOutlet weak var categoriesCollection: UICollectionView!
     
     let defaults = [
-        ["Vegetables", UIColor(red: 0.396, green: 0.769, blue: 0.4, alpha: 1)],
-        ["Fruits", UIColor(red: 0.965, green: 0.6, blue: 0, alpha: 1)],
-        ["Bread", UIColor(red: 0.75, green: 0.38, blue: 0.38, alpha: 1.00)],
-        ["Meats", UIColor(red: 0.92, green: 0.31, blue: 0.24, alpha: 1.00)],
-        ["Dairy", UIColor(red: 0.35, green: 0.65, blue: 0.84, alpha: 1.00)],
-        ["Cleaning Supplies", UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)],
-        ["Snacks", UIColor(red: 0.77, green: 0.47, blue: 0.87, alpha: 1.00)],
+        ["Vegetables", UIColor(red: 0.40, green: 0.77, blue: 0.40, alpha: 1.00)],
+        ["Fruits", UIColor(red: 0.96, green: 0.60, blue: 0.00, alpha: 1.00)],
+        ["Bread", UIColor(red: 0.81, green: 0.36, blue: 0.21, alpha: 1.00)],
+        ["Meats", UIColor(red: 0.93, green: 0.11, blue: 0.14, alpha: 1.00)],
+        ["Dairy", UIColor(red: 0.13, green: 0.57, blue: 0.98, alpha: 1.00)],
+        ["Cleaning Supplies", UIColor(red: 1.00, green: 0.78, blue: 0.00, alpha: 1.00)],
+        ["Snacks", UIColor(red: 0.00, green: 0.57, blue: 0.68, alpha: 1.00)],
         ["Baking", UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)],
-        ["Beauty", UIColor(red: 1.00, green: 0.45, blue: 0.85, alpha: 1.00)],
-        ["Frozen Foods", UIColor(red: 0.49, green: 0.88, blue: 0.90, alpha: 1.00)]
+        ["Beauty", UIColor(red: 0.99, green: 0.38, blue: 0.66, alpha: 1.00)],
+        ["Frozen Foods", UIColor(red: 0.54, green: 0.82, blue: 0.86, alpha: 1.00)]
     ]
     
     override func viewDidLoad(){
