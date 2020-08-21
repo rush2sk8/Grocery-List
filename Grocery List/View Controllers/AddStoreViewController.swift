@@ -55,19 +55,22 @@ class AddStoreViewController: UIViewController {
     func toggleCellColor(indexPath: IndexPath, status: Bool) {
         let cell = categoriesCollection.cellForItem(at: indexPath) as! CategoryCell
         
-        //make color
-        if(status){
-            cell.label.textColor = .white
-            
-            cell.contentView.layer.cornerRadius = 14.0
-            cell.contentView.layer.backgroundColor = (self.defaults[indexPath.item][1]  as! UIColor).cgColor
-            cell.contentView.layer.borderColor = (self.defaults[indexPath.item][1]  as! UIColor).cgColor
-        } else {
-            cell.label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
-            cell.contentView.layer.backgroundColor = UIColor.white.cgColor
-            cell.contentView.layer.borderColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1).cgColor
-            cell.contentView.layer.borderWidth = 1.5
-        }
+        UIView.animate(withDuration: 0.5, animations: {
+            //make color
+            if(status){
+                cell.label.textColor = .white
+                
+                cell.contentView.layer.backgroundColor = (self.defaults[indexPath.item][1]  as! UIColor).cgColor
+                cell.contentView.layer.borderColor = (self.defaults[indexPath.item][1]  as! UIColor).cgColor
+            } else {
+                cell.label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+                cell.contentView.layer.backgroundColor = UIColor.white.cgColor
+                
+                cell.contentView.layer.borderColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1).cgColor
+                cell.contentView.layer.borderWidth = 1.5
+            }
+        })
+        
     }
     
 }
@@ -94,6 +97,10 @@ extension AddStoreViewController: UICollectionViewDataSource {
         cell.checkbox.offFillColor = .white
         cell.checkbox.isUserInteractionEnabled = false
         
+        cell.contentView.layer.cornerRadius = 14.0
+        
+        cell.checkbox.onAnimationType = .oneStroke
+        cell.checkbox.offAnimationType = .fade
         return cell
     }
 }
