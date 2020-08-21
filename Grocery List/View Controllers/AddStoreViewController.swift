@@ -9,7 +9,7 @@
 import UIKit
 
 class AddStoreViewController: UIViewController {
-
+    
     
     @IBOutlet private var storeField: UITextField!
     @IBOutlet private var toolbarView: ToolBarView!
@@ -17,16 +17,16 @@ class AddStoreViewController: UIViewController {
     @IBOutlet weak var categoriesCollection: UICollectionView!
     
     let defaults = [
-        "Vegetables",
-        "Fruits",
-        "Bread",
-        "Meats",
-        "Dairy",
-        "Cleaning Supplies",
-        "Snacks",
-        "Baking",
-        "Beauty",
-        "Frozen Foods"
+        ["Vegetables", UIColor(red: 0.396, green: 0.769, blue: 0.4, alpha: 1)],
+        ["Fruits", UIColor(red: 0.965, green: 0.6, blue: 0, alpha: 1)],
+        ["Bread", UIColor(red: 0.75, green: 0.38, blue: 0.38, alpha: 1.00)],
+        ["Meats", UIColor(red: 0.92, green: 0.31, blue: 0.24, alpha: 1.00)],
+        ["Dairy", UIColor(red: 0.35, green: 0.65, blue: 0.84, alpha: 1.00)],
+        ["Cleaning Supplies", UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)],
+        ["Snacks", UIColor(red: 0.77, green: 0.47, blue: 0.87, alpha: 1.00)],
+        ["Baking", UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)],
+        ["Beauty", UIColor(red: 1.00, green: 0.45, blue: 0.85, alpha: 1.00)],
+        ["Frozen Foods", UIColor(red: 0.49, green: 0.88, blue: 0.90, alpha: 1.00)]
     ]
     
     override func viewDidLoad(){
@@ -38,19 +38,19 @@ class AddStoreViewController: UIViewController {
         storeField.attributedPlaceholder = NSAttributedString(string: "New List", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         
         toolbarView.add.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addList)))
-   
+        
         self.categoriesCollection.dataSource = self
         self.categoriesCollection.delegate = self
-        self.categoriesCollection.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
         self.categoriesCollection.alwaysBounceVertical = true
         self.categoriesCollection.backgroundColor = .white
+        
     }
     
     @objc func addList() {
         
         
     }
-
+    
 }
 
 extension AddStoreViewController: UICollectionViewDataSource {
@@ -60,8 +60,21 @@ extension AddStoreViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CategoryCell
-        let data = self.defaults[indexPath.item]
-        cell.textLabel.text = String(data)
+        let data = self.defaults[indexPath.item][0] as! String
+        
+        cell.label.text = data
+        cell.label.textColor = .white
+        
+        cell.contentView.layer.cornerRadius = 14.0
+        cell.contentView.layer.backgroundColor = (self.defaults[indexPath.item][1]  as! UIColor).cgColor
+        
+        cell.checkbox.onTintColor = (self.defaults[indexPath.item][1]  as! UIColor)
+        cell.checkbox.onCheckColor = (self.defaults[indexPath.item][1]  as! UIColor)
+        cell.checkbox.onFillColor = .white
+        
+        cell.checkbox.offFillColor = .white
+        
+        
         
         return cell
     }
@@ -69,7 +82,7 @@ extension AddStoreViewController: UICollectionViewDataSource {
 
 extension AddStoreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        print(indexPath)
     }
 }
 

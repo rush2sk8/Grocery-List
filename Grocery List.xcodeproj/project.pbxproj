@@ -34,6 +34,8 @@
 		24E5F3FF24EB1345007DA4BE /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F3FE24EB1345007DA4BE /* ToolBarView.swift */; };
 		24E5F40124EB14D5007DA4BE /* AddStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */; };
 		24E5F40324EB16B7007DA4BE /* UIView+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */; };
+		24F91AEA24F058120064FDBB /* BEMCheckBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F91AE924F058120064FDBB /* BEMCheckBox.framework */; };
+		24F91AEC24F0589E0064FDBB /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F91AEB24F0589E0064FDBB /* CategoryCell.swift */; };
 		24FD68A524DB2EF300919494 /* CategoryAddPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD68A324DB2EC300919494 /* CategoryAddPage.swift */; };
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
@@ -93,6 +95,8 @@
 		24E5F3FE24EB1345007DA4BE /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 		24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreViewController.swift; sourceTree = "<group>"; };
 		24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Separator.swift"; sourceTree = "<group>"; };
+		24F91AE924F058120064FDBB /* BEMCheckBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BEMCheckBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F91AEB24F0589E0064FDBB /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		24FD68A324DB2EC300919494 /* CategoryAddPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryAddPage.swift; path = "Grocery List/Bulletin Pages/CategoryAddPage.swift"; sourceTree = SOURCE_ROOT; };
 		4FD008632E60DB9E3C8B3BC9 /* Pods-Grocery List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.debug.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.debug.xcconfig"; sourceTree = "<group>"; };
 		8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24F91AEA24F058120064FDBB /* BEMCheckBox.framework in Frameworks */,
 				243827FE24D1EF8E00AB7E20 /* BLTNBoard.framework in Frameworks */,
 				24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */,
 				244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */,
@@ -146,8 +151,9 @@
 			children = (
 				2418684724885824003E7C69 /* StoresTableViewController.swift */,
 				2461A840248829B6009BE0AB /* TableController.swift */,
-				24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */,
 				2461A84224882D1D009BE0AB /* AddItemViewController.swift */,
+				24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */,
+				24F91AEB24F0589E0064FDBB /* CategoryCell.swift */,
 				24E5F3FE24EB1345007DA4BE /* ToolBarView.swift */,
 			);
 			path = "View Controllers";
@@ -259,6 +265,7 @@
 		FD6CE4CE15A5E7A1540EC50C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24F91AE924F058120064FDBB /* BEMCheckBox.framework */,
 				243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */,
 				24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */,
 				240436B724BB9BA20027D973 /* Cache.framework */,
@@ -457,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24E5F40324EB16B7007DA4BE /* UIView+Separator.swift in Sources */,
+				24F91AEC24F0589E0064FDBB /* CategoryCell.swift in Sources */,
 				247E02E624DCDE5900148580 /* AddCustomCategoryCard.swift in Sources */,
 				24FD68A524DB2EF300919494 /* CategoryAddPage.swift in Sources */,
 				241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */,

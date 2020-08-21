@@ -8,5 +8,6 @@ target 'Grocery List' do
   # Pods for Grocery List
 pod 'BulletinBoard'
 pod 'Lightbox'
+pod 'BEMCheckBox'
 pod 'InstantSearchVoiceOverlay', '~> 1.1.0'
 end
