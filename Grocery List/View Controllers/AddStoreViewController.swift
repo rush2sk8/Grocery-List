@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BEMCheckBox
 
 class AddStoreViewController: UIViewController {
     
@@ -51,6 +52,24 @@ class AddStoreViewController: UIViewController {
         
     }
     
+    func toggleCellColor(indexPath: IndexPath, status: Bool) {
+        let cell = categoriesCollection.cellForItem(at: indexPath) as! CategoryCell
+        
+        //make color
+        if(status){
+            cell.label.textColor = .white
+            
+            cell.contentView.layer.cornerRadius = 14.0
+            cell.contentView.layer.backgroundColor = (self.defaults[indexPath.item][1]  as! UIColor).cgColor
+            cell.contentView.layer.borderColor = (self.defaults[indexPath.item][1]  as! UIColor).cgColor
+        } else {
+            cell.label.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+            cell.contentView.layer.backgroundColor = UIColor.white.cgColor
+            cell.contentView.layer.borderColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1).cgColor
+            cell.contentView.layer.borderWidth = 1.5
+        }
+    }
+    
 }
 
 extension AddStoreViewController: UICollectionViewDataSource {
@@ -73,8 +92,7 @@ extension AddStoreViewController: UICollectionViewDataSource {
         cell.checkbox.onFillColor = .white
         
         cell.checkbox.offFillColor = .white
-        
-        
+        cell.checkbox.isUserInteractionEnabled = false
         
         return cell
     }
@@ -82,7 +100,9 @@ extension AddStoreViewController: UICollectionViewDataSource {
 
 extension AddStoreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        let cell = collectionView.cellForItem(at: indexPath) as! CategoryCell
+        cell.checkbox.setOn(!cell.checkbox.on, animated: true)
+        toggleCellColor(indexPath: indexPath, status: cell.checkbox.on)
     }
 }
 

@@ -14,4 +14,7 @@ class CategoryCell: UICollectionViewCell {
     @IBOutlet weak var checkbox: BEMCheckBox!
     
     @IBOutlet weak var label: UILabel!
+    
+    
+    
 }
