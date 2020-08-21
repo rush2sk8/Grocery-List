@@ -15,6 +15,4 @@ class CategoryCell: UICollectionViewCell {
     
     @IBOutlet weak var label: UILabel!
     
-    
-    
 }
