@@ -29,6 +29,7 @@
 		2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */; };
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 		24A3C98024F1804F0019D23F /* AddStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C97F24F1804F0019D23F /* AddStoreCell.swift */; };
+		24A3C98324F1912F0019D23F /* UIView+DashedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C98224F1912F0019D23F /* UIView+DashedBorder.swift */; };
 		24B25E3224C4CD5F00E38D01 /* Grocery_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */; };
 		24E5F3FF24EB1345007DA4BE /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F3FE24EB1345007DA4BE /* ToolBarView.swift */; };
 		24E5F40124EB14D5007DA4BE /* AddStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */; };
@@ -86,6 +87,7 @@
 		2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
 		2494FFA7248C10CA00DC58E0 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		24A3C97F24F1804F0019D23F /* AddStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreCell.swift; sourceTree = "<group>"; };
+		24A3C98224F1912F0019D23F /* UIView+DashedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DashedBorder.swift"; sourceTree = "<group>"; };
 		24B25E2F24C4CD5F00E38D01 /* Grocery ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grocery ListUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListUITests.swift; sourceTree = "<group>"; };
 		24B25E3324C4CD5F00E38D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		24E5F40424EB16C0007DA4BE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				24A3C98224F1912F0019D23F /* UIView+DashedBorder.swift */,
 				24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */,
 			);
 			path = Extensions;
@@ -472,6 +475,7 @@
 				2418684524884B6C003E7C69 /* Store.swift in Sources */,
 				2409D27524A7D738001FAD06 /* ImagePicker.swift in Sources */,
 				24390CBF24C61B6700189D75 /* StoreCell.swift in Sources */,
+				24A3C98324F1912F0019D23F /* UIView+DashedBorder.swift in Sources */,
 				2461A841248829B7009BE0AB /* TableController.swift in Sources */,
 				2461A82F24882541009BE0AB /* AppDelegate.swift in Sources */,
 			);

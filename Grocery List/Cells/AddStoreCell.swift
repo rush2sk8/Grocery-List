@@ -10,6 +10,7 @@ import UIKit
 
 class AddStoreCell: UICollectionViewCell {
     
+    @IBOutlet weak var textfield: UITextField!
     
     
 }
