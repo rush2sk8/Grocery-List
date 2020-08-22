@@ -13,12 +13,7 @@ import BLTNBoard
 class StoresTableViewController: UITableViewController {
     
     var stores: [Store] = [Store]()
-    
-    lazy var bulletinManager: BLTNItemManager = {
-        let introPage = makeAddStoreBulletin()
-        return BLTNItemManager(rootItem: introPage)
-    }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,16 +27,8 @@ class StoresTableViewController: UITableViewController {
         self.tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
         
-       // let addBar = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addStoreAction))
-        //self.navigationItem.rightBarButtonItem = addBar
-        
         self.tableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)
         
-        self.bulletinManager.backgroundViewStyle = .blurredDark
-    }
-    
-    @objc func addStoreAction(){
-        showAddStoreDialog()
     }
     
     @objc func refreshTableData() {
@@ -62,167 +49,7 @@ class StoresTableViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-    
-    func makeAddStoreBulletin() -> AddStoreBulletinPage {
-        
-        let page = AddStoreBulletinPage(title: "Add Store")
-        page.isDismissable = true
-        page.descriptionText = "Enter a Store Name"
-        page.actionButtonTitle = "Continue"
-        page.appearance.actionButtonColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
-        page.appearance.actionButtonTitleColor = .white
-        page.appearance.titleTextColor = .white
-        
-        page.textInputHandler = { (item, text) in
-            print("Text: \(text ?? "nil")")
-            
-            if let storeName = text {
-                
-                if let existingStores = DataStore.getStoreNames() {
-                    
-                    let lowercased = existingStores.map { x in x.lowercased() }
-                    
-                    if(lowercased.contains(storeName.lowercased().trimmingCharacters(in: .whitespaces))){
-                        page.descriptionLabel!.textColor = .red
-                        page.descriptionLabel!.text = "Store Already Exists!"
-                        page.textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
-                        return
-                    }
-                }
-                
-                page.next = self.makeCategoryBulletin(storeName: storeName)
-                self.bulletinManager.displayNextItem()
-            }
-        }
-        
-        return page
-    }
-    
-    func makeCategoryBulletin(storeName: String) -> CategoryAddPage {
-        
-        let page = CategoryAddPage(title: "Default Categories")
-        page.isDismissable = true
-        page.descriptionText = "Select Defaults"
-        page.actionButtonTitle = "Add Store"
-        page.alternativeButtonTitle = "Add Custom Categories"
-        page.appearance.actionButtonColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
-        page.appearance.alternativeButtonTitleColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        page.appearance.actionButtonTitleColor = .white
-        page.appearance.titleTextColor = .white
-        
-        page.actionHandler = { (item: BLTNActionItem) in
-            //save store name
-            let selectedCategories = self.getCategoriesFromCardPage(page: page)
-            
-            if(selectedCategories.count == 0){
-                page.descriptionLabel!.textColor = .red
-                page.descriptionLabel!.text = "Please select atleast 1 category!"
-            }
-            
-            else {
-                let store = Store(name: storeName, selectedCategories)
-                store.addCategory(category: Category(name: "Other"))
-                DataStore.saveNewStore(store: storeName)
-                DataStore.saveStoreData(store: store)
-                self.stores.append(store)
-                self.tableView.reloadData()
-                self.bulletinManager.dismissBulletin(animated: true)
-            }
-        }
-        
-        page.alternativeHandler = { (item: BLTNActionItem) in
-            let selectedCategories = self.getCategoriesFromCardPage(page: page)
-    
-            let store = Store(name: storeName, selectedCategories)
-            
-            page.next = self.makeCustomCategoryCard(store: store)
-            self.bulletinManager.displayNextItem()
-        }
-        
-        return page
-    }
-    
-    private func getCategoriesFromCardPage(page: CategoryAddPage) -> [Category] {
-        var selectedCategories = [Category]()
-        
-        for button in page.buttons {
-            if button.tapped {
-                print(button.titleLabel!.text!)
-                selectedCategories.append(Category(name: button.titleLabel!.text!))
-            }
-        }
-        return selectedCategories
-    }
-    
-    func makeCustomCategoryCard(store: Store) -> AddCustomCategoryCard {
-        let page = AddCustomCategoryCard(title: "Custom Category")
-        page.isDismissable = true
-        page.descriptionText = "Enter custom category name"
-        page.actionButtonTitle = "Finish Adding Store"
-        page.alternativeButtonTitle = "Add another custom category"
-        page.appearance.actionButtonColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
-        page.appearance.alternativeButtonTitleColor = #colorLiteral(red: 0.9911134839, green: 0.0004280109715, blue: 0.4278825819, alpha: 1)
-        page.appearance.actionButtonTitleColor = .white
-        page.appearance.titleTextColor = .white
-        
-        page.textInputHandler = { (item, text) in
-            print("Text: \(text ?? "nil")")
-            
-            let currentCategories = store.getCategories().map { p in p.lowercased() }
-            
-            if let categoryName = text {
-                
-                if(currentCategories.contains(categoryName.lowercased()) || categoryName.lowercased() == "other"){
-                    page.descriptionLabel!.textColor = .red
-                    page.descriptionLabel!.text = "Category already added!"
-                }
-                else {
-                    //add the final 2 categories
-                    store.addCategory(category: Category(name: categoryName))
-                    store.addCategory(category: Category(name: "Other"))
-                    
-                    DataStore.saveNewStore(store: store.name.lowercased())
-                    DataStore.saveStoreData(store: store)
-                    self.stores.append(store)
-                    self.tableView.reloadData()
-                    self.bulletinManager.dismissBulletin(animated: true)
-                }
-            }
-        }
-        
-        page.alternativeHandler = { (item: BLTNActionItem) in
-            let currentCategories = store.getCategories().map { p in p.lowercased() }
-            
-            if let categoryName = page.textField.text {
-                
-                if(categoryName == ""){
-                    page.descriptionLabel!.textColor = .red
-                    page.descriptionLabel!.text = "Please enter some text!"
-                    page.textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
-                }
-                
-                else if(currentCategories.contains(categoryName.lowercased())){
-                    page.descriptionLabel!.textColor = .red
-                    page.descriptionLabel!.text = "Category already added!"
-                    page.textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
-                }
-                
-                else {
-                    store.addCategory(category: Category(name: categoryName))
-                    page.next = self.makeCustomCategoryCard(store: store)
-                    self.bulletinManager.displayNextItem()
-                }
-            }
-        }
-        
-        return page
-    }
-    
-    //shows the popup dialog to add a store
-    func showAddStoreDialog(){
-        bulletinManager.showBulletin(above: self)
-    }
-    
+
     //error if they try to add the same store twice
     func showAddStoreAlertErrorDialog(storeName: String) {
         let alert = UIAlertController(title: "Store could not be added", message: "\(storeName.capitalized) already exists", preferredStyle: .alert)
