@@ -61,10 +61,30 @@ class AddStoreViewController: UIViewController {
     }
     
     @objc func addList() {
-    
-        dismiss(animated: true, completion: nil)
+        
+        if(storeField.text == nil || storeField.text! == "") {
+            
+            if let s = DataStore.getStoreNames() {
+                if let n = storeField.text {
+                    if(s.contains(n.lowercased())){
+                        storeField.text = ""
+                        storeField.attributedPlaceholder = NSAttributedString(string: "List already exists!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+                        
+                    }
+                }
+            } else {
+                
+                storeField.attributedPlaceholder = NSAttributedString(string: "Enter a store name!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+                
+            }
+            storeField.layer.borderColor = UIColor.red.cgColor
+            storeField.layer.borderWidth = 1.0
+            storeField.layer.cornerRadius = 14.0
+        } else {
+            
+            dismiss(animated: true, completion: nil)
+        }
     }
-  
 }
 
 extension AddStoreViewController: UICollectionViewDataSource {
@@ -73,7 +93,7 @@ extension AddStoreViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         
+        
         if (indexPath[1] < defaults.count){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CategoryCell
             let data = self.defaults[indexPath[1]][0] as! String
@@ -111,7 +131,7 @@ extension AddStoreViewController: UICollectionViewDataSource {
             cell.checkbox.onAnimationType = .fill
             cell.checkbox.offAnimationType = .bounce
             cell.checkbox.animationDuration = 0.4
-        
+            
             return cell
             
         } else {
@@ -139,14 +159,14 @@ extension AddStoreViewController: UICollectionViewDelegate {
             let isOn = !cell.checkbox.on
             
             cell.checkbox.setOn(isOn, animated: true)
-
-            UIView.animate(withDuration: 0.4 , animations: {
-               
+            
+            UIView.animate(withDuration: 0.5 , animations: {
+                
                 cell.label.textColor = isOn ? .white : self.CustomGrey
                 cell.contentView.layer.backgroundColor = isOn ? currColor : UIColor.white.cgColor
                 cell.contentView.layer.borderColor = isOn ? currColor : self.CustomGrey.cgColor
                 
-            }, completion: {_ in
+            }, completion: { _ in
                 cell.checkbox.offFillColor = .white
                 cell.checkbox.onFillColor = .white
                 
@@ -154,7 +174,7 @@ extension AddStoreViewController: UICollectionViewDelegate {
                 cell.checkbox.onCheckColor = isOn ?  UIColor(cgColor: currColor) : .white
                 
             })
-
+            
             if let text = cell.label.text {
                 if(cell.checkbox.on) {
                     selectedCategories.insert(text.lowercased())
