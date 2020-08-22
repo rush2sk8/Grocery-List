@@ -68,18 +68,21 @@ class AddStoreViewController: UIViewController {
                 if let n = storeField.text {
                     if(s.contains(n.lowercased())){
                         storeField.text = ""
-                        storeField.attributedPlaceholder = NSAttributedString(string: "List already exists!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+                        storeField.attributedPlaceholder = NSAttributedString(string: "List already exists!", attributes: [NSAttributedString.Key.foregroundColor:UIColor.init(red: 1, green: 0.48, blue: 0.51, alpha: 1)])
                         
                     }
                 }
             } else {
-                
-                storeField.attributedPlaceholder = NSAttributedString(string: "Enter a store name!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-                
+                storeField.attributedPlaceholder = NSAttributedString(string: "Enter a store name!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(red: 1, green: 0.48, blue: 0.51, alpha: 1)])
             }
+            
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.storeField.frame.height))
             storeField.layer.borderColor = UIColor.red.cgColor
             storeField.layer.borderWidth = 1.0
             storeField.layer.cornerRadius = 14.0
+            storeField.leftView = paddingView
+            storeField.leftViewMode = .always
+            
         } else {
             
             dismiss(animated: true, completion: nil)
