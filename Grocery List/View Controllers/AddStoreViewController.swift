@@ -108,8 +108,9 @@ extension AddStoreViewController: UICollectionViewDataSource {
                 cell.checkbox.reload()
             }
             
-            cell.checkbox.onAnimationType = .oneStroke
-            cell.checkbox.offAnimationType = .fade
+            cell.checkbox.onAnimationType = .fill
+            cell.checkbox.offAnimationType = .bounce
+            cell.checkbox.animationDuration = 0.4
         
             return cell
             
@@ -134,16 +135,23 @@ extension AddStoreViewController: UICollectionViewDelegate {
         
         if (indexPath.row < defaults.count){
             let cell = collectionView.cellForItem(at: indexPath) as! CategoryCell
+            let currColor = (self.defaults[indexPath[1]][1] as! UIColor).cgColor
+            let isOn = !cell.checkbox.on
             
-            cell.checkbox.setOn(!cell.checkbox.on, animated: true)
-            
-            UIView.animate(withDuration: 0.5, animations: {
-                let currColor = (self.defaults[indexPath[1]][1] as! UIColor).cgColor
-                let isOn = cell.checkbox.on
+            cell.checkbox.setOn(isOn, animated: true)
 
+            UIView.animate(withDuration: 0.4 , animations: {
+               
                 cell.label.textColor = isOn ? .white : self.CustomGrey
                 cell.contentView.layer.backgroundColor = isOn ? currColor : UIColor.white.cgColor
                 cell.contentView.layer.borderColor = isOn ? currColor : self.CustomGrey.cgColor
+                
+            }, completion: {_ in
+                cell.checkbox.offFillColor = .white
+                cell.checkbox.onFillColor = .white
+                
+                cell.checkbox.onTintColor = isOn ? UIColor(cgColor: currColor): self.CustomGrey
+                cell.checkbox.onCheckColor = isOn ?  UIColor(cgColor: currColor) : .white
                 
             })
 
