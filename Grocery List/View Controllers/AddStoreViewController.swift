@@ -138,24 +138,13 @@ extension AddStoreViewController: UICollectionViewDelegate {
             cell.checkbox.setOn(!cell.checkbox.on, animated: true)
             
             UIView.animate(withDuration: 0.5, animations: {
-                let currColor = self.defaults[indexPath[1]][1] as! UIColor
+                let currColor = (self.defaults[indexPath[1]][1] as! UIColor).cgColor
+                let isOn = cell.checkbox.on
+
+                cell.label.textColor = isOn ? .white : self.CustomGrey
+                cell.contentView.layer.backgroundColor = isOn ? currColor : UIColor.white.cgColor
+                cell.contentView.layer.borderColor = isOn ? currColor : self.CustomGrey.cgColor
                 
-                if(cell.checkbox.on){
-                    cell.contentView.layer.backgroundColor = currColor.cgColor
-                    cell.contentView.layer.borderColor = currColor.cgColor
-                    
-                    cell.label.textColor = .white
-                    
-                    cell.checkbox.onTintColor = currColor
-                    cell.checkbox.onCheckColor = currColor
-                } else {
-                    cell.label.textColor = self.CustomGrey
-                   
-                    cell.contentView.layer.backgroundColor = UIColor.white.cgColor
-                    cell.contentView.layer.borderColor = self.CustomGrey.cgColor
-        
-                    cell.checkbox.offFillColor = .white
-                }
             })
 
             if let text = cell.label.text {
