@@ -10,13 +10,12 @@ import Foundation
 import UIKit
 
 class StoreCell: UITableViewCell {
-    
-    @IBOutlet weak var storeLabel: UILabel!
-        
-    open override func layoutSubviews() {
+    @IBOutlet var storeLabel: UILabel!
+
+    override open func layoutSubviews() {
         super.layoutSubviews()
-        
-        if let indicatorButton = allSubviews.compactMap({$0 as? UIButton}).last {
+
+        if let indicatorButton = allSubviews.compactMap({ $0 as? UIButton }).last {
             let image = indicatorButton.backgroundImage(for: .normal)?.withRenderingMode(.alwaysTemplate)
             indicatorButton.setBackgroundImage(image, for: .normal)
             indicatorButton.tintColor = .gray

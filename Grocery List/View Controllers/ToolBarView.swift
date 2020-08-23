@@ -8,11 +8,7 @@
 
 import UIKit
 
-
 class ToolBarView: UIView {
-    
     @IBOutlet var image: UIImageView!
     @IBOutlet var add: UIImageView!
-    
-    
 }

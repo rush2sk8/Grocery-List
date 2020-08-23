@@ -6,13 +6,11 @@
 //  Copyright © 2020 Rushad Antia. All rights reserved.
 //
 
-import UIKit
 import BEMCheckBox
+import UIKit
 
 class CategoryCell: UICollectionViewCell {
-    
-    @IBOutlet weak var checkbox: BEMCheckBox!
-    
-    @IBOutlet weak var label: UILabel!
-    
+    @IBOutlet var checkbox: BEMCheckBox!
+
+    @IBOutlet var label: UILabel!
 }

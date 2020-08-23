@@ -8,14 +8,14 @@
 class Category: Codable {
     var name: String
     var items: [Item]
-    var collapsed: Bool  
-    
+    var collapsed: Bool
+
     init(name: String, items: [Item] = [Item](), collapsed: Bool = false) {
         self.name = name
         self.items = items
         self.collapsed = collapsed
     }
-    
+
     func getItems() -> [String] {
         var sItems: [String] = []
         for item in items {
@@ -28,27 +28,26 @@ class Category: Codable {
         var total = 0
         for item in items {
             if item.isDone == false {
-                
-            total += 1
+                total += 1
             }
         }
         return total
     }
-    
-    func pruneNonFavorites(){
+
+    func pruneNonFavorites() {
         var faves = [Item]()
-        
+
         for item in items {
-            if item.isFavorite{
+            if item.isFavorite {
                 faves.append(item)
             }
         }
-        self.items = faves
+        items = faves
     }
-    
-    func resetFavorites(){
-        for item in self.items {
-            if item.isFavorite && item.isDone {
+
+    func resetFavorites() {
+        for item in items {
+            if item.isFavorite, item.isDone {
                 item.isDone = false
             }
         }
