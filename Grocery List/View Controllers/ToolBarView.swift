@@ -11,4 +11,5 @@ import UIKit
 class ToolBarView: UIView {
     @IBOutlet var image: UIImageView!
     @IBOutlet var add: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
 }
