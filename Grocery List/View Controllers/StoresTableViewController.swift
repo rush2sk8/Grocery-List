@@ -58,11 +58,11 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
     
     //hide the toolbar on view appearing
     override func viewWillAppear(_ animated: Bool) {
-        print("APPREAD")
         super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(true, animated: true)
         reloadStores()
     }
+    
     @IBAction func toStoreAdd(_ sender: Any) {
         performSegue(withIdentifier: "toAddStore", sender: nil)
     }
@@ -72,7 +72,6 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
         self.tableView.reloadData()
     }
     
-    //only 1 section in the list
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

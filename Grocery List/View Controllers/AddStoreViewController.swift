@@ -12,6 +12,7 @@ import BEMCheckBox
 class AddStoreViewController: UIViewController {
     
     @IBOutlet private var storeField: UITextField!
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet private var toolbarView: ToolBarView!
     
     @IBOutlet weak var categoriesCollection: UICollectionView!
@@ -59,6 +60,15 @@ class AddStoreViewController: UIViewController {
             self.selectedCategories.insert((cat[0] as! String).lowercased())
         }
         categoriesCollection.reloadData()
+        
+        storeField.becomeFirstResponder()
+        
+        addButton.isEnabled = false
+        addButton.isHidden = true
+    }
+    
+    @IBAction func addStore(_ sender: Any) {
+        addList()
     }
     
     @objc func addList() {
@@ -213,6 +223,7 @@ extension AddStoreViewController: UICollectionViewDelegate {
 
 extension AddStoreViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         let cell = categoriesCollection.cellForItem(at: IndexPath(row: defaults.count, section: 0)) as! AddStoreCell
         
         cell.contentView.removeDashedBorder()
@@ -220,7 +231,7 @@ extension AddStoreViewController: UITextFieldDelegate {
         let currentCategories = Set(defaults.map { x in (x[0] as! String).lowercased() })
         
         if let text = textField.text  {
-            if (currentCategories.contains(text.lowercased()) || text.count > 32 || text.lowercased() == "other") {
+            if (text == "" || currentCategories.contains(text.lowercased()) || text.count > 32 || text.lowercased() == "other") {
                 cell.contentView.addDashedBorder(color: .red)
             }
             else {
@@ -229,11 +240,13 @@ extension AddStoreViewController: UITextFieldDelegate {
                 categoriesCollection.reloadData()
                 cell.contentView.addDashedBorder(color: CustomGrey)
             }
-            
-            textField.text = ""
         }
+    
+        textField.text = ""
         
-        textField.becomeFirstResponder()
+        addButton.isEnabled = true
+        addButton.isHidden = false
+        
         return true
     }
     
