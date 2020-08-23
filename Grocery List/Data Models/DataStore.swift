@@ -101,7 +101,7 @@ class DataStore {
     static func getStoreNames() -> [String]? {
         let defaults = UserDefaults.standard
         if let stores = defaults.stringArray(forKey: "stores"){
-            return stores
+            return stores.map { x in x.lowercased()}
         }
         return nil
     }

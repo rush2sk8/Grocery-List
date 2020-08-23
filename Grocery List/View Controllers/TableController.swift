@@ -282,7 +282,7 @@ class TableController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         
-        header.titleLabel.text = store.categories[section].name
+        header.titleLabel.text = store.categories[section].name.capitalized
         header.titleLabel.font = UIFont.init(name: "Avenir-Medium", size: 14)
         
         header.arrowLabel.font = UIFont.init(name: "Avenir-Medium", size: 14)

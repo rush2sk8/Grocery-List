@@ -84,6 +84,17 @@ class AddStoreViewController: UIViewController {
             storeField.leftViewMode = .always
             
         } else {
+            let store = Store(name: storeField.text!)
+        
+            defaults.forEach { def in
+                let n = def[0] as! String
+                if(selectedCategories.contains(n)){
+                    store.addCategory(category: Category(name: n))
+                }
+            }
+            
+            DataStore.saveNewStore(store: storeField.text!)
+            DataStore.saveStoreData(store: store)
             
             dismiss(animated: true, completion: nil)
         }

@@ -59,6 +59,7 @@ class StoresTableViewController: UITableViewController {
     
     //hide the toolbar on view appearing
     override func viewWillAppear(_ animated: Bool) {
+        print("Hi")
         super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(true, animated: true)
         reloadStores()
