@@ -95,7 +95,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             let category = store!.categories[self.selectedCategory!]
             
             if(editMode) {
-                
                 if category.name != itemCategory {
                     
                     store?.deleteItem(category: itemCategory, item: item)
@@ -104,7 +103,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                 }
                 else {
-                    
                     if let row = store!.categories[self.selectedCategory!].getItems().firstIndex( where: {$0 == itemToEdit}){
                         store!.editItem(category: category, itemIndex: row, newItemName: textField.text!.capitalized)
                     }

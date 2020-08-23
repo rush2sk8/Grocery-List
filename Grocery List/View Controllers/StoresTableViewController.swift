@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import BLTNBoard
 
-class StoresTableViewController: UITableViewController {
+class StoresTableViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     
     var stores: [Store] = [Store]()
 
@@ -28,7 +28,6 @@ class StoresTableViewController: UITableViewController {
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
         
         self.tableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)
-        
     }
     
     @objc func refreshTableData() {
@@ -59,10 +58,18 @@ class StoresTableViewController: UITableViewController {
     
     //hide the toolbar on view appearing
     override func viewWillAppear(_ animated: Bool) {
-        print("Hi")
+        print("APPREAD")
         super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(true, animated: true)
         reloadStores()
+    }
+    @IBAction func toStoreAdd(_ sender: Any) {
+        performSegue(withIdentifier: "toAddStore", sender: nil)
+    }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        reloadStores()
+        self.tableView.reloadData()
     }
     
     //only 1 section in the list
@@ -125,6 +132,12 @@ class StoresTableViewController: UITableViewController {
             let vc = segue.destination as? TableController
             let store = stores[(sender as? Int)!]
             vc?.store = store
+        }
+        else if segue.destination is AddStoreViewController {
+            segue.destination.presentationController?.delegate = self
+            
+            let vc = segue.destination as? AddStoreViewController
+            vc?.parentVC = self
         }
     }
 }

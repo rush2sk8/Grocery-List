@@ -294,7 +294,6 @@ class TableController: UITableViewController {
         header.section = section
         header.delegate = self
         return header
-        
     }
     
     //header height

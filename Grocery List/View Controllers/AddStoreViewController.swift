@@ -11,13 +11,14 @@ import BEMCheckBox
 
 class AddStoreViewController: UIViewController {
     
-    
     @IBOutlet private var storeField: UITextField!
     @IBOutlet private var toolbarView: ToolBarView!
     
     @IBOutlet weak var categoriesCollection: UICollectionView!
     
     let CustomGrey = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+    
+    var parentVC: StoresTableViewController?
     
     var defaults = [
         ["veggies", UIColor(red: 0.40, green: 0.77, blue: 0.40, alpha: 1.00)],
@@ -63,41 +64,51 @@ class AddStoreViewController: UIViewController {
     @objc func addList() {
         
         if(storeField.text == nil || storeField.text! == "") {
+            storeField.attributedPlaceholder = NSAttributedString(string: "Enter a store name!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(red: 1, green: 0.48, blue: 0.51, alpha: 1)])
             
-            if let s = DataStore.getStoreNames() {
-                if let n = storeField.text {
-                    if(s.contains(n.lowercased())){
-                        storeField.text = ""
-                        storeField.attributedPlaceholder = NSAttributedString(string: "List already exists!", attributes: [NSAttributedString.Key.foregroundColor:UIColor.init(red: 1, green: 0.48, blue: 0.51, alpha: 1)])
-                        
-                    }
-                }
-            } else {
-                storeField.attributedPlaceholder = NSAttributedString(string: "Enter a store name!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(red: 1, green: 0.48, blue: 0.51, alpha: 1)])
-            }
+            errorTextField()
+            return
             
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.storeField.frame.height))
-            storeField.layer.borderColor = UIColor.red.cgColor
-            storeField.layer.borderWidth = 1.0
-            storeField.layer.cornerRadius = 14.0
-            storeField.leftView = paddingView
-            storeField.leftViewMode = .always
-            
-        } else {
-            let store = Store(name: storeField.text!)
-        
-            defaults.forEach { def in
-                let n = def[0] as! String
-                if(selectedCategories.contains(n)){
-                    store.addCategory(category: Category(name: n))
+        } else if let s = DataStore.getStoreNames() {
+            if let n = storeField.text {
+                if(s.contains(n.lowercased())){
+                    storeField.text = ""
+                    storeField.attributedPlaceholder = NSAttributedString(string: "List already exists!", attributes: [NSAttributedString.Key.foregroundColor:UIColor.init(red: 1, green: 0.48, blue: 0.51, alpha: 1)])
+                    errorTextField()
+                    return
                 }
             }
-            
-            DataStore.saveNewStore(store: storeField.text!)
-            DataStore.saveStoreData(store: store)
-            
-            dismiss(animated: true, completion: nil)
         }
+        
+        let storename = storeField.text!.lowercased()
+        let store = Store(name: storename)
+        
+        defaults.forEach { def in
+            let n = def[0] as! String
+            if(selectedCategories.contains(n)){
+                store.addCategory(category: Category(name: n))
+            }
+        }
+        store.addCategory(category: Category(name: "Other"))
+        
+        DataStore.saveNewStore(store: storename)
+        DataStore.saveStoreData(store: store)
+        
+        if let p = parentVC {
+            p.reloadStores()
+            p.tableView.reloadData()
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func errorTextField(){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.storeField.frame.height))
+        storeField.layer.borderColor = UIColor.red.cgColor
+        storeField.layer.borderWidth = 1.0
+        storeField.layer.cornerRadius = 14.0
+        storeField.leftView = paddingView
+        storeField.leftViewMode = .always
     }
 }
 
@@ -209,7 +220,7 @@ extension AddStoreViewController: UITextFieldDelegate {
         let currentCategories = Set(defaults.map { x in (x[0] as! String).lowercased() })
         
         if let text = textField.text  {
-            if (currentCategories.contains(text.lowercased()) || text.count > 32) {
+            if (currentCategories.contains(text.lowercased()) || text.count > 32 || text.lowercased() == "other") {
                 cell.contentView.addDashedBorder(color: .red)
             }
             else {

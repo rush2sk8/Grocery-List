@@ -104,12 +104,12 @@
         <!--Add Store View Controller-->
         <scene sceneID="JFb-Z5-O4v">
             <objects>
-                <viewController id="Px8-Ot-fou" customClass="AddStoreViewController" customModule="Grocery_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddStoreViewController" id="Px8-Ot-fou" customClass="AddStoreViewController" customModule="Grocery_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qML-VW-qkq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New List" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dj4-dp-AQH">
+                            <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New List" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dj4-dp-AQH">
                                 <rect key="frame" x="20" y="74" width="374" height="34"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -413,18 +413,19 @@
                     <navigationItem key="navigationItem" id="f5n-mF-est">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="VT5-aY-lbE">
                             <connections>
-                                <segue destination="Px8-Ot-fou" kind="presentation" id="0YH-BE-6Om"/>
+                                <action selector="toStoreAdd:" destination="3Et-EM-gYM" id="Hhz-X8-5YO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="fRW-bz-Bk0" kind="show" identifier="toList" id="Nsn-Fb-6dK"/>
+                        <segue destination="Px8-Ot-fou" kind="presentation" identifier="toAddStore" id="gca-jU-dpC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xOx-ne-k4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031.8840579710145" y="-270.53571428571428"/>
+            <point key="canvasLocation" x="1032" y="-273"/>
         </scene>
     </scenes>
     <designables>
