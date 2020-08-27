@@ -43,7 +43,7 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
             stores = [Store]()
 
             for storeName in storeNames {
-                stores.append(Store(name: storeName))
+                stores.append(DataStore.getStoreData(store: storeName) ?? Store(name: storeName))
             }
         }
         tableView.reloadData()
@@ -84,11 +84,17 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell") as! StoreCell
 
-        cell.storeLabel?.text = stores[indexPath[1]].name.capitalized
+        let currStore = stores[indexPath[1]]
+        
+        cell.storeLabel?.text = currStore.name.capitalized
         cell.separatorInset = .init(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
         cell.layoutMargins = .zero
         cell.tintColor = .black
         cell.storeLabel?.font = UIFont(name: "Avenir-Medium", size: 30)
+        
+   
+        cell.cellImageView.image = currStore.getStoreImage()
+        
         return cell
     }
 

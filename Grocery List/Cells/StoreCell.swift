@@ -11,7 +11,8 @@ import UIKit
 
 class StoreCell: UITableViewCell {
     @IBOutlet var storeLabel: UILabel!
-
+    @IBOutlet var cellImageView: UIImageView!
+    
     override open func layoutSubviews() {
         super.layoutSubviews()
 

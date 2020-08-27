@@ -10,6 +10,7 @@ import BEMCheckBox
 import UIKit
 
 class AddStoreViewController: UIViewController {
+    
     @IBOutlet private var storeField: UITextField!
     @IBOutlet var addButton: UIButton!
     @IBOutlet private var toolbarView: ToolBarView!
@@ -19,6 +20,8 @@ class AddStoreViewController: UIViewController {
     let CustomGrey = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
     
     var parentVC: StoresTableViewController?
+    
+    var currentIcon: String!
     
     var defaults = [
         ["veggies", UIColor(red: 0.40, green: 0.77, blue: 0.40, alpha: 1.00)],
@@ -65,6 +68,8 @@ class AddStoreViewController: UIViewController {
         
         storeField.delegate = self
         hideToolbarButtons(isHidden: true)
+        
+        currentIcon = (toolbarView.buttons.arrangedSubviews.first?.accessibilityIdentifier)!     
     }
     
     @IBAction func addStore(_: Any) {
@@ -79,6 +84,7 @@ class AddStoreViewController: UIViewController {
             }
             hideToolbarButtons(isHidden: true)
         }
+        currentIcon = sender.accessibilityIdentifier!
     }
     
     @objc func iconClicked() {
@@ -93,6 +99,7 @@ class AddStoreViewController: UIViewController {
             }
         }
     }
+    
     @objc func addList() {
         if storeField.text == nil || storeField.text! == "" {
             storeField.attributedPlaceholder = NSAttributedString(string: "Enter a store name!", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 1, green: 0.48, blue: 0.51, alpha: 1)])
@@ -112,7 +119,7 @@ class AddStoreViewController: UIViewController {
         }
         
         let storename = storeField.text!.lowercased()
-        let store = Store(name: storename)
+        let store = Store(name: storename, img: currentIcon)
         
         defaults.forEach { def in
             let n = def[0] as! String
@@ -122,8 +129,7 @@ class AddStoreViewController: UIViewController {
         }
         store.addCategory(category: Category(name: "Other"))
         
-        DataStore.saveNewStore(store: storename)
-        DataStore.saveStoreData(store: store)
+        DataStore.saveNewStore(store: store)
         
         if let p = parentVC {
             p.reloadStores()
