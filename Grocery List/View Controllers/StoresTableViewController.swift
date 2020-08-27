@@ -12,7 +12,8 @@ import UIKit
 
 class StoresTableViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     var stores: [Store] = [Store]()
-
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +28,7 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
 
         tableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)
+
     }
 
     @objc func refreshTableData() {
