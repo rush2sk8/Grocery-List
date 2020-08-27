@@ -262,7 +262,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3r-ZN-Qzv">
                                             <rect key="frame" x="0.0" y="0.0" width="77.5" height="57"/>
-                                            <accessibility key="accessibilityConfiguration" identifier="cart"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="cart.fill"/>
                                             <color key="tintColor" red="0.51764705882352935" green="0.39215686274509803" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                                             <state key="normal">
                                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

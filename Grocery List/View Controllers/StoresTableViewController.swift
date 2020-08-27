@@ -94,6 +94,7 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
         
    
         cell.cellImageView.image = currStore.getStoreImage()
+        cell.cellImageView.tintColor = StoreIconManager.getTint(imgString: currStore.imgName)
         
         return cell
     }

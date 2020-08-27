@@ -98,8 +98,6 @@ class Store: Codable {
                 } else {
                     self.addItem(category: "Other", item: Item(name: itemName))
                 }
-                
-                print(categoryString)
             }
         }
     }

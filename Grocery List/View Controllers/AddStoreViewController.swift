@@ -69,7 +69,7 @@ class AddStoreViewController: UIViewController {
         storeField.delegate = self
         hideToolbarButtons(isHidden: true)
         
-        currentIcon = (toolbarView.buttons.arrangedSubviews.first?.accessibilityIdentifier)!     
+        currentIcon = (toolbarView.buttons.arrangedSubviews.first?.accessibilityIdentifier)!
     }
     
     @IBAction func addStore(_: Any) {
@@ -89,6 +89,7 @@ class AddStoreViewController: UIViewController {
     
     @objc func iconClicked() {
         hideToolbarButtons(isHidden: !(toolbarView.buttons.subviews.first?.isHidden ?? false))
+
     }
     
     func hideToolbarButtons(isHidden: Bool){

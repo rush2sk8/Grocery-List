@@ -115,7 +115,6 @@ class TableController: UITableViewController {
     // add an item with the voice controller
     @IBAction func addItemVoice(_: Any) {
         vc.start(on: self, textHandler: { text, final, _ in
-            print(text)
             if final {
                 self.store.addItemFromVoiceString(text)
 
