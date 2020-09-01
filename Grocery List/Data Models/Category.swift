@@ -11,7 +11,7 @@ class Category: Codable {
     var collapsed: Bool
 
     init(name: String, items: [Item] = [Item](), collapsed: Bool = false) {
-        self.name = name
+        self.name = name.lowercased()
         self.items = items
         self.collapsed = collapsed
     }

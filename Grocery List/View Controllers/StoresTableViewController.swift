@@ -80,6 +80,18 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
         return stores.count
     }
 
+    override func tableView(_: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal, title: "Edit") { [self] _, _, completion in
+            
+            self.performSegue(withIdentifier: "toAddStore", sender: indexPath[1])
+            completion(true)
+        }
+        action.title = "Edit"
+        
+        action.backgroundColor = .systemBlue
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
     // style each store cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell") as! StoreCell
@@ -92,7 +104,6 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
         cell.tintColor = .black
         cell.storeLabel?.font = UIFont(name: "Avenir-Medium", size: 30)
         
-   
         cell.cellImageView.image = currStore.getStoreImage()
         cell.cellImageView.tintColor = StoreIconManager.getTint(imgString: currStore.imgName)
         
@@ -141,6 +152,12 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
 
             let vc = segue.destination as? AddStoreViewController
             vc?.parentVC = self
+            
+            if let storeIdx = sender as? Int {
+                let store = stores[storeIdx]
+                vc?.storeToEdit = store
+                vc?.toEdit = true
+            }       
         }
     }
 }

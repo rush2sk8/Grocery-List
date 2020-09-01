@@ -19,20 +19,20 @@ class Item: Codable {
     var isFavorite: Bool
     
     init(name: String, isFave: Bool, imageString: String, isDone: Bool){
-        self.name = name
+        self.name = name.lowercased()
         self.imageString = imageString
         self.isDone = isDone
         self.isFavorite = isFave
     }
     
     init(name: String, isFave: Bool, isDone: Bool){
-        self.name = name
+        self.name = name.lowercased()
         self.isDone = isDone
         self.isFavorite = isFave
     }
     
     init(name: String) {
-        self.name = name
+        self.name = name.lowercased()
         self.isDone = false
         self.isFavorite = false
     }
@@ -50,7 +50,7 @@ class Item: Codable {
     }
     
     init(name: String, imageString: String) {
-        self.name = name
+        self.name = name.lowercased()
         self.imageString = imageString
         self.isDone = false
         self.isFavorite = false

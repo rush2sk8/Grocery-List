@@ -38,6 +38,9 @@ class AddStoreViewController: UIViewController {
     
     var selectedCategories = Set<String>()
     
+    var storeToEdit: Store?
+    var toEdit: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,8 +63,37 @@ class AddStoreViewController: UIViewController {
         categoriesCollection.collectionViewLayout.invalidateLayout()
         
         defaults.forEach { cat in
-            self.selectedCategories.insert((cat[0] as! String).lowercased())
+            if(toEdit) {
+                if let cats =  storeToEdit?.getCategories() {
+                    if (cats.contains(cat[0] as! String)) {
+                        self.selectedCategories.insert((cat[0] as! String))
+                    }
+                }
+            } else {
+                self.selectedCategories.insert((cat[0] as! String).lowercased())
+            }
         }
+        
+        if(toEdit) {
+            storeField.text = storeToEdit?.name.capitalized
+            
+            let defaultCats: [String] = defaults.map { x in x[0] } as! [String]
+            
+            storeToEdit?.getCategories().forEach { storeCat in
+                if(!defaultCats.contains(storeCat) && storeCat != "other") {
+                    defaults.append([storeCat, CustomGrey])
+                    selectedCategories.insert(storeCat)
+                }
+            }
+            
+            //set saved image
+            toolbarView.image.image = storeToEdit?.getStoreImage()
+            toolbarView.image.tintColor = StoreIconManager.getTint(imgString: (storeToEdit?.imgName)!)
+            
+            //make button text edit
+            addButton.setTitle("Edit", for: .normal)
+        }
+        
         categoriesCollection.reloadData()
         
         storeField.becomeFirstResponder()
@@ -69,7 +101,8 @@ class AddStoreViewController: UIViewController {
         storeField.delegate = self
         hideToolbarButtons(isHidden: true)
         
-        currentIcon = (toolbarView.buttons.arrangedSubviews.first?.accessibilityIdentifier)!
+        currentIcon = toEdit ? storeToEdit?.imgName : (toolbarView.buttons.arrangedSubviews.first?.accessibilityIdentifier)!
+        
     }
     
     @IBAction func addStore(_: Any) {
@@ -89,7 +122,6 @@ class AddStoreViewController: UIViewController {
     
     @objc func iconClicked() {
         hideToolbarButtons(isHidden: !(toolbarView.buttons.subviews.first?.isHidden ?? false))
-
     }
     
     func hideToolbarButtons(isHidden: Bool){
@@ -108,29 +140,78 @@ class AddStoreViewController: UIViewController {
             errorTextField()
             return
             
-        } else if let s = DataStore.getStoreNames() {
-            if let n = storeField.text {
-                if s.contains(n.lowercased()) {
-                    storeField.text = ""
-                    storeField.attributedPlaceholder = NSAttributedString(string: "List already exists!", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 1, green: 0.48, blue: 0.51, alpha: 1)])
-                    errorTextField()
-                    return
+        } else if(!toEdit) {
+            if let s = DataStore.getStoreNames() {
+                if let n = storeField.text {
+                    if s.contains(n.lowercased()) {
+                        storeField.text = ""
+                        storeField.attributedPlaceholder = NSAttributedString(string: "List already exists!", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 1, green: 0.48, blue: 0.51, alpha: 1)])
+                        errorTextField()
+                        return
+                    }
                 }
             }
         }
-        
         let storename = storeField.text!.lowercased()
-        let store = Store(name: storename, img: currentIcon)
         
-        defaults.forEach { def in
-            let n = def[0] as! String
-            if selectedCategories.contains(n) {
-                store.addCategory(category: Category(name: n))
+        if(toEdit){
+            if let s = storeToEdit {
+                var finalCategories: [Category] = [Category]()
+                
+                let existingCategories = s.categories
+                
+                existingCategories.forEach { ec in
+                    if(selectedCategories.contains(ec.name)){
+                        finalCategories.append(ec)
+                    }
+                }
+                
+                let currCats = finalCategories.map { c in c.name }
+                
+                selectedCategories.forEach { sc in
+                    if(!currCats.contains(sc)) {
+                        finalCategories.append(Category(name: sc))
+                    }
+                }
+                
+                finalCategories.append((storeToEdit?.getCategory(name: "other"))!)
+                
+                s.categories = finalCategories
+                s.imgName = currentIcon
+                
+                DataStore.deleteStore(store: s)
+            
+                //hack to save new store
+                for i in 0..<(parentVC?.stores.count)! {
+                    if(parentVC?.stores[i].name == s.name){
+                        parentVC?.stores.remove(at: i)
+                        DataStore.saveStores(stores: parentVC!.stores)
+                        break
+                    }
+                }
+                
+                s.name = storename
+                DataStore.saveNewStore(store: storename)
+                DataStore.saveStoreData(store: s)
             }
         }
-        store.addCategory(category: Category(name: "Other"))
         
-        DataStore.saveNewStore(store: store)
+        else {
+            
+            let store = Store(name: storename, img: currentIcon)
+            
+            //doing it this way to keep some order to the categories
+            defaults.forEach { def in
+                let n = def[0] as! String
+                if selectedCategories.contains(n) {
+                    store.addCategory(category: Category(name: n))
+                }
+            }
+            
+            store.addCategory(category: Category(name: "Other"))
+            
+            DataStore.saveNewStore(store: store)
+        }
         
         if let p = parentVC {
             p.reloadStores()

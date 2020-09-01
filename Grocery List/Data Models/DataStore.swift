@@ -143,7 +143,7 @@ class DataStore {
             defaults.set(stores, forKey: "stores")
             defaults.synchronize()
         } else {
-            defaults.set([store], forKey: "stores")
+            defaults.set([store.name.lowercased()], forKey: "stores")
             defaults.synchronize()
         }
     }
