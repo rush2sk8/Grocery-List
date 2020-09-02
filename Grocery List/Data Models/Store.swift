@@ -5,22 +5,31 @@
 //  Created by Rushad Antia on 6/3/20.
 //  Copyright © 2020 Rushad Antia. All rights reserved.
 //
-
-import Foundation
+import UIKit
 
 class Store: Codable {
     var name: String
+    var imgName: String
+    
     var categories: [Category]
     
-    //this is support for default categories
-    init(name: String, _ categories: [Category] = [Category]()) {
+    init(name: String, img: String , _ categories: [Category] = [Category]()) {
         self.name = name
         self.categories = categories
+        self.imgName = img
     }
     
     init() {
         self.name = ""
         self.categories = [Category]()
+        self.imgName = ""
+    }
+    
+    // initializes with default categories
+    init(name: String){
+        self.name = name
+        self.categories = [Category]()
+        self.imgName = ""
     }
     
     public func addItem(category: Category, item: Item){
@@ -53,7 +62,7 @@ class Store: Codable {
         if index != -1 {
             getCategory(name: category)?.items.remove(at: index)
         }
-    
+        
         save()
     }
     
@@ -89,8 +98,6 @@ class Store: Codable {
                 } else {
                     self.addItem(category: "Other", item: Item(name: itemName))
                 }
-                
-                print(categoryString)
             }
         }
     }
@@ -151,12 +158,6 @@ class Store: Codable {
         return total
     }
     
-    // initializes with default categories
-    init(name: String){
-        self.name = name
-        self.categories = [Category]()
-    }
-    
     func addCategory(category: Category){
         self.categories.append(category)
     }
@@ -186,6 +187,10 @@ class Store: Codable {
             print(error.localizedDescription)
             return nil
         }
+    }
+    
+    public func getStoreImage() -> UIImage? {
+        return StoreIconManager.getImageFromString(imgString: self.imgName)
     }
     
     func save() {
