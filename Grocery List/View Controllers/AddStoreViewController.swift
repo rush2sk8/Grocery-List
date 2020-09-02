@@ -224,7 +224,7 @@ class AddStoreViewController: UIViewController {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: storeField.frame.height))
         storeField.layer.borderColor = UIColor.red.cgColor
         storeField.layer.borderWidth = 1.0
-        storeField.layer.cornerRadius = 14.0
+        storeField.layer.cornerRadius = 15.0
         storeField.leftView = paddingView
         storeField.leftViewMode = .always
     }
@@ -244,7 +244,7 @@ extension AddStoreViewController: UICollectionViewDataSource {
             cell.label.text = data.capitalized
 
             cell.contentView.layer.borderWidth = 1.5
-            cell.contentView.layer.cornerRadius = 14.0
+            cell.contentView.layer.cornerRadius = 15.0
             cell.checkbox.isUserInteractionEnabled = false
 
             cell.checkbox.offFillColor = .white
@@ -285,7 +285,7 @@ extension AddStoreViewController: UICollectionViewDataSource {
             cell.textfield.delegate = self
 
             cell.contentView.addDashedBorder(color: CustomGrey)
-            cell.contentView.layer.cornerRadius = 14.0
+            cell.contentView.layer.cornerRadius = 15.0
 
             return cell
         }
