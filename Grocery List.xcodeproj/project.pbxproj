@@ -16,6 +16,7 @@
 		2423A01F24BB93CC0089181C /* Grocery_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */; };
 		24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */; };
 		243827FE24D1EF8E00AB7E20 /* BLTNBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */; };
+		2438280224D1F4E400AB7E20 /* AddStoreBulletinPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2438280124D1F4E400AB7E20 /* AddStoreBulletinPage.swift */; };
 		24390CBF24C61B6700189D75 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24390CBE24C61B6700189D75 /* StoreCell.swift */; };
 		244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4724ABC850002E2DCA /* Cache.framework */; };
 		244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4924ABC850002E2DCA /* Imaginary.framework */; };
@@ -27,16 +28,11 @@
 		2461A841248829B7009BE0AB /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A840248829B6009BE0AB /* TableController.swift */; };
 		2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A84224882D1D009BE0AB /* AddItemViewController.swift */; };
 		2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */; };
-		2480FBC224F84D0700F1D22F /* StoreIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480FBC124F84D0700F1D22F /* StoreIconManager.swift */; };
+		247E02E624DCDE5900148580 /* AddCustomCategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247E02E424DCDDF800148580 /* AddCustomCategoryCard.swift */; };
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
-		24A3C98024F1804F0019D23F /* AddStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C97F24F1804F0019D23F /* AddStoreCell.swift */; };
-		24A3C98324F1912F0019D23F /* UIView+DashedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C98224F1912F0019D23F /* UIView+DashedBorder.swift */; };
 		24B25E3224C4CD5F00E38D01 /* Grocery_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */; };
-		24E5F3FF24EB1345007DA4BE /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F3FE24EB1345007DA4BE /* ToolBarView.swift */; };
-		24E5F40124EB14D5007DA4BE /* AddStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */; };
-		24E5F40324EB16B7007DA4BE /* UIView+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */; };
-		24F91AEA24F058120064FDBB /* BEMCheckBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F91AE924F058120064FDBB /* BEMCheckBox.framework */; };
-		24F91AEC24F0589E0064FDBB /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F91AEB24F0589E0064FDBB /* CategoryCell.swift */; };
+		24B4AF1024B671E200BAD2FC /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 24B4AF0F24B671E200BAD2FC /* appstore.png */; };
+		24FD68A524DB2EF300919494 /* CategoryAddPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD68A324DB2EC300919494 /* CategoryAddPage.swift */; };
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +69,8 @@
 		2423A02024BB93CC0089181C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InstantSearchVoiceOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BLTNBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		24390CBE24C61B6700189D75 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreCell.swift; path = "Grocery List/Cells/StoreCell.swift"; sourceTree = SOURCE_ROOT; };
+		2438280124D1F4E400AB7E20 /* AddStoreBulletinPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreBulletinPage.swift; sourceTree = "<group>"; };
+		24390CBE24C61B6700189D75 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreCell.swift; path = "Grocery List/Table/StoreCell.swift"; sourceTree = SOURCE_ROOT; };
 		244CEC4724ABC850002E2DCA /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4924ABC850002E2DCA /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CEC4B24ABC850002E2DCA /* Lightbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lightbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,18 +83,13 @@
 		2461A840248829B6009BE0AB /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		2461A84224882D1D009BE0AB /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
-		2480FBC124F84D0700F1D22F /* StoreIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreIconManager.swift; path = "Grocery List/View Controllers/StoreIconManager.swift"; sourceTree = SOURCE_ROOT; };
+		247E02E424DCDDF800148580 /* AddCustomCategoryCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCustomCategoryCard.swift; sourceTree = "<group>"; };
 		2494FFA7248C10CA00DC58E0 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
-		24A3C97F24F1804F0019D23F /* AddStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreCell.swift; sourceTree = "<group>"; };
-		24A3C98224F1912F0019D23F /* UIView+DashedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DashedBorder.swift"; sourceTree = "<group>"; };
 		24B25E2F24C4CD5F00E38D01 /* Grocery ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grocery ListUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B25E3124C4CD5F00E38D01 /* Grocery_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListUITests.swift; sourceTree = "<group>"; };
 		24B25E3324C4CD5F00E38D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24E5F3FE24EB1345007DA4BE /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
-		24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreViewController.swift; sourceTree = "<group>"; };
-		24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Separator.swift"; sourceTree = "<group>"; };
-		24F91AE924F058120064FDBB /* BEMCheckBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BEMCheckBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		24F91AEB24F0589E0064FDBB /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		24B4AF0F24B671E200BAD2FC /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
+		24FD68A324DB2EC300919494 /* CategoryAddPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryAddPage.swift; path = "Grocery List/Bulletin Pages/CategoryAddPage.swift"; sourceTree = SOURCE_ROOT; };
 		4FD008632E60DB9E3C8B3BC9 /* Pods-Grocery List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.debug.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.debug.xcconfig"; sourceTree = "<group>"; };
 		8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD38424FF3E64C73D4C651DF /* Pods-Grocery List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.release.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,7 +107,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24F91AEA24F058120064FDBB /* BEMCheckBox.framework in Frameworks */,
 				243827FE24D1EF8E00AB7E20 /* BLTNBoard.framework in Frameworks */,
 				24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */,
 				244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */,
@@ -152,10 +143,18 @@
 				2418684724885824003E7C69 /* StoresTableViewController.swift */,
 				2461A840248829B6009BE0AB /* TableController.swift */,
 				2461A84224882D1D009BE0AB /* AddItemViewController.swift */,
-				24E5F40024EB14D5007DA4BE /* AddStoreViewController.swift */,
-				24E5F3FE24EB1345007DA4BE /* ToolBarView.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		24235F9E24D9D642002A704F /* Bulletin Pages */ = {
+			isa = PBXGroup;
+			children = (
+				24FD68A324DB2EC300919494 /* CategoryAddPage.swift */,
+				247E02E424DCDDF800148580 /* AddCustomCategoryCard.swift */,
+				2438280124D1F4E400AB7E20 /* AddStoreBulletinPage.swift */,
+			);
+			path = "Bulletin Pages";
 			sourceTree = "<group>";
 		};
 		2423A01D24BB93CC0089181C /* Grocery ListTests */ = {
@@ -194,13 +193,13 @@
 			children = (
 				2418684624884C4F003E7C69 /* Data Models */,
 				2418684924885827003E7C69 /* View Controllers */,
-				24A3C98124F180B50019D23F /* Cells */,
 				24C3A7B124A577C50084D49F /* Table */,
-				24E5F40424EB16C0007DA4BE /* Extensions */,
+				24235F9E24D9D642002A704F /* Bulletin Pages */,
 				247E02E724DDF32600148580 /* Other */,
 				2461A83224882541009BE0AB /* Main.storyboard */,
 				2461A82E24882541009BE0AB /* AppDelegate.swift */,
 				2461A83524882543009BE0AB /* Assets.xcassets */,
+				24B4AF0F24B671E200BAD2FC /* appstore.png */,
 				2461A83724882543009BE0AB /* LaunchScreen.storyboard */,
 				2461A83A24882543009BE0AB /* Info.plist */,
 			);
@@ -210,21 +209,9 @@
 		247E02E724DDF32600148580 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				2480FBC124F84D0700F1D22F /* StoreIconManager.swift */,
 				2409D27424A7D738001FAD06 /* ImagePicker.swift */,
 			);
 			path = Other;
-			sourceTree = "<group>";
-		};
-		24A3C98124F180B50019D23F /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				24F91AEB24F0589E0064FDBB /* CategoryCell.swift */,
-				24390CBE24C61B6700189D75 /* StoreCell.swift */,
-				241F0F7B24B7A35800A3F67C /* ItemCell.swift */,
-				24A3C97F24F1804F0019D23F /* AddStoreCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		24B25E3024C4CD5F00E38D01 /* Grocery ListUITests */ = {
@@ -239,18 +226,11 @@
 		24C3A7B124A577C50084D49F /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				24390CBE24C61B6700189D75 /* StoreCell.swift */,
+				241F0F7B24B7A35800A3F67C /* ItemCell.swift */,
 				2461A8442488347D009BE0AB /* CollapsibleTableViewHeader.swift */,
 			);
 			path = Table;
-			sourceTree = "<group>";
-		};
-		24E5F40424EB16C0007DA4BE /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				24A3C98224F1912F0019D23F /* UIView+DashedBorder.swift */,
-				24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		575ECE3C63906CE9504E2790 /* Pods */ = {
@@ -265,7 +245,6 @@
 		FD6CE4CE15A5E7A1540EC50C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				24F91AE924F058120064FDBB /* BEMCheckBox.framework */,
 				243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */,
 				24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */,
 				240436B724BB9BA20027D973 /* Cache.framework */,
@@ -394,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2461A83924882543009BE0AB /* LaunchScreen.storyboard in Resources */,
+				24B4AF1024B671E200BAD2FC /* appstore.png in Resources */,
 				2461A83624882543009BE0AB /* Assets.xcassets in Resources */,
 				2461A83424882541009BE0AB /* Main.storyboard in Resources */,
 			);
@@ -463,23 +443,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2480FBC224F84D0700F1D22F /* StoreIconManager.swift in Sources */,
-				24E5F40324EB16B7007DA4BE /* UIView+Separator.swift in Sources */,
-				24F91AEC24F0589E0064FDBB /* CategoryCell.swift in Sources */,
+				247E02E624DCDE5900148580 /* AddCustomCategoryCard.swift in Sources */,
+				24FD68A524DB2EF300919494 /* CategoryAddPage.swift in Sources */,
 				241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */,
 				2461A8452488347D009BE0AB /* CollapsibleTableViewHeader.swift in Sources */,
 				2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */,
-				24A3C98024F1804F0019D23F /* AddStoreCell.swift in Sources */,
 				2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */,
-				24E5F40124EB14D5007DA4BE /* AddStoreViewController.swift in Sources */,
 				2418684324884B42003E7C69 /* Category.swift in Sources */,
+				2438280224D1F4E400AB7E20 /* AddStoreBulletinPage.swift in Sources */,
 				241525B724AAAD56000DE4BA /* Item.swift in Sources */,
 				2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */,
-				24E5F3FF24EB1345007DA4BE /* ToolBarView.swift in Sources */,
 				2418684524884B6C003E7C69 /* Store.swift in Sources */,
 				2409D27524A7D738001FAD06 /* ImagePicker.swift in Sources */,
 				24390CBF24C61B6700189D75 /* StoreCell.swift in Sources */,
-				24A3C98324F1912F0019D23F /* UIView+DashedBorder.swift in Sources */,
 				2461A841248829B7009BE0AB /* TableController.swift in Sources */,
 				2461A82F24882541009BE0AB /* AppDelegate.swift in Sources */,
 			);
@@ -695,15 +671,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.5;
 				DEVELOPMENT_TEAM = DH439G95GZ;
 				INFOPLIST_FILE = "Grocery List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "rtest.Grocery-List";
+				MARKETING_VERSION = 2.4;
+				PRODUCT_BUNDLE_IDENTIFIER = "rtest2.Grocery-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -716,14 +691,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.5;
 				DEVELOPMENT_TEAM = DH439G95GZ;
 				INFOPLIST_FILE = "Grocery List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "rtest.Grocery-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

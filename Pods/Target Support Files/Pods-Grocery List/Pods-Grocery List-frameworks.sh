@@ -197,7 +197,6 @@ if [ -r "${ARTIFACT_LIST_FILE}" ]; then
 fi
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BulletinBoard/BLTNBoard.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Cache/Cache.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework"
@@ -205,7 +204,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BulletinBoard/BLTNBoard.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Cache/Cache.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework"
