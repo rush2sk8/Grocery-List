@@ -38,7 +38,7 @@ class Store: Codable {
     }
 
     public func addItem(category: String, item: Item) {
-        getCategory(name: category)?.items.append(item)
+        getCategory(name: category.lowercased())?.items.append(item)
         save()
     }
 
@@ -161,7 +161,7 @@ class Store: Codable {
     // gets a category from name
     func getCategory(name: String) -> Category? {
         for c in categories {
-            if c.name == name {
+            if c.name == name.lowercased() {
                 return c
             }
         }
