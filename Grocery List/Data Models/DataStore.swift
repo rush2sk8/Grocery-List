@@ -79,10 +79,10 @@ class DataStore {
     static func getStoreData(store: String) -> Store? {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("\(store.lowercased()).json")
-            
+
             do {
                 let jsonData = try String(contentsOf: fileURL, encoding: .utf8).data(using: .utf8)!
-                
+
                 if let store = try? JSONDecoder().decode(Store.self, from: jsonData) {
                     return store
                 }
@@ -92,7 +92,7 @@ class DataStore {
         }
         return nil
     }
-    
+
     static func getStoreNames() -> [String]? {
         let defaults = UserDefaults.standard
         if let stores = defaults.stringArray(forKey: "stores") {
@@ -125,25 +125,25 @@ class DataStore {
     static func saveNewStore(store: String) {
         saveNewStore(store: Store(name: store))
     }
-    
+
     static func saveNewStore(store: Store) {
         let defaults = UserDefaults.standard
-        
+
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("\(store.name.lowercased()).json")
-            
+
             FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
-            
+
             DataStore.saveStoreData(store: store)
         }
-        
+
         if var stores = defaults.stringArray(forKey: "stores") {
             stores.append(store.name.lowercased())
-            
+
             defaults.set(stores, forKey: "stores")
             defaults.synchronize()
         } else {
-            defaults.set([store], forKey: "stores")
+            defaults.set([store.name.lowercased()], forKey: "stores")
             defaults.synchronize()
         }
     }

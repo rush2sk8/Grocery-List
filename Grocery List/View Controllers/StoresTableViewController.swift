@@ -12,8 +12,7 @@ import UIKit
 
 class StoresTableViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     var stores: [Store] = [Store]()
-   
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +27,6 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
 
         tableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)
-
     }
 
     @objc func refreshTableData() {
@@ -80,22 +78,33 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
         return stores.count
     }
 
+    override func tableView(_: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal, title: "Edit") { [self] _, _, completion in
+
+            self.performSegue(withIdentifier: "toAddStore", sender: indexPath[1])
+            completion(true)
+        }
+        action.title = "Edit"
+
+        action.backgroundColor = .systemBlue
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+
     // style each store cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell") as! StoreCell
 
         let currStore = stores[indexPath[1]]
-        
+
         cell.storeLabel?.text = currStore.name.capitalized
         cell.separatorInset = .init(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
         cell.layoutMargins = .zero
         cell.tintColor = .black
         cell.storeLabel?.font = UIFont(name: "Avenir-Medium", size: 30)
-        
-   
+
         cell.cellImageView.image = currStore.getStoreImage()
         cell.cellImageView.tintColor = StoreIconManager.getTint(imgString: currStore.imgName)
-        
+
         return cell
     }
 
@@ -141,6 +150,12 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
 
             let vc = segue.destination as? AddStoreViewController
             vc?.parentVC = self
+
+            if let storeIdx = sender as? Int {
+                let store = stores[storeIdx]
+                vc?.storeToEdit = store
+                vc?.toEdit = true
+            }
         }
     }
 }
