@@ -47,13 +47,14 @@ class StoreViewController: UITableViewController {
         let color = UIColor.randomColor()
         
         view.textLabel?.text = self.store.getCategories()[section].capitalized
-        view.textLabel?.font = UIFont.systemFont(ofSize: 21.0, weight: .bold)
+        view.textLabel?.font = UIFont(name: (view.textLabel?.font.fontName)!, size: 30)//UIFont.systemFont(ofSize: 21.0, weight: .bold)
+        view.textLabel?.sizeToFit()
         view.textLabel?.textColor = color
         
         view.contentView.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9176470588, alpha: 1)
         
         view.addButton?.imageView?.tintColor = color
-        view.addButton?.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        view.addButton?.setImage(UIImage(systemName: "plus"), for: .normal)
         
         return view
     }
