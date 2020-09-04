@@ -13,12 +13,12 @@
 		2418684524884B6C003E7C69 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684424884B6C003E7C69 /* Store.swift */; };
 		2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418684724885824003E7C69 /* StoresTableViewController.swift */; };
 		241E7C342501730F00C06241 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241E7C332501730F00C06241 /* StoreViewController.swift */; };
-		241E7C372502E14100C06241 /* StoreListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 241E7C362502E14100C06241 /* StoreListHeader.xib */; };
 		241E7C392502E16200C06241 /* StoreListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241E7C382502E16200C06241 /* StoreListHeader.swift */; };
 		241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241F0F7B24B7A35800A3F67C /* ItemCell.swift */; };
 		2423A01F24BB93CC0089181C /* Grocery_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */; };
+		2427D72B2502E97500BEB252 /* MultiProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2427D72A2502E97500BEB252 /* MultiProgressView.framework */; };
+		2427D72F2502F53700BEB252 /* UIColor+RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2427D72E2502F53700BEB252 /* UIColor+RandomColor.swift */; };
 		24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */; };
-		243827FE24D1EF8E00AB7E20 /* BLTNBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */; };
 		24390CBF24C61B6700189D75 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24390CBE24C61B6700189D75 /* StoreCell.swift */; };
 		244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4724ABC850002E2DCA /* Cache.framework */; };
 		244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CEC4924ABC850002E2DCA /* Imaginary.framework */; };
@@ -69,12 +69,13 @@
 		2418684724885824003E7C69 /* StoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresTableViewController.swift; sourceTree = "<group>"; };
 		2419C7D824B652FD004F5096 /* StrikethroughLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StrikethroughLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		241E7C332501730F00C06241 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = SOURCE_ROOT; };
-		241E7C362502E14100C06241 /* StoreListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreListHeader.xib; sourceTree = "<group>"; };
 		241E7C382502E16200C06241 /* StoreListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreListHeader.swift; path = "Grocery List/Views/StoreListHeader.swift"; sourceTree = SOURCE_ROOT; };
 		241F0F7B24B7A35800A3F67C /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		2423A01C24BB93CC0089181C /* Grocery ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grocery ListTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListTests.swift; sourceTree = "<group>"; };
 		2423A02024BB93CC0089181C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2427D72A2502E97500BEB252 /* MultiProgressView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MultiProgressView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2427D72E2502F53700BEB252 /* UIColor+RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+RandomColor.swift"; path = "Grocery List/View Controllers/UIColor+RandomColor.swift"; sourceTree = SOURCE_ROOT; };
 		24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InstantSearchVoiceOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BLTNBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24390CBE24C61B6700189D75 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreCell.swift; path = "Grocery List/Cells/StoreCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -118,8 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2427D72B2502E97500BEB252 /* MultiProgressView.framework in Frameworks */,
 				24F91AEA24F058120064FDBB /* BEMCheckBox.framework in Frameworks */,
-				243827FE24D1EF8E00AB7E20 /* BLTNBoard.framework in Frameworks */,
 				24283BB124BD017100141807 /* InstantSearchVoiceOverlay.framework in Frameworks */,
 				244CEC4824ABC850002E2DCA /* Cache.framework in Frameworks */,
 				244CEC4A24ABC850002E2DCA /* Imaginary.framework in Frameworks */,
@@ -168,7 +169,6 @@
 			children = (
 				2461A83224882541009BE0AB /* Main.storyboard */,
 				2461A83724882543009BE0AB /* LaunchScreen.storyboard */,
-				241E7C362502E14100C06241 /* StoreListHeader.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +252,7 @@
 		24E5F40424EB16C0007DA4BE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2427D72E2502F53700BEB252 /* UIColor+RandomColor.swift */,
 				24A3C98224F1912F0019D23F /* UIView+DashedBorder.swift */,
 				24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */,
 			);
@@ -270,6 +271,7 @@
 		FD6CE4CE15A5E7A1540EC50C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2427D72A2502E97500BEB252 /* MultiProgressView.framework */,
 				24F91AE924F058120064FDBB /* BEMCheckBox.framework */,
 				243827FD24D1EF8E00AB7E20 /* BLTNBoard.framework */,
 				24283BB024BD017100141807 /* InstantSearchVoiceOverlay.framework */,
@@ -398,7 +400,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				241E7C372502E14100C06241 /* StoreListHeader.xib in Resources */,
 				2461A83924882543009BE0AB /* LaunchScreen.storyboard in Resources */,
 				2461A83624882543009BE0AB /* Assets.xcassets in Resources */,
 				2461A83424882541009BE0AB /* Main.storyboard in Resources */,
@@ -477,6 +478,7 @@
 				241F0F7C24B7A35800A3F67C /* ItemCell.swift in Sources */,
 				2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */,
 				24A3C98024F1804F0019D23F /* AddStoreCell.swift in Sources */,
+				2427D72F2502F53700BEB252 /* UIColor+RandomColor.swift in Sources */,
 				2418684824885824003E7C69 /* StoresTableViewController.swift in Sources */,
 				24E5F40124EB14D5007DA4BE /* AddStoreViewController.swift in Sources */,
 				2418684324884B42003E7C69 /* Category.swift in Sources */,

@@ -493,11 +493,6 @@
             <point key="canvasLocation" x="1031.8840579710145" y="-273.21428571428572"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="wny-no-5Gb">
-            <size key="intrinsicContentSize" width="15" height="18"/>
-        </designable>
-    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="WMn-pa-KSf"/>
     </inferredMetricsTieBreakers>
