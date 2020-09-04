@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoreListHeader" customModule="Grocery_List" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Dng-cq-J8a" customClass="StoreListHeader" customModule="Grocery_List" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRf-nc-Pax">
+                    <rect key="frame" x="16" y="0.0" width="41.5" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hS6-4K-9Nb">
+                    <rect key="frame" x="316" y="9" width="22" height="22"/>
+                    <state key="normal">
+                        <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                    </state>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="hV6-h6-Zmg"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hS6-4K-9Nb" secondAttribute="trailing" constant="16" id="ASj-zV-bhK"/>
+                <constraint firstItem="oRf-nc-Pax" firstAttribute="top" secondItem="Dng-cq-J8a" secondAttribute="top" id="C6T-eO-hzx"/>
+                <constraint firstItem="hV6-h6-Zmg" firstAttribute="bottom" secondItem="hS6-4K-9Nb" secondAttribute="bottom" constant="13" id="DEZ-ci-jcM"/>
+                <constraint firstItem="hS6-4K-9Nb" firstAttribute="leading" relation="lessThanOrEqual" secondItem="oRf-nc-Pax" secondAttribute="trailing" constant="258" id="E7n-Dv-VHZ"/>
+                <constraint firstItem="hV6-h6-Zmg" firstAttribute="bottom" secondItem="oRf-nc-Pax" secondAttribute="bottom" id="Nxp-A0-428"/>
+                <constraint firstItem="oRf-nc-Pax" firstAttribute="leading" secondItem="Dng-cq-J8a" secondAttribute="leading" constant="16" id="xNO-6n-0Mr"/>
+                <constraint firstItem="hV6-h6-Zmg" firstAttribute="top" secondItem="hS6-4K-9Nb" secondAttribute="top" constant="31" id="yjT-4s-o20"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-136.23188405797103" y="127.90178571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

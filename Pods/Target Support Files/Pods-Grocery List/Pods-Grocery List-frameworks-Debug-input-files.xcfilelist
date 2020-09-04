@@ -1,7 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-Grocery List/Pods-Grocery List-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework
-${BUILT_PRODUCTS_DIR}/BulletinBoard/BLTNBoard.framework
 ${BUILT_PRODUCTS_DIR}/Cache/Cache.framework
 ${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework
 ${BUILT_PRODUCTS_DIR}/InstantSearchVoiceOverlay/InstantSearchVoiceOverlay.framework
 ${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework
+${BUILT_PRODUCTS_DIR}/MultiProgressView/MultiProgressView.framework

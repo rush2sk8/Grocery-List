@@ -141,8 +141,8 @@ class StoresTableViewController: UITableViewController, UIAdaptivePresentationCo
 
     // setup segue movement
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is TableController {
-            let vc = segue.destination as? TableController
+        if segue.destination is StoreViewController {
+            let vc = segue.destination as? StoreViewController
             let store = stores[(sender as? Int)!]
             vc?.store = store
         } else if segue.destination is AddStoreViewController {

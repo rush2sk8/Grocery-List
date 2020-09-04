@@ -6,8 +6,8 @@ target 'Grocery List' do
   use_frameworks!
 
   # Pods for Grocery List
-pod 'BulletinBoard'
 pod 'Lightbox'
+pod 'MultiProgressView'
 pod 'BEMCheckBox'
 pod 'InstantSearchVoiceOverlay', '~> 1.1.0'
 
