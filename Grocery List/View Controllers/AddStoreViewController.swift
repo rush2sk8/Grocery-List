@@ -16,24 +16,13 @@ class AddStoreViewController: UIViewController {
 
     @IBOutlet var categoriesCollection: UICollectionView!
 
-    let CustomGrey = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+    
 
     var parentVC: StoresTableViewController?
 
     var currentIcon: String!
 
-    var defaults = [
-        ["veggies", UIColor(red: 0.40, green: 0.77, blue: 0.40, alpha: 1.00)],
-        ["fruits", UIColor(red: 0.96, green: 0.60, blue: 0.00, alpha: 1.00)],
-        ["meats", UIColor(red: 0.93, green: 0.11, blue: 0.14, alpha: 1.00)],
-        ["dairy", UIColor(red: 0.13, green: 0.57, blue: 0.98, alpha: 1.00)],
-        ["bread", UIColor(red: 0.81, green: 0.36, blue: 0.21, alpha: 1.00)],
-        ["snacks", UIColor(red: 0.00, green: 0.57, blue: 0.68, alpha: 1.00)],
-        ["cleaning supplies", UIColor(red: 1.00, green: 0.78, blue: 0.00, alpha: 1.00)],
-        ["beauty", UIColor(red: 0.99, green: 0.38, blue: 0.66, alpha: 1.00)],
-        ["baking", UIColor(red: 0.61, green: 0.46, blue: 0.325, alpha: 1)],
-        ["frozen foods", UIColor(red: 0.54, green: 0.82, blue: 0.86, alpha: 1.00)],
-    ]
+    var defaults = ColorManager.defaultsArr
 
     var selectedCategories = Set<String>()
 
@@ -42,11 +31,11 @@ class AddStoreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         toolbarView.addSeparator(at: .top, color: #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7960784314, alpha: 1), weight: 1.0, insets: .zero)
         storeField.inputAccessoryView = toolbarView
 
-        storeField.attributedPlaceholder = NSAttributedString(string: "New List", attributes: [NSAttributedString.Key.foregroundColor: CustomGrey])
+        storeField.attributedPlaceholder = NSAttributedString(string: "New List", attributes: [NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY])
 
         toolbarView.add.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addList)))
         toolbarView.image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(iconClicked)))
@@ -80,7 +69,7 @@ class AddStoreViewController: UIViewController {
 
             storeToEdit?.getCategories().forEach { storeCat in
                 if !defaultCats.contains(storeCat), storeCat != "other" {
-                    defaults.append([storeCat, CustomGrey])
+                    defaults.append([storeCat, ColorManager.CUSTOMGRAY])
                     selectedCategories.insert(storeCat)
                 }
             }
@@ -261,11 +250,11 @@ extension AddStoreViewController: UICollectionViewDataSource {
                 cell.checkbox.reload()
             } else {
                 cell.checkbox.on = false
-                cell.label.textColor = CustomGrey
+                cell.label.textColor = ColorManager.CUSTOMGRAY
                 cell.contentView.layer.backgroundColor = UIColor.white.cgColor
 
-                cell.contentView.layer.borderColor = CustomGrey.cgColor
-                cell.checkbox.onTintColor = CustomGrey
+                cell.contentView.layer.borderColor = ColorManager.CUSTOMGRAY.cgColor
+                cell.checkbox.onTintColor = ColorManager.CUSTOMGRAY
                 cell.checkbox.onCheckColor = .white
                 cell.checkbox.reload()
             }
@@ -279,12 +268,12 @@ extension AddStoreViewController: UICollectionViewDataSource {
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addStoreCell", for: indexPath) as! AddStoreCell
 
-            cell.textfield.attributedPlaceholder = NSAttributedString(string: "Add New Category", attributes: [NSAttributedString.Key.foregroundColor: CustomGrey])
-            cell.textfield.textColor = CustomGrey
+            cell.textfield.attributedPlaceholder = NSAttributedString(string: "Add New Category", attributes: [NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY])
+            cell.textfield.textColor = ColorManager.CUSTOMGRAY
             cell.textfield.inputAccessoryView = toolbarView
             cell.textfield.delegate = self
 
-            cell.contentView.addDashedBorder(color: CustomGrey)
+            cell.contentView.addDashedBorder(color: ColorManager.CUSTOMGRAY)
             cell.contentView.layer.cornerRadius = 15.0
 
             return cell
@@ -302,15 +291,15 @@ extension AddStoreViewController: UICollectionViewDelegate {
             cell.checkbox.setOn(isOn, animated: true)
 
             UIView.animate(withDuration: 0.5, animations: {
-                cell.label.textColor = isOn ? .white : self.CustomGrey
+                cell.label.textColor = isOn ? .white : ColorManager.CUSTOMGRAY
                 cell.contentView.layer.backgroundColor = isOn ? currColor : UIColor.white.cgColor
-                cell.contentView.layer.borderColor = isOn ? currColor : self.CustomGrey.cgColor
+                cell.contentView.layer.borderColor = isOn ? currColor : ColorManager.CUSTOMGRAY.cgColor
 
             }, completion: { _ in
                 cell.checkbox.offFillColor = .white
                 cell.checkbox.onFillColor = .white
 
-                cell.checkbox.onTintColor = isOn ? UIColor(cgColor: currColor) : self.CustomGrey
+                cell.checkbox.onTintColor = isOn ? UIColor(cgColor: currColor) : ColorManager.CUSTOMGRAY
                 cell.checkbox.onCheckColor = isOn ? UIColor(cgColor: currColor) : .white
 
             })
@@ -341,10 +330,10 @@ extension AddStoreViewController: UITextFieldDelegate {
                 if text == "" || currentCategories.contains(text.lowercased()) || text.count > 32 || text.lowercased() == "other" {
                     cell.contentView.addDashedBorder(color: .red)
                 } else {
-                    defaults.append([text.lowercased(), CustomGrey])
+                    defaults.append([text.lowercased(), ColorManager.CUSTOMGRAY])
                     selectedCategories.insert(text.lowercased())
                     categoriesCollection.reloadData()
-                    cell.contentView.addDashedBorder(color: CustomGrey)
+                    cell.contentView.addDashedBorder(color: ColorManager.CUSTOMGRAY)
                 }
             }
 

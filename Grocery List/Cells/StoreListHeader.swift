@@ -24,6 +24,7 @@ class StoreListHeader: UITableViewHeaderFooterView {
         addButton?.heightAnchor.constraint(equalToConstant: 24).isActive = true
         addButton?.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
         addButton?.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor).isActive = true
+        
     }
     
     required init?(coder: NSCoder) {

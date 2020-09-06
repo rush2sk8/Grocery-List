@@ -44,19 +44,29 @@ class StoreViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: StoreListHeader.reuseIdentifier) as? StoreListHeader else { return nil }
         
-        let color = UIColor.randomColor()
+        let catName = self.store.getCategories()[section].lowercased()
         
-        view.textLabel?.text = self.store.getCategories()[section].capitalized
-        view.textLabel?.font = UIFont(name: (view.textLabel?.font.fontName)!, size: 30)//UIFont.systemFont(ofSize: 21.0, weight: .bold)
-        view.textLabel?.sizeToFit()
+        var color: UIColor? = ColorManager.CUSTOMGRAY
+        
+        if (ColorManager.defaultsMap.keys.contains(catName)) {
+            color = ColorManager.defaultsMap[catName]
+        }
+        
+        view.textLabel?.text = catName.capitalized
         view.textLabel?.textColor = color
         
         view.contentView.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9176470588, alpha: 1)
         
         view.addButton?.imageView?.tintColor = color
-        view.addButton?.setImage(UIImage(systemName: "plus"), for: .normal)
+        view.addButton?.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold)), for: .normal)
         
         return view
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? StoreListHeader {
+            header.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.init(rawValue: 0.600))
+        }
     }
     
 }

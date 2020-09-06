@@ -128,12 +128,7 @@ class Store: Codable {
     }
 
     public func getCategories() -> [String] {
-        var categories = [String]()
-
-        for c in self.categories {
-            categories.append(c.name.lowercased())
-        }
-        return categories
+        return self.categories.map { c in c.name.lowercased()}
     }
 
     public func getNumNonDoneItems() -> Int {

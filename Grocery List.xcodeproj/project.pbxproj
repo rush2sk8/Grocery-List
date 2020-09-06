@@ -29,6 +29,7 @@
 		2461A83924882543009BE0AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461A83724882543009BE0AB /* LaunchScreen.storyboard */; };
 		2461A84324882D1D009BE0AB /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461A84224882D1D009BE0AB /* AddItemViewController.swift */; };
 		2480FBC224F84D0700F1D22F /* StoreIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480FBC124F84D0700F1D22F /* StoreIconManager.swift */; };
+		2486580825055E39004F5F59 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486580725055E39004F5F59 /* ColorManager.swift */; };
 		2494FFA8248C10CA00DC58E0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494FFA7248C10CA00DC58E0 /* DataStore.swift */; };
 		24A3C98024F1804F0019D23F /* AddStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C97F24F1804F0019D23F /* AddStoreCell.swift */; };
 		24A3C98324F1912F0019D23F /* UIView+DashedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C98224F1912F0019D23F /* UIView+DashedBorder.swift */; };
@@ -69,7 +70,7 @@
 		2418684724885824003E7C69 /* StoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresTableViewController.swift; sourceTree = "<group>"; };
 		2419C7D824B652FD004F5096 /* StrikethroughLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StrikethroughLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		241E7C332501730F00C06241 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = SOURCE_ROOT; };
-		241E7C382502E16200C06241 /* StoreListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreListHeader.swift; path = "Grocery List/Views/StoreListHeader.swift"; sourceTree = SOURCE_ROOT; };
+		241E7C382502E16200C06241 /* StoreListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreListHeader.swift; path = "Grocery List/Cells/StoreListHeader.swift"; sourceTree = SOURCE_ROOT; };
 		241F0F7B24B7A35800A3F67C /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		2423A01C24BB93CC0089181C /* Grocery ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grocery ListTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2423A01E24BB93CC0089181C /* Grocery_ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery_ListTests.swift; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		2461A840248829B6009BE0AB /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		2461A84224882D1D009BE0AB /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		2480FBC124F84D0700F1D22F /* StoreIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreIconManager.swift; path = "Grocery List/View Controllers/StoreIconManager.swift"; sourceTree = SOURCE_ROOT; };
+		2486580725055E39004F5F59 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorManager.swift; path = "Grocery List/View Controllers/ColorManager.swift"; sourceTree = SOURCE_ROOT; };
 		2494FFA7248C10CA00DC58E0 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		24A3C97F24F1804F0019D23F /* AddStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreCell.swift; sourceTree = "<group>"; };
 		24A3C98224F1912F0019D23F /* UIView+DashedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DashedBorder.swift"; sourceTree = "<group>"; };
@@ -153,7 +155,6 @@
 		2418684924885827003E7C69 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				241E7C382502E16200C06241 /* StoreListHeader.swift */,
 				241E7C332501730F00C06241 /* StoreViewController.swift */,
 				2461A840248829B6009BE0AB /* TableController.swift */,
 				2418684724885824003E7C69 /* StoresTableViewController.swift */,
@@ -223,6 +224,7 @@
 		247E02E724DDF32600148580 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				2486580725055E39004F5F59 /* ColorManager.swift */,
 				2480FBC124F84D0700F1D22F /* StoreIconManager.swift */,
 				2409D27424A7D738001FAD06 /* ImagePicker.swift */,
 			);
@@ -232,6 +234,7 @@
 		24A3C98124F180B50019D23F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				241E7C382502E16200C06241 /* StoreListHeader.swift */,
 				24F91AEB24F0589E0064FDBB /* CategoryCell.swift */,
 				24390CBE24C61B6700189D75 /* StoreCell.swift */,
 				241F0F7B24B7A35800A3F67C /* ItemCell.swift */,
@@ -470,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2486580825055E39004F5F59 /* ColorManager.swift in Sources */,
 				241E7C342501730F00C06241 /* StoreViewController.swift in Sources */,
 				2480FBC224F84D0700F1D22F /* StoreIconManager.swift in Sources */,
 				24E5F40324EB16B7007DA4BE /* UIView+Separator.swift in Sources */,
