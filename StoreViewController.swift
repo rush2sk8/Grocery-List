@@ -29,6 +29,14 @@ class StoreViewController: UITableViewController {
     
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(self.store.categories[indexPath[0]].items[indexPath[1]])
+    }
+    
+    
+    
+    // MARK: - Start Header
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40.0
     }
