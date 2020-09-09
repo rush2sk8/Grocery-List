@@ -8,12 +8,12 @@
 class Category: Codable {
     var name: String
     var items: [Item]
-    var collapsed: Bool
+    var toAdd: Bool
 
     init(name: String, items: [Item] = [Item](), collapsed: Bool = false) {
         self.name = name.lowercased()
         self.items = items
-        self.collapsed = collapsed
+        self.toAdd = collapsed
     }
 
     func getItems() -> [String] {

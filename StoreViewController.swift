@@ -29,11 +29,31 @@ class StoreViewController: UITableViewController {
     
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(self.store.categories[indexPath[0]].items[indexPath[1]])
+    @objc func addItemHeader(sender: UIButton){
+        let header = sender.superview?.superview as! StoreListHeader
+        let section = header.tag
+        store.categories[section].toAdd = true
+        tableView.reloadData()
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //print(self.store.categories[indexPath[0]].items[indexPath[1]])
+    }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currCategory = store.categories[indexPath[0]]
+        
+        if indexPath[1] < currCategory.items.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! ItemCellCollapsible
+         
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addItemCell") as! AddItemCell
+            
+            return cell
+        }
+    }
     
     // MARK: - Start Header
     
@@ -47,6 +67,11 @@ class StoreViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return store.categories.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let num = store.categories[section].items.count
+        return store.categories[section].toAdd ? (num + 1) : num
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -67,6 +92,9 @@ class StoreViewController: UITableViewController {
         
         view.addButton?.imageView?.tintColor = color
         view.addButton?.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold)), for: .normal)
+        view.addButton?.addTarget(self, action: #selector(addItemHeader(sender:)), for: .touchUpInside)
+        
+        view.tag = section
         
         return view
     }
