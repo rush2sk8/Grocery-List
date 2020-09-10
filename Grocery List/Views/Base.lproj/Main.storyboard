@@ -120,8 +120,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XPs-Ze-0Kg">
-                                            <rect key="frame" x="47" y="63.5" width="54" height="69.5"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XPs-Ze-0Kg">
+                                            <rect key="frame" x="47" y="79" width="54" height="54"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="54" id="hmY-VI-FjP"/>
                                             </constraints>
@@ -131,12 +131,12 @@
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         </view>
                                         <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wee-YE-2va">
-                                            <rect key="frame" x="53" y="22" width="341" height="18.5"/>
+                                            <rect key="frame" x="53" y="22" width="341" height="52.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ed-zR-yon">
-                                            <rect key="frame" x="109" y="63.5" width="285" height="69.5"/>
+                                            <rect key="frame" x="109" y="97.5" width="285" height="35.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -144,7 +144,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="wee-YE-2va" secondAttribute="trailing" constant="20" id="2K8-Lv-d3V"/>
                                         <constraint firstAttribute="bottom" secondItem="6ed-zR-yon" secondAttribute="bottom" constant="11" id="AIF-1v-TuJ"/>
-                                        <constraint firstItem="XPs-Ze-0Kg" firstAttribute="top" secondItem="wee-YE-2va" secondAttribute="bottom" constant="23" id="HoR-eg-ba1"/>
+                                        <constraint firstItem="XPs-Ze-0Kg" firstAttribute="top" secondItem="wee-YE-2va" secondAttribute="bottom" constant="38.5" id="HoR-eg-ba1"/>
                                         <constraint firstItem="6ed-zR-yon" firstAttribute="leading" secondItem="XPs-Ze-0Kg" secondAttribute="trailing" constant="8" symbolic="YES" id="JjB-6L-yVJ"/>
                                         <constraint firstAttribute="bottom" secondItem="XPs-Ze-0Kg" secondAttribute="bottom" constant="11" id="Oh1-vX-D8p"/>
                                         <constraint firstItem="wee-YE-2va" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UxD-8J-ZAn" secondAttribute="trailing" constant="8" symbolic="YES" id="P9U-XU-nDP"/>
@@ -601,6 +601,7 @@
         <image name="desktopcomputer" catalog="system" width="128" height="101"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="mic.fill" catalog="system" width="108" height="128"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>

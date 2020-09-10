@@ -11,6 +11,9 @@ import UIKit
 
 class StoreViewController: UITableViewController {
     var store = Store()
+    var imagePicker: ImagePicker!
+    
+    var currImageView: UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +27,10 @@ class StoreViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9176470588, alpha: 1)
+        
     
         self.tableView.register(StoreListHeader.self, forHeaderFooterViewReuseIdentifier: StoreListHeader.reuseIdentifier)
-    
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     @objc func addItemHeader(sender: UIButton){
@@ -34,6 +38,12 @@ class StoreViewController: UITableViewController {
         let section = header.tag
         store.categories[section].toAdd = true
         tableView.reloadData()
+    }
+    
+    @objc func tappedImage(sender: AddItemCell){
+        print("tapped")
+        currImageView = sender.imageView
+        imagePicker.present(from: sender)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -51,8 +61,26 @@ class StoreViewController: UITableViewController {
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addItemCell") as! AddItemCell
             
+            cell.itemTextField.attributedPlaceholder = NSAttributedString(string: "New Item", attributes: [NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY])
+            cell.itemDescriptionTextField.attributedPlaceholder = NSAttributedString(string: "Add Description", attributes: [NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY])
+        
+            //cell.selectionStyle = .none
+            
+            cell.itemImage.isUserInteractionEnabled = true
+            cell.itemImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedImage(sender:))))
+            
+            cell.itemImage.layer.cornerRadius = cell.itemImage.layer.borderWidth / 2
+            cell.itemImage.image = UIImage(systemName: "photo")!
+            
             return cell
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool {
+        let cell1 = context.nextFocusedItem
+        let cell2 = context.previouslyFocusedView
+        
+        return true
     }
     
     // MARK: - Start Header
@@ -105,4 +133,12 @@ class StoreViewController: UITableViewController {
         }
     }
     
+}
+
+extension StoreViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        self.currImageView?.image = image
+        self.currImageView?.layer.cornerRadius = self.currImageView?.bounds.width ?? 10 / 2
+        self.currImageView = nil
+    }
 }

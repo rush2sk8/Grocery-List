@@ -11,7 +11,9 @@ import UIKit
 
 class AddItemCell: UITableViewCell {
     
-    @IBOutlet weak var itemTextField: UITextField!
-    @IBOutlet weak var itemImage: UIImageView!
-    @IBOutlet weak var itemDescriptionTextField: UITextField!
+    @IBOutlet var itemTextField: UITextField!
+    @IBOutlet var itemImage: UIImageView!
+    @IBOutlet var itemDescriptionTextField: UITextField!
 }
+
+
