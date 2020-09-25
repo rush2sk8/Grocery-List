@@ -75,13 +75,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtF-Cm-lxH">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtF-Cm-lxH">
                                             <rect key="frame" x="53" y="30" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cub-BI-xNt" customClass="BEMCheckBox">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cub-BI-xNt" customClass="BEMCheckBox">
                                             <rect key="frame" x="13" y="25" width="32" height="31"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         </view>
@@ -142,7 +142,7 @@
                                         </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="wee-YE-2va" secondAttribute="trailing" constant="20" id="2K8-Lv-d3V"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wee-YE-2va" secondAttribute="trailing" constant="20" id="2K8-Lv-d3V"/>
                                         <constraint firstAttribute="bottom" secondItem="6ed-zR-yon" secondAttribute="bottom" constant="11" id="AIF-1v-TuJ"/>
                                         <constraint firstItem="XPs-Ze-0Kg" firstAttribute="top" secondItem="wee-YE-2va" secondAttribute="bottom" constant="38.5" id="HoR-eg-ba1"/>
                                         <constraint firstItem="6ed-zR-yon" firstAttribute="leading" secondItem="XPs-Ze-0Kg" secondAttribute="trailing" constant="8" symbolic="YES" id="JjB-6L-yVJ"/>
@@ -593,6 +593,17 @@
             <point key="canvasLocation" x="1031.8840579710145" y="-273.21428571428572"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="UxD-8J-ZAn">
+            <size key="intrinsicContentSize" width="32" height="31"/>
+        </designable>
+        <designable name="cub-BI-xNt">
+            <size key="intrinsicContentSize" width="32" height="31"/>
+        </designable>
+        <designable name="wny-no-5Gb">
+            <size key="intrinsicContentSize" width="15" height="18"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="WMn-pa-KSf"/>
     </inferredMetricsTieBreakers>
