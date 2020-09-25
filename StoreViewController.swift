@@ -90,7 +90,7 @@ class StoreViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return  50.0
+        return  52.0
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
