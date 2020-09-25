@@ -39,6 +39,7 @@
 		24E5F40324EB16B7007DA4BE /* UIView+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */; };
 		24F91AEA24F058120064FDBB /* BEMCheckBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F91AE924F058120064FDBB /* BEMCheckBox.framework */; };
 		24F91AEC24F0589E0064FDBB /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F91AEB24F0589E0064FDBB /* CategoryCell.swift */; };
+		24FA2E29251E76C100F6338B /* UIImage+GetB64String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA2E28251E76C100F6338B /* UIImage+GetB64String.swift */; };
 		CFAF001F565611D9E60E2D73 /* Pods_Grocery_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Separator.swift"; sourceTree = "<group>"; };
 		24F91AE924F058120064FDBB /* BEMCheckBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BEMCheckBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F91AEB24F0589E0064FDBB /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		24FA2E28251E76C100F6338B /* UIImage+GetB64String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+GetB64String.swift"; path = "Grocery List/View Controllers/UIImage+GetB64String.swift"; sourceTree = SOURCE_ROOT; };
 		4FD008632E60DB9E3C8B3BC9 /* Pods-Grocery List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.debug.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.debug.xcconfig"; sourceTree = "<group>"; };
 		8E89EC5A48903AAE3D1DC49C /* Pods_Grocery_List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery_List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD38424FF3E64C73D4C651DF /* Pods-Grocery List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery List.release.xcconfig"; path = "Target Support Files/Pods-Grocery List/Pods-Grocery List.release.xcconfig"; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		24E5F40424EB16C0007DA4BE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				24FA2E28251E76C100F6338B /* UIImage+GetB64String.swift */,
 				2427D72E2502F53700BEB252 /* UIColor+RandomColor.swift */,
 				24A3C98224F1912F0019D23F /* UIView+DashedBorder.swift */,
 				24E5F40224EB16B7007DA4BE /* UIView+Separator.swift */,
@@ -491,6 +494,7 @@
 				2409D27524A7D738001FAD06 /* ImagePicker.swift in Sources */,
 				24390CBF24C61B6700189D75 /* StoreCell.swift in Sources */,
 				24A3C98324F1912F0019D23F /* UIView+DashedBorder.swift in Sources */,
+				24FA2E29251E76C100F6338B /* UIImage+GetB64String.swift in Sources */,
 				2461A82F24882541009BE0AB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

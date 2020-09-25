@@ -34,22 +34,4 @@ class Category: Codable {
         return total
     }
 
-    func pruneNonFavorites() {
-        var faves = [Item]()
-
-        for item in items {
-            if item.isFavorite {
-                faves.append(item)
-            }
-        }
-        items = faves
-    }
-
-    func resetFavorites() {
-        for item in items {
-            if item.isFavorite, item.isDone {
-                item.isDone = false
-            }
-        }
-    }
 }

@@ -16,44 +16,44 @@ class Item: Codable {
 
     var name: String
     var isDone: Bool = false
-    var isFavorite: Bool
+    var description: String
 
-    init(name: String, isFave: Bool, imageString: String, isDone: Bool) {
+    init(name: String, imageString: String, isDone: Bool) {
         self.name = name.lowercased()
         self.imageString = imageString
         self.isDone = isDone
-        isFavorite = isFave
+        self.description = ""
     }
 
-    init(name: String, isFave: Bool, isDone: Bool) {
+    init(name: String, isDone: Bool) {
         self.name = name.lowercased()
         self.isDone = isDone
-        isFavorite = isFave
+        self.description = ""
     }
 
     init(name: String) {
         self.name = name.lowercased()
         isDone = false
-        isFavorite = false
+        self.description = ""
     }
 
     init(name: String, isFav: Bool) {
         self.name = name
         isDone = false
-        isFavorite = isFav
+        self.description = ""
     }
 
     init() {
         name = ""
         isDone = false
-        isFavorite = false
+        self.description = ""
     }
 
-    init(name: String, imageString: String) {
+    init(name: String, imageString: String, _ description: String = "") {
         self.name = name.lowercased()
         self.imageString = imageString
         isDone = false
-        isFavorite = false
+        self.description = description
     }
 
     func getImage() -> UIImage? {

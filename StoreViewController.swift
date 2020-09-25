@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import BEMCheckBox
 
 class StoreViewController: UITableViewController {
     var store = Store()
@@ -28,9 +29,18 @@ class StoreViewController: UITableViewController {
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9176470588, alpha: 1)
         
-    
+        
         self.tableView.register(StoreListHeader.self, forHeaderFooterViewReuseIdentifier: StoreListHeader.reuseIdentifier)
         imagePicker = ImagePicker(presentationController: self, delegate: self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        store.categories.forEach { c in
+            c.toAdd = false
+        }
+        store.save()
     }
     
     @objc func addItemHeader(sender: UIButton){
@@ -55,21 +65,35 @@ class StoreViewController: UITableViewController {
         
         if indexPath[1] < currCategory.items.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! ItemCellCollapsible
-         
+            let currItem = currCategory.items[indexPath[1]]
+            
+            let categoryColor = ColorManager.defaultsMap[currCategory.name] ?? ColorManager.CUSTOMGRAY
+            
+            cell.checkbox.delegate = self
+            cell.checkbox.onTintColor = categoryColor
+            cell.checkbox.onCheckColor = categoryColor
+            cell.checkbox.on = currItem.isDone
+            
+            cell.itemLabel.text = currItem.name
+            cell.descriptionLabel.text = currItem.description
+            
+            print("Name: \(currItem.name) Selected: \(currItem.isDone)")
+            
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addItemCell") as! AddItemCell
             
             cell.itemTextField.attributedPlaceholder = NSAttributedString(string: "New Item", attributes: [NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY])
-         
-                
+            cell.itemTextField.text = ""
+            cell.itemTextField.delegate = self
+            
             let descriptionText = NSMutableAttributedString(string: "Description ", attributes: [NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY])
             descriptionText.append(NSAttributedString(string: "(Optional)", attributes: [NSAttributedString.Key.obliqueness: 0.2, NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY]))
             
-            
+            cell.itemDescriptionTextField.text = ""
             cell.itemDescriptionTextField.attributedPlaceholder = descriptionText
-        
+            
             cell.itemImage.isUserInteractionEnabled = true
             cell.itemImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedImage(sender:))))
             
@@ -81,9 +105,9 @@ class StoreViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool {
-        let cell1 = context.nextFocusedItem
-        let cell2 = context.previouslyFocusedView
-        
+       // let cell1 = context.nextFocusedItem
+        //        let cell2 = context.previouslyFocusedView
+        //
         return true
     }
     
@@ -94,7 +118,7 @@ class StoreViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return  52.0
+        return  50.0
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -134,6 +158,66 @@ class StoreViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? StoreListHeader {
             header.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.init(rawValue: 0.600))
+        }
+    }
+    
+}
+
+extension StoreViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        let cell = tableView.cellForSubview(cellSubview: textField) as? AddItemCell
+        let indexPath = tableView.indexPathForCellWithSubview(cellSubview: textField)!
+        let currentCategory = store.categories[indexPath[0]]
+        
+        //if an item is present
+        if let itemName = cell?.itemTextField.text {
+            
+            let itemToAdd = Item(name: itemName)
+            
+            if let description = cell?.itemDescriptionTextField.text {
+                itemToAdd.description = description
+            }
+            
+            if let image = cell?.itemImage.image {
+                itemToAdd.imageString = image.getB64String()
+            }
+            
+            store.addItem(category: currentCategory.name, item: itemToAdd)
+            currentCategory.toAdd = false
+            tableView.reloadData()
+        }
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}
+
+extension UITableView {
+    func cellForSubview(cellSubview: UIView) -> UITableViewCell? {
+        if let ip = indexPathForCellWithSubview(cellSubview: cellSubview) {
+            return cellForRow(at: ip)
+        }
+        return nil
+    }
+    func indexPathForCellWithSubview(cellSubview: UIView) -> IndexPath? {
+        let cellFrame = convert(cellSubview.bounds, from: cellSubview)
+        let cellCenter = CGPoint(x: cellFrame.midX, y: cellFrame.midY)
+        
+        return indexPathForRow(at: cellCenter)
+        
+    }
+}
+
+extension StoreViewController: BEMCheckBoxDelegate {
+    
+    func didTap(_ checkBox: BEMCheckBox) {
+        if let indexPath = tableView.indexPathForCellWithSubview(cellSubview: checkBox){
+            let item = store.categories[indexPath[0]].items[indexPath[1]]
+            item.isDone = checkBox.on
+            store.save()
         }
     }
     

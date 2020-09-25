@@ -118,15 +118,6 @@ class Store: Codable {
         }
     }
 
-    public func finishShopping() {
-        for category in categories {
-            category.pruneNonFavorites()
-            category.resetFavorites()
-        }
-
-        save()
-    }
-
     public func getCategories() -> [String] {
         return self.categories.map { c in c.name.lowercased()}
     }
