@@ -62,10 +62,14 @@ class StoreViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addItemCell") as! AddItemCell
             
             cell.itemTextField.attributedPlaceholder = NSAttributedString(string: "New Item", attributes: [NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY])
-            cell.itemDescriptionTextField.attributedPlaceholder = NSAttributedString(string: "Add Description", attributes: [NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY])
-        
-            //cell.selectionStyle = .none
+         
+                
+            let descriptionText = NSMutableAttributedString(string: "Description ", attributes: [NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY])
+            descriptionText.append(NSAttributedString(string: "(Optional)", attributes: [NSAttributedString.Key.obliqueness: 0.2, NSAttributedString.Key.foregroundColor: ColorManager.CUSTOMGRAY]))
             
+            
+            cell.itemDescriptionTextField.attributedPlaceholder = descriptionText
+        
             cell.itemImage.isUserInteractionEnabled = true
             cell.itemImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedImage(sender:))))
             
