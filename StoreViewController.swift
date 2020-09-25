@@ -32,18 +32,26 @@ class StoreViewController: UITableViewController {
         
         self.tableView.register(StoreListHeader.self, forHeaderFooterViewReuseIdentifier: StoreListHeader.reuseIdentifier)
         imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.tintColor = .black
+        tableView.addSubview(refreshControl!)
+        refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
+    }
+    
+    @objc func refreshTableData() {
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        store.categories.forEach { c in
-            c.toAdd = false
-        }
-        store.save()
+        closeAddCells()
     }
-    
+
     @objc func addItemHeader(sender: UIButton){
+        closeAddCells()
+        
         let header = sender.superview?.superview as! StoreListHeader
         let section = header.tag
         store.categories[section].toAdd = true
@@ -56,8 +64,40 @@ class StoreViewController: UITableViewController {
         imagePicker.present(from: sender)
     }
     
+    func closeAddCells() {
+        store.categories.forEach { c in
+            c.toAdd = false
+        }
+        store.save()
+        tableView.reloadData()
+    }
+    
+    
+    // MARK: - Start Cells
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        let delete = UIContextualAction(style: .normal, title: "Delete") { [self] (action, view, completion) in
+  
+                self.store.categories[indexPath[0]].items.remove(at: indexPath[1])
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.endUpdates()
+                self.store.save()
+                
+                tableView.reloadData()
+            
+            completion(true)
+        }
+        
+        delete.title = "Delete"
+        delete.backgroundColor = .systemRed
+        
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print(self.store.categories[indexPath[0]].items[indexPath[1]])
+        print(self.store.categories[indexPath[0]].items[indexPath[1]].name)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,8 +116,6 @@ class StoreViewController: UITableViewController {
             
             cell.itemLabel.text = currItem.name
             cell.descriptionLabel.text = currItem.description
-            
-            print("Name: \(currItem.name) Selected: \(currItem.isDone)")
             
             return cell
         }
@@ -102,13 +140,6 @@ class StoreViewController: UITableViewController {
             
             return cell
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool {
-       // let cell1 = context.nextFocusedItem
-        //        let cell2 = context.previouslyFocusedView
-        //
-        return true
     }
     
     // MARK: - Start Header
@@ -212,7 +243,6 @@ extension UITableView {
 }
 
 extension StoreViewController: BEMCheckBoxDelegate {
-    
     func didTap(_ checkBox: BEMCheckBox) {
         if let indexPath = tableView.indexPathForCellWithSubview(cellSubview: checkBox){
             let item = store.categories[indexPath[0]].items[indexPath[1]]
@@ -220,7 +250,6 @@ extension StoreViewController: BEMCheckBoxDelegate {
             store.save()
         }
     }
-    
 }
 
 extension StoreViewController: ImagePickerDelegate {
