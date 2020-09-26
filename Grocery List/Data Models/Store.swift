@@ -46,6 +46,11 @@ class Store: Codable {
         category.items[itemIndex].name = newItemName
         save()
     }
+    
+    public func getItem(indexPath: IndexPath) -> Item {
+        print(indexPath)
+        return self.categories[indexPath[0]].items[indexPath[1]]
+    }
 
     public func deleteItem(category: String, item: Item) {
         let items = getCategory(name: category)!.items

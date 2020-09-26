@@ -37,6 +37,8 @@ class StoreViewController: UITableViewController {
         refreshControl?.tintColor = .black
         tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
+        
+        closeAddCells()
     }
     
     @objc func refreshTableData() {
@@ -46,15 +48,16 @@ class StoreViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        closeAddCells()
+        
     }
-
+    
     @objc func addItemHeader(sender: UIButton){
         closeAddCells()
         
-        let header = sender.superview?.superview as! StoreListHeader
-        let section = header.tag
-        store.categories[section].toAdd = true
+        if let header = sender.superview?.superview as? StoreListHeader {
+            let section = header.tag
+            store.categories[section].toAdd = true
+        }
         tableView.reloadData()
     }
     
@@ -65,6 +68,7 @@ class StoreViewController: UITableViewController {
     }
     
     func closeAddCells() {
+        collapseItemCells()
         store.categories.forEach { c in
             c.toAdd = false
         }
@@ -72,20 +76,29 @@ class StoreViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    func collapseItemCells(_ isExpanded: Bool = false) {
+        store.categories.forEach { category in
+            category.items.forEach { item in
+                item.isExpanded = isExpanded
+            }
+        }
+        store.save()
+    }
+    
     
     // MARK: - Start Cells
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-
+        
         let delete = UIContextualAction(style: .normal, title: "Delete") { [self] (action, view, completion) in
-  
-                self.store.categories[indexPath[0]].items.remove(at: indexPath[1])
-                tableView.beginUpdates()
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                tableView.endUpdates()
-                self.store.save()
-                
-                tableView.reloadData()
+            
+            self.store.categories[indexPath[0]].items.remove(at: indexPath[1])
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+            self.store.save()
+            
+            tableView.reloadData()
             
             completion(true)
         }
@@ -95,9 +108,29 @@ class StoreViewController: UITableViewController {
         
         return UISwipeActionsConfiguration(actions: [delete])
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(self.store.categories[indexPath[0]].items[indexPath[1]].name)
+        let currCategory = store.categories[indexPath[0]]
+        if indexPath[1] < currCategory.items.count {
+            store.getItem(indexPath: indexPath).isExpanded.toggle()
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let currCategory = store.categories[indexPath[0]]
+        if indexPath[1] < currCategory.items.count {
+            let item = store.getItem(indexPath: indexPath)
+            
+            if item.isExpandable() && item.isExpanded {
+                return 115
+            }
+            else {
+                return 40
+            }
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
