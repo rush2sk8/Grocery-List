@@ -164,6 +164,7 @@ class StoreViewController: UITableViewController {
             
             cell.itemDescriptionTextField.text = ""
             cell.itemDescriptionTextField.attributedPlaceholder = descriptionText
+            cell.itemDescriptionTextField.delegate = self
             
             cell.itemImage.isUserInteractionEnabled = true
             cell.itemImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedImage(sender:))))
@@ -238,22 +239,26 @@ extension StoreViewController: UITextFieldDelegate {
         //if an item is present
         if let itemName = cell?.itemTextField.text {
             
-            let itemToAdd = Item(name: itemName)
-            
-            if let description = cell?.itemDescriptionTextField.text {
-                itemToAdd.description = description
+            if itemName != "" {
+                let itemToAdd = Item(name: itemName)
+                
+                if let description = cell?.itemDescriptionTextField.text {
+                    itemToAdd.description = description
+                }
+                
+                if let image = cell?.itemImage.image {
+                    itemToAdd.imageString = image.getB64String()
+                }
+                
+                store.addItem(category: currentCategory.name, item: itemToAdd)
+                currentCategory.toAdd = false
+                tableView.reloadData()
+                textField.resignFirstResponder()
             }
-            
-            if let image = cell?.itemImage.image {
-                itemToAdd.imageString = image.getB64String()
-            }
-            
-            store.addItem(category: currentCategory.name, item: itemToAdd)
-            currentCategory.toAdd = false
-            tableView.reloadData()
+        } else {
+            cell?.itemTextField.becomeFirstResponder()
         }
-        
-        textField.resignFirstResponder()
+    
         return true
     }
     
