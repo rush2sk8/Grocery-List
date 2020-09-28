@@ -10,10 +10,6 @@ import UIKit
 class Item: Codable {
     var imageString: String?
 
-    var hasImage: Bool {
-        imageString != nil
-    }
-
     var name: String
     var isDone: Bool = false
     var description: String
@@ -58,11 +54,11 @@ class Item: Codable {
     }
 
     func isExpandable() -> Bool {
-        return description != ""
+        return description != "" || hasImage()
     }
     
     func getImage() -> UIImage? {
-        if hasImage {
+        if hasImage() {
             let newImageData = Data(base64Encoded: imageString!)
             if let img = newImageData {
                 return UIImage(data: img)
@@ -71,8 +67,12 @@ class Item: Codable {
         return nil
     }
 
+    func hasImage() -> Bool {
+        return imageString != nil && imageString! != ""
+    }
+    
     func getGreyImage() -> UIImage? {
-        if hasImage {
+        if hasImage() {
             let ciImage = CIImage(image: getImage()!)
             let bw = ciImage!.applyingFilter("CIColorControls", parameters: ["inputSaturation": 0, "inputContrast": 1])
             return UIImage(ciImage: bw)

@@ -29,7 +29,6 @@ class StoreViewController: UITableViewController {
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9176470588, alpha: 1)
         
-        
         self.tableView.register(StoreListHeader.self, forHeaderFooterViewReuseIdentifier: StoreListHeader.reuseIdentifier)
         imagePicker = ImagePicker(presentationController: self, delegate: self)
         
@@ -48,7 +47,6 @@ class StoreViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     @objc func addItemHeader(sender: UIButton){
@@ -57,14 +55,16 @@ class StoreViewController: UITableViewController {
         if let header = sender.superview?.superview as? StoreListHeader {
             let section = header.tag
             store.categories[section].toAdd = true
+            currImageView = nil
         }
         tableView.reloadData()
     }
     
-    @objc func tappedImage(sender: AddItemCell){
-        print("tapped")
-        currImageView = sender.imageView
-        imagePicker.present(from: sender)
+    @objc func tappedImage(sender: UIGestureRecognizer){
+        if let imageView = sender.view as? UIImageView {
+            currImageView = imageView
+            imagePicker.present(from: imageView)
+        }
     }
     
     func closeAddCells() {
@@ -90,23 +90,26 @@ class StoreViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let delete = UIContextualAction(style: .normal, title: "Delete") { [self] (action, view, completion) in
+        if indexPath[1] < store.categories[indexPath[0]].items.count {
+            let delete = UIContextualAction(style: .normal, title: "Delete") { [self] (action, view, completion) in
+                
+                self.store.categories[indexPath[0]].items.remove(at: indexPath[1])
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.endUpdates()
+                self.store.save()
+                
+                tableView.reloadData()
+                
+                completion(true)
+            }
             
-            self.store.categories[indexPath[0]].items.remove(at: indexPath[1])
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
-            self.store.save()
+            delete.title = "Delete"
+            delete.backgroundColor = .systemRed
             
-            tableView.reloadData()
-            
-            completion(true)
+            return UISwipeActionsConfiguration(actions: [delete])
         }
-        
-        delete.title = "Delete"
-        delete.backgroundColor = .systemRed
-        
-        return UISwipeActionsConfiguration(actions: [delete])
+        return nil
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -149,6 +152,8 @@ class StoreViewController: UITableViewController {
             
             cell.itemLabel.text = currItem.name
             cell.descriptionLabel.text = currItem.description
+            
+            //cell.itemImageView.image = currItem.getImage()
             
             return cell
         }
@@ -225,7 +230,6 @@ class StoreViewController: UITableViewController {
             header.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.init(rawValue: 0.600))
         }
     }
-    
 }
 
 extension StoreViewController: UITextFieldDelegate {
@@ -256,9 +260,10 @@ extension StoreViewController: UITextFieldDelegate {
                 textField.resignFirstResponder()
             }
         } else {
-            cell?.itemTextField.becomeFirstResponder()
+            DispatchQueue.main.async {
+                cell?.itemTextField.becomeFirstResponder()
+            }
         }
-    
         return true
     }
     
@@ -292,8 +297,11 @@ extension StoreViewController: BEMCheckBoxDelegate {
 
 extension StoreViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
-        self.currImageView?.image = image
-        self.currImageView?.layer.cornerRadius = self.currImageView?.bounds.width ?? 10 / 2
-        self.currImageView = nil
+        
+        if let iv = currImageView {
+            iv.image = image
+            iv.layer.cornerRadius = self.currImageView?.bounds.width ?? 10 / 2
+            
+        }
     }
 }
