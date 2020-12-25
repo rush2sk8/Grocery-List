@@ -15,5 +15,4 @@ extension UIImage {
         let imageData = self.jpegData(compressionQuality: compressionQuality)
         return imageData?.base64EncodedString()
     }
-    
 }

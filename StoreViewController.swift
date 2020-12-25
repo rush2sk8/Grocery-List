@@ -138,7 +138,7 @@ class StoreViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currCategory = store.categories[indexPath[0]]
-        
+    
         if indexPath[1] < currCategory.items.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! ItemCellCollapsible
             let currItem = currCategory.items[indexPath[1]]
