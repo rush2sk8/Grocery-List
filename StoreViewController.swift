@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import BEMCheckBox
+import Lightbox
 
 class StoreViewController: UITableViewController {
     var store = Store()
@@ -136,6 +137,18 @@ class StoreViewController: UITableViewController {
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
+    @objc func longPress(sender: UIGestureRecognizer) {
+        let tappedView = (sender.view as? UIImageView)
+        let images = [LightboxImage(image: (tappedView?.image!)!)]
+        
+        let controller = LightboxController(images: images)
+        
+        controller.dynamicBackground = true
+        controller.modalPresentationStyle = .fullScreen
+        
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currCategory = store.categories[indexPath[0]]
     
@@ -154,7 +167,11 @@ class StoreViewController: UITableViewController {
             cell.descriptionLabel.text = currItem.description
             
             if let img = currItem.getImage() {
+                cell.itemImageView.isUserInteractionEnabled = true
                 cell.itemImageView.image = img
+                
+                let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+                cell.itemImageView.addGestureRecognizer(lpgr)
             }
 
             return cell
@@ -304,7 +321,7 @@ extension StoreViewController: ImagePickerDelegate {
         
         if let iv = currImageView {
             iv.image = image
-            iv.layer.cornerRadius = self.currImageView?.bounds.width ?? 10 / 2
+//            iv.layer.cornerRadius = self.currImageView?.bounds.width ?? 10 / 2
             
         }
     }
