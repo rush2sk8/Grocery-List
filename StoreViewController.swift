@@ -153,8 +153,10 @@ class StoreViewController: UITableViewController {
             cell.itemLabel.text = currItem.name
             cell.descriptionLabel.text = currItem.description
             
-            //cell.itemImageView.image = currItem.getImage()
-            
+            if let img = currItem.getImage() {
+                cell.itemImageView.image = img
+            }
+
             return cell
         }
         else {
@@ -251,7 +253,9 @@ extension StoreViewController: UITextFieldDelegate {
                 }
                 
                 if let image = cell?.itemImage.image {
-                    itemToAdd.imageString = image.getB64String()
+                    if image.getB64String() != UIImage(systemName: "photo")?.getB64String(){
+                        itemToAdd.imageString = image.getB64String()
+                    }
                 }
                 
                 store.addItem(category: currentCategory.name, item: itemToAdd)

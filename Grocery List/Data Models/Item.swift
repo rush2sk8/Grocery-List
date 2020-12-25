@@ -54,7 +54,7 @@ class Item: Codable {
     }
 
     func isExpandable() -> Bool {
-        return description != "" || hasImage()
+        return description != "" || hasImage() 
     }
     
     func getImage() -> UIImage? {
