@@ -14,7 +14,7 @@
         <!--Navigation Controller-->
         <scene sceneID="1Ca-XH-Hjy">
             <objects>
-                <navigationController toolbarHidden="NO" hidesBarsOnSwipe="YES" id="dnj-Mz-PTP" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="dnj-Mz-PTP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="UOb-2l-cGG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -68,14 +68,14 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtF-Cm-lxH">
-                                            <rect key="frame" x="53" y="6" width="327" height="20.5"/>
+                                            <rect key="frame" x="75" y="6" width="305" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cub-BI-xNt" customClass="BEMCheckBox">
-                                            <rect key="frame" x="13" y="2" width="32" height="29"/>
+                                            <rect key="frame" x="35" y="2" width="32" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         </view>
@@ -86,6 +86,14 @@
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COS-8o-4o0" customClass="CircleView" customModule="Grocery_List" customModuleProvider="target">
+                                            <rect key="frame" x="12" y="9" width="15" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.91754716629999999" green="0.91770458219999995" blue="0.91753727200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                                            </accessibility>
+                                        </view>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91770458219999995" blue="0.91753727200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -93,6 +101,7 @@
                                 <connections>
                                     <outlet property="checkbox" destination="cub-BI-xNt" id="Wtx-JS-lzW"/>
                                     <outlet property="descriptionLabel" destination="ZwS-Rr-hIg" id="DGJ-rj-11Q"/>
+                                    <outlet property="favoriteView" destination="COS-8o-4o0" id="ciM-LO-FWa"/>
                                     <outlet property="itemImageView" destination="NxY-Z3-hrL" id="46Y-ii-qDW"/>
                                     <outlet property="itemLabel" destination="rtF-Cm-lxH" id="CPf-xv-2Ht"/>
                                 </connections>

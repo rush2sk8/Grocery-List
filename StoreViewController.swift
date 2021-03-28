@@ -138,8 +138,8 @@ class StoreViewController: UITableViewController {
     }
     
     @objc func longPress(sender: UIGestureRecognizer) {
-        let tappedView = (sender.view as? UIImageView)
-        let images = [LightboxImage(image: (tappedView?.image!)!)]
+        let tappedView = (sender.view as? UIImageView)!
+        let images = [LightboxImage(image: (tappedView.image!))]
         
         let controller = LightboxController(images: images)
         
@@ -166,6 +166,8 @@ class StoreViewController: UITableViewController {
             cell.itemLabel.text = currItem.name
             cell.descriptionLabel.text = currItem.description
             
+            cell.favoriteView.circleColor = .yellow
+   
             if let img = currItem.getImage() {
                 cell.itemImageView.isUserInteractionEnabled = true
                 cell.itemImageView.image = img
