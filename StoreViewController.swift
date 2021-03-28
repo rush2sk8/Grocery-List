@@ -38,7 +38,22 @@ class StoreViewController: UITableViewController {
         tableView.addSubview(refreshControl!)
         refreshControl!.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
         
+        let longpresscell = UILongPressGestureRecognizer(target: self, action: #selector(StoreViewController.favoritedItem(sender:)))
+        self.tableView.addGestureRecognizer(longpresscell)
+        
         closeAddCells()
+    }
+    
+    @objc func favoritedItem(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizer.State.began {
+            let touchPoint = sender.location(in: self.tableView)
+            if let indexPath = self.tableView.indexPathForRow(at: touchPoint) {
+               let selectedItem = store.getItem(indexPath: indexPath)
+                selectedItem.favorite.toggle()
+                self.store.save()
+                self.tableView.reloadData()
+            }
+        }
     }
     
     @objc func refreshTableData() {
@@ -166,8 +181,10 @@ class StoreViewController: UITableViewController {
             cell.itemLabel.text = currItem.name
             cell.descriptionLabel.text = currItem.description
             
-            cell.favoriteView.circleColor = .yellow
-   
+            cell.favoriteView.circleColor = categoryColor
+            cell.favoriteView.favorite = currItem.favorite
+            cell.favoriteView.setNeedsDisplay()
+            
             if let img = currItem.getImage() {
                 cell.itemImageView.isUserInteractionEnabled = true
                 cell.itemImageView.image = img
@@ -323,8 +340,6 @@ extension StoreViewController: ImagePickerDelegate {
         
         if let iv = currImageView {
             iv.image = image
-//            iv.layer.cornerRadius = self.currImageView?.bounds.width ?? 10 / 2
-            
         }
     }
 }

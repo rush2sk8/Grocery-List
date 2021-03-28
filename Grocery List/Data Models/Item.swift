@@ -13,7 +13,8 @@ class Item: Codable {
     var name: String
     var isDone: Bool = false
     var description: String
-    var isExpanded: Bool = false
+    var isExpanded: Bool = false // if there is image to expand
+    var favorite: Bool = false
     
     init(name: String, imageString: String, isDone: Bool) {
         self.name = name.lowercased()

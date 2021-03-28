@@ -48,7 +48,6 @@ class Store: Codable {
     }
     
     public func getItem(indexPath: IndexPath) -> Item {
-        print(indexPath)
         return self.categories[indexPath[0]].items[indexPath[1]]
     }
 

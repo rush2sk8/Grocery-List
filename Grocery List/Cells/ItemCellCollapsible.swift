@@ -29,22 +29,24 @@ class ItemCellCollapsible: UITableViewCell {
 
 class CircleView: UIView {
     
-    var circleColor: UIColor?
+    var circleColor: UIColor!
+    var favorite: Bool!
     
     override func draw(_ rect: CGRect) {
         
         let path = UIBezierPath(ovalIn: CGRect(x: 2, y: 2, width: 12, height: 12))
         path.lineWidth = 1
         
-        if let mainColor = self.circleColor {
-            mainColor.setStroke()
-            mainColor.setFill()
-            path.fill()
+        if favorite {
+            circleColor.setStroke()
+            circleColor.setFill()
         }
         else {
             #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1).setStroke()
+            #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9176470588, alpha: 1).setFill()
         }
         
+        path.fill()
         path.stroke()
     }
 }
