@@ -41,7 +41,21 @@ class StoreViewController: UITableViewController {
         let longpresscell = UILongPressGestureRecognizer(target: self, action: #selector(StoreViewController.favoritedItem(sender:)))
         self.tableView.addGestureRecognizer(longpresscell)
         
+        let barTap = UILongPressGestureRecognizer(target: self, action: #selector(finishShopping(sender:)))
+        self.navigationController?.navigationBar.addGestureRecognizer(barTap)
+        
         closeAddCells()
+    }
+    @objc func finishShopping(sender: UILongPressGestureRecognizer) {
+        let alert = UIAlertController(title: "Finish shopping?", message: "This will delete all non favorited items", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
+            self.store.finishShopping()
+            self.tableView.reloadData()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func favoritedItem(sender: UILongPressGestureRecognizer) {

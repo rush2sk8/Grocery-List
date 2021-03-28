@@ -182,4 +182,11 @@ class Store: Codable {
     func save() {
         DataStore.saveStoreData(store: self)
     }
+    
+    func finishShopping() {
+        self.categories.forEach { category in
+            category.removeNonFavorites()
+        }
+        save()
+    }
 }

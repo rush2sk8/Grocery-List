@@ -34,4 +34,8 @@ class Category: Codable {
         return total
     }
 
+    func removeNonFavorites() {
+        self.items = items.filter { $0.favorite }
+    }
+    
 }
