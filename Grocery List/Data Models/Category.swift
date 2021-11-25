@@ -38,8 +38,5 @@ class Category: Codable {
 
     func removeNonFavorites() {
         self.items = items.filter { $0.favorite }
-        for item in self.items {
-            item.isDone = false
-        }
     }
 }
