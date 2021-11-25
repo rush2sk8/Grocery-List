@@ -11,10 +11,11 @@ class Category: Codable {
     var toAdd: Bool
 
     init(name: String, items: [Item] = [Item](), collapsed: Bool = false) {
+        self.name = name
         self.name = name.lowercased()
         self.items = items
-        self.toAdd = collapsed
     }
+    
 
     func getItems() -> [String] {
         var sItems: [String] = []
@@ -28,7 +29,8 @@ class Category: Codable {
         var total = 0
         for item in items {
             if item.isDone == false {
-                total += 1
+                
+            total += 1
             }
         }
         return total
@@ -40,5 +42,4 @@ class Category: Codable {
             item.isDone = false
         }
     }
-    
 }
